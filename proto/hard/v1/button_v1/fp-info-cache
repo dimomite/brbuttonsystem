@@ -1,4 +1,4 @@
-15997063440145804
+15995500307829549
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -273,6 +273,13 @@ buzz17
 2
 2
 brbuttonsystem
+DIP40_module
+
+
+0
+40
+40
+brbuttonsystem
 K3-2346D
 
 
@@ -286,6 +293,20 @@ LCD_2.8_SPI
 0
 18
 18
+brbuttonsystem
+OLED_0.96_I2C
+
+
+0
+12
+5
+brbuttonsystem
+PJ-001-H
+
+
+0
+3
+3
 Button_Switch_Keyboard
 SW_Cherry_MX_1.00u_PCB
 Cherry MX keyswitch, 1.00u, PCB mount, http://cherryamericas.com/wp-content/uploads/2014/12/mx_cat.pdf
@@ -49895,34 +49916,6 @@ mounting hole 8.4mm m8
 0
 9
 1
-MyConnectors
-DG-301-5.0
-
-
-0
-2
-2
-MyConnectors
-Hole_4mm
-
-
-0
-0
-0
-MyConnectors
-K3-2346D
-
-
-0
-10
-10
-MyConnectors
-PJ-001-H
-
-
-0
-3
-3
 MyModules
 buzz17
 

@@ -494,14 +494,14 @@ F 3 "" H 5350 3300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L MyModules:MyBuzzer BZ?
+L brbuttonsystem:MyBuzzer BZ?
 U 1 1 5D318742
 P 3150 3350
 AR Path="/5D318742" Ref="BZ?"  Part="1" 
 AR Path="/5D3754B9/5D318742" Ref="BZ1"  Part="1" 
 F 0 "BZ1" V 3242 3378 50  0000 L CNN
 F 1 "MyBuzzer" V 3287 3378 50  0001 L CNN
-F 2 "MyModules:buzz17" H 3150 3350 50  0001 C CNN
+F 2 "brbuttonsystem:buzz17" H 3150 3350 50  0001 C CNN
 F 3 "" H 3150 3350 50  0001 C CNN
 	1    3150 3350
 	0    1    1    0   
@@ -901,7 +901,7 @@ AR Path="/5D2A882E" Ref="J?"  Part="1"
 AR Path="/5D3754B9/5D2A882E" Ref="J8"  Part="1" 
 F 0 "J8" H 7050 1450 50  0000 C CNN
 F 1 "AudioJack3" H 7182 1484 50  0001 C CNN
-F 2 "MyConnectors:PJ-001-H" H 7200 1250 50  0001 C CNN
+F 2 "brbuttonsystem:PJ-001-H" H 7200 1250 50  0001 C CNN
 F 3 "~" H 7200 1250 50  0001 C CNN
 	1    7200 1250
 	-1   0    0    -1  

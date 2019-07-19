@@ -417,4 +417,6 @@ Text Label 6900 1950 0    50   ~ 0
 BotOut
 Text Label 6600 1450 0    50   ~ 0
 TopOut
+Text Label 4500 2700 0    50   ~ 0
+MiddlePoint
 $EndSCHEMATC

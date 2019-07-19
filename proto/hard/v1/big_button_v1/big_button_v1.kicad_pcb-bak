@@ -1,4 +1,4 @@
-(kicad_pcb (version 20171130) (host pcbnew "(5.1.0)-1")
+(kicad_pcb (version 20171130) (host pcbnew "(5.1.2)-2")
 
   (general
     (thickness 1.6)
@@ -34,7 +34,7 @@
   )
 
   (setup
-    (last_trace_width 0.4)
+    (last_trace_width 0.25)
     (user_trace_width 0.4)
     (user_trace_width 1)
     (trace_clearance 0.2)
@@ -62,7 +62,7 @@
     (pad_to_mask_clearance 0.051)
     (solder_mask_min_width 0.25)
     (aux_axis_origin 0 0)
-    (visible_elements FFFFFF7F)
+    (visible_elements 7FFFFFFF)
     (pcbplotparams
       (layerselection 0x010fc_ffffffff)
       (usegerberextensions false)
@@ -84,12 +84,12 @@
       (plotvalue true)
       (plotinvisibletext false)
       (padsonsilk false)
-      (subtractmaskfromsilk false)
+      (subtractmaskfromsilk true)
       (outputformat 1)
       (mirror false)
-      (drillshape 1)
+      (drillshape 0)
       (scaleselection 1)
-      (outputdirectory ""))
+      (outputdirectory "output"))
   )
 
   (net 0 "")
@@ -1212,11 +1212,6 @@
   (gr_line (start 50 100) (end 70 100) (layer Edge.Cuts) (width 0.12))
   (gr_line (start 50 50) (end 50 100) (layer Edge.Cuts) (width 0.12))
 
-  (segment (start 60.96 77.216) (end 60.198 76.454) (width 0.25) (layer B.Cu) (net 2))
-  (segment (start 62.992 78.74) (end 62.484 78.232) (width 0.25) (layer B.Cu) (net 2))
-  (segment (start 62.992 80.772) (end 62.992 78.74) (width 0.25) (layer B.Cu) (net 2))
-  (segment (start 62.484 78.232) (end 61.976 78.232) (width 0.25) (layer B.Cu) (net 2))
-  (segment (start 61.976 78.232) (end 60.96 77.216) (width 0.25) (layer B.Cu) (net 2))
   (via (at 56.134 76.708) (size 0.8) (drill 0.4) (layers F.Cu B.Cu) (net 1))
   (segment (start 56.134 78.227) (end 56.134 76.708) (width 0.25) (layer B.Cu) (net 1))
   (via (at 61.468 76.2) (size 0.8) (drill 0.4) (layers F.Cu B.Cu) (net 1))
@@ -1230,6 +1225,11 @@
   (segment (start 54.592 56.152) (end 54.592 56.642) (width 0.25) (layer B.Cu) (net 1))
   (segment (start 55.862 54.356) (end 55.862 54.882) (width 0.25) (layer B.Cu) (net 1))
   (segment (start 55.862 54.882) (end 54.592 56.152) (width 0.25) (layer B.Cu) (net 1))
+  (segment (start 60.96 77.216) (end 60.198 76.454) (width 0.25) (layer B.Cu) (net 2))
+  (segment (start 62.992 78.74) (end 62.484 78.232) (width 0.25) (layer B.Cu) (net 2))
+  (segment (start 62.992 80.772) (end 62.992 78.74) (width 0.25) (layer B.Cu) (net 2))
+  (segment (start 62.484 78.232) (end 61.976 78.232) (width 0.25) (layer B.Cu) (net 2))
+  (segment (start 61.976 78.232) (end 60.96 77.216) (width 0.25) (layer B.Cu) (net 2))
   (segment (start 62.085 72.771) (end 61.976 72.88) (width 0.25) (layer B.Cu) (net 2))
   (segment (start 64.008 72.771) (end 62.085 72.771) (width 0.25) (layer B.Cu) (net 2))
   (segment (start 61.704 73.152) (end 61.976 72.88) (width 0.25) (layer B.Cu) (net 2))
@@ -1325,7 +1325,7 @@
   (segment (start 58.411 56.642) (end 58.42 56.651) (width 0.25) (layer B.Cu) (net 16))
   (segment (start 58.42 56.651) (end 58.42 57.658) (width 0.25) (layer B.Cu) (net 16))
 
-  (zone (net 1) (net_name GND) (layer F.Cu) (tstamp 0) (hatch edge 0.508)
+  (zone (net 1) (net_name GND) (layer F.Cu) (tstamp 5D223829) (hatch edge 0.508)
     (connect_pads (clearance 0.508))
     (min_thickness 0.254)
     (fill yes (arc_segments 32) (thermal_gap 0.508) (thermal_bridge_width 0.508))
@@ -1505,7 +1505,7 @@
       )
     )
   )
-  (zone (net 2) (net_name VCC) (layer B.Cu) (tstamp 0) (hatch edge 0.508)
+  (zone (net 2) (net_name VCC) (layer B.Cu) (tstamp 5D223826) (hatch edge 0.508)
     (connect_pads (clearance 0.508))
     (min_thickness 0.254)
     (fill yes (arc_segments 32) (thermal_gap 0.508) (thermal_bridge_width 0.508))

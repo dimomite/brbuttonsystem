@@ -968,13 +968,13 @@ F 3 "" H 8100 3150 50  0001 C CNN
 $EndComp
 $Comp
 L brbuttonsystem:K3-2336D-combi J14
-U 1 1 5D188189
+U 2 1 5D188189
 P 7850 2850
 F 0 "J14" H 7950 2900 50  0000 C CNN
 F 1 "K3-2336D-combi" H 7925 2984 50  0001 C CNN
 F 2 "brbuttonsystem:K3-2346D" H 7850 2850 50  0001 C CNN
 F 3 "" H 7850 2850 50  0001 C CNN
-	1    7850 2850
+	2    7850 2850
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1337,12 +1337,7 @@ F 3 "" H 10250 1550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10250 1450 10250 1550
-Connection ~ 10250 1450
-Wire Wire Line
 	10250 1550 10100 1550
-Wire Wire Line
-	10250 1350 10250 1450
 Wire Wire Line
 	10100 1250 10250 1250
 Connection ~ 10100 1250
@@ -1375,12 +1370,12 @@ DISP_SDA
 Text Label 10250 1050 2    50   ~ 0
 DISP_SCL
 $Comp
-L MyModules:OLED_0.96_I2C U12
+L brbuttonsystem:OLED_0.96_I2C U12
 U 1 1 5D23818B
 P 10350 950
 F 0 "U12" H 10350 1000 50  0000 L CNN
 F 1 "OLED_0.96_I2C" H 10350 300 50  0000 L CNN
-F 2 "MyModules:OLED_0.96_I2C" H 10350 950 50  0001 C CNN
+F 2 "brbuttonsystem:OLED_0.96_I2C" H 10350 950 50  0001 C CNN
 F 3 "" H 10350 950 50  0001 C CNN
 	1    10350 950 
 	1    0    0    -1  
@@ -1963,4 +1958,6 @@ F 3 "~" H 9400 5850 50  0001 C CNN
 	1    9400 5850
 	-1   0    0    -1  
 $EndComp
+Wire Wire Line
+	10250 1350 10250 1550
 $EndSCHEMATC

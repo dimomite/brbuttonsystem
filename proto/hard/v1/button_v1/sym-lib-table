@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name brbuttonsystem)(type Legacy)(uri ${KIPRJMOD}/../../../../kicadlib/brbuttonsystem.lib)(options "")(descr ""))
+  (lib (name button_v1-rescue)(type Legacy)(uri ${KIPRJMOD}/button_v1-rescue.lib)(options "")(descr ""))
+)

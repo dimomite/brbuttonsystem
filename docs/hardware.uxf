@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>650</x>
+      <y>440</y>
+      <w>380</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>valign=center
+symbol=component
+bg=green
+Микроконтроллер
+stm32f103c8</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>450</x>
+      <y>530</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>valign=center
+symbol=component
+bg=green
+5V =&gt; 3.3V</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>450</x>
+      <y>440</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>valign=center
+symbol=component
+bg=green
+USB интерфейс</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>400</x>
+      <y>380</y>
+      <w>680</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>lt=.
+symbol=component
+Blue Pill</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>850</x>
+      <y>290</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>valign=center
+symbol=component
+Экран
+bg=cyan
+игроков</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>650</x>
+      <y>290</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>valign=center
+symbol=component
+bg=green
+Кнопки
+игроков</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>450</x>
+      <y>290</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>valign=center
+symbol=component
+bg=cyan
+Bluetooth</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1130</x>
+      <y>350</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>valign=center
+symbol=component
+bg=green
+Стартовый сигнал</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1130</x>
+      <y>530</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>valign=center
+symbol=component
+bg=green
+Фонари игроков</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1130</x>
+      <y>440</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>valign=center
+symbol=component
+bg=green
+Звуковой сигнал
+(внутренний и внешний)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>650</x>
+      <y>670</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>valign=center
+symbol=component
+bg=orange
+Экран ведущего</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>450</x>
+      <y>670</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>valign=center
+symbol=component
+bg=orange
+Кнопки ведущего</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>850</x>
+      <y>670</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>valign=center
+symbol=component
+bg=green
+Дополнитеные
+светодиоды
+для ведущего</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1130</x>
+      <y>620</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>valign=center
+symbol=component
+bg=orange
+Внешний интерфейс</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>400</x>
+      <y>180</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+bg=green
+1-й приоритет</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>580</x>
+      <y>180</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+bg=cyan
+2-й приоритет</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>760</x>
+      <y>180</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+bg=orange
+3-й приоритет</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

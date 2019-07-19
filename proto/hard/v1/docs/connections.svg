@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="connections.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="666.0922"
+     inkscape:cy="181.01173"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1138"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g4170"
+       transform="translate(-42.38669,859.16255)"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl3.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         id="g4165">
+        <rect
+           style="opacity:1;fill:none;fill-opacity:0.50196078;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect4136"
+           width="236.37569"
+           height="119.198"
+           x="47.799767"
+           y="98.864868" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="77.276672"
+           y="156.35689"
+           id="text4138"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan4140"
+             x="77.276672"
+             y="156.35689">Система</tspan></text>
+      </g>
+      <g
+         transform="translate(0,-6.3134534)"
+         id="g4160">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:18.73800278px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="164.40695"
+           y="206.49327"
+           id="text4142"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan4144"
+             x="164.40695"
+             y="206.49327">USB разъем</tspan></text>
+        <rect
+           style="opacity:1;fill:none;fill-opacity:0.50196078;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect4158"
+           width="122.9643"
+           height="33.148655"
+           x="161.21115"
+           y="184.91422" />
+      </g>
+    </g>
+    <g
+       transform="translate(4.8192509,-66.876723)"
+       id="g4221"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         id="g4223">
+        <rect
+           y="98.864868"
+           x="47.799767"
+           height="119.198"
+           width="236.37569"
+           id="rect4225"
+           style="opacity:1;fill:none;fill-opacity:0.50196078;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <text
+           sodipodi:linespacing="125%"
+           id="text4227"
+           y="156.35689"
+           x="77.276672"
+           style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           xml:space="preserve"><tspan
+             y="156.35689"
+             x="77.276672"
+             id="tspan4229"
+             sodipodi:role="line">Система</tspan></text>
+      </g>
+      <g
+         id="g4231"
+         transform="translate(0,-6.3134534)">
+        <text
+           sodipodi:linespacing="125%"
+           id="text4233"
+           y="206.49327"
+           x="164.40695"
+           style="font-style:normal;font-weight:normal;font-size:18.73800278px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           xml:space="preserve"><tspan
+             y="206.49327"
+             x="164.40695"
+             id="tspan4235"
+             sodipodi:role="line">USB разъем</tspan></text>
+        <rect
+           y="184.91422"
+           x="161.21115"
+           height="33.148655"
+           width="122.9643"
+           id="rect4237"
+           style="opacity:1;fill:none;fill-opacity:0.50196078;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      </g>
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 286.29723,126.16079 52.87958,0.72172"
+       id="path4243"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g4250"
+       transform="translate(-118.48732,-216.09681)"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         style="opacity:1;fill:none;fill-opacity:0.50196078;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect4252"
+         width="141.42857"
+         height="104.28571"
+         x="452.14285"
+         y="258.79077" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="492.0466"
+         y="325.5137"
+         id="text4254"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan4256"
+           x="492.0466"
+           y="325.5137">ПК</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:23.14063835px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="33.324589"
+       y="183.4623"
+       id="text4258"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="33.324589"
+         y="183.4623"
+         id="tspan4262">Питание и управление от компьютера</tspan></text>
+    <g
+       transform="translate(-8.9824211,399.93584)"
+       id="g4266"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         id="g4268">
+        <rect
+           y="98.864868"
+           x="47.799767"
+           height="119.198"
+           width="236.37569"
+           id="rect4270"
+           style="opacity:1;fill:none;fill-opacity:0.50196078;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <text
+           sodipodi:linespacing="125%"
+           id="text4272"
+           y="156.35689"
+           x="77.276672"
+           style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           xml:space="preserve"><tspan
+             y="156.35689"
+             x="77.276672"
+             id="tspan4274"
+             sodipodi:role="line">Система</tspan></text>
+      </g>
+      <g
+         id="g4276"
+         transform="translate(0,-6.3134534)">
+        <text
+           sodipodi:linespacing="125%"
+           id="text4278"
+           y="206.49327"
+           x="164.40695"
+           style="font-style:normal;font-weight:normal;font-size:18.73800278px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           xml:space="preserve"><tspan
+             y="206.49327"
+             x="164.40695"
+             id="tspan4280"
+             sodipodi:role="line">USB разъем</tspan></text>
+        <rect
+           y="184.91422"
+           x="161.21115"
+           height="33.148655"
+           width="122.9643"
+           id="rect4282"
+           style="opacity:1;fill:none;fill-opacity:0.50196078;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      </g>
+    </g>
+    <g
+       transform="translate(-87.022411,292.76538)"
+       id="g4284"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         style="opacity:1;fill:none;fill-opacity:0.50196078;stroke:#000000;stroke-width:0.99999994;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect4286"
+         width="152.14285"
+         height="108.57143"
+         x="411.09866"
+         y="91.015945" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:20.41928864px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="424.67093"
+         y="139.9725"
+         id="text4288"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan4290"
+           x="424.67093"
+           y="139.9725">Смартфон /</tspan><tspan
+           sodipodi:role="line"
+           x="424.67093"
+           y="165.49661"
+           id="tspan4292">планшет</tspan></text>
+    </g>
+    <text
+       sodipodi:linespacing="125%"
+       id="text4294"
+       y="461.48071"
+       x="200.45212"
+       style="font-style:normal;font-weight:normal;font-size:17.33600616px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         y="461.48071"
+         x="200.45212"
+         id="tspan4296"
+         sodipodi:role="line">Bluetooth</tspan></text>
+    <g
+       transform="translate(-5.7055811,457.31193)"
+       id="g4298"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         style="opacity:1;fill:none;fill-opacity:0.50196078;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect4300"
+         width="217.14284"
+         height="113.57143"
+         x="330.71429"
+         y="61.647923" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:23.28783417px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="349.80151"
+         y="98.204605"
+         id="text4302"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           x="349.80151"
+           y="98.204605"
+           id="tspan4304">Внешний блок</tspan><tspan
+           sodipodi:role="line"
+           x="349.80151"
+           y="127.3144"
+           id="tspan4306">питания /</tspan><tspan
+           sodipodi:role="line"
+           x="349.80151"
+           y="156.42419"
+           id="tspan4308">Power bank</tspan></text>
+    </g>
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path4310"
+       d="m 272.66976,596.46175 57.52244,0.72172"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 226.45528,515.90209 c 3.42793,-28.30538 8.71727,-55.92642 101.71661,-51.30114"
+       id="path4312"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:0.50196078;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4318"
+       width="521.42859"
+       height="194.28572"
+       x="10"
+       y="13.790775"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text4320"
+       y="674.47034"
+       x="42.996243"
+       style="font-style:normal;font-weight:normal;font-size:23.14063835px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         id="tspan4322"
+         y="674.47034"
+         x="42.996243"
+         sodipodi:role="line">Питание от внешнего источника</tspan><tspan
+         y="703.39612"
+         x="42.996243"
+         sodipodi:role="line"
+         id="tspan4324">Управление беспроводное</tspan></text>
+    <rect
+       style="opacity:1;fill:none;fill-opacity:0.50196078;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4326"
+       width="615.18292"
+       height="380.82745"
+       x="-13.561861"
+       y="356.44101"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl2.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       transform="translate(-44.04677,897.89964)"
+       id="g4328"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl3.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         style="opacity:1;fill:none;fill-opacity:0.50196078;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect4330"
+         width="217.14284"
+         height="113.57143"
+         x="330.71429"
+         y="61.647923" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:23.28783417px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="349.80151"
+         y="98.204605"
+         id="text4332"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           x="349.80151"
+           y="98.204605"
+           id="tspan4334">Внешний блок</tspan><tspan
+           sodipodi:role="line"
+           x="349.80151"
+           y="127.3144"
+           id="tspan4336">питания /</tspan><tspan
+           sodipodi:role="line"
+           x="349.80151"
+           y="156.42419"
+           id="tspan4338">Power bank</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:23.14063835px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="3.9301178"
+       y="1110.4219"
+       id="text4340"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl3.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="3.9301178"
+         y="1110.4219"
+         id="tspan4342">Питание от внешнего источника</tspan><tspan
+         id="tspan4344"
+         sodipodi:role="line"
+         x="3.9301178"
+         y="1139.3477">Управление сенсорными кнопками на системе</tspan></text>
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path4346"
+       d="m 238.76569,1061.9826 52.87958,0.7217"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl3.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:0.50196078;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4348"
+       width="624.28577"
+       height="237.85715"
+       x="-24.327768"
+       y="930.63568"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl3.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g4350"
+       transform="translate(-83.268954,1297.1103)"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl4.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         y="91.015945"
+         x="411.09866"
+         height="108.57143"
+         width="152.14285"
+         id="rect4352"
+         style="opacity:1;fill:none;fill-opacity:0.50196078;stroke:#000000;stroke-width:0.99999994;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4354"
+         y="139.9725"
+         x="424.67093"
+         style="font-style:normal;font-weight:normal;font-size:20.41928864px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           y="139.9725"
+           x="424.67093"
+           id="tspan4356"
+           sodipodi:role="line">Смартфон /</tspan><tspan
+           id="tspan4358"
+           y="165.49661"
+           x="424.67093"
+           sodipodi:role="line">планшет</tspan></text>
+    </g>
+    <g
+       transform="translate(-3.4686317,1283.0349)"
+       id="g4360"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl4.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         id="g4362">
+        <rect
+           y="98.864868"
+           x="47.799767"
+           height="119.198"
+           width="236.37569"
+           id="rect4364"
+           style="opacity:1;fill:none;fill-opacity:0.50196078;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <text
+           sodipodi:linespacing="125%"
+           id="text4366"
+           y="156.35689"
+           x="77.276672"
+           style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           xml:space="preserve"><tspan
+             y="156.35689"
+             x="77.276672"
+             id="tspan4368"
+             sodipodi:role="line">Система</tspan></text>
+      </g>
+      <g
+         id="g4370"
+         transform="translate(0,-6.3134534)">
+        <text
+           sodipodi:linespacing="125%"
+           id="text4372"
+           y="206.49327"
+           x="164.40695"
+           style="font-style:normal;font-weight:normal;font-size:18.73800278px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           xml:space="preserve"><tspan
+             y="206.49327"
+             x="164.40695"
+             id="tspan4374"
+             sodipodi:role="line">USB разъем</tspan></text>
+        <rect
+           y="184.91422"
+           x="161.21115"
+           height="33.148655"
+           width="122.9643"
+           id="rect4376"
+           style="opacity:1;fill:none;fill-opacity:0.50196078;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      </g>
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 278.39804,1485.1407 52.87958,0.7218"
+       id="path4378"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl4.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text4380"
+       y="1533.4652"
+       x="49.343449"
+       style="font-style:normal;font-weight:normal;font-size:23.14063835px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl4.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         id="tspan4382"
+         y="1533.4652"
+         x="49.343449"
+         sodipodi:role="line">Питание и управление от смартфона</tspan><tspan
+         y="1562.391"
+         x="49.343449"
+         sodipodi:role="line"
+         id="tspan4384">по USB кабелю (под вопросом)</tspan></text>
+    <rect
+       style="opacity:1;fill:none;fill-opacity:0.50196078;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4386"
+       width="525"
+       height="262.85715"
+       x="17.447433"
+       y="1342.3652"
+       inkscape:export-filename="D:\projects\brain_ring_button\proto\hard\v1\docs\images\ctrl4.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+  </g>
+</svg>

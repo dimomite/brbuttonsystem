@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="blocks.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="298.36185"
+     inkscape:cy="791.37868"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1138"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g4163">
+      <rect
+         y="60.669582"
+         x="64.423508"
+         height="40.153564"
+         width="143.94675"
+         id="rect4136"
+         style="opacity:1;fill:#ff6600;fill-opacity:0.50196081;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4138"
+         y="87.47789"
+         x="68.93512"
+         style="font-style:normal;font-weight:normal;font-size:17.65193367px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           y="87.47789"
+           x="68.93512"
+           id="tspan4140"
+           sodipodi:role="line">Обязательные</tspan></text>
+    </g>
+    <text
+       sodipodi:linespacing="125%"
+       id="text4151"
+       y="85.457588"
+       x="222.73085"
+       style="font-style:normal;font-weight:normal;font-size:17.65193367px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="85.457588"
+         x="222.73085"
+         id="tspan4153"
+         sodipodi:role="line" /></text>
+    <g
+       id="g4176">
+      <rect
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect4149"
+         width="143.94675"
+         height="68.437836"
+         x="234.77721"
+         y="60.268612" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4168"
+         y="79.175133"
+         x="247.09532"
+         style="font-style:normal;font-weight:normal;font-size:15.47485161px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           y="79.175133"
+           x="247.09532"
+           id="tspan4170"
+           sodipodi:role="line">В зависимости</tspan><tspan
+           id="tspan4172"
+           y="98.5187"
+           x="247.09532"
+           sodipodi:role="line">от желаемой</tspan><tspan
+           id="tspan4174"
+           y="117.86226"
+           x="247.09532"
+           sodipodi:role="line">конфигурации</tspan></text>
+    </g>
+    <g
+       id="g4204"
+       transform="translate(-29.698485,108.89444)">
+      <rect
+         y="148.94218"
+         x="354.31848"
+         height="139.85562"
+         width="143.94675"
+         id="rect4183"
+         style="opacity:1;fill:#ff6600;fill-opacity:0.50196078;stroke:#000000;stroke-width:0.99999994;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4185"
+         y="229.28992"
+         x="373.35239"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           y="229.28992"
+           x="373.35239"
+           id="tspan4187"
+           sodipodi:role="line">Ядро</tspan></text>
+    </g>
+    <g
+       id="g4199"
+       transform="translate(-19.091883,102.53048)">
+      <rect
+         style="opacity:1;fill:#ff6600;fill-opacity:0.50196078;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect4161"
+         width="283.24677"
+         height="40.153564"
+         x="275.16043"
+         y="350.38394" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4189"
+         y="377.88541"
+         x="295.992"
+         style="font-style:normal;font-weight:normal;font-size:28.50182724px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           y="377.88541"
+           x="295.992"
+           id="tspan4191"
+           sodipodi:role="line">Кнопки игроков</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-8.4852781"
+       y="208.78383"
+       id="text4193"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4195"
+         x="-8.4852781"
+         y="208.78383">Экран для</tspan><tspan
+         sodipodi:role="line"
+         x="-8.4852781"
+         y="258.78384"
+         id="tspan4197">игроков</tspan></text>
+  </g>
+</svg>

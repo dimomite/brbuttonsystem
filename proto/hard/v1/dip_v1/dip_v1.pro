@@ -1,4 +1,4 @@
-update=05/07/2019 21:30:48
+update=20/07/2019 11:31:23
 version=1
 last_client=kicad
 [general]
@@ -65,7 +65,7 @@ SolderPasteRatio=-0
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
-PlotDirectoryName=
+PlotDirectoryName=./
 SubpartIdSeparator=0
 SubpartFirstId=65
 NetFmtName=

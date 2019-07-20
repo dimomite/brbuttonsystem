@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:dip_v1-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
@@ -502,13 +501,13 @@ Wire Wire Line
 Connection ~ 1900 3650
 Wire Wire Line
 	1900 3650 1900 3700
-Text Label 3100 3550 0    50   ~ 0
+Text Label 3100 4400 0    50   ~ 0
 But1
 Text Label 3100 5250 0    50   ~ 0
 But2
 Text Label 3100 6100 0    50   ~ 0
 But3
-Text Label 3100 4400 0    50   ~ 0
+Text Label 3100 3550 0    50   ~ 0
 But0
 Text Label 1600 800  2    50   ~ 0
 But0

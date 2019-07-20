@@ -1019,17 +1019,6 @@ EXT_SOUND
 Text Label 9950 4800 2    50   ~ 0
 Sound_PWM
 $Comp
-L Connector:AudioJack3 J7
-U 1 1 5D2283DA
-P 8300 900
-F 0 "J7" H 8250 1100 50  0000 R CNN
-F 1 "AudioJack3" H 8020 834 50  0001 R CNN
-F 2 "brbuttonsystem:PJ-001-H" H 8300 900 50  0001 C CNN
-F 3 "~" H 8300 900 50  0001 C CNN
-	1    8300 900 
-	-1   0    0    -1  
-$EndComp
-$Comp
 L power:GND #PWR0133
 U 1 1 5D22A9D3
 P 8100 800
@@ -2109,5 +2098,16 @@ F 2 "" H 9550 750 50  0001 C CNN
 F 3 "" H 9550 750 50  0001 C CNN
 	1    9550 750 
 	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:AudioJack3 J7
+U 1 1 5D2283DA
+P 8300 900
+F 0 "J7" H 8250 1100 50  0000 R CNN
+F 1 "AudioJack3" H 8020 834 50  0001 R CNN
+F 2 "brbuttonsystem:PJ-001-H" H 8300 900 50  0001 C CNN
+F 3 "~" H 8300 900 50  0001 C CNN
+	1    8300 900 
+	-1   0    0    -1  
 $EndComp
 $EndSCHEMATC

@@ -66,7 +66,7 @@
 #define USBD_VID     0x483
 #define USBD_LANGID_STRING     1033
 #define USBD_MANUFACTURER_STRING     "DiMomite"
-#define USBD_PID_FS     22352
+#define USBD_PID_FS     0x5750
 #define USBD_PRODUCT_STRING_FS     "SUper custom device"
 #define USBD_CONFIGURATION_STRING_FS     "My Custom Config"
 #define USBD_INTERFACE_STRING_FS     "Custom HID Interface"

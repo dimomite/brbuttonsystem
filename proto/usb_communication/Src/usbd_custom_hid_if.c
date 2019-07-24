@@ -23,7 +23,7 @@
 #include "usbd_custom_hid_if.h"
 
 /* USER CODE BEGIN INCLUDE */
-
+//#include <stdio.h>
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,12 +96,13 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
 	    0x09, 0x01,                    // 	USAGE (Vendor Usage 1)
 	    // System Parameters
 	    0xa1, 0x01,                    // 	COLLECTION (Application)
+
 	    0x85, 0x01,                    //   REPORT_ID (1)
 	    0x09, 0x01,                    //   USAGE (Vendor Usage 1)
 	    0x15, 0x00,                    //   LOGICAL_MINIMUM (0)
-	    0x25, 0x01,                    //   LOGICAL_MAXIMUM (1)
+	    0x25, 0x0f,                    //   LOGICAL_MAXIMUM (15)
 	    0x75, 0x08,                    //   REPORT_SIZE (8)
-	    0x95, 4, 	                   //   REPORT_COUNT (4)
+	    0x95, USBD_CUSTOMHID_OUTREPORT_BUF_SIZE, // REPORT_COUNT (4)
 	    0xb1, 0x82,                    //   FEATURE (Data,Var,Abs,Vol)
 	    0x85, 0x01,                    //   REPORT_ID (1)
 	    0x09, 0x01,                    //   USAGE (Vendor Usage 1)
@@ -110,13 +111,15 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
 	    0x85, 0x02,                    //   REPORT_ID (4)
 	    0x09, 0x02,                    //   USAGE (Vendor Usage 4)
 	    0x75, 0x08,                    //   REPORT_SIZE (8)
-	    0x95, 4, 	                   //   REPORT_COUNT (4)
+	    0x95, USBD_CUSTOMHID_OUTREPORT_BUF_SIZE, // REPORT_COUNT (4)
 	    0x81, 0x82,                    //   INPUT (Data,Var,Abs,Vol)
   /* USER CODE END 0 */
   0xC0    /*     END_COLLECTION	             */
 };
 
 /* USER CODE BEGIN PRIVATE_VARIABLES */
+
+static uint8_t usbData[USBD_CUSTOMHID_OUTREPORT_BUF_SIZE];
 
 /* USER CODE END PRIVATE_VARIABLES */
 
@@ -196,6 +199,14 @@ static int8_t CUSTOM_HID_DeInit_FS(void)
 static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state)
 {
   /* USER CODE BEGIN 6 */
+  USBD_CUSTOM_HID_HandleTypeDef *hhid = (USBD_CUSTOM_HID_HandleTypeDef*)hUsbDeviceFS.pClassData;
+//  memcpy(usbData, hhid->Report_buf, USBD_CUSTOMHID_OUTREPORT_BUF_SIZE);
+  switch (hhid->Report_buf[0]) {
+  case 2: HAL_GPIO_WritePin(BlueLed_GPIO_Port, BlueLed_Pin, GPIO_PIN_SET); break;
+  case 5: HAL_GPIO_WritePin(BlueLed_GPIO_Port, BlueLed_Pin, GPIO_PIN_RESET); break;
+  default: break;
+  }
+
   return (USBD_OK);
   /* USER CODE END 6 */
 }

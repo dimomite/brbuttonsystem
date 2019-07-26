@@ -7,7 +7,7 @@ class Main {
     companion object {
         val DEVICE_VID: Short = 0x483
         val DEVICE_PID: Short = 0x5750
-        val data: ByteArray = byteArrayOf(5, 0, 0, 0)
+        val data: ByteArray = byteArrayOf(5, 0, 0, 0) // switch between 2 and 5 to turn on/off LED on PC13
     }
 }
 

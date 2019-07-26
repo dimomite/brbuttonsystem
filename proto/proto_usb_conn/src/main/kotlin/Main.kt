@@ -1,18 +1,17 @@
 import Main.Companion.data
 import purejavahidapi.HidDevice
 import purejavahidapi.PureJavaHidApi
+import java.util.*
 
 class Main {
     companion object {
         val DEVICE_VID: Short = 0x483
         val DEVICE_PID: Short = 0x5750
-        val data: ByteArray = byteArrayOf(2, 0, 0, 0)
+        val data: ByteArray = byteArrayOf(5, 0, 0, 0)
     }
 }
 
 fun main() {
-
-
     val devices = PureJavaHidApi.enumerateDevices()
     println("$devices")
     data.reverse()
@@ -28,6 +27,13 @@ fun main() {
                 println("setOutputReport")
                 val result = hidDevice.setOutputReport(1, Main.data, 4)
                 println("setOutputReport: result: $result")
+
+                println("setInputReportListener")
+                hidDevice.setInputReportListener { source, reportID, reportData, reportLength ->
+                    println("Report: $reportID, data: " + Arrays.toString(reportData) + ", length: $reportLength")
+                }
+                println("setInputReportListener: done")
+                while (true) {}
             } finally {
                 hidDevice.close()
             }

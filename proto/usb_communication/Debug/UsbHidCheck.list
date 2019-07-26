@@ -5,45 +5,45 @@ Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
   0 .isr_vector   0000010c  08000000  08000000  00010000  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  1 .text         00005020  0800010c  0800010c  0001010c  2**2
+  1 .text         00005058  0800010c  0800010c  0001010c  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       00000070  0800512c  0800512c  0001512c  2**2
+  2 .rodata       00000070  08005164  08005164  00015164  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  0800519c  0800519c  00020168  2**0
+  3 .ARM.extab    00000000  080051d4  080051d4  00020168  2**0
                   CONTENTS
-  4 .ARM          00000000  0800519c  0800519c  00020168  2**0
+  4 .ARM          00000000  080051d4  080051d4  00020168  2**0
                   CONTENTS
-  5 .preinit_array 00000000  0800519c  0800519c  00020168  2**0
+  5 .preinit_array 00000000  080051d4  080051d4  00020168  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  0800519c  0800519c  0001519c  2**2
+  6 .init_array   00000004  080051d4  080051d4  000151d4  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  7 .fini_array   00000004  080051a0  080051a0  000151a0  2**2
+  7 .fini_array   00000004  080051d8  080051d8  000151d8  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  8 .data         00000168  20000000  080051a4  00020000  2**2
+  8 .data         00000168  20000000  080051dc  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          00000770  20000168  0800530c  00020168  2**2
+  9 .bss          00000770  20000168  08005344  00020168  2**2
                   ALLOC
- 10 ._user_heap_stack 00000600  200008d8  0800530c  000208d8  2**0
+ 10 ._user_heap_stack 00000600  200008d8  08005344  000208d8  2**0
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  00020168  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0000f7ca  00000000  00000000  00020191  2**0
+ 12 .debug_info   0000f7e6  00000000  00000000  00020191  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_abbrev 0000283a  00000000  00000000  0002f95b  2**0
+ 13 .debug_abbrev 0000283a  00000000  00000000  0002f977  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_aranges 00000a38  00000000  00000000  00032198  2**3
+ 14 .debug_aranges 00000a38  00000000  00000000  000321b8  2**3
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_ranges 000008f0  00000000  00000000  00032bd0  2**3
+ 15 .debug_ranges 000008f0  00000000  00000000  00032bf0  2**3
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_macro  000164a7  00000000  00000000  000334c0  2**0
+ 16 .debug_macro  00016507  00000000  00000000  000334e0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   0000b4bf  00000000  00000000  00049967  2**0
+ 17 .debug_line   0000b4c4  00000000  00000000  000499e7  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    0006cf5d  00000000  00000000  00054e26  2**0
+ 18 .debug_str    0006d01d  00000000  00000000  00054eab  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  000c1d83  2**0
+ 19 .comment      0000007b  00000000  00000000  000c1ec8  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00002708  00000000  00000000  000c1e00  2**2
+ 20 .debug_frame  00002708  00000000  00000000  000c1f44  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -62,7 +62,7 @@ Disassembly of section .text:
  8000122:	bd10      	pop	{r4, pc}
  8000124:	20000168 	.word	0x20000168
  8000128:	00000000 	.word	0x00000000
- 800012c:	08005114 	.word	0x08005114
+ 800012c:	0800514c 	.word	0x0800514c
 
 08000130 <frame_dummy>:
  8000130:	b508      	push	{r3, lr}
@@ -74,7 +74,7 @@ Disassembly of section .text:
  800013e:	bd08      	pop	{r3, pc}
  8000140:	00000000 	.word	0x00000000
  8000144:	2000016c 	.word	0x2000016c
- 8000148:	08005114 	.word	0x08005114
+ 8000148:	0800514c 	.word	0x0800514c
 
 0800014c <HAL_Init>:
   *         need to ensure that the SysTick time base is always set to 1 millisecond
@@ -111,7 +111,7 @@ HAL_StatusTypeDef HAL_Init(void)
 
   /* Init the low level hardware */
   HAL_MspInit();
- 8000168:	f004 faf2 	bl	8004750 <HAL_MspInit>
+ 8000168:	f004 fb0e 	bl	8004788 <HAL_MspInit>
 
   /* Return function status */
   return HAL_OK;
@@ -1168,7 +1168,7 @@ HAL_StatusTypeDef HAL_PCD_Init(PCD_HandleTypeDef *hpcd)
     /* Init the low level hardware : GPIO, CLOCK, NVIC... */
     HAL_PCD_MspInit(hpcd);
  8000736:	6878      	ldr	r0, [r7, #4]
- 8000738:	f004 f8d4 	bl	80048e4 <HAL_PCD_MspInit>
+ 8000738:	f004 f8f0 	bl	800491c <HAL_PCD_MspInit>
 #endif /* (USE_HAL_PCD_REGISTER_CALLBACKS) */
   }
 
@@ -1442,7 +1442,7 @@ HAL_StatusTypeDef HAL_PCD_Start(PCD_HandleTypeDef *hpcd)
   HAL_PCDEx_SetConnectionState(hpcd, 1U);
  80008f0:	2101      	movs	r1, #1
  80008f2:	6878      	ldr	r0, [r7, #4]
- 80008f4:	f004 fa3f 	bl	8004d76 <HAL_PCDEx_SetConnectionState>
+ 80008f4:	f004 fa5b 	bl	8004dae <HAL_PCDEx_SetConnectionState>
 #endif /* defined (USB) */
   (void)USB_DevConnect(hpcd->Instance);
  80008f8:	687b      	ldr	r3, [r7, #4]
@@ -1520,7 +1520,7 @@ void HAL_PCD_IRQHandler(PCD_HandleTypeDef *hpcd)
 #else
     HAL_PCD_ResetCallback(hpcd);
  8000970:	6878      	ldr	r0, [r7, #4]
- 8000972:	f004 f82c 	bl	80049ce <HAL_PCD_ResetCallback>
+ 8000972:	f004 f848 	bl	8004a06 <HAL_PCD_ResetCallback>
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
 
     (void)HAL_PCD_SetAddress(hpcd, 0U);
@@ -1609,7 +1609,7 @@ void HAL_PCD_IRQHandler(PCD_HandleTypeDef *hpcd)
 #else
     HAL_PCD_ResumeCallback(hpcd);
  8000a20:	6878      	ldr	r0, [r7, #4]
- 8000a22:	f004 f80d 	bl	8004a40 <HAL_PCD_ResumeCallback>
+ 8000a22:	f004 f829 	bl	8004a78 <HAL_PCD_ResumeCallback>
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
 
     __HAL_PCD_CLEAR_FLAG(hpcd, USB_ISTR_WKUP);
@@ -1697,7 +1697,7 @@ void HAL_PCD_IRQHandler(PCD_HandleTypeDef *hpcd)
 #else
     HAL_PCD_SuspendCallback(hpcd);
  8000aca:	6878      	ldr	r0, [r7, #4]
- 8000acc:	f003 ff9e 	bl	8004a0c <HAL_PCD_SuspendCallback>
+ 8000acc:	f003 ffba 	bl	8004a44 <HAL_PCD_SuspendCallback>
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
   }
 
@@ -1727,7 +1727,7 @@ void HAL_PCD_IRQHandler(PCD_HandleTypeDef *hpcd)
 #else
     HAL_PCD_SOFCallback(hpcd);
  8000afe:	6878      	ldr	r0, [r7, #4]
- 8000b00:	f003 ff57 	bl	80049b2 <HAL_PCD_SOFCallback>
+ 8000b00:	f003 ff73 	bl	80049ea <HAL_PCD_SOFCallback>
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
   }
 
@@ -2509,7 +2509,7 @@ static HAL_StatusTypeDef PCD_EP_ISR_Handler(PCD_HandleTypeDef *hpcd)
         HAL_PCD_DataInStageCallback(hpcd, 0U);
  8000f92:	2100      	movs	r1, #0
  8000f94:	6878      	ldr	r0, [r7, #4]
- 8000f96:	f003 fcf5 	bl	8004984 <HAL_PCD_DataInStageCallback>
+ 8000f96:	f003 fd11 	bl	80049bc <HAL_PCD_DataInStageCallback>
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
 
         if ((hpcd->USB_Address > 0U) && (ep->xfer_len == 0U))
@@ -2616,7 +2616,7 @@ static HAL_StatusTypeDef PCD_EP_ISR_Handler(PCD_HandleTypeDef *hpcd)
 #else
           HAL_PCD_SetupStageCallback(hpcd);
  800104e:	6878      	ldr	r0, [r7, #4]
- 8001050:	f003 fc6e 	bl	8004930 <HAL_PCD_SetupStageCallback>
+ 8001050:	f003 fc8a 	bl	8004968 <HAL_PCD_SetupStageCallback>
  8001054:	e1dc      	b.n	8001410 <PCD_EP_ISR_Handler+0x510>
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
         }
@@ -2702,7 +2702,7 @@ static HAL_StatusTypeDef PCD_EP_ISR_Handler(PCD_HandleTypeDef *hpcd)
             HAL_PCD_DataOutStageCallback(hpcd, 0U);
  80010dc:	2100      	movs	r1, #0
  80010de:	6878      	ldr	r0, [r7, #4]
- 80010e0:	f003 fc38 	bl	8004954 <HAL_PCD_DataOutStageCallback>
+ 80010e0:	f003 fc54 	bl	800498c <HAL_PCD_DataOutStageCallback>
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
           }
 
@@ -3039,7 +3039,7 @@ static HAL_StatusTypeDef PCD_EP_ISR_Handler(PCD_HandleTypeDef *hpcd)
  8001348:	781b      	ldrb	r3, [r3, #0]
  800134a:	4619      	mov	r1, r3
  800134c:	6878      	ldr	r0, [r7, #4]
- 800134e:	f003 fb01 	bl	8004954 <HAL_PCD_DataOutStageCallback>
+ 800134e:	f003 fb1d 	bl	800498c <HAL_PCD_DataOutStageCallback>
  8001352:	e008      	b.n	8001366 <PCD_EP_ISR_Handler+0x466>
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
         }
@@ -3142,7 +3142,7 @@ static HAL_StatusTypeDef PCD_EP_ISR_Handler(PCD_HandleTypeDef *hpcd)
  80013f2:	781b      	ldrb	r3, [r3, #0]
  80013f4:	4619      	mov	r1, r3
  80013f6:	6878      	ldr	r0, [r7, #4]
- 80013f8:	f003 fac4 	bl	8004984 <HAL_PCD_DataInStageCallback>
+ 80013f8:	f003 fae0 	bl	80049bc <HAL_PCD_DataInStageCallback>
  80013fc:	e008      	b.n	8001410 <PCD_EP_ISR_Handler+0x510>
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
         }
@@ -4511,7 +4511,7 @@ if (((RCC_ClkInitStruct->ClockType) & RCC_CLOCKTYPE_PCLK1) == RCC_CLOCKTYPE_PCLK
  8001b6a:	bf00      	nop
  8001b6c:	40022000 	.word	0x40022000
  8001b70:	40021000 	.word	0x40021000
- 8001b74:	0800518c 	.word	0x0800518c
+ 8001b74:	080051c4 	.word	0x080051c4
  8001b78:	200000dc 	.word	0x200000dc
  8001b7c:	20000000 	.word	0x20000000
 
@@ -4660,8 +4660,8 @@ uint32_t HAL_RCC_GetSysClockFreq(void)
  8001c2a:	bc90      	pop	{r4, r7}
  8001c2c:	4770      	bx	lr
  8001c2e:	bf00      	nop
- 8001c30:	0800512c 	.word	0x0800512c
- 8001c34:	0800513c 	.word	0x0800513c
+ 8001c30:	08005164 	.word	0x08005164
+ 8001c34:	08005174 	.word	0x08005174
  8001c38:	40021000 	.word	0x40021000
  8001c3c:	007a1200 	.word	0x007a1200
  8001c40:	003d0900 	.word	0x003d0900
@@ -7686,7 +7686,7 @@ static uint8_t  USBD_CUSTOM_HID_Init(USBD_HandleTypeDef *pdev,
  80030b2:	2203      	movs	r2, #3
  80030b4:	2181      	movs	r1, #129	; 0x81
  80030b6:	6878      	ldr	r0, [r7, #4]
- 80030b8:	f001 fd3b 	bl	8004b32 <USBD_LL_OpenEP>
+ 80030b8:	f001 fd57 	bl	8004b6a <USBD_LL_OpenEP>
                  CUSTOM_HID_EPIN_SIZE);
 
   pdev->ep_in[CUSTOM_HID_EPIN_ADDR & 0xFU].is_used = 1U;
@@ -7700,7 +7700,7 @@ static uint8_t  USBD_CUSTOM_HID_Init(USBD_HandleTypeDef *pdev,
  80030c4:	2203      	movs	r2, #3
  80030c6:	2101      	movs	r1, #1
  80030c8:	6878      	ldr	r0, [r7, #4]
- 80030ca:	f001 fd32 	bl	8004b32 <USBD_LL_OpenEP>
+ 80030ca:	f001 fd4e 	bl	8004b6a <USBD_LL_OpenEP>
                  CUSTOM_HID_EPOUT_SIZE);
 
   pdev->ep_out[CUSTOM_HID_EPOUT_ADDR & 0xFU].is_used = 1U;
@@ -7710,7 +7710,7 @@ static uint8_t  USBD_CUSTOM_HID_Init(USBD_HandleTypeDef *pdev,
 
   pdev->pClassData = USBD_malloc(sizeof(USBD_CUSTOM_HID_HandleTypeDef));
  80030d6:	2018      	movs	r0, #24
- 80030d8:	f001 fe38 	bl	8004d4c <USBD_static_malloc>
+ 80030d8:	f001 fe54 	bl	8004d84 <USBD_static_malloc>
  80030dc:	4602      	mov	r2, r0
  80030de:	687b      	ldr	r3, [r7, #4]
  80030e0:	f8c3 22b8 	str.w	r2, [r3, #696]	; 0x2b8
@@ -7749,7 +7749,7 @@ static uint8_t  USBD_CUSTOM_HID_Init(USBD_HandleTypeDef *pdev,
  800310e:	2304      	movs	r3, #4
  8003110:	2101      	movs	r1, #1
  8003112:	6878      	ldr	r0, [r7, #4]
- 8003114:	f001 fdf7 	bl	8004d06 <USBD_LL_PrepareReceive>
+ 8003114:	f001 fe13 	bl	8004d3e <USBD_LL_PrepareReceive>
                            USBD_CUSTOMHID_OUTREPORT_BUF_SIZE);
   }
 
@@ -7778,7 +7778,7 @@ static uint8_t  USBD_CUSTOM_HID_DeInit(USBD_HandleTypeDef *pdev,
   USBD_LL_CloseEP(pdev, CUSTOM_HID_EPIN_ADDR);
  800312e:	2181      	movs	r1, #129	; 0x81
  8003130:	6878      	ldr	r0, [r7, #4]
- 8003132:	f001 fd24 	bl	8004b7e <USBD_LL_CloseEP>
+ 8003132:	f001 fd40 	bl	8004bb6 <USBD_LL_CloseEP>
   pdev->ep_in[CUSTOM_HID_EPIN_ADDR & 0xFU].is_used = 0U;
  8003136:	687b      	ldr	r3, [r7, #4]
  8003138:	2200      	movs	r2, #0
@@ -7788,7 +7788,7 @@ static uint8_t  USBD_CUSTOM_HID_DeInit(USBD_HandleTypeDef *pdev,
   USBD_LL_CloseEP(pdev, CUSTOM_HID_EPOUT_ADDR);
  800313c:	2101      	movs	r1, #1
  800313e:	6878      	ldr	r0, [r7, #4]
- 8003140:	f001 fd1d 	bl	8004b7e <USBD_LL_CloseEP>
+ 8003140:	f001 fd39 	bl	8004bb6 <USBD_LL_CloseEP>
   pdev->ep_out[CUSTOM_HID_EPOUT_ADDR & 0xFU].is_used = 0U;
  8003144:	687b      	ldr	r3, [r7, #4]
  8003146:	2200      	movs	r2, #0
@@ -7810,7 +7810,7 @@ static uint8_t  USBD_CUSTOM_HID_DeInit(USBD_HandleTypeDef *pdev,
  8003160:	687b      	ldr	r3, [r7, #4]
  8003162:	f8d3 32b8 	ldr.w	r3, [r3, #696]	; 0x2b8
  8003166:	4618      	mov	r0, r3
- 8003168:	f001 fdfc 	bl	8004d64 <USBD_static_free>
+ 8003168:	f001 fe18 	bl	8004d9c <USBD_static_free>
     pdev->pClassData = NULL;
  800316c:	687b      	ldr	r3, [r7, #4]
  800316e:	2200      	movs	r2, #0
@@ -8304,7 +8304,7 @@ static uint8_t  USBD_CUSTOM_HID_DataOut(USBD_HandleTypeDef *pdev,
  800342c:	2304      	movs	r3, #4
  800342e:	2101      	movs	r1, #1
  8003430:	6878      	ldr	r0, [r7, #4]
- 8003432:	f001 fc68 	bl	8004d06 <USBD_LL_PrepareReceive>
+ 8003432:	f001 fc84 	bl	8004d3e <USBD_LL_PrepareReceive>
                          USBD_CUSTOMHID_OUTREPORT_BUF_SIZE);
 
   return USBD_OK;
@@ -8492,7 +8492,7 @@ USBD_StatusTypeDef USBD_Init(USBD_HandleTypeDef *pdev,
   /* Initialize low level driver */
   USBD_LL_Init(pdev);
  800350e:	68f8      	ldr	r0, [r7, #12]
- 8003510:	f001 faa4 	bl	8004a5c <USBD_LL_Init>
+ 8003510:	f001 fac0 	bl	8004a94 <USBD_LL_Init>
 
   return USBD_OK;
  8003514:	2300      	movs	r3, #0
@@ -8564,7 +8564,7 @@ USBD_StatusTypeDef  USBD_Start(USBD_HandleTypeDef *pdev)
   /* Start the low level driver  */
   USBD_LL_Start(pdev);
  8003558:	6878      	ldr	r0, [r7, #4]
- 800355a:	f001 facf 	bl	8004afc <USBD_LL_Start>
+ 800355a:	f001 faeb 	bl	8004b34 <USBD_LL_Start>
 
   return USBD_OK;
  800355e:	2300      	movs	r3, #0
@@ -8759,7 +8759,7 @@ USBD_StatusTypeDef USBD_LL_SetupStage(USBD_HandleTypeDef *pdev, uint8_t *psetup)
  8003660:	b2db      	uxtb	r3, r3
  8003662:	4619      	mov	r1, r3
  8003664:	6878      	ldr	r0, [r7, #4]
- 8003666:	f001 faa9 	bl	8004bbc <USBD_LL_StallEP>
+ 8003666:	f001 fac5 	bl	8004bf4 <USBD_LL_StallEP>
       break;
  800366a:	bf00      	nop
   }
@@ -8893,7 +8893,7 @@ USBD_StatusTypeDef USBD_LL_DataOutStage(USBD_HandleTypeDef *pdev,
         USBD_LL_StallEP(pdev, 0U);
  8003718:	2100      	movs	r1, #0
  800371a:	68f8      	ldr	r0, [r7, #12]
- 800371c:	f001 fa4e 	bl	8004bbc <USBD_LL_StallEP>
+ 800371c:	f001 fa6a 	bl	8004bf4 <USBD_LL_StallEP>
  8003720:	e015      	b.n	800374e <USBD_LL_DataOutStage+0xd8>
       }
     }
@@ -9001,7 +9001,7 @@ USBD_StatusTypeDef USBD_LL_DataInStage(USBD_HandleTypeDef *pdev,
  80037a8:	2200      	movs	r2, #0
  80037aa:	2100      	movs	r1, #0
  80037ac:	68f8      	ldr	r0, [r7, #12]
- 80037ae:	f001 faaa 	bl	8004d06 <USBD_LL_PrepareReceive>
+ 80037ae:	f001 fac6 	bl	8004d3e <USBD_LL_PrepareReceive>
  80037b2:	e04e      	b.n	8003852 <USBD_LL_DataInStage+0xfa>
       }
       else
@@ -9050,7 +9050,7 @@ USBD_StatusTypeDef USBD_LL_DataInStage(USBD_HandleTypeDef *pdev,
  80037f8:	2200      	movs	r2, #0
  80037fa:	2100      	movs	r1, #0
  80037fc:	68f8      	ldr	r0, [r7, #12]
- 80037fe:	f001 fa82 	bl	8004d06 <USBD_LL_PrepareReceive>
+ 80037fe:	f001 fa9e 	bl	8004d3e <USBD_LL_PrepareReceive>
  8003802:	e026      	b.n	8003852 <USBD_LL_DataInStage+0xfa>
         }
         else
@@ -9078,7 +9078,7 @@ USBD_StatusTypeDef USBD_LL_DataInStage(USBD_HandleTypeDef *pdev,
           USBD_LL_StallEP(pdev, 0x80U);
  8003826:	2180      	movs	r1, #128	; 0x80
  8003828:	68f8      	ldr	r0, [r7, #12]
- 800382a:	f001 f9c7 	bl	8004bbc <USBD_LL_StallEP>
+ 800382a:	f001 f9e3 	bl	8004bf4 <USBD_LL_StallEP>
           USBD_CtlReceiveStatus(pdev);
  800382e:	68f8      	ldr	r0, [r7, #12]
  8003830:	f000 fec3 	bl	80045ba <USBD_CtlReceiveStatus>
@@ -9103,7 +9103,7 @@ USBD_StatusTypeDef USBD_LL_DataInStage(USBD_HandleTypeDef *pdev,
         USBD_LL_StallEP(pdev, 0x80U);
  800384a:	2180      	movs	r1, #128	; 0x80
  800384c:	68f8      	ldr	r0, [r7, #12]
- 800384e:	f001 f9b5 	bl	8004bbc <USBD_LL_StallEP>
+ 800384e:	f001 f9d1 	bl	8004bf4 <USBD_LL_StallEP>
       }
     }
 
@@ -9179,7 +9179,7 @@ USBD_StatusTypeDef USBD_LL_Reset(USBD_HandleTypeDef *pdev)
  80038ac:	2200      	movs	r2, #0
  80038ae:	2100      	movs	r1, #0
  80038b0:	6878      	ldr	r0, [r7, #4]
- 80038b2:	f001 f93e 	bl	8004b32 <USBD_LL_OpenEP>
+ 80038b2:	f001 f95a 	bl	8004b6a <USBD_LL_OpenEP>
   pdev->ep_out[0x00U & 0xFU].is_used = 1U;
  80038b6:	687b      	ldr	r3, [r7, #4]
  80038b8:	2201      	movs	r2, #1
@@ -9196,7 +9196,7 @@ USBD_StatusTypeDef USBD_LL_Reset(USBD_HandleTypeDef *pdev)
  80038c8:	2200      	movs	r2, #0
  80038ca:	2180      	movs	r1, #128	; 0x80
  80038cc:	6878      	ldr	r0, [r7, #4]
- 80038ce:	f001 f930 	bl	8004b32 <USBD_LL_OpenEP>
+ 80038ce:	f001 f94c 	bl	8004b6a <USBD_LL_OpenEP>
   pdev->ep_in[0x80U & 0xFU].is_used = 1U;
  80038d2:	687b      	ldr	r3, [r7, #4]
  80038d4:	2201      	movs	r2, #1
@@ -9745,11 +9745,11 @@ USBD_StatusTypeDef  USBD_StdEPReq(USBD_HandleTypeDef *pdev,
  8003bb2:	7bbb      	ldrb	r3, [r7, #14]
  8003bb4:	4619      	mov	r1, r3
  8003bb6:	6878      	ldr	r0, [r7, #4]
- 8003bb8:	f001 f800 	bl	8004bbc <USBD_LL_StallEP>
+ 8003bb8:	f001 f81c 	bl	8004bf4 <USBD_LL_StallEP>
                 USBD_LL_StallEP(pdev, 0x80U);
  8003bbc:	2180      	movs	r1, #128	; 0x80
  8003bbe:	6878      	ldr	r0, [r7, #4]
- 8003bc0:	f000 fffc 	bl	8004bbc <USBD_LL_StallEP>
+ 8003bc0:	f001 f818 	bl	8004bf4 <USBD_LL_StallEP>
               }
               else
               {
@@ -9788,7 +9788,7 @@ USBD_StatusTypeDef  USBD_StdEPReq(USBD_HandleTypeDef *pdev,
  8003bec:	7bbb      	ldrb	r3, [r7, #14]
  8003bee:	4619      	mov	r1, r3
  8003bf0:	6878      	ldr	r0, [r7, #4]
- 8003bf2:	f000 ffe3 	bl	8004bbc <USBD_LL_StallEP>
+ 8003bf2:	f000 ffff 	bl	8004bf4 <USBD_LL_StallEP>
                 }
               }
               USBD_CtlSendStatus(pdev);
@@ -9833,11 +9833,11 @@ USBD_StatusTypeDef  USBD_StdEPReq(USBD_HandleTypeDef *pdev,
  8003c26:	7bbb      	ldrb	r3, [r7, #14]
  8003c28:	4619      	mov	r1, r3
  8003c2a:	6878      	ldr	r0, [r7, #4]
- 8003c2c:	f000 ffc6 	bl	8004bbc <USBD_LL_StallEP>
+ 8003c2c:	f000 ffe2 	bl	8004bf4 <USBD_LL_StallEP>
                 USBD_LL_StallEP(pdev, 0x80U);
  8003c30:	2180      	movs	r1, #128	; 0x80
  8003c32:	6878      	ldr	r0, [r7, #4]
- 8003c34:	f000 ffc2 	bl	8004bbc <USBD_LL_StallEP>
+ 8003c34:	f000 ffde 	bl	8004bf4 <USBD_LL_StallEP>
               }
               else
               {
@@ -9869,7 +9869,7 @@ USBD_StatusTypeDef  USBD_StdEPReq(USBD_HandleTypeDef *pdev,
  8003c56:	7bbb      	ldrb	r3, [r7, #14]
  8003c58:	4619      	mov	r1, r3
  8003c5a:	6878      	ldr	r0, [r7, #4]
- 8003c5c:	f000 ffcd 	bl	8004bfa <USBD_LL_ClearStallEP>
+ 8003c5c:	f000 ffe9 	bl	8004c32 <USBD_LL_ClearStallEP>
                 }
                 USBD_CtlSendStatus(pdev);
  8003c60:	6878      	ldr	r0, [r7, #4]
@@ -10060,7 +10060,7 @@ USBD_StatusTypeDef  USBD_StdEPReq(USBD_HandleTypeDef *pdev,
  8003d8a:	7bbb      	ldrb	r3, [r7, #14]
  8003d8c:	4619      	mov	r1, r3
  8003d8e:	6878      	ldr	r0, [r7, #4]
- 8003d90:	f000 ff52 	bl	8004c38 <USBD_LL_IsStallEP>
+ 8003d90:	f000 ff6e 	bl	8004c70 <USBD_LL_IsStallEP>
  8003d94:	4603      	mov	r3, r0
  8003d96:	2b00      	cmp	r3, #0
  8003d98:	d003      	beq.n	8003da2 <USBD_StdEPReq+0x27a>
@@ -10676,7 +10676,7 @@ static void USBD_SetAddress(USBD_HandleTypeDef *pdev,
  80040fe:	7bfb      	ldrb	r3, [r7, #15]
  8004100:	4619      	mov	r1, r3
  8004102:	6878      	ldr	r0, [r7, #4]
- 8004104:	f000 fdbd 	bl	8004c82 <USBD_LL_SetUSBAddress>
+ 8004104:	f000 fdd9 	bl	8004cba <USBD_LL_SetUSBAddress>
       USBD_CtlSendStatus(pdev);
  8004108:	6878      	ldr	r0, [r7, #4]
  800410a:	f000 fa43 	bl	8004594 <USBD_CtlSendStatus>
@@ -11245,11 +11245,11 @@ void USBD_CtlError(USBD_HandleTypeDef *pdev,
   USBD_LL_StallEP(pdev, 0x80U);
  800440e:	2180      	movs	r1, #128	; 0x80
  8004410:	6878      	ldr	r0, [r7, #4]
- 8004412:	f000 fbd3 	bl	8004bbc <USBD_LL_StallEP>
+ 8004412:	f000 fbef 	bl	8004bf4 <USBD_LL_StallEP>
   USBD_LL_StallEP(pdev, 0U);
  8004416:	2100      	movs	r1, #0
  8004418:	6878      	ldr	r0, [r7, #4]
- 800441a:	f000 fbcf 	bl	8004bbc <USBD_LL_StallEP>
+ 800441a:	f000 fbeb 	bl	8004bf4 <USBD_LL_StallEP>
 }
  800441e:	bf00      	nop
  8004420:	3708      	adds	r7, #8
@@ -11421,7 +11421,7 @@ USBD_StatusTypeDef USBD_CtlSendData(USBD_HandleTypeDef *pdev,
  80044fc:	68ba      	ldr	r2, [r7, #8]
  80044fe:	2100      	movs	r1, #0
  8004500:	68f8      	ldr	r0, [r7, #12]
- 8004502:	f000 fbdd 	bl	8004cc0 <USBD_LL_Transmit>
+ 8004502:	f000 fbf9 	bl	8004cf8 <USBD_LL_Transmit>
 
   return USBD_OK;
  8004506:	2300      	movs	r3, #0
@@ -11451,7 +11451,7 @@ USBD_StatusTypeDef USBD_CtlContinueSendData(USBD_HandleTypeDef *pdev,
  8004520:	68ba      	ldr	r2, [r7, #8]
  8004522:	2100      	movs	r1, #0
  8004524:	68f8      	ldr	r0, [r7, #12]
- 8004526:	f000 fbcb 	bl	8004cc0 <USBD_LL_Transmit>
+ 8004526:	f000 fbe7 	bl	8004cf8 <USBD_LL_Transmit>
 
   return USBD_OK;
  800452a:	2300      	movs	r3, #0
@@ -11495,7 +11495,7 @@ USBD_StatusTypeDef USBD_CtlPrepareRx(USBD_HandleTypeDef *pdev,
  800455c:	68ba      	ldr	r2, [r7, #8]
  800455e:	2100      	movs	r1, #0
  8004560:	68f8      	ldr	r0, [r7, #12]
- 8004562:	f000 fbd0 	bl	8004d06 <USBD_LL_PrepareReceive>
+ 8004562:	f000 fbec 	bl	8004d3e <USBD_LL_PrepareReceive>
 
   return USBD_OK;
  8004566:	2300      	movs	r3, #0
@@ -11524,7 +11524,7 @@ USBD_StatusTypeDef USBD_CtlContinueRx(USBD_HandleTypeDef *pdev,
  8004580:	68ba      	ldr	r2, [r7, #8]
  8004582:	2100      	movs	r1, #0
  8004584:	68f8      	ldr	r0, [r7, #12]
- 8004586:	f000 fbbe 	bl	8004d06 <USBD_LL_PrepareReceive>
+ 8004586:	f000 fbda 	bl	8004d3e <USBD_LL_PrepareReceive>
 
   return USBD_OK;
  800458a:	2300      	movs	r3, #0
@@ -11557,7 +11557,7 @@ USBD_StatusTypeDef USBD_CtlSendStatus(USBD_HandleTypeDef *pdev)
  80045a6:	2200      	movs	r2, #0
  80045a8:	2100      	movs	r1, #0
  80045aa:	6878      	ldr	r0, [r7, #4]
- 80045ac:	f000 fb88 	bl	8004cc0 <USBD_LL_Transmit>
+ 80045ac:	f000 fba4 	bl	8004cf8 <USBD_LL_Transmit>
 
   return USBD_OK;
  80045b0:	2300      	movs	r3, #0
@@ -11590,7 +11590,7 @@ USBD_StatusTypeDef USBD_CtlReceiveStatus(USBD_HandleTypeDef *pdev)
  80045cc:	2200      	movs	r2, #0
  80045ce:	2100      	movs	r1, #0
  80045d0:	6878      	ldr	r0, [r7, #4]
- 80045d2:	f000 fb98 	bl	8004d06 <USBD_LL_PrepareReceive>
+ 80045d2:	f000 fbb4 	bl	8004d3e <USBD_LL_PrepareReceive>
 
   return USBD_OK;
  80045d6:	2300      	movs	r3, #0
@@ -11631,7 +11631,7 @@ int main(void)
   MX_GPIO_Init();
  80045ec:	f000 f85e 	bl	80046ac <MX_GPIO_Init>
   MX_USB_DEVICE_Init();
- 80045f0:	f000 f948 	bl	8004884 <MX_USB_DEVICE_Init>
+ 80045f0:	f000 f964 	bl	80048bc <MX_USB_DEVICE_Init>
 
   /* USER CODE END 2 */
 
@@ -11655,7 +11655,7 @@ void SystemClock_Config(void)
  8004600:	2228      	movs	r2, #40	; 0x28
  8004602:	2100      	movs	r1, #0
  8004604:	4618      	mov	r0, r3
- 8004606:	f000 fd7d 	bl	8005104 <memset>
+ 8004606:	f000 fd99 	bl	800513c <memset>
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
  800460a:	f107 0314 	add.w	r3, r7, #20
  800460e:	2200      	movs	r2, #0
@@ -11704,7 +11704,7 @@ void SystemClock_Config(void)
  8004656:	d001      	beq.n	800465c <SystemClock_Config+0x66>
   {
     Error_Handler();
- 8004658:	f000 f874 	bl	8004744 <Error_Handler>
+ 8004658:	f000 f890 	bl	800477c <Error_Handler>
   }
   /** Initializes the CPU, AHB and APB busses clocks 
   */
@@ -11735,7 +11735,7 @@ void SystemClock_Config(void)
  8004682:	d001      	beq.n	8004688 <SystemClock_Config+0x92>
   {
     Error_Handler();
- 8004684:	f000 f85e 	bl	8004744 <Error_Handler>
+ 8004684:	f000 f87a 	bl	800477c <Error_Handler>
   }
   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USB;
  8004688:	2310      	movs	r3, #16
@@ -11752,7 +11752,7 @@ void SystemClock_Config(void)
  800469c:	d001      	beq.n	80046a2 <SystemClock_Config+0xac>
   {
     Error_Handler();
- 800469e:	f000 f851 	bl	8004744 <Error_Handler>
+ 800469e:	f000 f86d 	bl	800477c <Error_Handler>
   }
 }
  80046a2:	bf00      	nop
@@ -11781,2074 +11781,2102 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
- 80046c0:	4b1e      	ldr	r3, [pc, #120]	; (800473c <MX_GPIO_Init+0x90>)
+ 80046c0:	4b2a      	ldr	r3, [pc, #168]	; (800476c <MX_GPIO_Init+0xc0>)
  80046c2:	699b      	ldr	r3, [r3, #24]
- 80046c4:	4a1d      	ldr	r2, [pc, #116]	; (800473c <MX_GPIO_Init+0x90>)
+ 80046c4:	4a29      	ldr	r2, [pc, #164]	; (800476c <MX_GPIO_Init+0xc0>)
  80046c6:	f043 0310 	orr.w	r3, r3, #16
  80046ca:	6193      	str	r3, [r2, #24]
- 80046cc:	4b1b      	ldr	r3, [pc, #108]	; (800473c <MX_GPIO_Init+0x90>)
+ 80046cc:	4b27      	ldr	r3, [pc, #156]	; (800476c <MX_GPIO_Init+0xc0>)
  80046ce:	699b      	ldr	r3, [r3, #24]
  80046d0:	f003 0310 	and.w	r3, r3, #16
  80046d4:	60fb      	str	r3, [r7, #12]
  80046d6:	68fb      	ldr	r3, [r7, #12]
   __HAL_RCC_GPIOD_CLK_ENABLE();
- 80046d8:	4b18      	ldr	r3, [pc, #96]	; (800473c <MX_GPIO_Init+0x90>)
+ 80046d8:	4b24      	ldr	r3, [pc, #144]	; (800476c <MX_GPIO_Init+0xc0>)
  80046da:	699b      	ldr	r3, [r3, #24]
- 80046dc:	4a17      	ldr	r2, [pc, #92]	; (800473c <MX_GPIO_Init+0x90>)
+ 80046dc:	4a23      	ldr	r2, [pc, #140]	; (800476c <MX_GPIO_Init+0xc0>)
  80046de:	f043 0320 	orr.w	r3, r3, #32
  80046e2:	6193      	str	r3, [r2, #24]
- 80046e4:	4b15      	ldr	r3, [pc, #84]	; (800473c <MX_GPIO_Init+0x90>)
+ 80046e4:	4b21      	ldr	r3, [pc, #132]	; (800476c <MX_GPIO_Init+0xc0>)
  80046e6:	699b      	ldr	r3, [r3, #24]
  80046e8:	f003 0320 	and.w	r3, r3, #32
  80046ec:	60bb      	str	r3, [r7, #8]
  80046ee:	68bb      	ldr	r3, [r7, #8]
-  __HAL_RCC_GPIOA_CLK_ENABLE();
- 80046f0:	4b12      	ldr	r3, [pc, #72]	; (800473c <MX_GPIO_Init+0x90>)
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+ 80046f0:	4b1e      	ldr	r3, [pc, #120]	; (800476c <MX_GPIO_Init+0xc0>)
  80046f2:	699b      	ldr	r3, [r3, #24]
- 80046f4:	4a11      	ldr	r2, [pc, #68]	; (800473c <MX_GPIO_Init+0x90>)
- 80046f6:	f043 0304 	orr.w	r3, r3, #4
+ 80046f4:	4a1d      	ldr	r2, [pc, #116]	; (800476c <MX_GPIO_Init+0xc0>)
+ 80046f6:	f043 0308 	orr.w	r3, r3, #8
  80046fa:	6193      	str	r3, [r2, #24]
- 80046fc:	4b0f      	ldr	r3, [pc, #60]	; (800473c <MX_GPIO_Init+0x90>)
+ 80046fc:	4b1b      	ldr	r3, [pc, #108]	; (800476c <MX_GPIO_Init+0xc0>)
  80046fe:	699b      	ldr	r3, [r3, #24]
- 8004700:	f003 0304 	and.w	r3, r3, #4
+ 8004700:	f003 0308 	and.w	r3, r3, #8
  8004704:	607b      	str	r3, [r7, #4]
  8004706:	687b      	ldr	r3, [r7, #4]
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+ 8004708:	4b18      	ldr	r3, [pc, #96]	; (800476c <MX_GPIO_Init+0xc0>)
+ 800470a:	699b      	ldr	r3, [r3, #24]
+ 800470c:	4a17      	ldr	r2, [pc, #92]	; (800476c <MX_GPIO_Init+0xc0>)
+ 800470e:	f043 0304 	orr.w	r3, r3, #4
+ 8004712:	6193      	str	r3, [r2, #24]
+ 8004714:	4b15      	ldr	r3, [pc, #84]	; (800476c <MX_GPIO_Init+0xc0>)
+ 8004716:	699b      	ldr	r3, [r3, #24]
+ 8004718:	f003 0304 	and.w	r3, r3, #4
+ 800471c:	603b      	str	r3, [r7, #0]
+ 800471e:	683b      	ldr	r3, [r7, #0]
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(BlueLed_GPIO_Port, BlueLed_Pin, GPIO_PIN_RESET);
- 8004708:	2200      	movs	r2, #0
- 800470a:	f44f 5100 	mov.w	r1, #8192	; 0x2000
- 800470e:	480c      	ldr	r0, [pc, #48]	; (8004740 <MX_GPIO_Init+0x94>)
- 8004710:	f7fb ffe6 	bl	80006e0 <HAL_GPIO_WritePin>
+ 8004720:	2200      	movs	r2, #0
+ 8004722:	f44f 5100 	mov.w	r1, #8192	; 0x2000
+ 8004726:	4812      	ldr	r0, [pc, #72]	; (8004770 <MX_GPIO_Init+0xc4>)
+ 8004728:	f7fb ffda 	bl	80006e0 <HAL_GPIO_WritePin>
 
   /*Configure GPIO pin : BlueLed_Pin */
   GPIO_InitStruct.Pin = BlueLed_Pin;
- 8004714:	f44f 5300 	mov.w	r3, #8192	; 0x2000
- 8004718:	613b      	str	r3, [r7, #16]
+ 800472c:	f44f 5300 	mov.w	r3, #8192	; 0x2000
+ 8004730:	613b      	str	r3, [r7, #16]
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
- 800471a:	2301      	movs	r3, #1
- 800471c:	617b      	str	r3, [r7, #20]
+ 8004732:	2301      	movs	r3, #1
+ 8004734:	617b      	str	r3, [r7, #20]
   GPIO_InitStruct.Pull = GPIO_NOPULL;
- 800471e:	2300      	movs	r3, #0
- 8004720:	61bb      	str	r3, [r7, #24]
+ 8004736:	2300      	movs	r3, #0
+ 8004738:	61bb      	str	r3, [r7, #24]
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
- 8004722:	2302      	movs	r3, #2
- 8004724:	61fb      	str	r3, [r7, #28]
+ 800473a:	2302      	movs	r3, #2
+ 800473c:	61fb      	str	r3, [r7, #28]
   HAL_GPIO_Init(BlueLed_GPIO_Port, &GPIO_InitStruct);
- 8004726:	f107 0310 	add.w	r3, r7, #16
- 800472a:	4619      	mov	r1, r3
- 800472c:	4804      	ldr	r0, [pc, #16]	; (8004740 <MX_GPIO_Init+0x94>)
- 800472e:	f7fb fe7d 	bl	800042c <HAL_GPIO_Init>
+ 800473e:	f107 0310 	add.w	r3, r7, #16
+ 8004742:	4619      	mov	r1, r3
+ 8004744:	480a      	ldr	r0, [pc, #40]	; (8004770 <MX_GPIO_Init+0xc4>)
+ 8004746:	f7fb fe71 	bl	800042c <HAL_GPIO_Init>
+
+  /*Configure GPIO pins : Button0_Pin Button1_Pin Button2_Pin Button3_Pin */
+  GPIO_InitStruct.Pin = Button0_Pin|Button1_Pin|Button2_Pin|Button3_Pin;
+ 800474a:	f44f 4370 	mov.w	r3, #61440	; 0xf000
+ 800474e:	613b      	str	r3, [r7, #16]
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
+ 8004750:	4b08      	ldr	r3, [pc, #32]	; (8004774 <MX_GPIO_Init+0xc8>)
+ 8004752:	617b      	str	r3, [r7, #20]
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 8004754:	2301      	movs	r3, #1
+ 8004756:	61bb      	str	r3, [r7, #24]
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 8004758:	f107 0310 	add.w	r3, r7, #16
+ 800475c:	4619      	mov	r1, r3
+ 800475e:	4806      	ldr	r0, [pc, #24]	; (8004778 <MX_GPIO_Init+0xcc>)
+ 8004760:	f7fb fe64 	bl	800042c <HAL_GPIO_Init>
 
 }
- 8004732:	bf00      	nop
- 8004734:	3720      	adds	r7, #32
- 8004736:	46bd      	mov	sp, r7
- 8004738:	bd80      	pop	{r7, pc}
- 800473a:	bf00      	nop
- 800473c:	40021000 	.word	0x40021000
- 8004740:	40011000 	.word	0x40011000
+ 8004764:	bf00      	nop
+ 8004766:	3720      	adds	r7, #32
+ 8004768:	46bd      	mov	sp, r7
+ 800476a:	bd80      	pop	{r7, pc}
+ 800476c:	40021000 	.word	0x40021000
+ 8004770:	40011000 	.word	0x40011000
+ 8004774:	10310000 	.word	0x10310000
+ 8004778:	40010c00 	.word	0x40010c00
 
-08004744 <Error_Handler>:
+0800477c <Error_Handler>:
 /**
   * @brief  This function is executed in case of error occurrence.
   * @retval None
   */
 void Error_Handler(void)
 {
- 8004744:	b480      	push	{r7}
- 8004746:	af00      	add	r7, sp, #0
+ 800477c:	b480      	push	{r7}
+ 800477e:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
 
   /* USER CODE END Error_Handler_Debug */
 }
- 8004748:	bf00      	nop
- 800474a:	46bd      	mov	sp, r7
- 800474c:	bc80      	pop	{r7}
- 800474e:	4770      	bx	lr
+ 8004780:	bf00      	nop
+ 8004782:	46bd      	mov	sp, r7
+ 8004784:	bc80      	pop	{r7}
+ 8004786:	4770      	bx	lr
 
-08004750 <HAL_MspInit>:
+08004788 <HAL_MspInit>:
 /* USER CODE END 0 */
 /**
   * Initializes the Global MSP.
   */
 void HAL_MspInit(void)
 {
- 8004750:	b480      	push	{r7}
- 8004752:	b085      	sub	sp, #20
- 8004754:	af00      	add	r7, sp, #0
+ 8004788:	b480      	push	{r7}
+ 800478a:	b085      	sub	sp, #20
+ 800478c:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN MspInit 0 */
 
   /* USER CODE END MspInit 0 */
 
   __HAL_RCC_AFIO_CLK_ENABLE();
- 8004756:	4b15      	ldr	r3, [pc, #84]	; (80047ac <HAL_MspInit+0x5c>)
- 8004758:	699b      	ldr	r3, [r3, #24]
- 800475a:	4a14      	ldr	r2, [pc, #80]	; (80047ac <HAL_MspInit+0x5c>)
- 800475c:	f043 0301 	orr.w	r3, r3, #1
- 8004760:	6193      	str	r3, [r2, #24]
- 8004762:	4b12      	ldr	r3, [pc, #72]	; (80047ac <HAL_MspInit+0x5c>)
- 8004764:	699b      	ldr	r3, [r3, #24]
- 8004766:	f003 0301 	and.w	r3, r3, #1
- 800476a:	60bb      	str	r3, [r7, #8]
- 800476c:	68bb      	ldr	r3, [r7, #8]
+ 800478e:	4b15      	ldr	r3, [pc, #84]	; (80047e4 <HAL_MspInit+0x5c>)
+ 8004790:	699b      	ldr	r3, [r3, #24]
+ 8004792:	4a14      	ldr	r2, [pc, #80]	; (80047e4 <HAL_MspInit+0x5c>)
+ 8004794:	f043 0301 	orr.w	r3, r3, #1
+ 8004798:	6193      	str	r3, [r2, #24]
+ 800479a:	4b12      	ldr	r3, [pc, #72]	; (80047e4 <HAL_MspInit+0x5c>)
+ 800479c:	699b      	ldr	r3, [r3, #24]
+ 800479e:	f003 0301 	and.w	r3, r3, #1
+ 80047a2:	60bb      	str	r3, [r7, #8]
+ 80047a4:	68bb      	ldr	r3, [r7, #8]
   __HAL_RCC_PWR_CLK_ENABLE();
- 800476e:	4b0f      	ldr	r3, [pc, #60]	; (80047ac <HAL_MspInit+0x5c>)
- 8004770:	69db      	ldr	r3, [r3, #28]
- 8004772:	4a0e      	ldr	r2, [pc, #56]	; (80047ac <HAL_MspInit+0x5c>)
- 8004774:	f043 5380 	orr.w	r3, r3, #268435456	; 0x10000000
- 8004778:	61d3      	str	r3, [r2, #28]
- 800477a:	4b0c      	ldr	r3, [pc, #48]	; (80047ac <HAL_MspInit+0x5c>)
- 800477c:	69db      	ldr	r3, [r3, #28]
- 800477e:	f003 5380 	and.w	r3, r3, #268435456	; 0x10000000
- 8004782:	607b      	str	r3, [r7, #4]
- 8004784:	687b      	ldr	r3, [r7, #4]
+ 80047a6:	4b0f      	ldr	r3, [pc, #60]	; (80047e4 <HAL_MspInit+0x5c>)
+ 80047a8:	69db      	ldr	r3, [r3, #28]
+ 80047aa:	4a0e      	ldr	r2, [pc, #56]	; (80047e4 <HAL_MspInit+0x5c>)
+ 80047ac:	f043 5380 	orr.w	r3, r3, #268435456	; 0x10000000
+ 80047b0:	61d3      	str	r3, [r2, #28]
+ 80047b2:	4b0c      	ldr	r3, [pc, #48]	; (80047e4 <HAL_MspInit+0x5c>)
+ 80047b4:	69db      	ldr	r3, [r3, #28]
+ 80047b6:	f003 5380 	and.w	r3, r3, #268435456	; 0x10000000
+ 80047ba:	607b      	str	r3, [r7, #4]
+ 80047bc:	687b      	ldr	r3, [r7, #4]
 
   /* System interrupt init*/
 
   /** DISABLE: JTAG-DP Disabled and SW-DP Disabled 
   */
   __HAL_AFIO_REMAP_SWJ_DISABLE();
- 8004786:	4b0a      	ldr	r3, [pc, #40]	; (80047b0 <HAL_MspInit+0x60>)
- 8004788:	685b      	ldr	r3, [r3, #4]
- 800478a:	60fb      	str	r3, [r7, #12]
- 800478c:	68fb      	ldr	r3, [r7, #12]
- 800478e:	f023 63e0 	bic.w	r3, r3, #117440512	; 0x7000000
- 8004792:	60fb      	str	r3, [r7, #12]
- 8004794:	68fb      	ldr	r3, [r7, #12]
- 8004796:	f043 6380 	orr.w	r3, r3, #67108864	; 0x4000000
- 800479a:	60fb      	str	r3, [r7, #12]
- 800479c:	4a04      	ldr	r2, [pc, #16]	; (80047b0 <HAL_MspInit+0x60>)
- 800479e:	68fb      	ldr	r3, [r7, #12]
- 80047a0:	6053      	str	r3, [r2, #4]
+ 80047be:	4b0a      	ldr	r3, [pc, #40]	; (80047e8 <HAL_MspInit+0x60>)
+ 80047c0:	685b      	ldr	r3, [r3, #4]
+ 80047c2:	60fb      	str	r3, [r7, #12]
+ 80047c4:	68fb      	ldr	r3, [r7, #12]
+ 80047c6:	f023 63e0 	bic.w	r3, r3, #117440512	; 0x7000000
+ 80047ca:	60fb      	str	r3, [r7, #12]
+ 80047cc:	68fb      	ldr	r3, [r7, #12]
+ 80047ce:	f043 6380 	orr.w	r3, r3, #67108864	; 0x4000000
+ 80047d2:	60fb      	str	r3, [r7, #12]
+ 80047d4:	4a04      	ldr	r2, [pc, #16]	; (80047e8 <HAL_MspInit+0x60>)
+ 80047d6:	68fb      	ldr	r3, [r7, #12]
+ 80047d8:	6053      	str	r3, [r2, #4]
 
   /* USER CODE BEGIN MspInit 1 */
 
   /* USER CODE END MspInit 1 */
 }
- 80047a2:	bf00      	nop
- 80047a4:	3714      	adds	r7, #20
- 80047a6:	46bd      	mov	sp, r7
- 80047a8:	bc80      	pop	{r7}
- 80047aa:	4770      	bx	lr
- 80047ac:	40021000 	.word	0x40021000
- 80047b0:	40010000 	.word	0x40010000
+ 80047da:	bf00      	nop
+ 80047dc:	3714      	adds	r7, #20
+ 80047de:	46bd      	mov	sp, r7
+ 80047e0:	bc80      	pop	{r7}
+ 80047e2:	4770      	bx	lr
+ 80047e4:	40021000 	.word	0x40021000
+ 80047e8:	40010000 	.word	0x40010000
 
-080047b4 <NMI_Handler>:
+080047ec <NMI_Handler>:
 /******************************************************************************/
 /**
   * @brief This function handles Non maskable interrupt.
   */
 void NMI_Handler(void)
 {
- 80047b4:	b480      	push	{r7}
- 80047b6:	af00      	add	r7, sp, #0
+ 80047ec:	b480      	push	{r7}
+ 80047ee:	af00      	add	r7, sp, #0
 
   /* USER CODE END NonMaskableInt_IRQn 0 */
   /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
 
   /* USER CODE END NonMaskableInt_IRQn 1 */
 }
- 80047b8:	bf00      	nop
- 80047ba:	46bd      	mov	sp, r7
- 80047bc:	bc80      	pop	{r7}
- 80047be:	4770      	bx	lr
+ 80047f0:	bf00      	nop
+ 80047f2:	46bd      	mov	sp, r7
+ 80047f4:	bc80      	pop	{r7}
+ 80047f6:	4770      	bx	lr
 
-080047c0 <HardFault_Handler>:
+080047f8 <HardFault_Handler>:
 
 /**
   * @brief This function handles Hard fault interrupt.
   */
 void HardFault_Handler(void)
 {
- 80047c0:	b480      	push	{r7}
- 80047c2:	af00      	add	r7, sp, #0
+ 80047f8:	b480      	push	{r7}
+ 80047fa:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN HardFault_IRQn 0 */
 
   /* USER CODE END HardFault_IRQn 0 */
   while (1)
- 80047c4:	e7fe      	b.n	80047c4 <HardFault_Handler+0x4>
+ 80047fc:	e7fe      	b.n	80047fc <HardFault_Handler+0x4>
 
-080047c6 <MemManage_Handler>:
+080047fe <MemManage_Handler>:
 
 /**
   * @brief This function handles Memory management fault.
   */
 void MemManage_Handler(void)
 {
- 80047c6:	b480      	push	{r7}
- 80047c8:	af00      	add	r7, sp, #0
+ 80047fe:	b480      	push	{r7}
+ 8004800:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN MemoryManagement_IRQn 0 */
 
   /* USER CODE END MemoryManagement_IRQn 0 */
   while (1)
- 80047ca:	e7fe      	b.n	80047ca <MemManage_Handler+0x4>
+ 8004802:	e7fe      	b.n	8004802 <MemManage_Handler+0x4>
 
-080047cc <BusFault_Handler>:
+08004804 <BusFault_Handler>:
 
 /**
   * @brief This function handles Prefetch fault, memory access fault.
   */
 void BusFault_Handler(void)
 {
- 80047cc:	b480      	push	{r7}
- 80047ce:	af00      	add	r7, sp, #0
+ 8004804:	b480      	push	{r7}
+ 8004806:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN BusFault_IRQn 0 */
 
   /* USER CODE END BusFault_IRQn 0 */
   while (1)
- 80047d0:	e7fe      	b.n	80047d0 <BusFault_Handler+0x4>
+ 8004808:	e7fe      	b.n	8004808 <BusFault_Handler+0x4>
 
-080047d2 <UsageFault_Handler>:
+0800480a <UsageFault_Handler>:
 
 /**
   * @brief This function handles Undefined instruction or illegal state.
   */
 void UsageFault_Handler(void)
 {
- 80047d2:	b480      	push	{r7}
- 80047d4:	af00      	add	r7, sp, #0
+ 800480a:	b480      	push	{r7}
+ 800480c:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN UsageFault_IRQn 0 */
 
   /* USER CODE END UsageFault_IRQn 0 */
   while (1)
- 80047d6:	e7fe      	b.n	80047d6 <UsageFault_Handler+0x4>
+ 800480e:	e7fe      	b.n	800480e <UsageFault_Handler+0x4>
 
-080047d8 <SVC_Handler>:
+08004810 <SVC_Handler>:
 
 /**
   * @brief This function handles System service call via SWI instruction.
   */
 void SVC_Handler(void)
 {
- 80047d8:	b480      	push	{r7}
- 80047da:	af00      	add	r7, sp, #0
+ 8004810:	b480      	push	{r7}
+ 8004812:	af00      	add	r7, sp, #0
 
   /* USER CODE END SVCall_IRQn 0 */
   /* USER CODE BEGIN SVCall_IRQn 1 */
 
   /* USER CODE END SVCall_IRQn 1 */
 }
- 80047dc:	bf00      	nop
- 80047de:	46bd      	mov	sp, r7
- 80047e0:	bc80      	pop	{r7}
- 80047e2:	4770      	bx	lr
+ 8004814:	bf00      	nop
+ 8004816:	46bd      	mov	sp, r7
+ 8004818:	bc80      	pop	{r7}
+ 800481a:	4770      	bx	lr
 
-080047e4 <DebugMon_Handler>:
+0800481c <DebugMon_Handler>:
 
 /**
   * @brief This function handles Debug monitor.
   */
 void DebugMon_Handler(void)
 {
- 80047e4:	b480      	push	{r7}
- 80047e6:	af00      	add	r7, sp, #0
+ 800481c:	b480      	push	{r7}
+ 800481e:	af00      	add	r7, sp, #0
 
   /* USER CODE END DebugMonitor_IRQn 0 */
   /* USER CODE BEGIN DebugMonitor_IRQn 1 */
 
   /* USER CODE END DebugMonitor_IRQn 1 */
 }
- 80047e8:	bf00      	nop
- 80047ea:	46bd      	mov	sp, r7
- 80047ec:	bc80      	pop	{r7}
- 80047ee:	4770      	bx	lr
+ 8004820:	bf00      	nop
+ 8004822:	46bd      	mov	sp, r7
+ 8004824:	bc80      	pop	{r7}
+ 8004826:	4770      	bx	lr
 
-080047f0 <PendSV_Handler>:
+08004828 <PendSV_Handler>:
 
 /**
   * @brief This function handles Pendable request for system service.
   */
 void PendSV_Handler(void)
 {
- 80047f0:	b480      	push	{r7}
- 80047f2:	af00      	add	r7, sp, #0
+ 8004828:	b480      	push	{r7}
+ 800482a:	af00      	add	r7, sp, #0
 
   /* USER CODE END PendSV_IRQn 0 */
   /* USER CODE BEGIN PendSV_IRQn 1 */
 
   /* USER CODE END PendSV_IRQn 1 */
 }
- 80047f4:	bf00      	nop
- 80047f6:	46bd      	mov	sp, r7
- 80047f8:	bc80      	pop	{r7}
- 80047fa:	4770      	bx	lr
+ 800482c:	bf00      	nop
+ 800482e:	46bd      	mov	sp, r7
+ 8004830:	bc80      	pop	{r7}
+ 8004832:	4770      	bx	lr
 
-080047fc <SysTick_Handler>:
+08004834 <SysTick_Handler>:
 
 /**
   * @brief This function handles System tick timer.
   */
 void SysTick_Handler(void)
 {
- 80047fc:	b580      	push	{r7, lr}
- 80047fe:	af00      	add	r7, sp, #0
+ 8004834:	b580      	push	{r7, lr}
+ 8004836:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN SysTick_IRQn 0 */
 
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
- 8004800:	f7fb fcea 	bl	80001d8 <HAL_IncTick>
+ 8004838:	f7fb fcce 	bl	80001d8 <HAL_IncTick>
   /* USER CODE BEGIN SysTick_IRQn 1 */
 
   /* USER CODE END SysTick_IRQn 1 */
 }
- 8004804:	bf00      	nop
- 8004806:	bd80      	pop	{r7, pc}
+ 800483c:	bf00      	nop
+ 800483e:	bd80      	pop	{r7, pc}
 
-08004808 <USB_LP_CAN1_RX0_IRQHandler>:
+08004840 <USB_LP_CAN1_RX0_IRQHandler>:
 
 /**
   * @brief This function handles USB low priority or CAN RX0 interrupts.
   */
 void USB_LP_CAN1_RX0_IRQHandler(void)
 {
- 8004808:	b580      	push	{r7, lr}
- 800480a:	af00      	add	r7, sp, #0
+ 8004840:	b580      	push	{r7, lr}
+ 8004842:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN USB_LP_CAN1_RX0_IRQn 0 */
 
   /* USER CODE END USB_LP_CAN1_RX0_IRQn 0 */
   HAL_PCD_IRQHandler(&hpcd_USB_FS);
- 800480c:	4802      	ldr	r0, [pc, #8]	; (8004818 <USB_LP_CAN1_RX0_IRQHandler+0x10>)
- 800480e:	f7fc f886 	bl	800091e <HAL_PCD_IRQHandler>
+ 8004844:	4802      	ldr	r0, [pc, #8]	; (8004850 <USB_LP_CAN1_RX0_IRQHandler+0x10>)
+ 8004846:	f7fc f86a 	bl	800091e <HAL_PCD_IRQHandler>
   /* USER CODE BEGIN USB_LP_CAN1_RX0_IRQn 1 */
 
   /* USER CODE END USB_LP_CAN1_RX0_IRQn 1 */
 }
- 8004812:	bf00      	nop
- 8004814:	bd80      	pop	{r7, pc}
- 8004816:	bf00      	nop
- 8004818:	2000046c 	.word	0x2000046c
+ 800484a:	bf00      	nop
+ 800484c:	bd80      	pop	{r7, pc}
+ 800484e:	bf00      	nop
+ 8004850:	2000046c 	.word	0x2000046c
 
-0800481c <SystemInit>:
+08004854 <SystemInit>:
   * @note   This function should be used only after reset.
   * @param  None
   * @retval None
   */
 void SystemInit (void)
 {
- 800481c:	b480      	push	{r7}
- 800481e:	af00      	add	r7, sp, #0
+ 8004854:	b480      	push	{r7}
+ 8004856:	af00      	add	r7, sp, #0
   /* Reset the RCC clock configuration to the default reset state(for debug purpose) */
   /* Set HSION bit */
   RCC->CR |= 0x00000001U;
- 8004820:	4b15      	ldr	r3, [pc, #84]	; (8004878 <SystemInit+0x5c>)
- 8004822:	681b      	ldr	r3, [r3, #0]
- 8004824:	4a14      	ldr	r2, [pc, #80]	; (8004878 <SystemInit+0x5c>)
- 8004826:	f043 0301 	orr.w	r3, r3, #1
- 800482a:	6013      	str	r3, [r2, #0]
+ 8004858:	4b15      	ldr	r3, [pc, #84]	; (80048b0 <SystemInit+0x5c>)
+ 800485a:	681b      	ldr	r3, [r3, #0]
+ 800485c:	4a14      	ldr	r2, [pc, #80]	; (80048b0 <SystemInit+0x5c>)
+ 800485e:	f043 0301 	orr.w	r3, r3, #1
+ 8004862:	6013      	str	r3, [r2, #0]
 
   /* Reset SW, HPRE, PPRE1, PPRE2, ADCPRE and MCO bits */
 #if !defined(STM32F105xC) && !defined(STM32F107xC)
   RCC->CFGR &= 0xF8FF0000U;
- 800482c:	4b12      	ldr	r3, [pc, #72]	; (8004878 <SystemInit+0x5c>)
- 800482e:	685a      	ldr	r2, [r3, #4]
- 8004830:	4911      	ldr	r1, [pc, #68]	; (8004878 <SystemInit+0x5c>)
- 8004832:	4b12      	ldr	r3, [pc, #72]	; (800487c <SystemInit+0x60>)
- 8004834:	4013      	ands	r3, r2
- 8004836:	604b      	str	r3, [r1, #4]
+ 8004864:	4b12      	ldr	r3, [pc, #72]	; (80048b0 <SystemInit+0x5c>)
+ 8004866:	685a      	ldr	r2, [r3, #4]
+ 8004868:	4911      	ldr	r1, [pc, #68]	; (80048b0 <SystemInit+0x5c>)
+ 800486a:	4b12      	ldr	r3, [pc, #72]	; (80048b4 <SystemInit+0x60>)
+ 800486c:	4013      	ands	r3, r2
+ 800486e:	604b      	str	r3, [r1, #4]
 #else
   RCC->CFGR &= 0xF0FF0000U;
 #endif /* STM32F105xC */   
   
   /* Reset HSEON, CSSON and PLLON bits */
   RCC->CR &= 0xFEF6FFFFU;
- 8004838:	4b0f      	ldr	r3, [pc, #60]	; (8004878 <SystemInit+0x5c>)
- 800483a:	681b      	ldr	r3, [r3, #0]
- 800483c:	4a0e      	ldr	r2, [pc, #56]	; (8004878 <SystemInit+0x5c>)
- 800483e:	f023 7384 	bic.w	r3, r3, #17301504	; 0x1080000
- 8004842:	f423 3380 	bic.w	r3, r3, #65536	; 0x10000
- 8004846:	6013      	str	r3, [r2, #0]
+ 8004870:	4b0f      	ldr	r3, [pc, #60]	; (80048b0 <SystemInit+0x5c>)
+ 8004872:	681b      	ldr	r3, [r3, #0]
+ 8004874:	4a0e      	ldr	r2, [pc, #56]	; (80048b0 <SystemInit+0x5c>)
+ 8004876:	f023 7384 	bic.w	r3, r3, #17301504	; 0x1080000
+ 800487a:	f423 3380 	bic.w	r3, r3, #65536	; 0x10000
+ 800487e:	6013      	str	r3, [r2, #0]
 
   /* Reset HSEBYP bit */
   RCC->CR &= 0xFFFBFFFFU;
- 8004848:	4b0b      	ldr	r3, [pc, #44]	; (8004878 <SystemInit+0x5c>)
- 800484a:	681b      	ldr	r3, [r3, #0]
- 800484c:	4a0a      	ldr	r2, [pc, #40]	; (8004878 <SystemInit+0x5c>)
- 800484e:	f423 2380 	bic.w	r3, r3, #262144	; 0x40000
- 8004852:	6013      	str	r3, [r2, #0]
+ 8004880:	4b0b      	ldr	r3, [pc, #44]	; (80048b0 <SystemInit+0x5c>)
+ 8004882:	681b      	ldr	r3, [r3, #0]
+ 8004884:	4a0a      	ldr	r2, [pc, #40]	; (80048b0 <SystemInit+0x5c>)
+ 8004886:	f423 2380 	bic.w	r3, r3, #262144	; 0x40000
+ 800488a:	6013      	str	r3, [r2, #0]
 
   /* Reset PLLSRC, PLLXTPRE, PLLMUL and USBPRE/OTGFSPRE bits */
   RCC->CFGR &= 0xFF80FFFFU;
- 8004854:	4b08      	ldr	r3, [pc, #32]	; (8004878 <SystemInit+0x5c>)
- 8004856:	685b      	ldr	r3, [r3, #4]
- 8004858:	4a07      	ldr	r2, [pc, #28]	; (8004878 <SystemInit+0x5c>)
- 800485a:	f423 03fe 	bic.w	r3, r3, #8323072	; 0x7f0000
- 800485e:	6053      	str	r3, [r2, #4]
+ 800488c:	4b08      	ldr	r3, [pc, #32]	; (80048b0 <SystemInit+0x5c>)
+ 800488e:	685b      	ldr	r3, [r3, #4]
+ 8004890:	4a07      	ldr	r2, [pc, #28]	; (80048b0 <SystemInit+0x5c>)
+ 8004892:	f423 03fe 	bic.w	r3, r3, #8323072	; 0x7f0000
+ 8004896:	6053      	str	r3, [r2, #4]
 
   /* Reset CFGR2 register */
   RCC->CFGR2 = 0x00000000U;      
 #else
   /* Disable all interrupts and clear pending bits  */
   RCC->CIR = 0x009F0000U;
- 8004860:	4b05      	ldr	r3, [pc, #20]	; (8004878 <SystemInit+0x5c>)
- 8004862:	f44f 021f 	mov.w	r2, #10420224	; 0x9f0000
- 8004866:	609a      	str	r2, [r3, #8]
+ 8004898:	4b05      	ldr	r3, [pc, #20]	; (80048b0 <SystemInit+0x5c>)
+ 800489a:	f44f 021f 	mov.w	r2, #10420224	; 0x9f0000
+ 800489e:	609a      	str	r2, [r3, #8]
 #endif 
 
 #ifdef VECT_TAB_SRAM
   SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM. */
 #else
   SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH. */
- 8004868:	4b05      	ldr	r3, [pc, #20]	; (8004880 <SystemInit+0x64>)
- 800486a:	f04f 6200 	mov.w	r2, #134217728	; 0x8000000
- 800486e:	609a      	str	r2, [r3, #8]
+ 80048a0:	4b05      	ldr	r3, [pc, #20]	; (80048b8 <SystemInit+0x64>)
+ 80048a2:	f04f 6200 	mov.w	r2, #134217728	; 0x8000000
+ 80048a6:	609a      	str	r2, [r3, #8]
 #endif 
 }
- 8004870:	bf00      	nop
- 8004872:	46bd      	mov	sp, r7
- 8004874:	bc80      	pop	{r7}
- 8004876:	4770      	bx	lr
- 8004878:	40021000 	.word	0x40021000
- 800487c:	f8ff0000 	.word	0xf8ff0000
- 8004880:	e000ed00 	.word	0xe000ed00
+ 80048a8:	bf00      	nop
+ 80048aa:	46bd      	mov	sp, r7
+ 80048ac:	bc80      	pop	{r7}
+ 80048ae:	4770      	bx	lr
+ 80048b0:	40021000 	.word	0x40021000
+ 80048b4:	f8ff0000 	.word	0xf8ff0000
+ 80048b8:	e000ed00 	.word	0xe000ed00
 
-08004884 <MX_USB_DEVICE_Init>:
+080048bc <MX_USB_DEVICE_Init>:
 /**
   * Init USB device Library, add supported class and start the library
   * @retval None
   */
 void MX_USB_DEVICE_Init(void)
 {
- 8004884:	b580      	push	{r7, lr}
- 8004886:	af00      	add	r7, sp, #0
+ 80048bc:	b580      	push	{r7, lr}
+ 80048be:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN USB_DEVICE_Init_PreTreatment */
   
   /* USER CODE END USB_DEVICE_Init_PreTreatment */
   
   /* Init Device Library, add supported class and start the library. */
   if (USBD_Init(&hUsbDeviceFS, &FS_Desc, DEVICE_FS) != USBD_OK)
- 8004888:	2200      	movs	r2, #0
- 800488a:	4912      	ldr	r1, [pc, #72]	; (80048d4 <MX_USB_DEVICE_Init+0x50>)
- 800488c:	4812      	ldr	r0, [pc, #72]	; (80048d8 <MX_USB_DEVICE_Init+0x54>)
- 800488e:	f7fe fe1b 	bl	80034c8 <USBD_Init>
- 8004892:	4603      	mov	r3, r0
- 8004894:	2b00      	cmp	r3, #0
- 8004896:	d001      	beq.n	800489c <MX_USB_DEVICE_Init+0x18>
+ 80048c0:	2200      	movs	r2, #0
+ 80048c2:	4912      	ldr	r1, [pc, #72]	; (800490c <MX_USB_DEVICE_Init+0x50>)
+ 80048c4:	4812      	ldr	r0, [pc, #72]	; (8004910 <MX_USB_DEVICE_Init+0x54>)
+ 80048c6:	f7fe fdff 	bl	80034c8 <USBD_Init>
+ 80048ca:	4603      	mov	r3, r0
+ 80048cc:	2b00      	cmp	r3, #0
+ 80048ce:	d001      	beq.n	80048d4 <MX_USB_DEVICE_Init+0x18>
   {
     Error_Handler();
- 8004898:	f7ff ff54 	bl	8004744 <Error_Handler>
+ 80048d0:	f7ff ff54 	bl	800477c <Error_Handler>
   }
   if (USBD_RegisterClass(&hUsbDeviceFS, &USBD_CUSTOM_HID) != USBD_OK)
- 800489c:	490f      	ldr	r1, [pc, #60]	; (80048dc <MX_USB_DEVICE_Init+0x58>)
- 800489e:	480e      	ldr	r0, [pc, #56]	; (80048d8 <MX_USB_DEVICE_Init+0x54>)
- 80048a0:	f7fe fe3d 	bl	800351e <USBD_RegisterClass>
- 80048a4:	4603      	mov	r3, r0
- 80048a6:	2b00      	cmp	r3, #0
- 80048a8:	d001      	beq.n	80048ae <MX_USB_DEVICE_Init+0x2a>
+ 80048d4:	490f      	ldr	r1, [pc, #60]	; (8004914 <MX_USB_DEVICE_Init+0x58>)
+ 80048d6:	480e      	ldr	r0, [pc, #56]	; (8004910 <MX_USB_DEVICE_Init+0x54>)
+ 80048d8:	f7fe fe21 	bl	800351e <USBD_RegisterClass>
+ 80048dc:	4603      	mov	r3, r0
+ 80048de:	2b00      	cmp	r3, #0
+ 80048e0:	d001      	beq.n	80048e6 <MX_USB_DEVICE_Init+0x2a>
   {
     Error_Handler();
- 80048aa:	f7ff ff4b 	bl	8004744 <Error_Handler>
+ 80048e2:	f7ff ff4b 	bl	800477c <Error_Handler>
   }
   if (USBD_CUSTOM_HID_RegisterInterface(&hUsbDeviceFS, &USBD_CustomHID_fops_FS) != USBD_OK)
- 80048ae:	490c      	ldr	r1, [pc, #48]	; (80048e0 <MX_USB_DEVICE_Init+0x5c>)
- 80048b0:	4809      	ldr	r0, [pc, #36]	; (80048d8 <MX_USB_DEVICE_Init+0x54>)
- 80048b2:	f7fe fdf3 	bl	800349c <USBD_CUSTOM_HID_RegisterInterface>
- 80048b6:	4603      	mov	r3, r0
- 80048b8:	2b00      	cmp	r3, #0
- 80048ba:	d001      	beq.n	80048c0 <MX_USB_DEVICE_Init+0x3c>
+ 80048e6:	490c      	ldr	r1, [pc, #48]	; (8004918 <MX_USB_DEVICE_Init+0x5c>)
+ 80048e8:	4809      	ldr	r0, [pc, #36]	; (8004910 <MX_USB_DEVICE_Init+0x54>)
+ 80048ea:	f7fe fdd7 	bl	800349c <USBD_CUSTOM_HID_RegisterInterface>
+ 80048ee:	4603      	mov	r3, r0
+ 80048f0:	2b00      	cmp	r3, #0
+ 80048f2:	d001      	beq.n	80048f8 <MX_USB_DEVICE_Init+0x3c>
   {
     Error_Handler();
- 80048bc:	f7ff ff42 	bl	8004744 <Error_Handler>
+ 80048f4:	f7ff ff42 	bl	800477c <Error_Handler>
   }
   if (USBD_Start(&hUsbDeviceFS) != USBD_OK)
- 80048c0:	4805      	ldr	r0, [pc, #20]	; (80048d8 <MX_USB_DEVICE_Init+0x54>)
- 80048c2:	f7fe fe45 	bl	8003550 <USBD_Start>
- 80048c6:	4603      	mov	r3, r0
- 80048c8:	2b00      	cmp	r3, #0
- 80048ca:	d001      	beq.n	80048d0 <MX_USB_DEVICE_Init+0x4c>
+ 80048f8:	4805      	ldr	r0, [pc, #20]	; (8004910 <MX_USB_DEVICE_Init+0x54>)
+ 80048fa:	f7fe fe29 	bl	8003550 <USBD_Start>
+ 80048fe:	4603      	mov	r3, r0
+ 8004900:	2b00      	cmp	r3, #0
+ 8004902:	d001      	beq.n	8004908 <MX_USB_DEVICE_Init+0x4c>
   {
     Error_Handler();
- 80048cc:	f7ff ff3a 	bl	8004744 <Error_Handler>
+ 8004904:	f7ff ff3a 	bl	800477c <Error_Handler>
   }
 
   /* USER CODE BEGIN USB_DEVICE_Init_PostTreatment */
   
   /* USER CODE END USB_DEVICE_Init_PostTreatment */
 }
- 80048d0:	bf00      	nop
- 80048d2:	bd80      	pop	{r7, pc}
- 80048d4:	20000118 	.word	0x20000118
- 80048d8:	200001a8 	.word	0x200001a8
- 80048dc:	20000008 	.word	0x20000008
- 80048e0:	20000108 	.word	0x20000108
+ 8004908:	bf00      	nop
+ 800490a:	bd80      	pop	{r7, pc}
+ 800490c:	20000118 	.word	0x20000118
+ 8004910:	200001a8 	.word	0x200001a8
+ 8004914:	20000008 	.word	0x20000008
+ 8004918:	20000108 	.word	0x20000108
 
-080048e4 <HAL_PCD_MspInit>:
+0800491c <HAL_PCD_MspInit>:
                        LL Driver Callbacks (PCD -> USB Device Library)
 *******************************************************************************/
 /* MSP Init */
 
 void HAL_PCD_MspInit(PCD_HandleTypeDef* pcdHandle)
 {
- 80048e4:	b580      	push	{r7, lr}
- 80048e6:	b084      	sub	sp, #16
- 80048e8:	af00      	add	r7, sp, #0
- 80048ea:	6078      	str	r0, [r7, #4]
+ 800491c:	b580      	push	{r7, lr}
+ 800491e:	b084      	sub	sp, #16
+ 8004920:	af00      	add	r7, sp, #0
+ 8004922:	6078      	str	r0, [r7, #4]
   if(pcdHandle->Instance==USB)
- 80048ec:	687b      	ldr	r3, [r7, #4]
- 80048ee:	681b      	ldr	r3, [r3, #0]
- 80048f0:	4a0d      	ldr	r2, [pc, #52]	; (8004928 <HAL_PCD_MspInit+0x44>)
- 80048f2:	4293      	cmp	r3, r2
- 80048f4:	d113      	bne.n	800491e <HAL_PCD_MspInit+0x3a>
+ 8004924:	687b      	ldr	r3, [r7, #4]
+ 8004926:	681b      	ldr	r3, [r3, #0]
+ 8004928:	4a0d      	ldr	r2, [pc, #52]	; (8004960 <HAL_PCD_MspInit+0x44>)
+ 800492a:	4293      	cmp	r3, r2
+ 800492c:	d113      	bne.n	8004956 <HAL_PCD_MspInit+0x3a>
   {
   /* USER CODE BEGIN USB_MspInit 0 */
 
   /* USER CODE END USB_MspInit 0 */
     /* Peripheral clock enable */
     __HAL_RCC_USB_CLK_ENABLE();
- 80048f6:	4b0d      	ldr	r3, [pc, #52]	; (800492c <HAL_PCD_MspInit+0x48>)
- 80048f8:	69db      	ldr	r3, [r3, #28]
- 80048fa:	4a0c      	ldr	r2, [pc, #48]	; (800492c <HAL_PCD_MspInit+0x48>)
- 80048fc:	f443 0300 	orr.w	r3, r3, #8388608	; 0x800000
- 8004900:	61d3      	str	r3, [r2, #28]
- 8004902:	4b0a      	ldr	r3, [pc, #40]	; (800492c <HAL_PCD_MspInit+0x48>)
- 8004904:	69db      	ldr	r3, [r3, #28]
- 8004906:	f403 0300 	and.w	r3, r3, #8388608	; 0x800000
- 800490a:	60fb      	str	r3, [r7, #12]
- 800490c:	68fb      	ldr	r3, [r7, #12]
+ 800492e:	4b0d      	ldr	r3, [pc, #52]	; (8004964 <HAL_PCD_MspInit+0x48>)
+ 8004930:	69db      	ldr	r3, [r3, #28]
+ 8004932:	4a0c      	ldr	r2, [pc, #48]	; (8004964 <HAL_PCD_MspInit+0x48>)
+ 8004934:	f443 0300 	orr.w	r3, r3, #8388608	; 0x800000
+ 8004938:	61d3      	str	r3, [r2, #28]
+ 800493a:	4b0a      	ldr	r3, [pc, #40]	; (8004964 <HAL_PCD_MspInit+0x48>)
+ 800493c:	69db      	ldr	r3, [r3, #28]
+ 800493e:	f403 0300 	and.w	r3, r3, #8388608	; 0x800000
+ 8004942:	60fb      	str	r3, [r7, #12]
+ 8004944:	68fb      	ldr	r3, [r7, #12]
 
     /* Peripheral interrupt init */
     HAL_NVIC_SetPriority(USB_LP_CAN1_RX0_IRQn, 0, 0);
- 800490e:	2200      	movs	r2, #0
- 8004910:	2100      	movs	r1, #0
- 8004912:	2014      	movs	r0, #20
- 8004914:	f7fb fd53 	bl	80003be <HAL_NVIC_SetPriority>
+ 8004946:	2200      	movs	r2, #0
+ 8004948:	2100      	movs	r1, #0
+ 800494a:	2014      	movs	r0, #20
+ 800494c:	f7fb fd37 	bl	80003be <HAL_NVIC_SetPriority>
     HAL_NVIC_EnableIRQ(USB_LP_CAN1_RX0_IRQn);
- 8004918:	2014      	movs	r0, #20
- 800491a:	f7fb fd6c 	bl	80003f6 <HAL_NVIC_EnableIRQ>
+ 8004950:	2014      	movs	r0, #20
+ 8004952:	f7fb fd50 	bl	80003f6 <HAL_NVIC_EnableIRQ>
   /* USER CODE BEGIN USB_MspInit 1 */
 
   /* USER CODE END USB_MspInit 1 */
   }
 }
- 800491e:	bf00      	nop
- 8004920:	3710      	adds	r7, #16
- 8004922:	46bd      	mov	sp, r7
- 8004924:	bd80      	pop	{r7, pc}
- 8004926:	bf00      	nop
- 8004928:	40005c00 	.word	0x40005c00
- 800492c:	40021000 	.word	0x40021000
+ 8004956:	bf00      	nop
+ 8004958:	3710      	adds	r7, #16
+ 800495a:	46bd      	mov	sp, r7
+ 800495c:	bd80      	pop	{r7, pc}
+ 800495e:	bf00      	nop
+ 8004960:	40005c00 	.word	0x40005c00
+ 8004964:	40021000 	.word	0x40021000
 
-08004930 <HAL_PCD_SetupStageCallback>:
+08004968 <HAL_PCD_SetupStageCallback>:
 #if (USE_HAL_PCD_REGISTER_CALLBACKS == 1U)
 static void PCD_SetupStageCallback(PCD_HandleTypeDef *hpcd)
 #else
 void HAL_PCD_SetupStageCallback(PCD_HandleTypeDef *hpcd)
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
 {
- 8004930:	b580      	push	{r7, lr}
- 8004932:	b082      	sub	sp, #8
- 8004934:	af00      	add	r7, sp, #0
- 8004936:	6078      	str	r0, [r7, #4]
+ 8004968:	b580      	push	{r7, lr}
+ 800496a:	b082      	sub	sp, #8
+ 800496c:	af00      	add	r7, sp, #0
+ 800496e:	6078      	str	r0, [r7, #4]
   USBD_LL_SetupStage((USBD_HandleTypeDef*)hpcd->pData, (uint8_t *)hpcd->Setup);
- 8004938:	687b      	ldr	r3, [r7, #4]
- 800493a:	f8d3 2268 	ldr.w	r2, [r3, #616]	; 0x268
- 800493e:	687b      	ldr	r3, [r7, #4]
- 8004940:	f503 730c 	add.w	r3, r3, #560	; 0x230
- 8004944:	4619      	mov	r1, r3
- 8004946:	4610      	mov	r0, r2
- 8004948:	f7fe fe4a 	bl	80035e0 <USBD_LL_SetupStage>
+ 8004970:	687b      	ldr	r3, [r7, #4]
+ 8004972:	f8d3 2268 	ldr.w	r2, [r3, #616]	; 0x268
+ 8004976:	687b      	ldr	r3, [r7, #4]
+ 8004978:	f503 730c 	add.w	r3, r3, #560	; 0x230
+ 800497c:	4619      	mov	r1, r3
+ 800497e:	4610      	mov	r0, r2
+ 8004980:	f7fe fe2e 	bl	80035e0 <USBD_LL_SetupStage>
 }
- 800494c:	bf00      	nop
- 800494e:	3708      	adds	r7, #8
- 8004950:	46bd      	mov	sp, r7
- 8004952:	bd80      	pop	{r7, pc}
+ 8004984:	bf00      	nop
+ 8004986:	3708      	adds	r7, #8
+ 8004988:	46bd      	mov	sp, r7
+ 800498a:	bd80      	pop	{r7, pc}
 
-08004954 <HAL_PCD_DataOutStageCallback>:
+0800498c <HAL_PCD_DataOutStageCallback>:
 #if (USE_HAL_PCD_REGISTER_CALLBACKS == 1U)
 static void PCD_DataOutStageCallback(PCD_HandleTypeDef *hpcd, uint8_t epnum)
 #else
 void HAL_PCD_DataOutStageCallback(PCD_HandleTypeDef *hpcd, uint8_t epnum)
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
 {
- 8004954:	b580      	push	{r7, lr}
- 8004956:	b082      	sub	sp, #8
- 8004958:	af00      	add	r7, sp, #0
- 800495a:	6078      	str	r0, [r7, #4]
- 800495c:	460b      	mov	r3, r1
- 800495e:	70fb      	strb	r3, [r7, #3]
+ 800498c:	b580      	push	{r7, lr}
+ 800498e:	b082      	sub	sp, #8
+ 8004990:	af00      	add	r7, sp, #0
+ 8004992:	6078      	str	r0, [r7, #4]
+ 8004994:	460b      	mov	r3, r1
+ 8004996:	70fb      	strb	r3, [r7, #3]
   USBD_LL_DataOutStage((USBD_HandleTypeDef*)hpcd->pData, epnum, hpcd->OUT_ep[epnum].xfer_buff);
- 8004960:	687b      	ldr	r3, [r7, #4]
- 8004962:	f8d3 0268 	ldr.w	r0, [r3, #616]	; 0x268
- 8004966:	78fb      	ldrb	r3, [r7, #3]
- 8004968:	687a      	ldr	r2, [r7, #4]
- 800496a:	015b      	lsls	r3, r3, #5
- 800496c:	4413      	add	r3, r2
- 800496e:	f503 739e 	add.w	r3, r3, #316	; 0x13c
- 8004972:	681a      	ldr	r2, [r3, #0]
- 8004974:	78fb      	ldrb	r3, [r7, #3]
- 8004976:	4619      	mov	r1, r3
- 8004978:	f7fe fe7d 	bl	8003676 <USBD_LL_DataOutStage>
+ 8004998:	687b      	ldr	r3, [r7, #4]
+ 800499a:	f8d3 0268 	ldr.w	r0, [r3, #616]	; 0x268
+ 800499e:	78fb      	ldrb	r3, [r7, #3]
+ 80049a0:	687a      	ldr	r2, [r7, #4]
+ 80049a2:	015b      	lsls	r3, r3, #5
+ 80049a4:	4413      	add	r3, r2
+ 80049a6:	f503 739e 	add.w	r3, r3, #316	; 0x13c
+ 80049aa:	681a      	ldr	r2, [r3, #0]
+ 80049ac:	78fb      	ldrb	r3, [r7, #3]
+ 80049ae:	4619      	mov	r1, r3
+ 80049b0:	f7fe fe61 	bl	8003676 <USBD_LL_DataOutStage>
 }
- 800497c:	bf00      	nop
- 800497e:	3708      	adds	r7, #8
- 8004980:	46bd      	mov	sp, r7
- 8004982:	bd80      	pop	{r7, pc}
+ 80049b4:	bf00      	nop
+ 80049b6:	3708      	adds	r7, #8
+ 80049b8:	46bd      	mov	sp, r7
+ 80049ba:	bd80      	pop	{r7, pc}
 
-08004984 <HAL_PCD_DataInStageCallback>:
+080049bc <HAL_PCD_DataInStageCallback>:
 #if (USE_HAL_PCD_REGISTER_CALLBACKS == 1U)
 static void PCD_DataInStageCallback(PCD_HandleTypeDef *hpcd, uint8_t epnum)
 #else
 void HAL_PCD_DataInStageCallback(PCD_HandleTypeDef *hpcd, uint8_t epnum)
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
 {
- 8004984:	b580      	push	{r7, lr}
- 8004986:	b082      	sub	sp, #8
- 8004988:	af00      	add	r7, sp, #0
- 800498a:	6078      	str	r0, [r7, #4]
- 800498c:	460b      	mov	r3, r1
- 800498e:	70fb      	strb	r3, [r7, #3]
+ 80049bc:	b580      	push	{r7, lr}
+ 80049be:	b082      	sub	sp, #8
+ 80049c0:	af00      	add	r7, sp, #0
+ 80049c2:	6078      	str	r0, [r7, #4]
+ 80049c4:	460b      	mov	r3, r1
+ 80049c6:	70fb      	strb	r3, [r7, #3]
   USBD_LL_DataInStage((USBD_HandleTypeDef*)hpcd->pData, epnum, hpcd->IN_ep[epnum].xfer_buff);
- 8004990:	687b      	ldr	r3, [r7, #4]
- 8004992:	f8d3 0268 	ldr.w	r0, [r3, #616]	; 0x268
- 8004996:	78fb      	ldrb	r3, [r7, #3]
- 8004998:	687a      	ldr	r2, [r7, #4]
- 800499a:	015b      	lsls	r3, r3, #5
- 800499c:	4413      	add	r3, r2
- 800499e:	333c      	adds	r3, #60	; 0x3c
- 80049a0:	681a      	ldr	r2, [r3, #0]
- 80049a2:	78fb      	ldrb	r3, [r7, #3]
- 80049a4:	4619      	mov	r1, r3
- 80049a6:	f7fe fed7 	bl	8003758 <USBD_LL_DataInStage>
+ 80049c8:	687b      	ldr	r3, [r7, #4]
+ 80049ca:	f8d3 0268 	ldr.w	r0, [r3, #616]	; 0x268
+ 80049ce:	78fb      	ldrb	r3, [r7, #3]
+ 80049d0:	687a      	ldr	r2, [r7, #4]
+ 80049d2:	015b      	lsls	r3, r3, #5
+ 80049d4:	4413      	add	r3, r2
+ 80049d6:	333c      	adds	r3, #60	; 0x3c
+ 80049d8:	681a      	ldr	r2, [r3, #0]
+ 80049da:	78fb      	ldrb	r3, [r7, #3]
+ 80049dc:	4619      	mov	r1, r3
+ 80049de:	f7fe febb 	bl	8003758 <USBD_LL_DataInStage>
 }
- 80049aa:	bf00      	nop
- 80049ac:	3708      	adds	r7, #8
- 80049ae:	46bd      	mov	sp, r7
- 80049b0:	bd80      	pop	{r7, pc}
+ 80049e2:	bf00      	nop
+ 80049e4:	3708      	adds	r7, #8
+ 80049e6:	46bd      	mov	sp, r7
+ 80049e8:	bd80      	pop	{r7, pc}
 
-080049b2 <HAL_PCD_SOFCallback>:
+080049ea <HAL_PCD_SOFCallback>:
 #if (USE_HAL_PCD_REGISTER_CALLBACKS == 1U)
 static void PCD_SOFCallback(PCD_HandleTypeDef *hpcd)
 #else
 void HAL_PCD_SOFCallback(PCD_HandleTypeDef *hpcd)
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
 {
- 80049b2:	b580      	push	{r7, lr}
- 80049b4:	b082      	sub	sp, #8
- 80049b6:	af00      	add	r7, sp, #0
- 80049b8:	6078      	str	r0, [r7, #4]
+ 80049ea:	b580      	push	{r7, lr}
+ 80049ec:	b082      	sub	sp, #8
+ 80049ee:	af00      	add	r7, sp, #0
+ 80049f0:	6078      	str	r0, [r7, #4]
   USBD_LL_SOF((USBD_HandleTypeDef*)hpcd->pData);
- 80049ba:	687b      	ldr	r3, [r7, #4]
- 80049bc:	f8d3 3268 	ldr.w	r3, [r3, #616]	; 0x268
- 80049c0:	4618      	mov	r0, r3
- 80049c2:	f7fe ffe7 	bl	8003994 <USBD_LL_SOF>
+ 80049f2:	687b      	ldr	r3, [r7, #4]
+ 80049f4:	f8d3 3268 	ldr.w	r3, [r3, #616]	; 0x268
+ 80049f8:	4618      	mov	r0, r3
+ 80049fa:	f7fe ffcb 	bl	8003994 <USBD_LL_SOF>
 }
- 80049c6:	bf00      	nop
- 80049c8:	3708      	adds	r7, #8
- 80049ca:	46bd      	mov	sp, r7
- 80049cc:	bd80      	pop	{r7, pc}
+ 80049fe:	bf00      	nop
+ 8004a00:	3708      	adds	r7, #8
+ 8004a02:	46bd      	mov	sp, r7
+ 8004a04:	bd80      	pop	{r7, pc}
 
-080049ce <HAL_PCD_ResetCallback>:
+08004a06 <HAL_PCD_ResetCallback>:
 #if (USE_HAL_PCD_REGISTER_CALLBACKS == 1U)
 static void PCD_ResetCallback(PCD_HandleTypeDef *hpcd)
 #else
 void HAL_PCD_ResetCallback(PCD_HandleTypeDef *hpcd)
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
 { 
- 80049ce:	b580      	push	{r7, lr}
- 80049d0:	b084      	sub	sp, #16
- 80049d2:	af00      	add	r7, sp, #0
- 80049d4:	6078      	str	r0, [r7, #4]
+ 8004a06:	b580      	push	{r7, lr}
+ 8004a08:	b084      	sub	sp, #16
+ 8004a0a:	af00      	add	r7, sp, #0
+ 8004a0c:	6078      	str	r0, [r7, #4]
   USBD_SpeedTypeDef speed = USBD_SPEED_FULL;
- 80049d6:	2301      	movs	r3, #1
- 80049d8:	73fb      	strb	r3, [r7, #15]
+ 8004a0e:	2301      	movs	r3, #1
+ 8004a10:	73fb      	strb	r3, [r7, #15]
 
   if ( hpcd->Init.speed != PCD_SPEED_FULL)
- 80049da:	687b      	ldr	r3, [r7, #4]
- 80049dc:	689b      	ldr	r3, [r3, #8]
- 80049de:	2b02      	cmp	r3, #2
- 80049e0:	d001      	beq.n	80049e6 <HAL_PCD_ResetCallback+0x18>
+ 8004a12:	687b      	ldr	r3, [r7, #4]
+ 8004a14:	689b      	ldr	r3, [r3, #8]
+ 8004a16:	2b02      	cmp	r3, #2
+ 8004a18:	d001      	beq.n	8004a1e <HAL_PCD_ResetCallback+0x18>
   {
     Error_Handler();
- 80049e2:	f7ff feaf 	bl	8004744 <Error_Handler>
+ 8004a1a:	f7ff feaf 	bl	800477c <Error_Handler>
   }
     /* Set Speed. */
   USBD_LL_SetSpeed((USBD_HandleTypeDef*)hpcd->pData, speed);
- 80049e6:	687b      	ldr	r3, [r7, #4]
- 80049e8:	f8d3 3268 	ldr.w	r3, [r3, #616]	; 0x268
- 80049ec:	7bfa      	ldrb	r2, [r7, #15]
- 80049ee:	4611      	mov	r1, r2
- 80049f0:	4618      	mov	r0, r3
- 80049f2:	f7fe ff97 	bl	8003924 <USBD_LL_SetSpeed>
+ 8004a1e:	687b      	ldr	r3, [r7, #4]
+ 8004a20:	f8d3 3268 	ldr.w	r3, [r3, #616]	; 0x268
+ 8004a24:	7bfa      	ldrb	r2, [r7, #15]
+ 8004a26:	4611      	mov	r1, r2
+ 8004a28:	4618      	mov	r0, r3
+ 8004a2a:	f7fe ff7b 	bl	8003924 <USBD_LL_SetSpeed>
 
   /* Reset Device. */
   USBD_LL_Reset((USBD_HandleTypeDef*)hpcd->pData);
- 80049f6:	687b      	ldr	r3, [r7, #4]
- 80049f8:	f8d3 3268 	ldr.w	r3, [r3, #616]	; 0x268
- 80049fc:	4618      	mov	r0, r3
- 80049fe:	f7fe ff50 	bl	80038a2 <USBD_LL_Reset>
+ 8004a2e:	687b      	ldr	r3, [r7, #4]
+ 8004a30:	f8d3 3268 	ldr.w	r3, [r3, #616]	; 0x268
+ 8004a34:	4618      	mov	r0, r3
+ 8004a36:	f7fe ff34 	bl	80038a2 <USBD_LL_Reset>
 }
- 8004a02:	bf00      	nop
- 8004a04:	3710      	adds	r7, #16
- 8004a06:	46bd      	mov	sp, r7
- 8004a08:	bd80      	pop	{r7, pc}
+ 8004a3a:	bf00      	nop
+ 8004a3c:	3710      	adds	r7, #16
+ 8004a3e:	46bd      	mov	sp, r7
+ 8004a40:	bd80      	pop	{r7, pc}
 	...
 
-08004a0c <HAL_PCD_SuspendCallback>:
+08004a44 <HAL_PCD_SuspendCallback>:
 #if (USE_HAL_PCD_REGISTER_CALLBACKS == 1U)
 static void PCD_SuspendCallback(PCD_HandleTypeDef *hpcd)
 #else
 void HAL_PCD_SuspendCallback(PCD_HandleTypeDef *hpcd)
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
 {
- 8004a0c:	b580      	push	{r7, lr}
- 8004a0e:	b082      	sub	sp, #8
- 8004a10:	af00      	add	r7, sp, #0
- 8004a12:	6078      	str	r0, [r7, #4]
+ 8004a44:	b580      	push	{r7, lr}
+ 8004a46:	b082      	sub	sp, #8
+ 8004a48:	af00      	add	r7, sp, #0
+ 8004a4a:	6078      	str	r0, [r7, #4]
   /* Inform USB library that core enters in suspend Mode. */
   USBD_LL_Suspend((USBD_HandleTypeDef*)hpcd->pData);
- 8004a14:	687b      	ldr	r3, [r7, #4]
- 8004a16:	f8d3 3268 	ldr.w	r3, [r3, #616]	; 0x268
- 8004a1a:	4618      	mov	r0, r3
- 8004a1c:	f7fe ff91 	bl	8003942 <USBD_LL_Suspend>
+ 8004a4c:	687b      	ldr	r3, [r7, #4]
+ 8004a4e:	f8d3 3268 	ldr.w	r3, [r3, #616]	; 0x268
+ 8004a52:	4618      	mov	r0, r3
+ 8004a54:	f7fe ff75 	bl	8003942 <USBD_LL_Suspend>
   /* Enter in STOP mode. */
   /* USER CODE BEGIN 2 */
   if (hpcd->Init.low_power_enable)
- 8004a20:	687b      	ldr	r3, [r7, #4]
- 8004a22:	699b      	ldr	r3, [r3, #24]
- 8004a24:	2b00      	cmp	r3, #0
- 8004a26:	d005      	beq.n	8004a34 <HAL_PCD_SuspendCallback+0x28>
+ 8004a58:	687b      	ldr	r3, [r7, #4]
+ 8004a5a:	699b      	ldr	r3, [r3, #24]
+ 8004a5c:	2b00      	cmp	r3, #0
+ 8004a5e:	d005      	beq.n	8004a6c <HAL_PCD_SuspendCallback+0x28>
   {
     /* Set SLEEPDEEP bit and SleepOnExit of Cortex System Control Register. */
     SCB->SCR |= (uint32_t)((uint32_t)(SCB_SCR_SLEEPDEEP_Msk | SCB_SCR_SLEEPONEXIT_Msk));
- 8004a28:	4b04      	ldr	r3, [pc, #16]	; (8004a3c <HAL_PCD_SuspendCallback+0x30>)
- 8004a2a:	691b      	ldr	r3, [r3, #16]
- 8004a2c:	4a03      	ldr	r2, [pc, #12]	; (8004a3c <HAL_PCD_SuspendCallback+0x30>)
- 8004a2e:	f043 0306 	orr.w	r3, r3, #6
- 8004a32:	6113      	str	r3, [r2, #16]
+ 8004a60:	4b04      	ldr	r3, [pc, #16]	; (8004a74 <HAL_PCD_SuspendCallback+0x30>)
+ 8004a62:	691b      	ldr	r3, [r3, #16]
+ 8004a64:	4a03      	ldr	r2, [pc, #12]	; (8004a74 <HAL_PCD_SuspendCallback+0x30>)
+ 8004a66:	f043 0306 	orr.w	r3, r3, #6
+ 8004a6a:	6113      	str	r3, [r2, #16]
   }
   /* USER CODE END 2 */
 }
- 8004a34:	bf00      	nop
- 8004a36:	3708      	adds	r7, #8
- 8004a38:	46bd      	mov	sp, r7
- 8004a3a:	bd80      	pop	{r7, pc}
- 8004a3c:	e000ed00 	.word	0xe000ed00
+ 8004a6c:	bf00      	nop
+ 8004a6e:	3708      	adds	r7, #8
+ 8004a70:	46bd      	mov	sp, r7
+ 8004a72:	bd80      	pop	{r7, pc}
+ 8004a74:	e000ed00 	.word	0xe000ed00
 
-08004a40 <HAL_PCD_ResumeCallback>:
+08004a78 <HAL_PCD_ResumeCallback>:
 #if (USE_HAL_PCD_REGISTER_CALLBACKS == 1U)
 static void PCD_ResumeCallback(PCD_HandleTypeDef *hpcd)
 #else
 void HAL_PCD_ResumeCallback(PCD_HandleTypeDef *hpcd)
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
 {
- 8004a40:	b580      	push	{r7, lr}
- 8004a42:	b082      	sub	sp, #8
- 8004a44:	af00      	add	r7, sp, #0
- 8004a46:	6078      	str	r0, [r7, #4]
+ 8004a78:	b580      	push	{r7, lr}
+ 8004a7a:	b082      	sub	sp, #8
+ 8004a7c:	af00      	add	r7, sp, #0
+ 8004a7e:	6078      	str	r0, [r7, #4]
   /* USER CODE BEGIN 3 */
 
   /* USER CODE END 3 */
   USBD_LL_Resume((USBD_HandleTypeDef*)hpcd->pData);
- 8004a48:	687b      	ldr	r3, [r7, #4]
- 8004a4a:	f8d3 3268 	ldr.w	r3, [r3, #616]	; 0x268
- 8004a4e:	4618      	mov	r0, r3
- 8004a50:	f7fe ff8b 	bl	800396a <USBD_LL_Resume>
+ 8004a80:	687b      	ldr	r3, [r7, #4]
+ 8004a82:	f8d3 3268 	ldr.w	r3, [r3, #616]	; 0x268
+ 8004a86:	4618      	mov	r0, r3
+ 8004a88:	f7fe ff6f 	bl	800396a <USBD_LL_Resume>
 }
- 8004a54:	bf00      	nop
- 8004a56:	3708      	adds	r7, #8
- 8004a58:	46bd      	mov	sp, r7
- 8004a5a:	bd80      	pop	{r7, pc}
+ 8004a8c:	bf00      	nop
+ 8004a8e:	3708      	adds	r7, #8
+ 8004a90:	46bd      	mov	sp, r7
+ 8004a92:	bd80      	pop	{r7, pc}
 
-08004a5c <USBD_LL_Init>:
+08004a94 <USBD_LL_Init>:
   * @brief  Initializes the low level portion of the device driver.
   * @param  pdev: Device handle
   * @retval USBD status
   */
 USBD_StatusTypeDef USBD_LL_Init(USBD_HandleTypeDef *pdev)
 {
- 8004a5c:	b580      	push	{r7, lr}
- 8004a5e:	b082      	sub	sp, #8
- 8004a60:	af00      	add	r7, sp, #0
- 8004a62:	6078      	str	r0, [r7, #4]
+ 8004a94:	b580      	push	{r7, lr}
+ 8004a96:	b082      	sub	sp, #8
+ 8004a98:	af00      	add	r7, sp, #0
+ 8004a9a:	6078      	str	r0, [r7, #4]
   /* Init USB Ip. */
   /* Link the driver to the stack. */
   hpcd_USB_FS.pData = pdev;
- 8004a64:	4a23      	ldr	r2, [pc, #140]	; (8004af4 <USBD_LL_Init+0x98>)
- 8004a66:	687b      	ldr	r3, [r7, #4]
- 8004a68:	f8c2 3268 	str.w	r3, [r2, #616]	; 0x268
+ 8004a9c:	4a23      	ldr	r2, [pc, #140]	; (8004b2c <USBD_LL_Init+0x98>)
+ 8004a9e:	687b      	ldr	r3, [r7, #4]
+ 8004aa0:	f8c2 3268 	str.w	r3, [r2, #616]	; 0x268
   pdev->pData = &hpcd_USB_FS;
- 8004a6c:	687b      	ldr	r3, [r7, #4]
- 8004a6e:	4a21      	ldr	r2, [pc, #132]	; (8004af4 <USBD_LL_Init+0x98>)
- 8004a70:	f8c3 22c0 	str.w	r2, [r3, #704]	; 0x2c0
+ 8004aa4:	687b      	ldr	r3, [r7, #4]
+ 8004aa6:	4a21      	ldr	r2, [pc, #132]	; (8004b2c <USBD_LL_Init+0x98>)
+ 8004aa8:	f8c3 22c0 	str.w	r2, [r3, #704]	; 0x2c0
 
   hpcd_USB_FS.Instance = USB;
- 8004a74:	4b1f      	ldr	r3, [pc, #124]	; (8004af4 <USBD_LL_Init+0x98>)
- 8004a76:	4a20      	ldr	r2, [pc, #128]	; (8004af8 <USBD_LL_Init+0x9c>)
- 8004a78:	601a      	str	r2, [r3, #0]
+ 8004aac:	4b1f      	ldr	r3, [pc, #124]	; (8004b2c <USBD_LL_Init+0x98>)
+ 8004aae:	4a20      	ldr	r2, [pc, #128]	; (8004b30 <USBD_LL_Init+0x9c>)
+ 8004ab0:	601a      	str	r2, [r3, #0]
   hpcd_USB_FS.Init.dev_endpoints = 8;
- 8004a7a:	4b1e      	ldr	r3, [pc, #120]	; (8004af4 <USBD_LL_Init+0x98>)
- 8004a7c:	2208      	movs	r2, #8
- 8004a7e:	605a      	str	r2, [r3, #4]
+ 8004ab2:	4b1e      	ldr	r3, [pc, #120]	; (8004b2c <USBD_LL_Init+0x98>)
+ 8004ab4:	2208      	movs	r2, #8
+ 8004ab6:	605a      	str	r2, [r3, #4]
   hpcd_USB_FS.Init.speed = PCD_SPEED_FULL;
- 8004a80:	4b1c      	ldr	r3, [pc, #112]	; (8004af4 <USBD_LL_Init+0x98>)
- 8004a82:	2202      	movs	r2, #2
- 8004a84:	609a      	str	r2, [r3, #8]
+ 8004ab8:	4b1c      	ldr	r3, [pc, #112]	; (8004b2c <USBD_LL_Init+0x98>)
+ 8004aba:	2202      	movs	r2, #2
+ 8004abc:	609a      	str	r2, [r3, #8]
   hpcd_USB_FS.Init.low_power_enable = DISABLE;
- 8004a86:	4b1b      	ldr	r3, [pc, #108]	; (8004af4 <USBD_LL_Init+0x98>)
- 8004a88:	2200      	movs	r2, #0
- 8004a8a:	619a      	str	r2, [r3, #24]
+ 8004abe:	4b1b      	ldr	r3, [pc, #108]	; (8004b2c <USBD_LL_Init+0x98>)
+ 8004ac0:	2200      	movs	r2, #0
+ 8004ac2:	619a      	str	r2, [r3, #24]
   hpcd_USB_FS.Init.lpm_enable = DISABLE;
- 8004a8c:	4b19      	ldr	r3, [pc, #100]	; (8004af4 <USBD_LL_Init+0x98>)
- 8004a8e:	2200      	movs	r2, #0
- 8004a90:	61da      	str	r2, [r3, #28]
+ 8004ac4:	4b19      	ldr	r3, [pc, #100]	; (8004b2c <USBD_LL_Init+0x98>)
+ 8004ac6:	2200      	movs	r2, #0
+ 8004ac8:	61da      	str	r2, [r3, #28]
   hpcd_USB_FS.Init.battery_charging_enable = DISABLE;
- 8004a92:	4b18      	ldr	r3, [pc, #96]	; (8004af4 <USBD_LL_Init+0x98>)
- 8004a94:	2200      	movs	r2, #0
- 8004a96:	621a      	str	r2, [r3, #32]
+ 8004aca:	4b18      	ldr	r3, [pc, #96]	; (8004b2c <USBD_LL_Init+0x98>)
+ 8004acc:	2200      	movs	r2, #0
+ 8004ace:	621a      	str	r2, [r3, #32]
   if (HAL_PCD_Init(&hpcd_USB_FS) != HAL_OK)
- 8004a98:	4816      	ldr	r0, [pc, #88]	; (8004af4 <USBD_LL_Init+0x98>)
- 8004a9a:	f7fb fe39 	bl	8000710 <HAL_PCD_Init>
- 8004a9e:	4603      	mov	r3, r0
- 8004aa0:	2b00      	cmp	r3, #0
- 8004aa2:	d001      	beq.n	8004aa8 <USBD_LL_Init+0x4c>
+ 8004ad0:	4816      	ldr	r0, [pc, #88]	; (8004b2c <USBD_LL_Init+0x98>)
+ 8004ad2:	f7fb fe1d 	bl	8000710 <HAL_PCD_Init>
+ 8004ad6:	4603      	mov	r3, r0
+ 8004ad8:	2b00      	cmp	r3, #0
+ 8004ada:	d001      	beq.n	8004ae0 <USBD_LL_Init+0x4c>
   {
     Error_Handler( );
- 8004aa4:	f7ff fe4e 	bl	8004744 <Error_Handler>
+ 8004adc:	f7ff fe4e 	bl	800477c <Error_Handler>
   HAL_PCD_RegisterDataInStageCallback(&hpcd_USB_FS, PCD_DataInStageCallback);
   HAL_PCD_RegisterIsoOutIncpltCallback(&hpcd_USB_FS, PCD_ISOOUTIncompleteCallback);
   HAL_PCD_RegisterIsoInIncpltCallback(&hpcd_USB_FS, PCD_ISOINIncompleteCallback);
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
   /* USER CODE BEGIN EndPoint_Configuration */
   HAL_PCDEx_PMAConfig((PCD_HandleTypeDef*)pdev->pData , 0x00 , PCD_SNG_BUF, 0x18);
- 8004aa8:	687b      	ldr	r3, [r7, #4]
- 8004aaa:	f8d3 02c0 	ldr.w	r0, [r3, #704]	; 0x2c0
- 8004aae:	2318      	movs	r3, #24
- 8004ab0:	2200      	movs	r2, #0
- 8004ab2:	2100      	movs	r1, #0
- 8004ab4:	f7fc fcbe 	bl	8001434 <HAL_PCDEx_PMAConfig>
+ 8004ae0:	687b      	ldr	r3, [r7, #4]
+ 8004ae2:	f8d3 02c0 	ldr.w	r0, [r3, #704]	; 0x2c0
+ 8004ae6:	2318      	movs	r3, #24
+ 8004ae8:	2200      	movs	r2, #0
+ 8004aea:	2100      	movs	r1, #0
+ 8004aec:	f7fc fca2 	bl	8001434 <HAL_PCDEx_PMAConfig>
   HAL_PCDEx_PMAConfig((PCD_HandleTypeDef*)pdev->pData , 0x80 , PCD_SNG_BUF, 0x58);
- 8004ab8:	687b      	ldr	r3, [r7, #4]
- 8004aba:	f8d3 02c0 	ldr.w	r0, [r3, #704]	; 0x2c0
- 8004abe:	2358      	movs	r3, #88	; 0x58
- 8004ac0:	2200      	movs	r2, #0
- 8004ac2:	2180      	movs	r1, #128	; 0x80
- 8004ac4:	f7fc fcb6 	bl	8001434 <HAL_PCDEx_PMAConfig>
+ 8004af0:	687b      	ldr	r3, [r7, #4]
+ 8004af2:	f8d3 02c0 	ldr.w	r0, [r3, #704]	; 0x2c0
+ 8004af6:	2358      	movs	r3, #88	; 0x58
+ 8004af8:	2200      	movs	r2, #0
+ 8004afa:	2180      	movs	r1, #128	; 0x80
+ 8004afc:	f7fc fc9a 	bl	8001434 <HAL_PCDEx_PMAConfig>
   /* USER CODE END EndPoint_Configuration */
   /* USER CODE BEGIN EndPoint_Configuration_CUSTOM_HID */
   HAL_PCDEx_PMAConfig((PCD_HandleTypeDef*)pdev->pData , CUSTOM_HID_EPIN_ADDR , PCD_SNG_BUF, 0x98);
- 8004ac8:	687b      	ldr	r3, [r7, #4]
- 8004aca:	f8d3 02c0 	ldr.w	r0, [r3, #704]	; 0x2c0
- 8004ace:	2398      	movs	r3, #152	; 0x98
- 8004ad0:	2200      	movs	r2, #0
- 8004ad2:	2181      	movs	r1, #129	; 0x81
- 8004ad4:	f7fc fcae 	bl	8001434 <HAL_PCDEx_PMAConfig>
+ 8004b00:	687b      	ldr	r3, [r7, #4]
+ 8004b02:	f8d3 02c0 	ldr.w	r0, [r3, #704]	; 0x2c0
+ 8004b06:	2398      	movs	r3, #152	; 0x98
+ 8004b08:	2200      	movs	r2, #0
+ 8004b0a:	2181      	movs	r1, #129	; 0x81
+ 8004b0c:	f7fc fc92 	bl	8001434 <HAL_PCDEx_PMAConfig>
   HAL_PCDEx_PMAConfig((PCD_HandleTypeDef*)pdev->pData , CUSTOM_HID_EPOUT_ADDR , PCD_SNG_BUF, 0xD8);
- 8004ad8:	687b      	ldr	r3, [r7, #4]
- 8004ada:	f8d3 02c0 	ldr.w	r0, [r3, #704]	; 0x2c0
- 8004ade:	23d8      	movs	r3, #216	; 0xd8
- 8004ae0:	2200      	movs	r2, #0
- 8004ae2:	2101      	movs	r1, #1
- 8004ae4:	f7fc fca6 	bl	8001434 <HAL_PCDEx_PMAConfig>
+ 8004b10:	687b      	ldr	r3, [r7, #4]
+ 8004b12:	f8d3 02c0 	ldr.w	r0, [r3, #704]	; 0x2c0
+ 8004b16:	23d8      	movs	r3, #216	; 0xd8
+ 8004b18:	2200      	movs	r2, #0
+ 8004b1a:	2101      	movs	r1, #1
+ 8004b1c:	f7fc fc8a 	bl	8001434 <HAL_PCDEx_PMAConfig>
   /* USER CODE END EndPoint_Configuration_CUSTOM_HID */
   return USBD_OK;
- 8004ae8:	2300      	movs	r3, #0
+ 8004b20:	2300      	movs	r3, #0
 }
- 8004aea:	4618      	mov	r0, r3
- 8004aec:	3708      	adds	r7, #8
- 8004aee:	46bd      	mov	sp, r7
- 8004af0:	bd80      	pop	{r7, pc}
- 8004af2:	bf00      	nop
- 8004af4:	2000046c 	.word	0x2000046c
- 8004af8:	40005c00 	.word	0x40005c00
+ 8004b22:	4618      	mov	r0, r3
+ 8004b24:	3708      	adds	r7, #8
+ 8004b26:	46bd      	mov	sp, r7
+ 8004b28:	bd80      	pop	{r7, pc}
+ 8004b2a:	bf00      	nop
+ 8004b2c:	2000046c 	.word	0x2000046c
+ 8004b30:	40005c00 	.word	0x40005c00
 
-08004afc <USBD_LL_Start>:
+08004b34 <USBD_LL_Start>:
   * @brief  Starts the low level portion of the device driver.
   * @param  pdev: Device handle
   * @retval USBD status
   */
 USBD_StatusTypeDef USBD_LL_Start(USBD_HandleTypeDef *pdev)
 {
- 8004afc:	b580      	push	{r7, lr}
- 8004afe:	b084      	sub	sp, #16
- 8004b00:	af00      	add	r7, sp, #0
- 8004b02:	6078      	str	r0, [r7, #4]
+ 8004b34:	b580      	push	{r7, lr}
+ 8004b36:	b084      	sub	sp, #16
+ 8004b38:	af00      	add	r7, sp, #0
+ 8004b3a:	6078      	str	r0, [r7, #4]
   HAL_StatusTypeDef hal_status = HAL_OK;
- 8004b04:	2300      	movs	r3, #0
- 8004b06:	73fb      	strb	r3, [r7, #15]
+ 8004b3c:	2300      	movs	r3, #0
+ 8004b3e:	73fb      	strb	r3, [r7, #15]
   USBD_StatusTypeDef usb_status = USBD_OK;
- 8004b08:	2300      	movs	r3, #0
- 8004b0a:	73bb      	strb	r3, [r7, #14]
+ 8004b40:	2300      	movs	r3, #0
+ 8004b42:	73bb      	strb	r3, [r7, #14]
  
   hal_status = HAL_PCD_Start(pdev->pData);
- 8004b0c:	687b      	ldr	r3, [r7, #4]
- 8004b0e:	f8d3 32c0 	ldr.w	r3, [r3, #704]	; 0x2c0
- 8004b12:	4618      	mov	r0, r3
- 8004b14:	f7fb fedd 	bl	80008d2 <HAL_PCD_Start>
- 8004b18:	4603      	mov	r3, r0
- 8004b1a:	73fb      	strb	r3, [r7, #15]
+ 8004b44:	687b      	ldr	r3, [r7, #4]
+ 8004b46:	f8d3 32c0 	ldr.w	r3, [r3, #704]	; 0x2c0
+ 8004b4a:	4618      	mov	r0, r3
+ 8004b4c:	f7fb fec1 	bl	80008d2 <HAL_PCD_Start>
+ 8004b50:	4603      	mov	r3, r0
+ 8004b52:	73fb      	strb	r3, [r7, #15]
      
   usb_status =  USBD_Get_USB_Status(hal_status);
- 8004b1c:	7bfb      	ldrb	r3, [r7, #15]
- 8004b1e:	4618      	mov	r0, r3
- 8004b20:	f000 f934 	bl	8004d8c <USBD_Get_USB_Status>
- 8004b24:	4603      	mov	r3, r0
- 8004b26:	73bb      	strb	r3, [r7, #14]
+ 8004b54:	7bfb      	ldrb	r3, [r7, #15]
+ 8004b56:	4618      	mov	r0, r3
+ 8004b58:	f000 f934 	bl	8004dc4 <USBD_Get_USB_Status>
+ 8004b5c:	4603      	mov	r3, r0
+ 8004b5e:	73bb      	strb	r3, [r7, #14]
   
   return usb_status;
- 8004b28:	7bbb      	ldrb	r3, [r7, #14]
+ 8004b60:	7bbb      	ldrb	r3, [r7, #14]
 }
- 8004b2a:	4618      	mov	r0, r3
- 8004b2c:	3710      	adds	r7, #16
- 8004b2e:	46bd      	mov	sp, r7
- 8004b30:	bd80      	pop	{r7, pc}
+ 8004b62:	4618      	mov	r0, r3
+ 8004b64:	3710      	adds	r7, #16
+ 8004b66:	46bd      	mov	sp, r7
+ 8004b68:	bd80      	pop	{r7, pc}
 
-08004b32 <USBD_LL_OpenEP>:
+08004b6a <USBD_LL_OpenEP>:
   * @param  ep_type: Endpoint type
   * @param  ep_mps: Endpoint max packet size
   * @retval USBD status
   */
 USBD_StatusTypeDef USBD_LL_OpenEP(USBD_HandleTypeDef *pdev, uint8_t ep_addr, uint8_t ep_type, uint16_t ep_mps)
 {
- 8004b32:	b580      	push	{r7, lr}
- 8004b34:	b084      	sub	sp, #16
- 8004b36:	af00      	add	r7, sp, #0
- 8004b38:	6078      	str	r0, [r7, #4]
- 8004b3a:	4608      	mov	r0, r1
- 8004b3c:	4611      	mov	r1, r2
- 8004b3e:	461a      	mov	r2, r3
- 8004b40:	4603      	mov	r3, r0
- 8004b42:	70fb      	strb	r3, [r7, #3]
- 8004b44:	460b      	mov	r3, r1
- 8004b46:	70bb      	strb	r3, [r7, #2]
- 8004b48:	4613      	mov	r3, r2
- 8004b4a:	803b      	strh	r3, [r7, #0]
+ 8004b6a:	b580      	push	{r7, lr}
+ 8004b6c:	b084      	sub	sp, #16
+ 8004b6e:	af00      	add	r7, sp, #0
+ 8004b70:	6078      	str	r0, [r7, #4]
+ 8004b72:	4608      	mov	r0, r1
+ 8004b74:	4611      	mov	r1, r2
+ 8004b76:	461a      	mov	r2, r3
+ 8004b78:	4603      	mov	r3, r0
+ 8004b7a:	70fb      	strb	r3, [r7, #3]
+ 8004b7c:	460b      	mov	r3, r1
+ 8004b7e:	70bb      	strb	r3, [r7, #2]
+ 8004b80:	4613      	mov	r3, r2
+ 8004b82:	803b      	strh	r3, [r7, #0]
   HAL_StatusTypeDef hal_status = HAL_OK;
- 8004b4c:	2300      	movs	r3, #0
- 8004b4e:	73fb      	strb	r3, [r7, #15]
+ 8004b84:	2300      	movs	r3, #0
+ 8004b86:	73fb      	strb	r3, [r7, #15]
   USBD_StatusTypeDef usb_status = USBD_OK;
- 8004b50:	2300      	movs	r3, #0
- 8004b52:	73bb      	strb	r3, [r7, #14]
+ 8004b88:	2300      	movs	r3, #0
+ 8004b8a:	73bb      	strb	r3, [r7, #14]
 
   hal_status = HAL_PCD_EP_Open(pdev->pData, ep_addr, ep_mps, ep_type);
- 8004b54:	687b      	ldr	r3, [r7, #4]
- 8004b56:	f8d3 02c0 	ldr.w	r0, [r3, #704]	; 0x2c0
- 8004b5a:	78bb      	ldrb	r3, [r7, #2]
- 8004b5c:	883a      	ldrh	r2, [r7, #0]
- 8004b5e:	78f9      	ldrb	r1, [r7, #3]
- 8004b60:	f7fc f810 	bl	8000b84 <HAL_PCD_EP_Open>
- 8004b64:	4603      	mov	r3, r0
- 8004b66:	73fb      	strb	r3, [r7, #15]
+ 8004b8c:	687b      	ldr	r3, [r7, #4]
+ 8004b8e:	f8d3 02c0 	ldr.w	r0, [r3, #704]	; 0x2c0
+ 8004b92:	78bb      	ldrb	r3, [r7, #2]
+ 8004b94:	883a      	ldrh	r2, [r7, #0]
+ 8004b96:	78f9      	ldrb	r1, [r7, #3]
+ 8004b98:	f7fb fff4 	bl	8000b84 <HAL_PCD_EP_Open>
+ 8004b9c:	4603      	mov	r3, r0
+ 8004b9e:	73fb      	strb	r3, [r7, #15]
 
   usb_status =  USBD_Get_USB_Status(hal_status);
- 8004b68:	7bfb      	ldrb	r3, [r7, #15]
- 8004b6a:	4618      	mov	r0, r3
- 8004b6c:	f000 f90e 	bl	8004d8c <USBD_Get_USB_Status>
- 8004b70:	4603      	mov	r3, r0
- 8004b72:	73bb      	strb	r3, [r7, #14]
+ 8004ba0:	7bfb      	ldrb	r3, [r7, #15]
+ 8004ba2:	4618      	mov	r0, r3
+ 8004ba4:	f000 f90e 	bl	8004dc4 <USBD_Get_USB_Status>
+ 8004ba8:	4603      	mov	r3, r0
+ 8004baa:	73bb      	strb	r3, [r7, #14]
  
   return usb_status;
- 8004b74:	7bbb      	ldrb	r3, [r7, #14]
+ 8004bac:	7bbb      	ldrb	r3, [r7, #14]
 }
- 8004b76:	4618      	mov	r0, r3
- 8004b78:	3710      	adds	r7, #16
- 8004b7a:	46bd      	mov	sp, r7
- 8004b7c:	bd80      	pop	{r7, pc}
+ 8004bae:	4618      	mov	r0, r3
+ 8004bb0:	3710      	adds	r7, #16
+ 8004bb2:	46bd      	mov	sp, r7
+ 8004bb4:	bd80      	pop	{r7, pc}
 
-08004b7e <USBD_LL_CloseEP>:
+08004bb6 <USBD_LL_CloseEP>:
   * @param  pdev: Device handle
   * @param  ep_addr: Endpoint number
   * @retval USBD status
   */
 USBD_StatusTypeDef USBD_LL_CloseEP(USBD_HandleTypeDef *pdev, uint8_t ep_addr)
 {
- 8004b7e:	b580      	push	{r7, lr}
- 8004b80:	b084      	sub	sp, #16
- 8004b82:	af00      	add	r7, sp, #0
- 8004b84:	6078      	str	r0, [r7, #4]
- 8004b86:	460b      	mov	r3, r1
- 8004b88:	70fb      	strb	r3, [r7, #3]
+ 8004bb6:	b580      	push	{r7, lr}
+ 8004bb8:	b084      	sub	sp, #16
+ 8004bba:	af00      	add	r7, sp, #0
+ 8004bbc:	6078      	str	r0, [r7, #4]
+ 8004bbe:	460b      	mov	r3, r1
+ 8004bc0:	70fb      	strb	r3, [r7, #3]
   HAL_StatusTypeDef hal_status = HAL_OK;
- 8004b8a:	2300      	movs	r3, #0
- 8004b8c:	73fb      	strb	r3, [r7, #15]
+ 8004bc2:	2300      	movs	r3, #0
+ 8004bc4:	73fb      	strb	r3, [r7, #15]
   USBD_StatusTypeDef usb_status = USBD_OK;
- 8004b8e:	2300      	movs	r3, #0
- 8004b90:	73bb      	strb	r3, [r7, #14]
+ 8004bc6:	2300      	movs	r3, #0
+ 8004bc8:	73bb      	strb	r3, [r7, #14]
   
   hal_status = HAL_PCD_EP_Close(pdev->pData, ep_addr);
- 8004b92:	687b      	ldr	r3, [r7, #4]
- 8004b94:	f8d3 32c0 	ldr.w	r3, [r3, #704]	; 0x2c0
- 8004b98:	78fa      	ldrb	r2, [r7, #3]
- 8004b9a:	4611      	mov	r1, r2
- 8004b9c:	4618      	mov	r0, r3
- 8004b9e:	f7fc f851 	bl	8000c44 <HAL_PCD_EP_Close>
- 8004ba2:	4603      	mov	r3, r0
- 8004ba4:	73fb      	strb	r3, [r7, #15]
+ 8004bca:	687b      	ldr	r3, [r7, #4]
+ 8004bcc:	f8d3 32c0 	ldr.w	r3, [r3, #704]	; 0x2c0
+ 8004bd0:	78fa      	ldrb	r2, [r7, #3]
+ 8004bd2:	4611      	mov	r1, r2
+ 8004bd4:	4618      	mov	r0, r3
+ 8004bd6:	f7fc f835 	bl	8000c44 <HAL_PCD_EP_Close>
+ 8004bda:	4603      	mov	r3, r0
+ 8004bdc:	73fb      	strb	r3, [r7, #15]
       
   usb_status =  USBD_Get_USB_Status(hal_status);
- 8004ba6:	7bfb      	ldrb	r3, [r7, #15]
- 8004ba8:	4618      	mov	r0, r3
- 8004baa:	f000 f8ef 	bl	8004d8c <USBD_Get_USB_Status>
- 8004bae:	4603      	mov	r3, r0
- 8004bb0:	73bb      	strb	r3, [r7, #14]
+ 8004bde:	7bfb      	ldrb	r3, [r7, #15]
+ 8004be0:	4618      	mov	r0, r3
+ 8004be2:	f000 f8ef 	bl	8004dc4 <USBD_Get_USB_Status>
+ 8004be6:	4603      	mov	r3, r0
+ 8004be8:	73bb      	strb	r3, [r7, #14]
 
   return usb_status;  
- 8004bb2:	7bbb      	ldrb	r3, [r7, #14]
+ 8004bea:	7bbb      	ldrb	r3, [r7, #14]
 }
- 8004bb4:	4618      	mov	r0, r3
- 8004bb6:	3710      	adds	r7, #16
- 8004bb8:	46bd      	mov	sp, r7
- 8004bba:	bd80      	pop	{r7, pc}
+ 8004bec:	4618      	mov	r0, r3
+ 8004bee:	3710      	adds	r7, #16
+ 8004bf0:	46bd      	mov	sp, r7
+ 8004bf2:	bd80      	pop	{r7, pc}
 
-08004bbc <USBD_LL_StallEP>:
+08004bf4 <USBD_LL_StallEP>:
   * @param  pdev: Device handle
   * @param  ep_addr: Endpoint number
   * @retval USBD status
   */
 USBD_StatusTypeDef USBD_LL_StallEP(USBD_HandleTypeDef *pdev, uint8_t ep_addr)
 {
- 8004bbc:	b580      	push	{r7, lr}
- 8004bbe:	b084      	sub	sp, #16
- 8004bc0:	af00      	add	r7, sp, #0
- 8004bc2:	6078      	str	r0, [r7, #4]
- 8004bc4:	460b      	mov	r3, r1
- 8004bc6:	70fb      	strb	r3, [r7, #3]
+ 8004bf4:	b580      	push	{r7, lr}
+ 8004bf6:	b084      	sub	sp, #16
+ 8004bf8:	af00      	add	r7, sp, #0
+ 8004bfa:	6078      	str	r0, [r7, #4]
+ 8004bfc:	460b      	mov	r3, r1
+ 8004bfe:	70fb      	strb	r3, [r7, #3]
   HAL_StatusTypeDef hal_status = HAL_OK;
- 8004bc8:	2300      	movs	r3, #0
- 8004bca:	73fb      	strb	r3, [r7, #15]
+ 8004c00:	2300      	movs	r3, #0
+ 8004c02:	73fb      	strb	r3, [r7, #15]
   USBD_StatusTypeDef usb_status = USBD_OK;
- 8004bcc:	2300      	movs	r3, #0
- 8004bce:	73bb      	strb	r3, [r7, #14]
+ 8004c04:	2300      	movs	r3, #0
+ 8004c06:	73bb      	strb	r3, [r7, #14]
   
   hal_status = HAL_PCD_EP_SetStall(pdev->pData, ep_addr);
- 8004bd0:	687b      	ldr	r3, [r7, #4]
- 8004bd2:	f8d3 32c0 	ldr.w	r3, [r3, #704]	; 0x2c0
- 8004bd6:	78fa      	ldrb	r2, [r7, #3]
- 8004bd8:	4611      	mov	r1, r2
- 8004bda:	4618      	mov	r0, r3
- 8004bdc:	f7fc f8e7 	bl	8000dae <HAL_PCD_EP_SetStall>
- 8004be0:	4603      	mov	r3, r0
- 8004be2:	73fb      	strb	r3, [r7, #15]
+ 8004c08:	687b      	ldr	r3, [r7, #4]
+ 8004c0a:	f8d3 32c0 	ldr.w	r3, [r3, #704]	; 0x2c0
+ 8004c0e:	78fa      	ldrb	r2, [r7, #3]
+ 8004c10:	4611      	mov	r1, r2
+ 8004c12:	4618      	mov	r0, r3
+ 8004c14:	f7fc f8cb 	bl	8000dae <HAL_PCD_EP_SetStall>
+ 8004c18:	4603      	mov	r3, r0
+ 8004c1a:	73fb      	strb	r3, [r7, #15]
 
   usb_status =  USBD_Get_USB_Status(hal_status);
- 8004be4:	7bfb      	ldrb	r3, [r7, #15]
- 8004be6:	4618      	mov	r0, r3
- 8004be8:	f000 f8d0 	bl	8004d8c <USBD_Get_USB_Status>
- 8004bec:	4603      	mov	r3, r0
- 8004bee:	73bb      	strb	r3, [r7, #14]
+ 8004c1c:	7bfb      	ldrb	r3, [r7, #15]
+ 8004c1e:	4618      	mov	r0, r3
+ 8004c20:	f000 f8d0 	bl	8004dc4 <USBD_Get_USB_Status>
+ 8004c24:	4603      	mov	r3, r0
+ 8004c26:	73bb      	strb	r3, [r7, #14]
  
   return usb_status;  
- 8004bf0:	7bbb      	ldrb	r3, [r7, #14]
+ 8004c28:	7bbb      	ldrb	r3, [r7, #14]
 }
- 8004bf2:	4618      	mov	r0, r3
- 8004bf4:	3710      	adds	r7, #16
- 8004bf6:	46bd      	mov	sp, r7
- 8004bf8:	bd80      	pop	{r7, pc}
+ 8004c2a:	4618      	mov	r0, r3
+ 8004c2c:	3710      	adds	r7, #16
+ 8004c2e:	46bd      	mov	sp, r7
+ 8004c30:	bd80      	pop	{r7, pc}
 
-08004bfa <USBD_LL_ClearStallEP>:
+08004c32 <USBD_LL_ClearStallEP>:
   * @param  pdev: Device handle
   * @param  ep_addr: Endpoint number
   * @retval USBD status
   */
 USBD_StatusTypeDef USBD_LL_ClearStallEP(USBD_HandleTypeDef *pdev, uint8_t ep_addr)
 {
- 8004bfa:	b580      	push	{r7, lr}
- 8004bfc:	b084      	sub	sp, #16
- 8004bfe:	af00      	add	r7, sp, #0
- 8004c00:	6078      	str	r0, [r7, #4]
- 8004c02:	460b      	mov	r3, r1
- 8004c04:	70fb      	strb	r3, [r7, #3]
+ 8004c32:	b580      	push	{r7, lr}
+ 8004c34:	b084      	sub	sp, #16
+ 8004c36:	af00      	add	r7, sp, #0
+ 8004c38:	6078      	str	r0, [r7, #4]
+ 8004c3a:	460b      	mov	r3, r1
+ 8004c3c:	70fb      	strb	r3, [r7, #3]
   HAL_StatusTypeDef hal_status = HAL_OK;
- 8004c06:	2300      	movs	r3, #0
- 8004c08:	73fb      	strb	r3, [r7, #15]
+ 8004c3e:	2300      	movs	r3, #0
+ 8004c40:	73fb      	strb	r3, [r7, #15]
   USBD_StatusTypeDef usb_status = USBD_OK;
- 8004c0a:	2300      	movs	r3, #0
- 8004c0c:	73bb      	strb	r3, [r7, #14]
+ 8004c42:	2300      	movs	r3, #0
+ 8004c44:	73bb      	strb	r3, [r7, #14]
   
   hal_status = HAL_PCD_EP_ClrStall(pdev->pData, ep_addr);  
- 8004c0e:	687b      	ldr	r3, [r7, #4]
- 8004c10:	f8d3 32c0 	ldr.w	r3, [r3, #704]	; 0x2c0
- 8004c14:	78fa      	ldrb	r2, [r7, #3]
- 8004c16:	4611      	mov	r1, r2
- 8004c18:	4618      	mov	r0, r3
- 8004c1a:	f7fc f922 	bl	8000e62 <HAL_PCD_EP_ClrStall>
- 8004c1e:	4603      	mov	r3, r0
- 8004c20:	73fb      	strb	r3, [r7, #15]
+ 8004c46:	687b      	ldr	r3, [r7, #4]
+ 8004c48:	f8d3 32c0 	ldr.w	r3, [r3, #704]	; 0x2c0
+ 8004c4c:	78fa      	ldrb	r2, [r7, #3]
+ 8004c4e:	4611      	mov	r1, r2
+ 8004c50:	4618      	mov	r0, r3
+ 8004c52:	f7fc f906 	bl	8000e62 <HAL_PCD_EP_ClrStall>
+ 8004c56:	4603      	mov	r3, r0
+ 8004c58:	73fb      	strb	r3, [r7, #15]
      
   usb_status =  USBD_Get_USB_Status(hal_status);
- 8004c22:	7bfb      	ldrb	r3, [r7, #15]
- 8004c24:	4618      	mov	r0, r3
- 8004c26:	f000 f8b1 	bl	8004d8c <USBD_Get_USB_Status>
- 8004c2a:	4603      	mov	r3, r0
- 8004c2c:	73bb      	strb	r3, [r7, #14]
+ 8004c5a:	7bfb      	ldrb	r3, [r7, #15]
+ 8004c5c:	4618      	mov	r0, r3
+ 8004c5e:	f000 f8b1 	bl	8004dc4 <USBD_Get_USB_Status>
+ 8004c62:	4603      	mov	r3, r0
+ 8004c64:	73bb      	strb	r3, [r7, #14]
 
   return usb_status; 
- 8004c2e:	7bbb      	ldrb	r3, [r7, #14]
+ 8004c66:	7bbb      	ldrb	r3, [r7, #14]
 }
- 8004c30:	4618      	mov	r0, r3
- 8004c32:	3710      	adds	r7, #16
- 8004c34:	46bd      	mov	sp, r7
- 8004c36:	bd80      	pop	{r7, pc}
+ 8004c68:	4618      	mov	r0, r3
+ 8004c6a:	3710      	adds	r7, #16
+ 8004c6c:	46bd      	mov	sp, r7
+ 8004c6e:	bd80      	pop	{r7, pc}
 
-08004c38 <USBD_LL_IsStallEP>:
+08004c70 <USBD_LL_IsStallEP>:
   * @param  pdev: Device handle
   * @param  ep_addr: Endpoint number
   * @retval Stall (1: Yes, 0: No)
   */
 uint8_t USBD_LL_IsStallEP(USBD_HandleTypeDef *pdev, uint8_t ep_addr)
 {
- 8004c38:	b480      	push	{r7}
- 8004c3a:	b085      	sub	sp, #20
- 8004c3c:	af00      	add	r7, sp, #0
- 8004c3e:	6078      	str	r0, [r7, #4]
- 8004c40:	460b      	mov	r3, r1
- 8004c42:	70fb      	strb	r3, [r7, #3]
+ 8004c70:	b480      	push	{r7}
+ 8004c72:	b085      	sub	sp, #20
+ 8004c74:	af00      	add	r7, sp, #0
+ 8004c76:	6078      	str	r0, [r7, #4]
+ 8004c78:	460b      	mov	r3, r1
+ 8004c7a:	70fb      	strb	r3, [r7, #3]
   PCD_HandleTypeDef *hpcd = (PCD_HandleTypeDef*) pdev->pData;
- 8004c44:	687b      	ldr	r3, [r7, #4]
- 8004c46:	f8d3 32c0 	ldr.w	r3, [r3, #704]	; 0x2c0
- 8004c4a:	60fb      	str	r3, [r7, #12]
+ 8004c7c:	687b      	ldr	r3, [r7, #4]
+ 8004c7e:	f8d3 32c0 	ldr.w	r3, [r3, #704]	; 0x2c0
+ 8004c82:	60fb      	str	r3, [r7, #12]
   
   if((ep_addr & 0x80) == 0x80)
- 8004c4c:	f997 3003 	ldrsb.w	r3, [r7, #3]
- 8004c50:	2b00      	cmp	r3, #0
- 8004c52:	da08      	bge.n	8004c66 <USBD_LL_IsStallEP+0x2e>
+ 8004c84:	f997 3003 	ldrsb.w	r3, [r7, #3]
+ 8004c88:	2b00      	cmp	r3, #0
+ 8004c8a:	da08      	bge.n	8004c9e <USBD_LL_IsStallEP+0x2e>
   {
     return hpcd->IN_ep[ep_addr & 0x7F].is_stall; 
- 8004c54:	78fb      	ldrb	r3, [r7, #3]
- 8004c56:	f003 037f 	and.w	r3, r3, #127	; 0x7f
- 8004c5a:	68fa      	ldr	r2, [r7, #12]
- 8004c5c:	015b      	lsls	r3, r3, #5
- 8004c5e:	4413      	add	r3, r2
- 8004c60:	332a      	adds	r3, #42	; 0x2a
- 8004c62:	781b      	ldrb	r3, [r3, #0]
- 8004c64:	e008      	b.n	8004c78 <USBD_LL_IsStallEP+0x40>
+ 8004c8c:	78fb      	ldrb	r3, [r7, #3]
+ 8004c8e:	f003 037f 	and.w	r3, r3, #127	; 0x7f
+ 8004c92:	68fa      	ldr	r2, [r7, #12]
+ 8004c94:	015b      	lsls	r3, r3, #5
+ 8004c96:	4413      	add	r3, r2
+ 8004c98:	332a      	adds	r3, #42	; 0x2a
+ 8004c9a:	781b      	ldrb	r3, [r3, #0]
+ 8004c9c:	e008      	b.n	8004cb0 <USBD_LL_IsStallEP+0x40>
   }
   else
   {
     return hpcd->OUT_ep[ep_addr & 0x7F].is_stall; 
- 8004c66:	78fb      	ldrb	r3, [r7, #3]
- 8004c68:	f003 037f 	and.w	r3, r3, #127	; 0x7f
- 8004c6c:	68fa      	ldr	r2, [r7, #12]
- 8004c6e:	015b      	lsls	r3, r3, #5
- 8004c70:	4413      	add	r3, r2
- 8004c72:	f503 7395 	add.w	r3, r3, #298	; 0x12a
- 8004c76:	781b      	ldrb	r3, [r3, #0]
+ 8004c9e:	78fb      	ldrb	r3, [r7, #3]
+ 8004ca0:	f003 037f 	and.w	r3, r3, #127	; 0x7f
+ 8004ca4:	68fa      	ldr	r2, [r7, #12]
+ 8004ca6:	015b      	lsls	r3, r3, #5
+ 8004ca8:	4413      	add	r3, r2
+ 8004caa:	f503 7395 	add.w	r3, r3, #298	; 0x12a
+ 8004cae:	781b      	ldrb	r3, [r3, #0]
   }
 }
- 8004c78:	4618      	mov	r0, r3
- 8004c7a:	3714      	adds	r7, #20
- 8004c7c:	46bd      	mov	sp, r7
- 8004c7e:	bc80      	pop	{r7}
- 8004c80:	4770      	bx	lr
+ 8004cb0:	4618      	mov	r0, r3
+ 8004cb2:	3714      	adds	r7, #20
+ 8004cb4:	46bd      	mov	sp, r7
+ 8004cb6:	bc80      	pop	{r7}
+ 8004cb8:	4770      	bx	lr
 
-08004c82 <USBD_LL_SetUSBAddress>:
+08004cba <USBD_LL_SetUSBAddress>:
   * @param  pdev: Device handle
   * @param  dev_addr: Device address
   * @retval USBD status
   */
 USBD_StatusTypeDef USBD_LL_SetUSBAddress(USBD_HandleTypeDef *pdev, uint8_t dev_addr)
 {
- 8004c82:	b580      	push	{r7, lr}
- 8004c84:	b084      	sub	sp, #16
- 8004c86:	af00      	add	r7, sp, #0
- 8004c88:	6078      	str	r0, [r7, #4]
- 8004c8a:	460b      	mov	r3, r1
- 8004c8c:	70fb      	strb	r3, [r7, #3]
+ 8004cba:	b580      	push	{r7, lr}
+ 8004cbc:	b084      	sub	sp, #16
+ 8004cbe:	af00      	add	r7, sp, #0
+ 8004cc0:	6078      	str	r0, [r7, #4]
+ 8004cc2:	460b      	mov	r3, r1
+ 8004cc4:	70fb      	strb	r3, [r7, #3]
   HAL_StatusTypeDef hal_status = HAL_OK;
- 8004c8e:	2300      	movs	r3, #0
- 8004c90:	73fb      	strb	r3, [r7, #15]
+ 8004cc6:	2300      	movs	r3, #0
+ 8004cc8:	73fb      	strb	r3, [r7, #15]
   USBD_StatusTypeDef usb_status = USBD_OK;
- 8004c92:	2300      	movs	r3, #0
- 8004c94:	73bb      	strb	r3, [r7, #14]
+ 8004cca:	2300      	movs	r3, #0
+ 8004ccc:	73bb      	strb	r3, [r7, #14]
   
   hal_status = HAL_PCD_SetAddress(pdev->pData, dev_addr);
- 8004c96:	687b      	ldr	r3, [r7, #4]
- 8004c98:	f8d3 32c0 	ldr.w	r3, [r3, #704]	; 0x2c0
- 8004c9c:	78fa      	ldrb	r2, [r7, #3]
- 8004c9e:	4611      	mov	r1, r2
- 8004ca0:	4618      	mov	r0, r3
- 8004ca2:	f7fb ff4a 	bl	8000b3a <HAL_PCD_SetAddress>
- 8004ca6:	4603      	mov	r3, r0
- 8004ca8:	73fb      	strb	r3, [r7, #15]
+ 8004cce:	687b      	ldr	r3, [r7, #4]
+ 8004cd0:	f8d3 32c0 	ldr.w	r3, [r3, #704]	; 0x2c0
+ 8004cd4:	78fa      	ldrb	r2, [r7, #3]
+ 8004cd6:	4611      	mov	r1, r2
+ 8004cd8:	4618      	mov	r0, r3
+ 8004cda:	f7fb ff2e 	bl	8000b3a <HAL_PCD_SetAddress>
+ 8004cde:	4603      	mov	r3, r0
+ 8004ce0:	73fb      	strb	r3, [r7, #15]
      
   usb_status =  USBD_Get_USB_Status(hal_status);
- 8004caa:	7bfb      	ldrb	r3, [r7, #15]
- 8004cac:	4618      	mov	r0, r3
- 8004cae:	f000 f86d 	bl	8004d8c <USBD_Get_USB_Status>
- 8004cb2:	4603      	mov	r3, r0
- 8004cb4:	73bb      	strb	r3, [r7, #14]
+ 8004ce2:	7bfb      	ldrb	r3, [r7, #15]
+ 8004ce4:	4618      	mov	r0, r3
+ 8004ce6:	f000 f86d 	bl	8004dc4 <USBD_Get_USB_Status>
+ 8004cea:	4603      	mov	r3, r0
+ 8004cec:	73bb      	strb	r3, [r7, #14]
  
   return usb_status;  
- 8004cb6:	7bbb      	ldrb	r3, [r7, #14]
+ 8004cee:	7bbb      	ldrb	r3, [r7, #14]
 }
- 8004cb8:	4618      	mov	r0, r3
- 8004cba:	3710      	adds	r7, #16
- 8004cbc:	46bd      	mov	sp, r7
- 8004cbe:	bd80      	pop	{r7, pc}
+ 8004cf0:	4618      	mov	r0, r3
+ 8004cf2:	3710      	adds	r7, #16
+ 8004cf4:	46bd      	mov	sp, r7
+ 8004cf6:	bd80      	pop	{r7, pc}
 
-08004cc0 <USBD_LL_Transmit>:
+08004cf8 <USBD_LL_Transmit>:
   * @param  pbuf: Pointer to data to be sent
   * @param  size: Data size    
   * @retval USBD status
   */
 USBD_StatusTypeDef USBD_LL_Transmit(USBD_HandleTypeDef *pdev, uint8_t ep_addr, uint8_t *pbuf, uint16_t size)
 {
- 8004cc0:	b580      	push	{r7, lr}
- 8004cc2:	b086      	sub	sp, #24
- 8004cc4:	af00      	add	r7, sp, #0
- 8004cc6:	60f8      	str	r0, [r7, #12]
- 8004cc8:	607a      	str	r2, [r7, #4]
- 8004cca:	461a      	mov	r2, r3
- 8004ccc:	460b      	mov	r3, r1
- 8004cce:	72fb      	strb	r3, [r7, #11]
- 8004cd0:	4613      	mov	r3, r2
- 8004cd2:	813b      	strh	r3, [r7, #8]
+ 8004cf8:	b580      	push	{r7, lr}
+ 8004cfa:	b086      	sub	sp, #24
+ 8004cfc:	af00      	add	r7, sp, #0
+ 8004cfe:	60f8      	str	r0, [r7, #12]
+ 8004d00:	607a      	str	r2, [r7, #4]
+ 8004d02:	461a      	mov	r2, r3
+ 8004d04:	460b      	mov	r3, r1
+ 8004d06:	72fb      	strb	r3, [r7, #11]
+ 8004d08:	4613      	mov	r3, r2
+ 8004d0a:	813b      	strh	r3, [r7, #8]
   HAL_StatusTypeDef hal_status = HAL_OK;
- 8004cd4:	2300      	movs	r3, #0
- 8004cd6:	75fb      	strb	r3, [r7, #23]
+ 8004d0c:	2300      	movs	r3, #0
+ 8004d0e:	75fb      	strb	r3, [r7, #23]
   USBD_StatusTypeDef usb_status = USBD_OK;
- 8004cd8:	2300      	movs	r3, #0
- 8004cda:	75bb      	strb	r3, [r7, #22]
+ 8004d10:	2300      	movs	r3, #0
+ 8004d12:	75bb      	strb	r3, [r7, #22]
 
   hal_status = HAL_PCD_EP_Transmit(pdev->pData, ep_addr, pbuf, size);
- 8004cdc:	68fb      	ldr	r3, [r7, #12]
- 8004cde:	f8d3 02c0 	ldr.w	r0, [r3, #704]	; 0x2c0
- 8004ce2:	893b      	ldrh	r3, [r7, #8]
- 8004ce4:	7af9      	ldrb	r1, [r7, #11]
- 8004ce6:	687a      	ldr	r2, [r7, #4]
- 8004ce8:	f7fc f828 	bl	8000d3c <HAL_PCD_EP_Transmit>
- 8004cec:	4603      	mov	r3, r0
- 8004cee:	75fb      	strb	r3, [r7, #23]
+ 8004d14:	68fb      	ldr	r3, [r7, #12]
+ 8004d16:	f8d3 02c0 	ldr.w	r0, [r3, #704]	; 0x2c0
+ 8004d1a:	893b      	ldrh	r3, [r7, #8]
+ 8004d1c:	7af9      	ldrb	r1, [r7, #11]
+ 8004d1e:	687a      	ldr	r2, [r7, #4]
+ 8004d20:	f7fc f80c 	bl	8000d3c <HAL_PCD_EP_Transmit>
+ 8004d24:	4603      	mov	r3, r0
+ 8004d26:	75fb      	strb	r3, [r7, #23]
      
   usb_status =  USBD_Get_USB_Status(hal_status);
- 8004cf0:	7dfb      	ldrb	r3, [r7, #23]
- 8004cf2:	4618      	mov	r0, r3
- 8004cf4:	f000 f84a 	bl	8004d8c <USBD_Get_USB_Status>
- 8004cf8:	4603      	mov	r3, r0
- 8004cfa:	75bb      	strb	r3, [r7, #22]
+ 8004d28:	7dfb      	ldrb	r3, [r7, #23]
+ 8004d2a:	4618      	mov	r0, r3
+ 8004d2c:	f000 f84a 	bl	8004dc4 <USBD_Get_USB_Status>
+ 8004d30:	4603      	mov	r3, r0
+ 8004d32:	75bb      	strb	r3, [r7, #22]
   
   return usb_status;    
- 8004cfc:	7dbb      	ldrb	r3, [r7, #22]
+ 8004d34:	7dbb      	ldrb	r3, [r7, #22]
 }
- 8004cfe:	4618      	mov	r0, r3
- 8004d00:	3718      	adds	r7, #24
- 8004d02:	46bd      	mov	sp, r7
- 8004d04:	bd80      	pop	{r7, pc}
+ 8004d36:	4618      	mov	r0, r3
+ 8004d38:	3718      	adds	r7, #24
+ 8004d3a:	46bd      	mov	sp, r7
+ 8004d3c:	bd80      	pop	{r7, pc}
 
-08004d06 <USBD_LL_PrepareReceive>:
+08004d3e <USBD_LL_PrepareReceive>:
   * @param  pbuf: Pointer to data to be received
   * @param  size: Data size
   * @retval USBD status
   */
 USBD_StatusTypeDef USBD_LL_PrepareReceive(USBD_HandleTypeDef *pdev, uint8_t ep_addr, uint8_t *pbuf, uint16_t size)
 {
- 8004d06:	b580      	push	{r7, lr}
- 8004d08:	b086      	sub	sp, #24
- 8004d0a:	af00      	add	r7, sp, #0
- 8004d0c:	60f8      	str	r0, [r7, #12]
- 8004d0e:	607a      	str	r2, [r7, #4]
- 8004d10:	461a      	mov	r2, r3
- 8004d12:	460b      	mov	r3, r1
- 8004d14:	72fb      	strb	r3, [r7, #11]
- 8004d16:	4613      	mov	r3, r2
- 8004d18:	813b      	strh	r3, [r7, #8]
+ 8004d3e:	b580      	push	{r7, lr}
+ 8004d40:	b086      	sub	sp, #24
+ 8004d42:	af00      	add	r7, sp, #0
+ 8004d44:	60f8      	str	r0, [r7, #12]
+ 8004d46:	607a      	str	r2, [r7, #4]
+ 8004d48:	461a      	mov	r2, r3
+ 8004d4a:	460b      	mov	r3, r1
+ 8004d4c:	72fb      	strb	r3, [r7, #11]
+ 8004d4e:	4613      	mov	r3, r2
+ 8004d50:	813b      	strh	r3, [r7, #8]
   HAL_StatusTypeDef hal_status = HAL_OK;
- 8004d1a:	2300      	movs	r3, #0
- 8004d1c:	75fb      	strb	r3, [r7, #23]
+ 8004d52:	2300      	movs	r3, #0
+ 8004d54:	75fb      	strb	r3, [r7, #23]
   USBD_StatusTypeDef usb_status = USBD_OK;
- 8004d1e:	2300      	movs	r3, #0
- 8004d20:	75bb      	strb	r3, [r7, #22]
+ 8004d56:	2300      	movs	r3, #0
+ 8004d58:	75bb      	strb	r3, [r7, #22]
 
   hal_status = HAL_PCD_EP_Receive(pdev->pData, ep_addr, pbuf, size);
- 8004d22:	68fb      	ldr	r3, [r7, #12]
- 8004d24:	f8d3 02c0 	ldr.w	r0, [r3, #704]	; 0x2c0
- 8004d28:	893b      	ldrh	r3, [r7, #8]
- 8004d2a:	7af9      	ldrb	r1, [r7, #11]
- 8004d2c:	687a      	ldr	r2, [r7, #4]
- 8004d2e:	f7fb ffcb 	bl	8000cc8 <HAL_PCD_EP_Receive>
- 8004d32:	4603      	mov	r3, r0
- 8004d34:	75fb      	strb	r3, [r7, #23]
+ 8004d5a:	68fb      	ldr	r3, [r7, #12]
+ 8004d5c:	f8d3 02c0 	ldr.w	r0, [r3, #704]	; 0x2c0
+ 8004d60:	893b      	ldrh	r3, [r7, #8]
+ 8004d62:	7af9      	ldrb	r1, [r7, #11]
+ 8004d64:	687a      	ldr	r2, [r7, #4]
+ 8004d66:	f7fb ffaf 	bl	8000cc8 <HAL_PCD_EP_Receive>
+ 8004d6a:	4603      	mov	r3, r0
+ 8004d6c:	75fb      	strb	r3, [r7, #23]
      
   usb_status =  USBD_Get_USB_Status(hal_status);
- 8004d36:	7dfb      	ldrb	r3, [r7, #23]
- 8004d38:	4618      	mov	r0, r3
- 8004d3a:	f000 f827 	bl	8004d8c <USBD_Get_USB_Status>
- 8004d3e:	4603      	mov	r3, r0
- 8004d40:	75bb      	strb	r3, [r7, #22]
+ 8004d6e:	7dfb      	ldrb	r3, [r7, #23]
+ 8004d70:	4618      	mov	r0, r3
+ 8004d72:	f000 f827 	bl	8004dc4 <USBD_Get_USB_Status>
+ 8004d76:	4603      	mov	r3, r0
+ 8004d78:	75bb      	strb	r3, [r7, #22]
   	
   return usb_status; 
- 8004d42:	7dbb      	ldrb	r3, [r7, #22]
+ 8004d7a:	7dbb      	ldrb	r3, [r7, #22]
 }
- 8004d44:	4618      	mov	r0, r3
- 8004d46:	3718      	adds	r7, #24
- 8004d48:	46bd      	mov	sp, r7
- 8004d4a:	bd80      	pop	{r7, pc}
+ 8004d7c:	4618      	mov	r0, r3
+ 8004d7e:	3718      	adds	r7, #24
+ 8004d80:	46bd      	mov	sp, r7
+ 8004d82:	bd80      	pop	{r7, pc}
 
-08004d4c <USBD_static_malloc>:
+08004d84 <USBD_static_malloc>:
   * @brief  Static single allocation.
   * @param  size: Size of allocated memory
   * @retval None
   */
 void *USBD_static_malloc(uint32_t size)
 {
- 8004d4c:	b480      	push	{r7}
- 8004d4e:	b083      	sub	sp, #12
- 8004d50:	af00      	add	r7, sp, #0
- 8004d52:	6078      	str	r0, [r7, #4]
+ 8004d84:	b480      	push	{r7}
+ 8004d86:	b083      	sub	sp, #12
+ 8004d88:	af00      	add	r7, sp, #0
+ 8004d8a:	6078      	str	r0, [r7, #4]
   static uint32_t mem[(sizeof(USBD_CUSTOM_HID_HandleTypeDef)/4+1)];/* On 32-bit boundary */
   return mem;
- 8004d54:	4b02      	ldr	r3, [pc, #8]	; (8004d60 <USBD_static_malloc+0x14>)
+ 8004d8c:	4b02      	ldr	r3, [pc, #8]	; (8004d98 <USBD_static_malloc+0x14>)
 }
- 8004d56:	4618      	mov	r0, r3
- 8004d58:	370c      	adds	r7, #12
- 8004d5a:	46bd      	mov	sp, r7
- 8004d5c:	bc80      	pop	{r7}
- 8004d5e:	4770      	bx	lr
- 8004d60:	20000188 	.word	0x20000188
+ 8004d8e:	4618      	mov	r0, r3
+ 8004d90:	370c      	adds	r7, #12
+ 8004d92:	46bd      	mov	sp, r7
+ 8004d94:	bc80      	pop	{r7}
+ 8004d96:	4770      	bx	lr
+ 8004d98:	20000188 	.word	0x20000188
 
-08004d64 <USBD_static_free>:
+08004d9c <USBD_static_free>:
   * @brief  Dummy memory free
   * @param  p: Pointer to allocated  memory address
   * @retval None
   */
 void USBD_static_free(void *p)
 {
- 8004d64:	b480      	push	{r7}
- 8004d66:	b083      	sub	sp, #12
- 8004d68:	af00      	add	r7, sp, #0
- 8004d6a:	6078      	str	r0, [r7, #4]
+ 8004d9c:	b480      	push	{r7}
+ 8004d9e:	b083      	sub	sp, #12
+ 8004da0:	af00      	add	r7, sp, #0
+ 8004da2:	6078      	str	r0, [r7, #4]
 
 }
- 8004d6c:	bf00      	nop
- 8004d6e:	370c      	adds	r7, #12
- 8004d70:	46bd      	mov	sp, r7
- 8004d72:	bc80      	pop	{r7}
- 8004d74:	4770      	bx	lr
+ 8004da4:	bf00      	nop
+ 8004da6:	370c      	adds	r7, #12
+ 8004da8:	46bd      	mov	sp, r7
+ 8004daa:	bc80      	pop	{r7}
+ 8004dac:	4770      	bx	lr
 
-08004d76 <HAL_PCDEx_SetConnectionState>:
+08004dae <HAL_PCDEx_SetConnectionState>:
 #if (USE_HAL_PCD_REGISTER_CALLBACKS == 1U)
 static void PCDEx_SetConnectionState(PCD_HandleTypeDef *hpcd, uint8_t state)
 #else
 void HAL_PCDEx_SetConnectionState(PCD_HandleTypeDef *hpcd, uint8_t state)
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
 {
- 8004d76:	b480      	push	{r7}
- 8004d78:	b083      	sub	sp, #12
- 8004d7a:	af00      	add	r7, sp, #0
- 8004d7c:	6078      	str	r0, [r7, #4]
- 8004d7e:	460b      	mov	r3, r1
- 8004d80:	70fb      	strb	r3, [r7, #3]
+ 8004dae:	b480      	push	{r7}
+ 8004db0:	b083      	sub	sp, #12
+ 8004db2:	af00      	add	r7, sp, #0
+ 8004db4:	6078      	str	r0, [r7, #4]
+ 8004db6:	460b      	mov	r3, r1
+ 8004db8:	70fb      	strb	r3, [r7, #3]
   {
     /* Configure High connection state. */
 
   }
   /* USER CODE END 6 */
 }
- 8004d82:	bf00      	nop
- 8004d84:	370c      	adds	r7, #12
- 8004d86:	46bd      	mov	sp, r7
- 8004d88:	bc80      	pop	{r7}
- 8004d8a:	4770      	bx	lr
+ 8004dba:	bf00      	nop
+ 8004dbc:	370c      	adds	r7, #12
+ 8004dbe:	46bd      	mov	sp, r7
+ 8004dc0:	bc80      	pop	{r7}
+ 8004dc2:	4770      	bx	lr
 
-08004d8c <USBD_Get_USB_Status>:
+08004dc4 <USBD_Get_USB_Status>:
   * @brief  Retuns the USB status depending on the HAL status:
   * @param  hal_status: HAL status
   * @retval USB status
   */
 USBD_StatusTypeDef USBD_Get_USB_Status(HAL_StatusTypeDef hal_status)
 {
- 8004d8c:	b480      	push	{r7}
- 8004d8e:	b085      	sub	sp, #20
- 8004d90:	af00      	add	r7, sp, #0
- 8004d92:	4603      	mov	r3, r0
- 8004d94:	71fb      	strb	r3, [r7, #7]
+ 8004dc4:	b480      	push	{r7}
+ 8004dc6:	b085      	sub	sp, #20
+ 8004dc8:	af00      	add	r7, sp, #0
+ 8004dca:	4603      	mov	r3, r0
+ 8004dcc:	71fb      	strb	r3, [r7, #7]
   USBD_StatusTypeDef usb_status = USBD_OK;
- 8004d96:	2300      	movs	r3, #0
- 8004d98:	73fb      	strb	r3, [r7, #15]
+ 8004dce:	2300      	movs	r3, #0
+ 8004dd0:	73fb      	strb	r3, [r7, #15]
 
   switch (hal_status)
- 8004d9a:	79fb      	ldrb	r3, [r7, #7]
- 8004d9c:	2b03      	cmp	r3, #3
- 8004d9e:	d817      	bhi.n	8004dd0 <USBD_Get_USB_Status+0x44>
- 8004da0:	a201      	add	r2, pc, #4	; (adr r2, 8004da8 <USBD_Get_USB_Status+0x1c>)
- 8004da2:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
- 8004da6:	bf00      	nop
- 8004da8:	08004db9 	.word	0x08004db9
- 8004dac:	08004dbf 	.word	0x08004dbf
- 8004db0:	08004dc5 	.word	0x08004dc5
- 8004db4:	08004dcb 	.word	0x08004dcb
+ 8004dd2:	79fb      	ldrb	r3, [r7, #7]
+ 8004dd4:	2b03      	cmp	r3, #3
+ 8004dd6:	d817      	bhi.n	8004e08 <USBD_Get_USB_Status+0x44>
+ 8004dd8:	a201      	add	r2, pc, #4	; (adr r2, 8004de0 <USBD_Get_USB_Status+0x1c>)
+ 8004dda:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
+ 8004dde:	bf00      	nop
+ 8004de0:	08004df1 	.word	0x08004df1
+ 8004de4:	08004df7 	.word	0x08004df7
+ 8004de8:	08004dfd 	.word	0x08004dfd
+ 8004dec:	08004e03 	.word	0x08004e03
   {
     case HAL_OK :
       usb_status = USBD_OK;
- 8004db8:	2300      	movs	r3, #0
- 8004dba:	73fb      	strb	r3, [r7, #15]
+ 8004df0:	2300      	movs	r3, #0
+ 8004df2:	73fb      	strb	r3, [r7, #15]
     break;
- 8004dbc:	e00b      	b.n	8004dd6 <USBD_Get_USB_Status+0x4a>
+ 8004df4:	e00b      	b.n	8004e0e <USBD_Get_USB_Status+0x4a>
     case HAL_ERROR :
       usb_status = USBD_FAIL;
- 8004dbe:	2302      	movs	r3, #2
- 8004dc0:	73fb      	strb	r3, [r7, #15]
+ 8004df6:	2302      	movs	r3, #2
+ 8004df8:	73fb      	strb	r3, [r7, #15]
     break;
- 8004dc2:	e008      	b.n	8004dd6 <USBD_Get_USB_Status+0x4a>
+ 8004dfa:	e008      	b.n	8004e0e <USBD_Get_USB_Status+0x4a>
     case HAL_BUSY :
       usb_status = USBD_BUSY;
- 8004dc4:	2301      	movs	r3, #1
- 8004dc6:	73fb      	strb	r3, [r7, #15]
+ 8004dfc:	2301      	movs	r3, #1
+ 8004dfe:	73fb      	strb	r3, [r7, #15]
     break;
- 8004dc8:	e005      	b.n	8004dd6 <USBD_Get_USB_Status+0x4a>
+ 8004e00:	e005      	b.n	8004e0e <USBD_Get_USB_Status+0x4a>
     case HAL_TIMEOUT :
       usb_status = USBD_FAIL;
- 8004dca:	2302      	movs	r3, #2
- 8004dcc:	73fb      	strb	r3, [r7, #15]
+ 8004e02:	2302      	movs	r3, #2
+ 8004e04:	73fb      	strb	r3, [r7, #15]
     break;
- 8004dce:	e002      	b.n	8004dd6 <USBD_Get_USB_Status+0x4a>
+ 8004e06:	e002      	b.n	8004e0e <USBD_Get_USB_Status+0x4a>
     default :
       usb_status = USBD_FAIL;
- 8004dd0:	2302      	movs	r3, #2
- 8004dd2:	73fb      	strb	r3, [r7, #15]
+ 8004e08:	2302      	movs	r3, #2
+ 8004e0a:	73fb      	strb	r3, [r7, #15]
     break;
- 8004dd4:	bf00      	nop
+ 8004e0c:	bf00      	nop
   }
   return usb_status;
- 8004dd6:	7bfb      	ldrb	r3, [r7, #15]
+ 8004e0e:	7bfb      	ldrb	r3, [r7, #15]
 }
- 8004dd8:	4618      	mov	r0, r3
- 8004dda:	3714      	adds	r7, #20
- 8004ddc:	46bd      	mov	sp, r7
- 8004dde:	bc80      	pop	{r7}
- 8004de0:	4770      	bx	lr
- 8004de2:	bf00      	nop
+ 8004e10:	4618      	mov	r0, r3
+ 8004e12:	3714      	adds	r7, #20
+ 8004e14:	46bd      	mov	sp, r7
+ 8004e16:	bc80      	pop	{r7}
+ 8004e18:	4770      	bx	lr
+ 8004e1a:	bf00      	nop
 
-08004de4 <CUSTOM_HID_Init_FS>:
+08004e1c <CUSTOM_HID_Init_FS>:
 /**
   * @brief  Initializes the CUSTOM HID media low layer
   * @retval USBD_OK if all operations are OK else USBD_FAIL
   */
 static int8_t CUSTOM_HID_Init_FS(void)
 {
- 8004de4:	b480      	push	{r7}
- 8004de6:	af00      	add	r7, sp, #0
+ 8004e1c:	b480      	push	{r7}
+ 8004e1e:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN 4 */
   return (USBD_OK);
- 8004de8:	2300      	movs	r3, #0
+ 8004e20:	2300      	movs	r3, #0
   /* USER CODE END 4 */
 }
- 8004dea:	4618      	mov	r0, r3
- 8004dec:	46bd      	mov	sp, r7
- 8004dee:	bc80      	pop	{r7}
- 8004df0:	4770      	bx	lr
+ 8004e22:	4618      	mov	r0, r3
+ 8004e24:	46bd      	mov	sp, r7
+ 8004e26:	bc80      	pop	{r7}
+ 8004e28:	4770      	bx	lr
 
-08004df2 <CUSTOM_HID_DeInit_FS>:
+08004e2a <CUSTOM_HID_DeInit_FS>:
 /**
   * @brief  DeInitializes the CUSTOM HID media low layer
   * @retval USBD_OK if all operations are OK else USBD_FAIL
   */
 static int8_t CUSTOM_HID_DeInit_FS(void)
 {
- 8004df2:	b480      	push	{r7}
- 8004df4:	af00      	add	r7, sp, #0
+ 8004e2a:	b480      	push	{r7}
+ 8004e2c:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN 5 */
   return (USBD_OK);
- 8004df6:	2300      	movs	r3, #0
+ 8004e2e:	2300      	movs	r3, #0
   /* USER CODE END 5 */
 }
- 8004df8:	4618      	mov	r0, r3
- 8004dfa:	46bd      	mov	sp, r7
- 8004dfc:	bc80      	pop	{r7}
- 8004dfe:	4770      	bx	lr
+ 8004e30:	4618      	mov	r0, r3
+ 8004e32:	46bd      	mov	sp, r7
+ 8004e34:	bc80      	pop	{r7}
+ 8004e36:	4770      	bx	lr
 
-08004e00 <CUSTOM_HID_OutEvent_FS>:
+08004e38 <CUSTOM_HID_OutEvent_FS>:
   * @param  event_idx: Event index
   * @param  state: Event state
   * @retval USBD_OK if all operations are OK else USBD_FAIL
   */
 static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state)
 {
- 8004e00:	b580      	push	{r7, lr}
- 8004e02:	b084      	sub	sp, #16
- 8004e04:	af00      	add	r7, sp, #0
- 8004e06:	4603      	mov	r3, r0
- 8004e08:	460a      	mov	r2, r1
- 8004e0a:	71fb      	strb	r3, [r7, #7]
- 8004e0c:	4613      	mov	r3, r2
- 8004e0e:	71bb      	strb	r3, [r7, #6]
+ 8004e38:	b580      	push	{r7, lr}
+ 8004e3a:	b084      	sub	sp, #16
+ 8004e3c:	af00      	add	r7, sp, #0
+ 8004e3e:	4603      	mov	r3, r0
+ 8004e40:	460a      	mov	r2, r1
+ 8004e42:	71fb      	strb	r3, [r7, #7]
+ 8004e44:	4613      	mov	r3, r2
+ 8004e46:	71bb      	strb	r3, [r7, #6]
   /* USER CODE BEGIN 6 */
   USBD_CUSTOM_HID_HandleTypeDef *hhid = (USBD_CUSTOM_HID_HandleTypeDef*)hUsbDeviceFS.pClassData;
- 8004e10:	4b0e      	ldr	r3, [pc, #56]	; (8004e4c <CUSTOM_HID_OutEvent_FS+0x4c>)
- 8004e12:	f8d3 32b8 	ldr.w	r3, [r3, #696]	; 0x2b8
- 8004e16:	60fb      	str	r3, [r7, #12]
+ 8004e48:	4b0e      	ldr	r3, [pc, #56]	; (8004e84 <CUSTOM_HID_OutEvent_FS+0x4c>)
+ 8004e4a:	f8d3 32b8 	ldr.w	r3, [r3, #696]	; 0x2b8
+ 8004e4e:	60fb      	str	r3, [r7, #12]
 //  memcpy(usbData, hhid->Report_buf, USBD_CUSTOMHID_OUTREPORT_BUF_SIZE);
   switch (hhid->Report_buf[0]) {
- 8004e18:	68fb      	ldr	r3, [r7, #12]
- 8004e1a:	781b      	ldrb	r3, [r3, #0]
- 8004e1c:	2b02      	cmp	r3, #2
- 8004e1e:	d002      	beq.n	8004e26 <CUSTOM_HID_OutEvent_FS+0x26>
- 8004e20:	2b05      	cmp	r3, #5
- 8004e22:	d007      	beq.n	8004e34 <CUSTOM_HID_OutEvent_FS+0x34>
+ 8004e50:	68fb      	ldr	r3, [r7, #12]
+ 8004e52:	781b      	ldrb	r3, [r3, #0]
+ 8004e54:	2b02      	cmp	r3, #2
+ 8004e56:	d002      	beq.n	8004e5e <CUSTOM_HID_OutEvent_FS+0x26>
+ 8004e58:	2b05      	cmp	r3, #5
+ 8004e5a:	d007      	beq.n	8004e6c <CUSTOM_HID_OutEvent_FS+0x34>
   case 2: HAL_GPIO_WritePin(BlueLed_GPIO_Port, BlueLed_Pin, GPIO_PIN_SET); break;
   case 5: HAL_GPIO_WritePin(BlueLed_GPIO_Port, BlueLed_Pin, GPIO_PIN_RESET); break;
   default: break;
- 8004e24:	e00d      	b.n	8004e42 <CUSTOM_HID_OutEvent_FS+0x42>
+ 8004e5c:	e00d      	b.n	8004e7a <CUSTOM_HID_OutEvent_FS+0x42>
   case 2: HAL_GPIO_WritePin(BlueLed_GPIO_Port, BlueLed_Pin, GPIO_PIN_SET); break;
- 8004e26:	2201      	movs	r2, #1
- 8004e28:	f44f 5100 	mov.w	r1, #8192	; 0x2000
- 8004e2c:	4808      	ldr	r0, [pc, #32]	; (8004e50 <CUSTOM_HID_OutEvent_FS+0x50>)
- 8004e2e:	f7fb fc57 	bl	80006e0 <HAL_GPIO_WritePin>
- 8004e32:	e006      	b.n	8004e42 <CUSTOM_HID_OutEvent_FS+0x42>
+ 8004e5e:	2201      	movs	r2, #1
+ 8004e60:	f44f 5100 	mov.w	r1, #8192	; 0x2000
+ 8004e64:	4808      	ldr	r0, [pc, #32]	; (8004e88 <CUSTOM_HID_OutEvent_FS+0x50>)
+ 8004e66:	f7fb fc3b 	bl	80006e0 <HAL_GPIO_WritePin>
+ 8004e6a:	e006      	b.n	8004e7a <CUSTOM_HID_OutEvent_FS+0x42>
   case 5: HAL_GPIO_WritePin(BlueLed_GPIO_Port, BlueLed_Pin, GPIO_PIN_RESET); break;
- 8004e34:	2200      	movs	r2, #0
- 8004e36:	f44f 5100 	mov.w	r1, #8192	; 0x2000
- 8004e3a:	4805      	ldr	r0, [pc, #20]	; (8004e50 <CUSTOM_HID_OutEvent_FS+0x50>)
- 8004e3c:	f7fb fc50 	bl	80006e0 <HAL_GPIO_WritePin>
- 8004e40:	bf00      	nop
+ 8004e6c:	2200      	movs	r2, #0
+ 8004e6e:	f44f 5100 	mov.w	r1, #8192	; 0x2000
+ 8004e72:	4805      	ldr	r0, [pc, #20]	; (8004e88 <CUSTOM_HID_OutEvent_FS+0x50>)
+ 8004e74:	f7fb fc34 	bl	80006e0 <HAL_GPIO_WritePin>
+ 8004e78:	bf00      	nop
   }
 
   return (USBD_OK);
- 8004e42:	2300      	movs	r3, #0
+ 8004e7a:	2300      	movs	r3, #0
   /* USER CODE END 6 */
 }
- 8004e44:	4618      	mov	r0, r3
- 8004e46:	3710      	adds	r7, #16
- 8004e48:	46bd      	mov	sp, r7
- 8004e4a:	bd80      	pop	{r7, pc}
- 8004e4c:	200001a8 	.word	0x200001a8
- 8004e50:	40011000 	.word	0x40011000
+ 8004e7c:	4618      	mov	r0, r3
+ 8004e7e:	3710      	adds	r7, #16
+ 8004e80:	46bd      	mov	sp, r7
+ 8004e82:	bd80      	pop	{r7, pc}
+ 8004e84:	200001a8 	.word	0x200001a8
+ 8004e88:	40011000 	.word	0x40011000
 
-08004e54 <USBD_FS_DeviceDescriptor>:
+08004e8c <USBD_FS_DeviceDescriptor>:
   * @param  speed : Current device speed
   * @param  length : Pointer to data length variable
   * @retval Pointer to descriptor buffer
   */
 uint8_t * USBD_FS_DeviceDescriptor(USBD_SpeedTypeDef speed, uint16_t *length)
 {
- 8004e54:	b480      	push	{r7}
- 8004e56:	b083      	sub	sp, #12
- 8004e58:	af00      	add	r7, sp, #0
- 8004e5a:	4603      	mov	r3, r0
- 8004e5c:	6039      	str	r1, [r7, #0]
- 8004e5e:	71fb      	strb	r3, [r7, #7]
+ 8004e8c:	b480      	push	{r7}
+ 8004e8e:	b083      	sub	sp, #12
+ 8004e90:	af00      	add	r7, sp, #0
+ 8004e92:	4603      	mov	r3, r0
+ 8004e94:	6039      	str	r1, [r7, #0]
+ 8004e96:	71fb      	strb	r3, [r7, #7]
   UNUSED(speed);
   *length = sizeof(USBD_FS_DeviceDesc);
- 8004e60:	683b      	ldr	r3, [r7, #0]
- 8004e62:	2212      	movs	r2, #18
- 8004e64:	801a      	strh	r2, [r3, #0]
+ 8004e98:	683b      	ldr	r3, [r7, #0]
+ 8004e9a:	2212      	movs	r2, #18
+ 8004e9c:	801a      	strh	r2, [r3, #0]
   return USBD_FS_DeviceDesc;
- 8004e66:	4b03      	ldr	r3, [pc, #12]	; (8004e74 <USBD_FS_DeviceDescriptor+0x20>)
+ 8004e9e:	4b03      	ldr	r3, [pc, #12]	; (8004eac <USBD_FS_DeviceDescriptor+0x20>)
 }
- 8004e68:	4618      	mov	r0, r3
- 8004e6a:	370c      	adds	r7, #12
- 8004e6c:	46bd      	mov	sp, r7
- 8004e6e:	bc80      	pop	{r7}
- 8004e70:	4770      	bx	lr
- 8004e72:	bf00      	nop
- 8004e74:	20000134 	.word	0x20000134
+ 8004ea0:	4618      	mov	r0, r3
+ 8004ea2:	370c      	adds	r7, #12
+ 8004ea4:	46bd      	mov	sp, r7
+ 8004ea6:	bc80      	pop	{r7}
+ 8004ea8:	4770      	bx	lr
+ 8004eaa:	bf00      	nop
+ 8004eac:	20000134 	.word	0x20000134
 
-08004e78 <USBD_FS_LangIDStrDescriptor>:
+08004eb0 <USBD_FS_LangIDStrDescriptor>:
   * @param  speed : Current device speed
   * @param  length : Pointer to data length variable
   * @retval Pointer to descriptor buffer
   */
 uint8_t * USBD_FS_LangIDStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *length)
 {
- 8004e78:	b480      	push	{r7}
- 8004e7a:	b083      	sub	sp, #12
- 8004e7c:	af00      	add	r7, sp, #0
- 8004e7e:	4603      	mov	r3, r0
- 8004e80:	6039      	str	r1, [r7, #0]
- 8004e82:	71fb      	strb	r3, [r7, #7]
+ 8004eb0:	b480      	push	{r7}
+ 8004eb2:	b083      	sub	sp, #12
+ 8004eb4:	af00      	add	r7, sp, #0
+ 8004eb6:	4603      	mov	r3, r0
+ 8004eb8:	6039      	str	r1, [r7, #0]
+ 8004eba:	71fb      	strb	r3, [r7, #7]
   UNUSED(speed);
   *length = sizeof(USBD_LangIDDesc);
- 8004e84:	683b      	ldr	r3, [r7, #0]
- 8004e86:	2204      	movs	r2, #4
- 8004e88:	801a      	strh	r2, [r3, #0]
+ 8004ebc:	683b      	ldr	r3, [r7, #0]
+ 8004ebe:	2204      	movs	r2, #4
+ 8004ec0:	801a      	strh	r2, [r3, #0]
   return USBD_LangIDDesc;
- 8004e8a:	4b03      	ldr	r3, [pc, #12]	; (8004e98 <USBD_FS_LangIDStrDescriptor+0x20>)
+ 8004ec2:	4b03      	ldr	r3, [pc, #12]	; (8004ed0 <USBD_FS_LangIDStrDescriptor+0x20>)
 }
- 8004e8c:	4618      	mov	r0, r3
- 8004e8e:	370c      	adds	r7, #12
- 8004e90:	46bd      	mov	sp, r7
- 8004e92:	bc80      	pop	{r7}
- 8004e94:	4770      	bx	lr
- 8004e96:	bf00      	nop
- 8004e98:	20000148 	.word	0x20000148
+ 8004ec4:	4618      	mov	r0, r3
+ 8004ec6:	370c      	adds	r7, #12
+ 8004ec8:	46bd      	mov	sp, r7
+ 8004eca:	bc80      	pop	{r7}
+ 8004ecc:	4770      	bx	lr
+ 8004ece:	bf00      	nop
+ 8004ed0:	20000148 	.word	0x20000148
 
-08004e9c <USBD_FS_ProductStrDescriptor>:
+08004ed4 <USBD_FS_ProductStrDescriptor>:
   * @param  speed : Current device speed
   * @param  length : Pointer to data length variable
   * @retval Pointer to descriptor buffer
   */
 uint8_t * USBD_FS_ProductStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *length)
 {
- 8004e9c:	b580      	push	{r7, lr}
- 8004e9e:	b082      	sub	sp, #8
- 8004ea0:	af00      	add	r7, sp, #0
- 8004ea2:	4603      	mov	r3, r0
- 8004ea4:	6039      	str	r1, [r7, #0]
- 8004ea6:	71fb      	strb	r3, [r7, #7]
+ 8004ed4:	b580      	push	{r7, lr}
+ 8004ed6:	b082      	sub	sp, #8
+ 8004ed8:	af00      	add	r7, sp, #0
+ 8004eda:	4603      	mov	r3, r0
+ 8004edc:	6039      	str	r1, [r7, #0]
+ 8004ede:	71fb      	strb	r3, [r7, #7]
   if(speed == 0)
- 8004ea8:	79fb      	ldrb	r3, [r7, #7]
- 8004eaa:	2b00      	cmp	r3, #0
- 8004eac:	d105      	bne.n	8004eba <USBD_FS_ProductStrDescriptor+0x1e>
+ 8004ee0:	79fb      	ldrb	r3, [r7, #7]
+ 8004ee2:	2b00      	cmp	r3, #0
+ 8004ee4:	d105      	bne.n	8004ef2 <USBD_FS_ProductStrDescriptor+0x1e>
   {
     USBD_GetString((uint8_t *)USBD_PRODUCT_STRING_FS, USBD_StrDesc, length);
- 8004eae:	683a      	ldr	r2, [r7, #0]
- 8004eb0:	4907      	ldr	r1, [pc, #28]	; (8004ed0 <USBD_FS_ProductStrDescriptor+0x34>)
- 8004eb2:	4808      	ldr	r0, [pc, #32]	; (8004ed4 <USBD_FS_ProductStrDescriptor+0x38>)
- 8004eb4:	f7ff fab7 	bl	8004426 <USBD_GetString>
- 8004eb8:	e004      	b.n	8004ec4 <USBD_FS_ProductStrDescriptor+0x28>
+ 8004ee6:	683a      	ldr	r2, [r7, #0]
+ 8004ee8:	4907      	ldr	r1, [pc, #28]	; (8004f08 <USBD_FS_ProductStrDescriptor+0x34>)
+ 8004eea:	4808      	ldr	r0, [pc, #32]	; (8004f0c <USBD_FS_ProductStrDescriptor+0x38>)
+ 8004eec:	f7ff fa9b 	bl	8004426 <USBD_GetString>
+ 8004ef0:	e004      	b.n	8004efc <USBD_FS_ProductStrDescriptor+0x28>
   }
   else
   {
     USBD_GetString((uint8_t *)USBD_PRODUCT_STRING_FS, USBD_StrDesc, length);
- 8004eba:	683a      	ldr	r2, [r7, #0]
- 8004ebc:	4904      	ldr	r1, [pc, #16]	; (8004ed0 <USBD_FS_ProductStrDescriptor+0x34>)
- 8004ebe:	4805      	ldr	r0, [pc, #20]	; (8004ed4 <USBD_FS_ProductStrDescriptor+0x38>)
- 8004ec0:	f7ff fab1 	bl	8004426 <USBD_GetString>
+ 8004ef2:	683a      	ldr	r2, [r7, #0]
+ 8004ef4:	4904      	ldr	r1, [pc, #16]	; (8004f08 <USBD_FS_ProductStrDescriptor+0x34>)
+ 8004ef6:	4805      	ldr	r0, [pc, #20]	; (8004f0c <USBD_FS_ProductStrDescriptor+0x38>)
+ 8004ef8:	f7ff fa95 	bl	8004426 <USBD_GetString>
   }
   return USBD_StrDesc;
- 8004ec4:	4b02      	ldr	r3, [pc, #8]	; (8004ed0 <USBD_FS_ProductStrDescriptor+0x34>)
+ 8004efc:	4b02      	ldr	r3, [pc, #8]	; (8004f08 <USBD_FS_ProductStrDescriptor+0x34>)
 }
- 8004ec6:	4618      	mov	r0, r3
- 8004ec8:	3708      	adds	r7, #8
- 8004eca:	46bd      	mov	sp, r7
- 8004ecc:	bd80      	pop	{r7, pc}
- 8004ece:	bf00      	nop
- 8004ed0:	200006d8 	.word	0x200006d8
- 8004ed4:	08005140 	.word	0x08005140
+ 8004efe:	4618      	mov	r0, r3
+ 8004f00:	3708      	adds	r7, #8
+ 8004f02:	46bd      	mov	sp, r7
+ 8004f04:	bd80      	pop	{r7, pc}
+ 8004f06:	bf00      	nop
+ 8004f08:	200006d8 	.word	0x200006d8
+ 8004f0c:	08005178 	.word	0x08005178
 
-08004ed8 <USBD_FS_ManufacturerStrDescriptor>:
+08004f10 <USBD_FS_ManufacturerStrDescriptor>:
   * @param  speed : Current device speed
   * @param  length : Pointer to data length variable
   * @retval Pointer to descriptor buffer
   */
 uint8_t * USBD_FS_ManufacturerStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *length)
 {
- 8004ed8:	b580      	push	{r7, lr}
- 8004eda:	b082      	sub	sp, #8
- 8004edc:	af00      	add	r7, sp, #0
- 8004ede:	4603      	mov	r3, r0
- 8004ee0:	6039      	str	r1, [r7, #0]
- 8004ee2:	71fb      	strb	r3, [r7, #7]
+ 8004f10:	b580      	push	{r7, lr}
+ 8004f12:	b082      	sub	sp, #8
+ 8004f14:	af00      	add	r7, sp, #0
+ 8004f16:	4603      	mov	r3, r0
+ 8004f18:	6039      	str	r1, [r7, #0]
+ 8004f1a:	71fb      	strb	r3, [r7, #7]
   UNUSED(speed);
   USBD_GetString((uint8_t *)USBD_MANUFACTURER_STRING, USBD_StrDesc, length);
- 8004ee4:	683a      	ldr	r2, [r7, #0]
- 8004ee6:	4904      	ldr	r1, [pc, #16]	; (8004ef8 <USBD_FS_ManufacturerStrDescriptor+0x20>)
- 8004ee8:	4804      	ldr	r0, [pc, #16]	; (8004efc <USBD_FS_ManufacturerStrDescriptor+0x24>)
- 8004eea:	f7ff fa9c 	bl	8004426 <USBD_GetString>
+ 8004f1c:	683a      	ldr	r2, [r7, #0]
+ 8004f1e:	4904      	ldr	r1, [pc, #16]	; (8004f30 <USBD_FS_ManufacturerStrDescriptor+0x20>)
+ 8004f20:	4804      	ldr	r0, [pc, #16]	; (8004f34 <USBD_FS_ManufacturerStrDescriptor+0x24>)
+ 8004f22:	f7ff fa80 	bl	8004426 <USBD_GetString>
   return USBD_StrDesc;
- 8004eee:	4b02      	ldr	r3, [pc, #8]	; (8004ef8 <USBD_FS_ManufacturerStrDescriptor+0x20>)
+ 8004f26:	4b02      	ldr	r3, [pc, #8]	; (8004f30 <USBD_FS_ManufacturerStrDescriptor+0x20>)
 }
- 8004ef0:	4618      	mov	r0, r3
- 8004ef2:	3708      	adds	r7, #8
- 8004ef4:	46bd      	mov	sp, r7
- 8004ef6:	bd80      	pop	{r7, pc}
- 8004ef8:	200006d8 	.word	0x200006d8
- 8004efc:	08005154 	.word	0x08005154
+ 8004f28:	4618      	mov	r0, r3
+ 8004f2a:	3708      	adds	r7, #8
+ 8004f2c:	46bd      	mov	sp, r7
+ 8004f2e:	bd80      	pop	{r7, pc}
+ 8004f30:	200006d8 	.word	0x200006d8
+ 8004f34:	0800518c 	.word	0x0800518c
 
-08004f00 <USBD_FS_SerialStrDescriptor>:
+08004f38 <USBD_FS_SerialStrDescriptor>:
   * @param  speed : Current device speed
   * @param  length : Pointer to data length variable
   * @retval Pointer to descriptor buffer
   */
 uint8_t * USBD_FS_SerialStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *length)
 {
- 8004f00:	b580      	push	{r7, lr}
- 8004f02:	b082      	sub	sp, #8
- 8004f04:	af00      	add	r7, sp, #0
- 8004f06:	4603      	mov	r3, r0
- 8004f08:	6039      	str	r1, [r7, #0]
- 8004f0a:	71fb      	strb	r3, [r7, #7]
+ 8004f38:	b580      	push	{r7, lr}
+ 8004f3a:	b082      	sub	sp, #8
+ 8004f3c:	af00      	add	r7, sp, #0
+ 8004f3e:	4603      	mov	r3, r0
+ 8004f40:	6039      	str	r1, [r7, #0]
+ 8004f42:	71fb      	strb	r3, [r7, #7]
   UNUSED(speed);
   *length = USB_SIZ_STRING_SERIAL;
- 8004f0c:	683b      	ldr	r3, [r7, #0]
- 8004f0e:	221a      	movs	r2, #26
- 8004f10:	801a      	strh	r2, [r3, #0]
+ 8004f44:	683b      	ldr	r3, [r7, #0]
+ 8004f46:	221a      	movs	r2, #26
+ 8004f48:	801a      	strh	r2, [r3, #0]
 
   /* Update the serial number string descriptor with the data from the unique
    * ID */
   Get_SerialNum();
- 8004f12:	f000 f843 	bl	8004f9c <Get_SerialNum>
+ 8004f4a:	f000 f843 	bl	8004fd4 <Get_SerialNum>
   /* USER CODE BEGIN USBD_FS_SerialStrDescriptor */
   
   /* USER CODE END USBD_FS_SerialStrDescriptor */
   return (uint8_t *) USBD_StringSerial;
- 8004f16:	4b02      	ldr	r3, [pc, #8]	; (8004f20 <USBD_FS_SerialStrDescriptor+0x20>)
+ 8004f4e:	4b02      	ldr	r3, [pc, #8]	; (8004f58 <USBD_FS_SerialStrDescriptor+0x20>)
 }
- 8004f18:	4618      	mov	r0, r3
- 8004f1a:	3708      	adds	r7, #8
- 8004f1c:	46bd      	mov	sp, r7
- 8004f1e:	bd80      	pop	{r7, pc}
- 8004f20:	2000014c 	.word	0x2000014c
+ 8004f50:	4618      	mov	r0, r3
+ 8004f52:	3708      	adds	r7, #8
+ 8004f54:	46bd      	mov	sp, r7
+ 8004f56:	bd80      	pop	{r7, pc}
+ 8004f58:	2000014c 	.word	0x2000014c
 
-08004f24 <USBD_FS_ConfigStrDescriptor>:
+08004f5c <USBD_FS_ConfigStrDescriptor>:
   * @param  speed : Current device speed
   * @param  length : Pointer to data length variable
   * @retval Pointer to descriptor buffer
   */
 uint8_t * USBD_FS_ConfigStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *length)
 {
- 8004f24:	b580      	push	{r7, lr}
- 8004f26:	b082      	sub	sp, #8
- 8004f28:	af00      	add	r7, sp, #0
- 8004f2a:	4603      	mov	r3, r0
- 8004f2c:	6039      	str	r1, [r7, #0]
- 8004f2e:	71fb      	strb	r3, [r7, #7]
+ 8004f5c:	b580      	push	{r7, lr}
+ 8004f5e:	b082      	sub	sp, #8
+ 8004f60:	af00      	add	r7, sp, #0
+ 8004f62:	4603      	mov	r3, r0
+ 8004f64:	6039      	str	r1, [r7, #0]
+ 8004f66:	71fb      	strb	r3, [r7, #7]
   if(speed == USBD_SPEED_HIGH)
- 8004f30:	79fb      	ldrb	r3, [r7, #7]
- 8004f32:	2b00      	cmp	r3, #0
- 8004f34:	d105      	bne.n	8004f42 <USBD_FS_ConfigStrDescriptor+0x1e>
+ 8004f68:	79fb      	ldrb	r3, [r7, #7]
+ 8004f6a:	2b00      	cmp	r3, #0
+ 8004f6c:	d105      	bne.n	8004f7a <USBD_FS_ConfigStrDescriptor+0x1e>
   {
     USBD_GetString((uint8_t *)USBD_CONFIGURATION_STRING_FS, USBD_StrDesc, length);
- 8004f36:	683a      	ldr	r2, [r7, #0]
- 8004f38:	4907      	ldr	r1, [pc, #28]	; (8004f58 <USBD_FS_ConfigStrDescriptor+0x34>)
- 8004f3a:	4808      	ldr	r0, [pc, #32]	; (8004f5c <USBD_FS_ConfigStrDescriptor+0x38>)
- 8004f3c:	f7ff fa73 	bl	8004426 <USBD_GetString>
- 8004f40:	e004      	b.n	8004f4c <USBD_FS_ConfigStrDescriptor+0x28>
+ 8004f6e:	683a      	ldr	r2, [r7, #0]
+ 8004f70:	4907      	ldr	r1, [pc, #28]	; (8004f90 <USBD_FS_ConfigStrDescriptor+0x34>)
+ 8004f72:	4808      	ldr	r0, [pc, #32]	; (8004f94 <USBD_FS_ConfigStrDescriptor+0x38>)
+ 8004f74:	f7ff fa57 	bl	8004426 <USBD_GetString>
+ 8004f78:	e004      	b.n	8004f84 <USBD_FS_ConfigStrDescriptor+0x28>
   }
   else
   {
     USBD_GetString((uint8_t *)USBD_CONFIGURATION_STRING_FS, USBD_StrDesc, length);
- 8004f42:	683a      	ldr	r2, [r7, #0]
- 8004f44:	4904      	ldr	r1, [pc, #16]	; (8004f58 <USBD_FS_ConfigStrDescriptor+0x34>)
- 8004f46:	4805      	ldr	r0, [pc, #20]	; (8004f5c <USBD_FS_ConfigStrDescriptor+0x38>)
- 8004f48:	f7ff fa6d 	bl	8004426 <USBD_GetString>
+ 8004f7a:	683a      	ldr	r2, [r7, #0]
+ 8004f7c:	4904      	ldr	r1, [pc, #16]	; (8004f90 <USBD_FS_ConfigStrDescriptor+0x34>)
+ 8004f7e:	4805      	ldr	r0, [pc, #20]	; (8004f94 <USBD_FS_ConfigStrDescriptor+0x38>)
+ 8004f80:	f7ff fa51 	bl	8004426 <USBD_GetString>
   }
   return USBD_StrDesc;
- 8004f4c:	4b02      	ldr	r3, [pc, #8]	; (8004f58 <USBD_FS_ConfigStrDescriptor+0x34>)
+ 8004f84:	4b02      	ldr	r3, [pc, #8]	; (8004f90 <USBD_FS_ConfigStrDescriptor+0x34>)
 }
- 8004f4e:	4618      	mov	r0, r3
- 8004f50:	3708      	adds	r7, #8
- 8004f52:	46bd      	mov	sp, r7
- 8004f54:	bd80      	pop	{r7, pc}
- 8004f56:	bf00      	nop
- 8004f58:	200006d8 	.word	0x200006d8
- 8004f5c:	08005160 	.word	0x08005160
+ 8004f86:	4618      	mov	r0, r3
+ 8004f88:	3708      	adds	r7, #8
+ 8004f8a:	46bd      	mov	sp, r7
+ 8004f8c:	bd80      	pop	{r7, pc}
+ 8004f8e:	bf00      	nop
+ 8004f90:	200006d8 	.word	0x200006d8
+ 8004f94:	08005198 	.word	0x08005198
 
-08004f60 <USBD_FS_InterfaceStrDescriptor>:
+08004f98 <USBD_FS_InterfaceStrDescriptor>:
   * @param  speed : Current device speed
   * @param  length : Pointer to data length variable
   * @retval Pointer to descriptor buffer
   */
 uint8_t * USBD_FS_InterfaceStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *length)
 {
- 8004f60:	b580      	push	{r7, lr}
- 8004f62:	b082      	sub	sp, #8
- 8004f64:	af00      	add	r7, sp, #0
- 8004f66:	4603      	mov	r3, r0
- 8004f68:	6039      	str	r1, [r7, #0]
- 8004f6a:	71fb      	strb	r3, [r7, #7]
+ 8004f98:	b580      	push	{r7, lr}
+ 8004f9a:	b082      	sub	sp, #8
+ 8004f9c:	af00      	add	r7, sp, #0
+ 8004f9e:	4603      	mov	r3, r0
+ 8004fa0:	6039      	str	r1, [r7, #0]
+ 8004fa2:	71fb      	strb	r3, [r7, #7]
   if(speed == 0)
- 8004f6c:	79fb      	ldrb	r3, [r7, #7]
- 8004f6e:	2b00      	cmp	r3, #0
- 8004f70:	d105      	bne.n	8004f7e <USBD_FS_InterfaceStrDescriptor+0x1e>
+ 8004fa4:	79fb      	ldrb	r3, [r7, #7]
+ 8004fa6:	2b00      	cmp	r3, #0
+ 8004fa8:	d105      	bne.n	8004fb6 <USBD_FS_InterfaceStrDescriptor+0x1e>
   {
     USBD_GetString((uint8_t *)USBD_INTERFACE_STRING_FS, USBD_StrDesc, length);
- 8004f72:	683a      	ldr	r2, [r7, #0]
- 8004f74:	4907      	ldr	r1, [pc, #28]	; (8004f94 <USBD_FS_InterfaceStrDescriptor+0x34>)
- 8004f76:	4808      	ldr	r0, [pc, #32]	; (8004f98 <USBD_FS_InterfaceStrDescriptor+0x38>)
- 8004f78:	f7ff fa55 	bl	8004426 <USBD_GetString>
- 8004f7c:	e004      	b.n	8004f88 <USBD_FS_InterfaceStrDescriptor+0x28>
+ 8004faa:	683a      	ldr	r2, [r7, #0]
+ 8004fac:	4907      	ldr	r1, [pc, #28]	; (8004fcc <USBD_FS_InterfaceStrDescriptor+0x34>)
+ 8004fae:	4808      	ldr	r0, [pc, #32]	; (8004fd0 <USBD_FS_InterfaceStrDescriptor+0x38>)
+ 8004fb0:	f7ff fa39 	bl	8004426 <USBD_GetString>
+ 8004fb4:	e004      	b.n	8004fc0 <USBD_FS_InterfaceStrDescriptor+0x28>
   }
   else
   {
     USBD_GetString((uint8_t *)USBD_INTERFACE_STRING_FS, USBD_StrDesc, length);
- 8004f7e:	683a      	ldr	r2, [r7, #0]
- 8004f80:	4904      	ldr	r1, [pc, #16]	; (8004f94 <USBD_FS_InterfaceStrDescriptor+0x34>)
- 8004f82:	4805      	ldr	r0, [pc, #20]	; (8004f98 <USBD_FS_InterfaceStrDescriptor+0x38>)
- 8004f84:	f7ff fa4f 	bl	8004426 <USBD_GetString>
+ 8004fb6:	683a      	ldr	r2, [r7, #0]
+ 8004fb8:	4904      	ldr	r1, [pc, #16]	; (8004fcc <USBD_FS_InterfaceStrDescriptor+0x34>)
+ 8004fba:	4805      	ldr	r0, [pc, #20]	; (8004fd0 <USBD_FS_InterfaceStrDescriptor+0x38>)
+ 8004fbc:	f7ff fa33 	bl	8004426 <USBD_GetString>
   }
   return USBD_StrDesc;
- 8004f88:	4b02      	ldr	r3, [pc, #8]	; (8004f94 <USBD_FS_InterfaceStrDescriptor+0x34>)
+ 8004fc0:	4b02      	ldr	r3, [pc, #8]	; (8004fcc <USBD_FS_InterfaceStrDescriptor+0x34>)
 }
- 8004f8a:	4618      	mov	r0, r3
- 8004f8c:	3708      	adds	r7, #8
- 8004f8e:	46bd      	mov	sp, r7
- 8004f90:	bd80      	pop	{r7, pc}
- 8004f92:	bf00      	nop
- 8004f94:	200006d8 	.word	0x200006d8
- 8004f98:	08005174 	.word	0x08005174
+ 8004fc2:	4618      	mov	r0, r3
+ 8004fc4:	3708      	adds	r7, #8
+ 8004fc6:	46bd      	mov	sp, r7
+ 8004fc8:	bd80      	pop	{r7, pc}
+ 8004fca:	bf00      	nop
+ 8004fcc:	200006d8 	.word	0x200006d8
+ 8004fd0:	080051ac 	.word	0x080051ac
 
-08004f9c <Get_SerialNum>:
+08004fd4 <Get_SerialNum>:
   * @brief  Create the serial number string descriptor 
   * @param  None 
   * @retval None
   */
 static void Get_SerialNum(void)
 {
- 8004f9c:	b580      	push	{r7, lr}
- 8004f9e:	b084      	sub	sp, #16
- 8004fa0:	af00      	add	r7, sp, #0
+ 8004fd4:	b580      	push	{r7, lr}
+ 8004fd6:	b084      	sub	sp, #16
+ 8004fd8:	af00      	add	r7, sp, #0
   uint32_t deviceserial0, deviceserial1, deviceserial2;
 
   deviceserial0 = *(uint32_t *) DEVICE_ID1;
- 8004fa2:	4b0f      	ldr	r3, [pc, #60]	; (8004fe0 <Get_SerialNum+0x44>)
- 8004fa4:	681b      	ldr	r3, [r3, #0]
- 8004fa6:	60fb      	str	r3, [r7, #12]
+ 8004fda:	4b0f      	ldr	r3, [pc, #60]	; (8005018 <Get_SerialNum+0x44>)
+ 8004fdc:	681b      	ldr	r3, [r3, #0]
+ 8004fde:	60fb      	str	r3, [r7, #12]
   deviceserial1 = *(uint32_t *) DEVICE_ID2;
- 8004fa8:	4b0e      	ldr	r3, [pc, #56]	; (8004fe4 <Get_SerialNum+0x48>)
- 8004faa:	681b      	ldr	r3, [r3, #0]
- 8004fac:	60bb      	str	r3, [r7, #8]
+ 8004fe0:	4b0e      	ldr	r3, [pc, #56]	; (800501c <Get_SerialNum+0x48>)
+ 8004fe2:	681b      	ldr	r3, [r3, #0]
+ 8004fe4:	60bb      	str	r3, [r7, #8]
   deviceserial2 = *(uint32_t *) DEVICE_ID3;
- 8004fae:	4b0e      	ldr	r3, [pc, #56]	; (8004fe8 <Get_SerialNum+0x4c>)
- 8004fb0:	681b      	ldr	r3, [r3, #0]
- 8004fb2:	607b      	str	r3, [r7, #4]
+ 8004fe6:	4b0e      	ldr	r3, [pc, #56]	; (8005020 <Get_SerialNum+0x4c>)
+ 8004fe8:	681b      	ldr	r3, [r3, #0]
+ 8004fea:	607b      	str	r3, [r7, #4]
 
   deviceserial0 += deviceserial2;
- 8004fb4:	68fa      	ldr	r2, [r7, #12]
- 8004fb6:	687b      	ldr	r3, [r7, #4]
- 8004fb8:	4413      	add	r3, r2
- 8004fba:	60fb      	str	r3, [r7, #12]
+ 8004fec:	68fa      	ldr	r2, [r7, #12]
+ 8004fee:	687b      	ldr	r3, [r7, #4]
+ 8004ff0:	4413      	add	r3, r2
+ 8004ff2:	60fb      	str	r3, [r7, #12]
 
   if (deviceserial0 != 0)
- 8004fbc:	68fb      	ldr	r3, [r7, #12]
- 8004fbe:	2b00      	cmp	r3, #0
- 8004fc0:	d009      	beq.n	8004fd6 <Get_SerialNum+0x3a>
+ 8004ff4:	68fb      	ldr	r3, [r7, #12]
+ 8004ff6:	2b00      	cmp	r3, #0
+ 8004ff8:	d009      	beq.n	800500e <Get_SerialNum+0x3a>
   {
     IntToUnicode(deviceserial0, &USBD_StringSerial[2], 8);
- 8004fc2:	2208      	movs	r2, #8
- 8004fc4:	4909      	ldr	r1, [pc, #36]	; (8004fec <Get_SerialNum+0x50>)
- 8004fc6:	68f8      	ldr	r0, [r7, #12]
- 8004fc8:	f000 f814 	bl	8004ff4 <IntToUnicode>
+ 8004ffa:	2208      	movs	r2, #8
+ 8004ffc:	4909      	ldr	r1, [pc, #36]	; (8005024 <Get_SerialNum+0x50>)
+ 8004ffe:	68f8      	ldr	r0, [r7, #12]
+ 8005000:	f000 f814 	bl	800502c <IntToUnicode>
     IntToUnicode(deviceserial1, &USBD_StringSerial[18], 4);
- 8004fcc:	2204      	movs	r2, #4
- 8004fce:	4908      	ldr	r1, [pc, #32]	; (8004ff0 <Get_SerialNum+0x54>)
- 8004fd0:	68b8      	ldr	r0, [r7, #8]
- 8004fd2:	f000 f80f 	bl	8004ff4 <IntToUnicode>
+ 8005004:	2204      	movs	r2, #4
+ 8005006:	4908      	ldr	r1, [pc, #32]	; (8005028 <Get_SerialNum+0x54>)
+ 8005008:	68b8      	ldr	r0, [r7, #8]
+ 800500a:	f000 f80f 	bl	800502c <IntToUnicode>
   }
 }
- 8004fd6:	bf00      	nop
- 8004fd8:	3710      	adds	r7, #16
- 8004fda:	46bd      	mov	sp, r7
- 8004fdc:	bd80      	pop	{r7, pc}
- 8004fde:	bf00      	nop
- 8004fe0:	1ffff7e8 	.word	0x1ffff7e8
- 8004fe4:	1ffff7ec 	.word	0x1ffff7ec
- 8004fe8:	1ffff7f0 	.word	0x1ffff7f0
- 8004fec:	2000014e 	.word	0x2000014e
- 8004ff0:	2000015e 	.word	0x2000015e
+ 800500e:	bf00      	nop
+ 8005010:	3710      	adds	r7, #16
+ 8005012:	46bd      	mov	sp, r7
+ 8005014:	bd80      	pop	{r7, pc}
+ 8005016:	bf00      	nop
+ 8005018:	1ffff7e8 	.word	0x1ffff7e8
+ 800501c:	1ffff7ec 	.word	0x1ffff7ec
+ 8005020:	1ffff7f0 	.word	0x1ffff7f0
+ 8005024:	2000014e 	.word	0x2000014e
+ 8005028:	2000015e 	.word	0x2000015e
 
-08004ff4 <IntToUnicode>:
+0800502c <IntToUnicode>:
   * @param  pbuf: pointer to the buffer 
   * @param  len: buffer length
   * @retval None
   */
 static void IntToUnicode(uint32_t value, uint8_t * pbuf, uint8_t len)
 {
- 8004ff4:	b480      	push	{r7}
- 8004ff6:	b087      	sub	sp, #28
- 8004ff8:	af00      	add	r7, sp, #0
- 8004ffa:	60f8      	str	r0, [r7, #12]
- 8004ffc:	60b9      	str	r1, [r7, #8]
- 8004ffe:	4613      	mov	r3, r2
- 8005000:	71fb      	strb	r3, [r7, #7]
+ 800502c:	b480      	push	{r7}
+ 800502e:	b087      	sub	sp, #28
+ 8005030:	af00      	add	r7, sp, #0
+ 8005032:	60f8      	str	r0, [r7, #12]
+ 8005034:	60b9      	str	r1, [r7, #8]
+ 8005036:	4613      	mov	r3, r2
+ 8005038:	71fb      	strb	r3, [r7, #7]
   uint8_t idx = 0;
- 8005002:	2300      	movs	r3, #0
- 8005004:	75fb      	strb	r3, [r7, #23]
+ 800503a:	2300      	movs	r3, #0
+ 800503c:	75fb      	strb	r3, [r7, #23]
 
   for (idx = 0; idx < len; idx++)
- 8005006:	2300      	movs	r3, #0
- 8005008:	75fb      	strb	r3, [r7, #23]
- 800500a:	e027      	b.n	800505c <IntToUnicode+0x68>
+ 800503e:	2300      	movs	r3, #0
+ 8005040:	75fb      	strb	r3, [r7, #23]
+ 8005042:	e027      	b.n	8005094 <IntToUnicode+0x68>
   {
     if (((value >> 28)) < 0xA)
- 800500c:	68fb      	ldr	r3, [r7, #12]
- 800500e:	0f1b      	lsrs	r3, r3, #28
- 8005010:	2b09      	cmp	r3, #9
- 8005012:	d80b      	bhi.n	800502c <IntToUnicode+0x38>
+ 8005044:	68fb      	ldr	r3, [r7, #12]
+ 8005046:	0f1b      	lsrs	r3, r3, #28
+ 8005048:	2b09      	cmp	r3, #9
+ 800504a:	d80b      	bhi.n	8005064 <IntToUnicode+0x38>
     {
       pbuf[2 * idx] = (value >> 28) + '0';
- 8005014:	68fb      	ldr	r3, [r7, #12]
- 8005016:	0f1b      	lsrs	r3, r3, #28
- 8005018:	b2da      	uxtb	r2, r3
- 800501a:	7dfb      	ldrb	r3, [r7, #23]
- 800501c:	005b      	lsls	r3, r3, #1
- 800501e:	4619      	mov	r1, r3
- 8005020:	68bb      	ldr	r3, [r7, #8]
- 8005022:	440b      	add	r3, r1
- 8005024:	3230      	adds	r2, #48	; 0x30
- 8005026:	b2d2      	uxtb	r2, r2
- 8005028:	701a      	strb	r2, [r3, #0]
- 800502a:	e00a      	b.n	8005042 <IntToUnicode+0x4e>
+ 800504c:	68fb      	ldr	r3, [r7, #12]
+ 800504e:	0f1b      	lsrs	r3, r3, #28
+ 8005050:	b2da      	uxtb	r2, r3
+ 8005052:	7dfb      	ldrb	r3, [r7, #23]
+ 8005054:	005b      	lsls	r3, r3, #1
+ 8005056:	4619      	mov	r1, r3
+ 8005058:	68bb      	ldr	r3, [r7, #8]
+ 800505a:	440b      	add	r3, r1
+ 800505c:	3230      	adds	r2, #48	; 0x30
+ 800505e:	b2d2      	uxtb	r2, r2
+ 8005060:	701a      	strb	r2, [r3, #0]
+ 8005062:	e00a      	b.n	800507a <IntToUnicode+0x4e>
     }
     else
     {
       pbuf[2 * idx] = (value >> 28) + 'A' - 10;
- 800502c:	68fb      	ldr	r3, [r7, #12]
- 800502e:	0f1b      	lsrs	r3, r3, #28
- 8005030:	b2da      	uxtb	r2, r3
- 8005032:	7dfb      	ldrb	r3, [r7, #23]
- 8005034:	005b      	lsls	r3, r3, #1
- 8005036:	4619      	mov	r1, r3
- 8005038:	68bb      	ldr	r3, [r7, #8]
- 800503a:	440b      	add	r3, r1
- 800503c:	3237      	adds	r2, #55	; 0x37
- 800503e:	b2d2      	uxtb	r2, r2
- 8005040:	701a      	strb	r2, [r3, #0]
+ 8005064:	68fb      	ldr	r3, [r7, #12]
+ 8005066:	0f1b      	lsrs	r3, r3, #28
+ 8005068:	b2da      	uxtb	r2, r3
+ 800506a:	7dfb      	ldrb	r3, [r7, #23]
+ 800506c:	005b      	lsls	r3, r3, #1
+ 800506e:	4619      	mov	r1, r3
+ 8005070:	68bb      	ldr	r3, [r7, #8]
+ 8005072:	440b      	add	r3, r1
+ 8005074:	3237      	adds	r2, #55	; 0x37
+ 8005076:	b2d2      	uxtb	r2, r2
+ 8005078:	701a      	strb	r2, [r3, #0]
     }
 
     value = value << 4;
- 8005042:	68fb      	ldr	r3, [r7, #12]
- 8005044:	011b      	lsls	r3, r3, #4
- 8005046:	60fb      	str	r3, [r7, #12]
+ 800507a:	68fb      	ldr	r3, [r7, #12]
+ 800507c:	011b      	lsls	r3, r3, #4
+ 800507e:	60fb      	str	r3, [r7, #12]
 
     pbuf[2 * idx + 1] = 0;
- 8005048:	7dfb      	ldrb	r3, [r7, #23]
- 800504a:	005b      	lsls	r3, r3, #1
- 800504c:	3301      	adds	r3, #1
- 800504e:	68ba      	ldr	r2, [r7, #8]
- 8005050:	4413      	add	r3, r2
- 8005052:	2200      	movs	r2, #0
- 8005054:	701a      	strb	r2, [r3, #0]
+ 8005080:	7dfb      	ldrb	r3, [r7, #23]
+ 8005082:	005b      	lsls	r3, r3, #1
+ 8005084:	3301      	adds	r3, #1
+ 8005086:	68ba      	ldr	r2, [r7, #8]
+ 8005088:	4413      	add	r3, r2
+ 800508a:	2200      	movs	r2, #0
+ 800508c:	701a      	strb	r2, [r3, #0]
   for (idx = 0; idx < len; idx++)
- 8005056:	7dfb      	ldrb	r3, [r7, #23]
- 8005058:	3301      	adds	r3, #1
- 800505a:	75fb      	strb	r3, [r7, #23]
- 800505c:	7dfa      	ldrb	r2, [r7, #23]
- 800505e:	79fb      	ldrb	r3, [r7, #7]
- 8005060:	429a      	cmp	r2, r3
- 8005062:	d3d3      	bcc.n	800500c <IntToUnicode+0x18>
+ 800508e:	7dfb      	ldrb	r3, [r7, #23]
+ 8005090:	3301      	adds	r3, #1
+ 8005092:	75fb      	strb	r3, [r7, #23]
+ 8005094:	7dfa      	ldrb	r2, [r7, #23]
+ 8005096:	79fb      	ldrb	r3, [r7, #7]
+ 8005098:	429a      	cmp	r2, r3
+ 800509a:	d3d3      	bcc.n	8005044 <IntToUnicode+0x18>
   }
 }
- 8005064:	bf00      	nop
- 8005066:	371c      	adds	r7, #28
- 8005068:	46bd      	mov	sp, r7
- 800506a:	bc80      	pop	{r7}
- 800506c:	4770      	bx	lr
+ 800509c:	bf00      	nop
+ 800509e:	371c      	adds	r7, #28
+ 80050a0:	46bd      	mov	sp, r7
+ 80050a2:	bc80      	pop	{r7}
+ 80050a4:	4770      	bx	lr
 	...
 
-08005070 <Reset_Handler>:
+080050a8 <Reset_Handler>:
   .weak Reset_Handler
   .type Reset_Handler, %function
 Reset_Handler:
 
 /* Copy the data segment initializers from flash to SRAM */
   movs r1, #0
- 8005070:	2100      	movs	r1, #0
+ 80050a8:	2100      	movs	r1, #0
   b LoopCopyDataInit
- 8005072:	e003      	b.n	800507c <LoopCopyDataInit>
+ 80050aa:	e003      	b.n	80050b4 <LoopCopyDataInit>
 
-08005074 <CopyDataInit>:
+080050ac <CopyDataInit>:
 
 CopyDataInit:
   ldr r3, =_sidata
- 8005074:	4b0b      	ldr	r3, [pc, #44]	; (80050a4 <LoopFillZerobss+0x14>)
+ 80050ac:	4b0b      	ldr	r3, [pc, #44]	; (80050dc <LoopFillZerobss+0x14>)
   ldr r3, [r3, r1]
- 8005076:	585b      	ldr	r3, [r3, r1]
+ 80050ae:	585b      	ldr	r3, [r3, r1]
   str r3, [r0, r1]
- 8005078:	5043      	str	r3, [r0, r1]
+ 80050b0:	5043      	str	r3, [r0, r1]
   adds r1, r1, #4
- 800507a:	3104      	adds	r1, #4
+ 80050b2:	3104      	adds	r1, #4
 
-0800507c <LoopCopyDataInit>:
+080050b4 <LoopCopyDataInit>:
 
 LoopCopyDataInit:
   ldr r0, =_sdata
- 800507c:	480a      	ldr	r0, [pc, #40]	; (80050a8 <LoopFillZerobss+0x18>)
+ 80050b4:	480a      	ldr	r0, [pc, #40]	; (80050e0 <LoopFillZerobss+0x18>)
   ldr r3, =_edata
- 800507e:	4b0b      	ldr	r3, [pc, #44]	; (80050ac <LoopFillZerobss+0x1c>)
+ 80050b6:	4b0b      	ldr	r3, [pc, #44]	; (80050e4 <LoopFillZerobss+0x1c>)
   adds r2, r0, r1
- 8005080:	1842      	adds	r2, r0, r1
+ 80050b8:	1842      	adds	r2, r0, r1
   cmp r2, r3
- 8005082:	429a      	cmp	r2, r3
+ 80050ba:	429a      	cmp	r2, r3
   bcc CopyDataInit
- 8005084:	d3f6      	bcc.n	8005074 <CopyDataInit>
+ 80050bc:	d3f6      	bcc.n	80050ac <CopyDataInit>
   ldr r2, =_sbss
- 8005086:	4a0a      	ldr	r2, [pc, #40]	; (80050b0 <LoopFillZerobss+0x20>)
+ 80050be:	4a0a      	ldr	r2, [pc, #40]	; (80050e8 <LoopFillZerobss+0x20>)
   b LoopFillZerobss
- 8005088:	e002      	b.n	8005090 <LoopFillZerobss>
+ 80050c0:	e002      	b.n	80050c8 <LoopFillZerobss>
 
-0800508a <FillZerobss>:
+080050c2 <FillZerobss>:
 /* Zero fill the bss segment. */
 FillZerobss:
   movs r3, #0
- 800508a:	2300      	movs	r3, #0
+ 80050c2:	2300      	movs	r3, #0
   str r3, [r2], #4
- 800508c:	f842 3b04 	str.w	r3, [r2], #4
+ 80050c4:	f842 3b04 	str.w	r3, [r2], #4
 
-08005090 <LoopFillZerobss>:
+080050c8 <LoopFillZerobss>:
 
 LoopFillZerobss:
   ldr r3, = _ebss
- 8005090:	4b08      	ldr	r3, [pc, #32]	; (80050b4 <LoopFillZerobss+0x24>)
+ 80050c8:	4b08      	ldr	r3, [pc, #32]	; (80050ec <LoopFillZerobss+0x24>)
   cmp r2, r3
- 8005092:	429a      	cmp	r2, r3
+ 80050ca:	429a      	cmp	r2, r3
   bcc FillZerobss
- 8005094:	d3f9      	bcc.n	800508a <FillZerobss>
+ 80050cc:	d3f9      	bcc.n	80050c2 <FillZerobss>
 
 /* Call the clock system intitialization function.*/
     bl  SystemInit
- 8005096:	f7ff fbc1 	bl	800481c <SystemInit>
+ 80050ce:	f7ff fbc1 	bl	8004854 <SystemInit>
 /* Call static constructors */
     bl __libc_init_array
- 800509a:	f000 f80f 	bl	80050bc <__libc_init_array>
+ 80050d2:	f000 f80f 	bl	80050f4 <__libc_init_array>
 /* Call the application's entry point.*/
   bl main
- 800509e:	f7ff fa9f 	bl	80045e0 <main>
+ 80050d6:	f7ff fa83 	bl	80045e0 <main>
   bx lr
- 80050a2:	4770      	bx	lr
+ 80050da:	4770      	bx	lr
   ldr r3, =_sidata
- 80050a4:	080051a4 	.word	0x080051a4
+ 80050dc:	080051dc 	.word	0x080051dc
   ldr r0, =_sdata
- 80050a8:	20000000 	.word	0x20000000
+ 80050e0:	20000000 	.word	0x20000000
   ldr r3, =_edata
- 80050ac:	20000168 	.word	0x20000168
+ 80050e4:	20000168 	.word	0x20000168
   ldr r2, =_sbss
- 80050b0:	20000168 	.word	0x20000168
+ 80050e8:	20000168 	.word	0x20000168
   ldr r3, = _ebss
- 80050b4:	200008d8 	.word	0x200008d8
+ 80050ec:	200008d8 	.word	0x200008d8
 
-080050b8 <ADC1_2_IRQHandler>:
+080050f0 <ADC1_2_IRQHandler>:
  * @retval : None
 */
     .section .text.Default_Handler,"ax",%progbits
 Default_Handler:
 Infinite_Loop:
   b Infinite_Loop
- 80050b8:	e7fe      	b.n	80050b8 <ADC1_2_IRQHandler>
+ 80050f0:	e7fe      	b.n	80050f0 <ADC1_2_IRQHandler>
 	...
 
-080050bc <__libc_init_array>:
- 80050bc:	b570      	push	{r4, r5, r6, lr}
- 80050be:	2500      	movs	r5, #0
- 80050c0:	4e0c      	ldr	r6, [pc, #48]	; (80050f4 <__libc_init_array+0x38>)
- 80050c2:	4c0d      	ldr	r4, [pc, #52]	; (80050f8 <__libc_init_array+0x3c>)
- 80050c4:	1ba4      	subs	r4, r4, r6
- 80050c6:	10a4      	asrs	r4, r4, #2
- 80050c8:	42a5      	cmp	r5, r4
- 80050ca:	d109      	bne.n	80050e0 <__libc_init_array+0x24>
- 80050cc:	f000 f822 	bl	8005114 <_init>
- 80050d0:	2500      	movs	r5, #0
- 80050d2:	4e0a      	ldr	r6, [pc, #40]	; (80050fc <__libc_init_array+0x40>)
- 80050d4:	4c0a      	ldr	r4, [pc, #40]	; (8005100 <__libc_init_array+0x44>)
- 80050d6:	1ba4      	subs	r4, r4, r6
- 80050d8:	10a4      	asrs	r4, r4, #2
- 80050da:	42a5      	cmp	r5, r4
- 80050dc:	d105      	bne.n	80050ea <__libc_init_array+0x2e>
- 80050de:	bd70      	pop	{r4, r5, r6, pc}
- 80050e0:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
- 80050e4:	4798      	blx	r3
- 80050e6:	3501      	adds	r5, #1
- 80050e8:	e7ee      	b.n	80050c8 <__libc_init_array+0xc>
- 80050ea:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
- 80050ee:	4798      	blx	r3
- 80050f0:	3501      	adds	r5, #1
- 80050f2:	e7f2      	b.n	80050da <__libc_init_array+0x1e>
- 80050f4:	0800519c 	.word	0x0800519c
- 80050f8:	0800519c 	.word	0x0800519c
- 80050fc:	0800519c 	.word	0x0800519c
- 8005100:	080051a0 	.word	0x080051a0
+080050f4 <__libc_init_array>:
+ 80050f4:	b570      	push	{r4, r5, r6, lr}
+ 80050f6:	2500      	movs	r5, #0
+ 80050f8:	4e0c      	ldr	r6, [pc, #48]	; (800512c <__libc_init_array+0x38>)
+ 80050fa:	4c0d      	ldr	r4, [pc, #52]	; (8005130 <__libc_init_array+0x3c>)
+ 80050fc:	1ba4      	subs	r4, r4, r6
+ 80050fe:	10a4      	asrs	r4, r4, #2
+ 8005100:	42a5      	cmp	r5, r4
+ 8005102:	d109      	bne.n	8005118 <__libc_init_array+0x24>
+ 8005104:	f000 f822 	bl	800514c <_init>
+ 8005108:	2500      	movs	r5, #0
+ 800510a:	4e0a      	ldr	r6, [pc, #40]	; (8005134 <__libc_init_array+0x40>)
+ 800510c:	4c0a      	ldr	r4, [pc, #40]	; (8005138 <__libc_init_array+0x44>)
+ 800510e:	1ba4      	subs	r4, r4, r6
+ 8005110:	10a4      	asrs	r4, r4, #2
+ 8005112:	42a5      	cmp	r5, r4
+ 8005114:	d105      	bne.n	8005122 <__libc_init_array+0x2e>
+ 8005116:	bd70      	pop	{r4, r5, r6, pc}
+ 8005118:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+ 800511c:	4798      	blx	r3
+ 800511e:	3501      	adds	r5, #1
+ 8005120:	e7ee      	b.n	8005100 <__libc_init_array+0xc>
+ 8005122:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+ 8005126:	4798      	blx	r3
+ 8005128:	3501      	adds	r5, #1
+ 800512a:	e7f2      	b.n	8005112 <__libc_init_array+0x1e>
+ 800512c:	080051d4 	.word	0x080051d4
+ 8005130:	080051d4 	.word	0x080051d4
+ 8005134:	080051d4 	.word	0x080051d4
+ 8005138:	080051d8 	.word	0x080051d8
 
-08005104 <memset>:
- 8005104:	4603      	mov	r3, r0
- 8005106:	4402      	add	r2, r0
- 8005108:	4293      	cmp	r3, r2
- 800510a:	d100      	bne.n	800510e <memset+0xa>
- 800510c:	4770      	bx	lr
- 800510e:	f803 1b01 	strb.w	r1, [r3], #1
- 8005112:	e7f9      	b.n	8005108 <memset+0x4>
+0800513c <memset>:
+ 800513c:	4603      	mov	r3, r0
+ 800513e:	4402      	add	r2, r0
+ 8005140:	4293      	cmp	r3, r2
+ 8005142:	d100      	bne.n	8005146 <memset+0xa>
+ 8005144:	4770      	bx	lr
+ 8005146:	f803 1b01 	strb.w	r1, [r3], #1
+ 800514a:	e7f9      	b.n	8005140 <memset+0x4>
 
-08005114 <_init>:
- 8005114:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 8005116:	bf00      	nop
- 8005118:	bcf8      	pop	{r3, r4, r5, r6, r7}
- 800511a:	bc08      	pop	{r3}
- 800511c:	469e      	mov	lr, r3
- 800511e:	4770      	bx	lr
+0800514c <_init>:
+ 800514c:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 800514e:	bf00      	nop
+ 8005150:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 8005152:	bc08      	pop	{r3}
+ 8005154:	469e      	mov	lr, r3
+ 8005156:	4770      	bx	lr
 
-08005120 <_fini>:
- 8005120:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 8005122:	bf00      	nop
- 8005124:	bcf8      	pop	{r3, r4, r5, r6, r7}
- 8005126:	bc08      	pop	{r3}
- 8005128:	469e      	mov	lr, r3
- 800512a:	4770      	bx	lr
+08005158 <_fini>:
+ 8005158:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 800515a:	bf00      	nop
+ 800515c:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 800515e:	bc08      	pop	{r3}
+ 8005160:	469e      	mov	lr, r3
+ 8005162:	4770      	bx	lr

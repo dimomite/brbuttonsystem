@@ -48,7 +48,6 @@ USBD_HandleTypeDef hUsbDeviceFS;
  * -- Insert your variables declaration here --
  */
 /* USER CODE BEGIN 0 */
-
 /* USER CODE END 0 */
 
 /*

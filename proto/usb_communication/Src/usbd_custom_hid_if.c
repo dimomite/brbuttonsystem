@@ -99,8 +99,6 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
 
 	    0x85, 0x01,                    //   REPORT_ID (1)
 	    0x09, 0x01,                    //   USAGE (Vendor Usage 1)
-	    0x15, 0x00,                    //   LOGICAL_MINIMUM (0)
-	    0x25, 0x0f,                    //   LOGICAL_MAXIMUM (15)
 	    0x75, 0x08,                    //   REPORT_SIZE (8)
 	    0x95, USBD_CUSTOMHID_OUTREPORT_BUF_SIZE, // REPORT_COUNT (4)
 	    0xb1, 0x82,                    //   FEATURE (Data,Var,Abs,Vol)
@@ -119,7 +117,8 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
 
 /* USER CODE BEGIN PRIVATE_VARIABLES */
 
-static uint8_t usbData[USBD_CUSTOMHID_OUTREPORT_BUF_SIZE];
+//static uint8_t usbData[USBD_CUSTOMHID_OUTREPORT_BUF_SIZE];
+static uint8_t dataToSend[USBD_CUSTOMHID_OUTREPORT_BUF_SIZE + 1] = {2, 0, 0, 0, 0};
 
 /* USER CODE END PRIVATE_VARIABLES */
 
@@ -227,6 +226,29 @@ static int8_t USBD_CUSTOM_HID_SendReport_FS(uint8_t *report, uint16_t len)
 /* USER CODE END 7 */
 
 /* USER CODE BEGIN PRIVATE_FUNCTIONS_IMPLEMENTATION */
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin);
+
+static void handleButtonChange(uint8_t isPressed) {
+	HAL_GPIO_WritePin(BlueLed_GPIO_Port, BlueLed_Pin, isPressed ? GPIO_PIN_RESET : GPIO_PIN_SET);
+
+	dataToSend[1] = isPressed;
+	USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, dataToSend, sizeof(dataToSend));
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+	if (GPIO_PIN_RESET == HAL_GPIO_ReadPin(Button0_GPIO_Port, Button0_Pin)) {
+		handleButtonChange(1);
+	} else if (GPIO_PIN_RESET == HAL_GPIO_ReadPin(Button1_GPIO_Port, Button1_Pin)) {
+		handleButtonChange(2);
+	} else if (GPIO_PIN_RESET == HAL_GPIO_ReadPin(Button2_GPIO_Port, Button2_Pin)) {
+		handleButtonChange(3);
+	} else if (GPIO_PIN_RESET == HAL_GPIO_ReadPin(Button3_GPIO_Port, Button3_Pin)) {
+		handleButtonChange(4);
+	} else {
+		handleButtonChange(0);
+	}
+}
 
 /* USER CODE END PRIVATE_FUNCTIONS_IMPLEMENTATION */
 /**

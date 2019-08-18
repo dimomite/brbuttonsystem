@@ -2,12 +2,166 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9aff70c-01c3-4574-b146-74357e30d357" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/build-history.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/package-parts.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/package-parts.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/package-parts.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/package-parts.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/counters.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/counters.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab_i" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab_i.len" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.values" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.values.s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/last-build.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/.cproject" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/.cproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/.mxproject" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/.mxproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/.settings/language.settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/.settings/language.settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usb.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usb.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/subdir.mk" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Drivers/STM32F1xx_HAL_Driver/Src/subdir.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/subdir.mk" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/subdir.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Middlewares/ST/STM32_USB_Device_Library/Core/Src/subdir.mk" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Middlewares/ST/STM32_USB_Device_Library/Core/Src/subdir.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Src/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Src/main.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Src/main.su" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Src/main.su" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Src/stm32f1xx_hal_msp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Src/stm32f1xx_hal_msp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Src/stm32f1xx_it.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Src/stm32f1xx_it.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Src/stm32f1xx_it.su" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Src/stm32f1xx_it.su" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Src/subdir.mk" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Src/subdir.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Src/syscalls.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Src/syscalls.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Src/sysmem.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Src/sysmem.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Src/system_stm32f1xx.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Src/system_stm32f1xx.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Src/usb_device.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Src/usb_device.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Src/usb_device.su" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Src/usb_device.su" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Src/usbd_conf.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Src/usbd_conf.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Src/usbd_custom_hid_if.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Src/usbd_custom_hid_if.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Src/usbd_custom_hid_if.su" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Src/usbd_custom_hid_if.su" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Src/usbd_desc.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Src/usbd_desc.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Startup/startup_stm32f103c8tx.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Startup/startup_stm32f103c8tx.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/Startup/subdir.mk" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/Startup/subdir.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/UsbHidCheck.elf" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/UsbHidCheck.elf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/UsbHidCheck.list" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/UsbHidCheck.list" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/UsbHidCheck.map" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/UsbHidCheck.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/objects.list" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/objects.list" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Debug/sources.mk" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Debug/sources.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Inc/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Inc/main.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Inc/stm32f1xx_hal_conf.h" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Inc/stm32f1xx_hal_conf.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usb.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usb.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/subdir.mk" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Drivers/STM32F1xx_HAL_Driver/Src/subdir.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/subdir.mk" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/subdir.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Middlewares/ST/STM32_USB_Device_Library/Core/Src/subdir.mk" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Middlewares/ST/STM32_USB_Device_Library/Core/Src/subdir.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Src/main.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Src/main.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Src/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Src/main.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Src/main.su" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Src/main.su" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Src/stm32f1xx_hal_msp.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Src/stm32f1xx_hal_msp.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Src/stm32f1xx_hal_msp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Src/stm32f1xx_hal_msp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Src/stm32f1xx_hal_msp.su" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Src/stm32f1xx_hal_msp.su" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Src/stm32f1xx_it.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Src/stm32f1xx_it.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Src/subdir.mk" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Src/subdir.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Src/system_stm32f1xx.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Src/system_stm32f1xx.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Src/usb_device.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Src/usb_device.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Src/usbd_conf.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Src/usbd_conf.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Src/usbd_conf.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Src/usbd_conf.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Src/usbd_custom_hid_if.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Src/usbd_custom_hid_if.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Src/usbd_custom_hid_if.o" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Src/usbd_custom_hid_if.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Src/usbd_custom_hid_if.su" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Src/usbd_custom_hid_if.su" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Src/usbd_desc.d" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Src/usbd_desc.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/Startup/subdir.mk" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/Startup/subdir.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/UsbHidCheck.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/UsbHidCheck.elf" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/UsbHidCheck.elf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/UsbHidCheck.hex" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/UsbHidCheck.hex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/UsbHidCheck.list" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/UsbHidCheck.list" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/UsbHidCheck.map" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/UsbHidCheck.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/objects.list" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/objects.list" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Release/sources.mk" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Release/sources.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/STM32F103C8TX_FLASH.ld" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/STM32F103C8TX_FLASH.ld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Src/stm32f1xx_hal_msp.c" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Src/stm32f1xx_hal_msp.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/Src/usbd_custom_hid_if.c" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/Src/usbd_custom_hid_if.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../usb_communication/UsbHidCheck.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/../usb_communication/UsbHidCheck.ioc" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/.gradle/" />
-    <ignored path="$PROJECT_DIR$/build/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +171,6 @@
   <component name="DefaultGradleProjectSettings">
     <option name="testRunner" value="GRADLE" />
     <option name="delegatedBuild" value="true" />
-    <option name="isMigrated" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -34,55 +187,12 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="proto_usb_conn" type="f1a62948:ProjectNode" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="proto_usb_conn" type="f1a62948:ProjectNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="proto_usb_conn" type="f1a62948:ProjectNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="test" type="396b929e:GradleViewContributor$SourceSetNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="proto_usb_conn" type="f1a62948:ProjectNode" />
-                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
-                <item name="test" type="396b929e:GradleViewContributor$SourceSetNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-              </path>
             </expand>
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="106" selection-start-line="9" selection-start-column="106" selection-end-line="9" selection-end-column="106" />
-              <folding>
-                <element signature="e#0#114#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/libs/purejavahidapi.jar!/purejavahidapi/HidDevice.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -99,77 +209,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/Main.kt" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-117" />
-    <option name="y" value="-8" />
-    <option name="width" value="1612" />
-    <option name="height" value="876" />
-  </component>
+  <component name="ProjectId" id="1PR4f3b17QrMSExpElDLms9JIoQ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="proto_usb_conn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proto_usb_conn" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="proto_usb_conn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proto_usb_conn" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="libs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proto_usb_conn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proto_usb_conn" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proto_usb_conn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proto_usb_conn" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="proto_usb_conn" type="58d84e3e:PackageViewProjectNode" />
-              <item name="proto_usb_conn" type="eaaa3913:PackageViewModuleGroupNode" />
-            </path>
-            <path>
-              <item name="proto_usb_conn" type="58d84e3e:PackageViewProjectNode" />
-              <item name="proto_usb_conn" type="eaaa3913:PackageViewModuleGroupNode" />
-              <item name="proto_usb_conn.main" type="616d4139:PackageViewModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -216,132 +263,17 @@
     </task>
     <servers />
   </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26332623" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32900432" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39935064" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32900432" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32900432" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32900432" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32900432" />
-      <window_info anchor="bottom" id="Build" order="10" weight="0.32900432" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" />
-      <window_info anchor="right" id="Gradle" order="5" visible="true" weight="0.1913646" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-    </layout>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.usb4java/usb4java/1.3.0/e6f73cf21dbbc0ecf85417f311e13d8eb278d14a/usb4java-1.3.0-sources.jar!/org/usb4java/Context.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.usb4java/usb4java/1.3.0/e6f73cf21dbbc0ecf85417f311e13d8eb278d14a/usb4java-1.3.0-sources.jar!/org/usb4java/Device.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-349">
-          <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.usb4java/usb4java/1.3.0/e6f73cf21dbbc0ecf85417f311e13d8eb278d14a/usb4java-1.3.0-sources.jar!/org/usb4java/LibUsbException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="43" column="65" selection-start-line="43" selection-start-column="65" selection-end-line="43" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.usb4java/usb4java/1.3.0/e6f73cf21dbbc0ecf85417f311e13d8eb278d14a/usb4java-1.3.0-sources.jar!/org/usb4java/LibUsb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="834" column="29" selection-start-line="834" selection-start-column="29" selection-end-line="834" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradlew">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradlew.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-816" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="18" lean-forward="true" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/purejavahidapi.jar!/purejavahidapi/HidDeviceInfo.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" column="37" lean-forward="true" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-          <folding>
-            <element signature="e#686#687#0" expanded="true" />
-            <element signature="e#725#726#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/purejavahidapi.jar!/purejavahidapi/PureJavaHidApi.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="40" column="36" lean-forward="true" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="106" selection-start-line="9" selection-start-column="106" selection-end-line="9" selection-end-column="106" />
-          <folding>
-            <element signature="e#0#114#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/purejavahidapi.jar!/purejavahidapi/HidDevice.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

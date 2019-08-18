@@ -23,7 +23,7 @@
 #include "usbd_custom_hid_if.h"
 
 /* USER CODE BEGIN INCLUDE */
-//#include <stdio.h>
+#include "playersledsctrl.h"
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -32,7 +32,7 @@
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-
+extern PlayerLedsCtrl playerLedsCtrl;
 /* USER CODE END PV */
 
 /** @addtogroup STM32_USB_OTG_DEVICE_LIBRARY
@@ -234,19 +234,28 @@ static void handleButtonChange(uint8_t isPressed) {
 
 	dataToSend[1] = isPressed;
 	USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, dataToSend, sizeof(dataToSend));
+
+	HAL_GPIO_WritePin(START_LED_GPIO_Port, START_LED_Pin, isPressed ? GPIO_PIN_SET : GPIO_PIN_RESET);
 }
 
+#define ACTIVE_BUTTON_PIN (GPIO_PIN_SET)
+
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
-	if (GPIO_PIN_RESET == HAL_GPIO_ReadPin(Button0_GPIO_Port, Button0_Pin)) {
-		handleButtonChange(1);
-	} else if (GPIO_PIN_RESET == HAL_GPIO_ReadPin(Button1_GPIO_Port, Button1_Pin)) {
-		handleButtonChange(2);
-	} else if (GPIO_PIN_RESET == HAL_GPIO_ReadPin(Button2_GPIO_Port, Button2_Pin)) {
-		handleButtonChange(3);
-	} else if (GPIO_PIN_RESET == HAL_GPIO_ReadPin(Button3_GPIO_Port, Button3_Pin)) {
-		handleButtonChange(4);
+	if (ACTIVE_BUTTON_PIN == HAL_GPIO_ReadPin(Button0_GPIO_Port, Button0_Pin)) {
+		handleButtonChange(10);
+		PlayerLeds_SetPlayer(&playerLedsCtrl, PLAYER_1, PLAYER_VIS_ONLY_SYSTEM);
+	} else if (ACTIVE_BUTTON_PIN == HAL_GPIO_ReadPin(Button1_GPIO_Port, Button1_Pin)) {
+		handleButtonChange(20);
+		PlayerLeds_SetPlayer(&playerLedsCtrl, PLAYER_2, PLAYER_VIS_ONLY_SYSTEM);
+	} else if (ACTIVE_BUTTON_PIN == HAL_GPIO_ReadPin(Button2_GPIO_Port, Button2_Pin)) {
+		handleButtonChange(30);
+		PlayerLeds_SetPlayer(&playerLedsCtrl, PLAYER_3, PLAYER_VIS_ONLY_SYSTEM);
+	} else if (ACTIVE_BUTTON_PIN == HAL_GPIO_ReadPin(Button3_GPIO_Port, Button3_Pin)) {
+		handleButtonChange(40);
+		PlayerLeds_SetPlayer(&playerLedsCtrl, PLAYER_4, PLAYER_VIS_ONLY_SYSTEM);
 	} else {
 		handleButtonChange(0);
+		PlayerLeds_ClearAll(&playerLedsCtrl);
 	}
 }
 

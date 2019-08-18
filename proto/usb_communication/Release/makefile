@@ -43,8 +43,8 @@ all:
 main-build: UsbHidCheck.elf secondary-outputs
 
 # Tool invocations
-UsbHidCheck.elf: $(OBJS) $(USER_OBJS) F:\Work_projects\brbuttonsystem\proto\usb_communication\STM32F103C8TX_FLASH.ld
-	arm-none-eabi-gcc -o "UsbHidCheck.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"F:\Work_projects\brbuttonsystem\proto\usb_communication\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UsbHidCheck.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+UsbHidCheck.elf: $(OBJS) $(USER_OBJS) D:\projects\brbuttonsystem\proto\usb_communication\STM32F103C8TX_FLASH.ld
+	arm-none-eabi-gcc -o "UsbHidCheck.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\projects\brbuttonsystem\proto\usb_communication\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UsbHidCheck.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -64,9 +64,8 @@ clean:
 	-@echo ' '
 
 post-build:
-	arm-none-eabi-objcopy -O binary "UsbHidCheck.elf" "UsbHidCheck.bin"
+	
 	arm-none-eabi-objcopy -O ihex "UsbHidCheck.elf" "UsbHidCheck.hex"
-	arm-none-eabi-size "UsbHidCheck.elf"
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

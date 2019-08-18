@@ -1,0 +1,4 @@
+playersledsctrl.c:20:6:PlayerLeds_Init	16	static
+playersledsctrl.c:27:6:PlayerLeds_ClearAll	16	static
+playersledsctrl.c:34:6:PlayerLeds_SetPlayer	24	static
+playersledsctrl.c:81:6:PlayerLeds_ClearPlayer	24	static

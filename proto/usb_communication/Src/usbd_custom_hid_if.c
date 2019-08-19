@@ -24,6 +24,7 @@
 
 /* USER CODE BEGIN INCLUDE */
 #include "playersledsctrl.h"
+#include "lcdctrl.h"
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -131,6 +132,7 @@ static uint8_t dataToSend[USBD_CUSTOMHID_OUTREPORT_BUF_SIZE + 1] = {2, 0, 0, 0, 
   * @{
   */
 extern USBD_HandleTypeDef hUsbDeviceFS;
+extern PlayerLedsCtrl playerLedsCtrl;
 
 /* USER CODE BEGIN EXPORTED_VARIABLES */
 

@@ -13,8 +13,16 @@
 #define DISPLAY_HEIGHT  (240)
 #define DISPLAY_USE_BGR
 
+// bits of Memory Access Control register (0x36)
+#define BIT_MY_ROW_ACCESS_ORDER         (1 << 7)
+#define BIT_MX_COLUMN_ACCESS_ORDER      (1 << 6)
+#define BIT_MV_ROW_COLUMN_EXCHANGE      (1 << 5)
+#define BIT_ML_VERTICAL_REFRESH_ORDER   (1 << 4)
+#define BIT_BGR                         (1 << 3)
+#define BIT_MH_HORIZONTAL_REFRESH_ORDER (1 << 2)
+
 #ifdef DISPLAY_USE_BGR
-#define DISPLAY_COLOR_SPACE (0x08)
+#define DISPLAY_COLOR_SPACE (BIT_BGR)
 #else
 #define DISPLAY_COLOR_SPACE (0x00)
 #endif // #ifdef DISPLAY_USE_BGR
@@ -28,6 +36,7 @@
 extern SPI_HandleTypeDef hspi1;
 
 static void sendInitSequence(LcdCtrl* lcdctrl);
+static void fillWithColor(LcdCtrl* lcdctrl, uint16_t color, uint32_t pixelsCount);
 
 static void sendCmd(uint8_t cmd) {
     switchToCommands();
@@ -48,50 +57,51 @@ static void sendData(uint8_t data) {
 void LCD_Init(LcdCtrl* lcdctrl) {
     if (!lcdctrl) return;
 
+    lcdctrl->width = DISPLAY_WIDTH;
+    lcdctrl->height = DISPLAY_HEIGHT;
+
     HAL_GPIO_WritePin(LCD_LED_GPIO_Port, LCD_LED_Pin, GPIO_PIN_RESET);
     HAL_GPIO_WritePin(LCD_CS_GPIO_Port, LCD_CS_Pin, GPIO_PIN_RESET);
     HAL_GPIO_WritePin(LCD_RESET_GPIO_Port, LCD_RESET_Pin, GPIO_PIN_SET);
 
     sendInitSequence(lcdctrl);
-
-    LCD_ChangeRotation(lcdctrl, LCD_ORIENTATION_DEFAULT);
+//    LCD_ChangeRotation(lcdctrl, LCD_ORIENTATION_DEFAULT);
 }
 
-void LCD_ChangeRotation(LcdCtrl* lcdctrl, LcdOrientation orientation) {
-    if (!lcdctrl) return;
-    if (LCD_ORIENTATION_UNDEFINED == orientation) return;
-
-    uint8_t command = DISPLAY_COLOR_SPACE;
-
-    lcdctrl->orientation = orientation;
-    switch (orientation) {
-    case LCD_ORIENTATION_VERTICAL:
-        lcdctrl->width = DISPLAY_HEIGHT;
-        lcdctrl->height = DISPLAY_WIDTH;
-        command |= 0x40; // TODO check this orientation case
-        break;
-    case LCD_ORIENTATION_HORIZONTAL:
-        lcdctrl->width = DISPLAY_WIDTH;
-        lcdctrl->height = DISPLAY_HEIGHT;
-        command |= 0x20; // TODO check this orientation case
-        break;
-    case LCD_ORIENTATION_VERTICAL_INVERTER:
-        lcdctrl->width = DISPLAY_HEIGHT;
-        lcdctrl->height = DISPLAY_WIDTH;
-        command |= 0x80; // TODO check this orientation case
-        break;
-    case LCD_ORIENTATION_HORIZONTAL_INVERTER:
-        lcdctrl->width = DISPLAY_WIDTH;
-        lcdctrl->height = DISPLAY_HEIGHT;
-        command |= 0xE0; // TODO check this orientation case
-        break;
-    case LCD_ORIENTATION_UNDEFINED: break; // compiler leaves warning here despite initial check
-    }
-
-    sendCmd(ILI9341_CMD_Memory_Access_Control);
-    sendData(command);
-
-}
+//void LCD_ChangeRotation(LcdCtrl* lcdctrl, LcdOrientation orientation) {
+//    if (!lcdctrl) return;
+//    if (LCD_ORIENTATION_UNDEFINED == orientation) return;
+//
+//    uint8_t command = DISPLAY_COLOR_SPACE;
+//
+//    lcdctrl->orientation = orientation;
+//    switch (orientation) {
+//    case LCD_ORIENTATION_VERTICAL:
+//        lcdctrl->width = DISPLAY_HEIGHT;
+//        lcdctrl->height = DISPLAY_WIDTH;
+//        command |= 0x40; // TODO check this orientation case
+//        break;
+//    case LCD_ORIENTATION_HORIZONTAL:
+//        lcdctrl->width = DISPLAY_WIDTH;
+//        lcdctrl->height = DISPLAY_HEIGHT;
+//        command |= BIT_MY_ROW_ACCESS_ORDER | BIT_MX_COLUMN_ACCESS_ORDER | BIT_MV_ROW_COLUMN_EXCHANGE; // Checked!
+//        break;
+//    case LCD_ORIENTATION_VERTICAL_INVERTER:
+//        lcdctrl->width = DISPLAY_HEIGHT;
+//        lcdctrl->height = DISPLAY_WIDTH;
+//        command |= 0x80; // TODO check this orientation case
+//        break;
+//    case LCD_ORIENTATION_HORIZONTAL_INVERTER:
+//        lcdctrl->width = DISPLAY_WIDTH;
+//        lcdctrl->height = DISPLAY_HEIGHT;
+//        command |= BIT_MY_ROW_ACCESS_ORDER | BIT_MX_COLUMN_ACCESS_ORDER | BIT_MV_ROW_COLUMN_EXCHANGE | BIT_ML_VERTICAL_REFRESH_ORDER; // TODO check this orientation case
+//        break;
+//    case LCD_ORIENTATION_UNDEFINED: break; // compiler leaves warning here despite initial check
+//    }
+//
+//    sendCmd(ILI9341_CMD_Memory_Access_Control);
+//    sendData(command);
+//}
 
 void LCD_SetArea(LcdCtrl* lcdctrl, uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2) {
     if (!lcdctrl) return;
@@ -114,8 +124,7 @@ void LCD_SetArea(LcdCtrl* lcdctrl, uint16_t x1, uint16_t y1, uint16_t x2, uint16
     sendData(y2);
 }
 
-void LCD_FillWithColor(LcdCtrl* lcdctrl, uint16_t color, uint32_t pixelsCount) {
-    if (!lcdctrl) return;
+static void fillWithColor(LcdCtrl* lcdctrl, uint16_t color, uint32_t pixelsCount) {
     {
         const uint32_t maxSize = lcdctrl->width * lcdctrl->height;
         if (pixelsCount > maxSize) pixelsCount = maxSize;
@@ -139,14 +148,32 @@ void LCD_FillWithColor(LcdCtrl* lcdctrl, uint16_t color, uint32_t pixelsCount) {
     HAL_GPIO_WritePin(LCD_CS_GPIO_Port, LCD_CS_Pin, GPIO_PIN_SET);
 }
 
-void LCD_DrawFilledRectangle(LcdCtrl* lcdctrl, uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t color) {
+void LCD_FillScreen(LcdCtrl* lcdctrl, uint16_t color) {
     if (!lcdctrl) return;
 
-    uint32_t size = (x2 - x1) * (y2 - y1);
+    LCD_DrawFilledRectangle(lcdctrl, 0, 0, lcdctrl->width, lcdctrl->height, color);
+}
+
+void LCD_DrawFilledRectangle(LcdCtrl* lcdctrl, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint16_t color) {
+    if (!lcdctrl) return;
+
+    if (width <= 0 || height <= 0) return; // can't draw zero-size rectangular
+    if (x >= lcdctrl->width || y >= lcdctrl->height) return; // top left point is outside of screen area, can't draw in any way
+
+    // even if x or y are negative, calculate rectangle from that point
+    uint16_t x2 = x + width;
+    uint16_t y2 = y + height;
+
+    if (x < 0) x = 0;
+    if (y < 0) y = 0;
+    if (x2 >= lcdctrl->width) x2 = lcdctrl->width - 1;
+    if (y2 >= lcdctrl->height) y2 = lcdctrl->height - 1;
+
+    uint32_t size = width * height;
     if (size < 0) size = -size;
 
-    LCD_SetArea(lcdctrl, x1, y1, x2, y2);
-    LCD_FillWithColor(lcdctrl, color, size);
+    LCD_SetArea(lcdctrl, x, y, x2, y2);
+    fillWithColor(lcdctrl, color, size);
 }
 
 void LCD_DrawPixel(LcdCtrl* lcdctrl, uint16_t x, uint16_t y, uint16_t color) {
@@ -275,7 +302,8 @@ static void sendInitSequence(LcdCtrl* lcdctrl) {
 
     // change from RGB to BGR is here
     sendCmd(ILI9341_CMD_Memory_Access_Control);
-    sendData(0x40 | DISPLAY_COLOR_SPACE); // def 00, MX = 1, BGR = 1 !!! Not RGB for some reason !!!
+    sendData(BIT_MY_ROW_ACCESS_ORDER | BIT_MX_COLUMN_ACCESS_ORDER | BIT_MV_ROW_COLUMN_EXCHANGE
+            | DISPLAY_COLOR_SPACE); // def 00, MX = 1, BGR = 1 !!! Not RGB for some reason !!!
 
     sendCmd(ILI9341_CMD_COLMOD_Pixel_Format_Set);
     sendData(0x55); // def 66(18 bits/pixel), while 55 -> 16 bits/pixel

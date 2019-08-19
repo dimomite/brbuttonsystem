@@ -1,8 +1,7 @@
-lcdctrl.c:48:6:LCD_Init	144	static
-lcdctrl.c:60:6:LCD_ChangeRotation	24	static
-lcdctrl.c:96:6:LCD_SetArea	40	static
-lcdctrl.c:117:6:LCD_FillWithColor	32	static
-lcdctrl.c:142:6:LCD_DrawFilledRectangle	56	static
-lcdctrl.c:152:6:LCD_DrawPixel	56	static
-lcdctrl.c:203:6:LCD_ChangeInversionMode	24	static
-lcdctrl.c:213:6:LCD_ReadId	0	static
+lcdctrl.c:57:6:LCD_Init	136	static
+lcdctrl.c:106:6:LCD_SetArea	40	static
+lcdctrl.c:151:6:LCD_FillScreen	56	static
+lcdctrl.c:157:6:LCD_DrawFilledRectangle	56	static
+lcdctrl.c:179:6:LCD_DrawPixel	56	static
+lcdctrl.c:230:6:LCD_ChangeInversionMode	24	static
+lcdctrl.c:240:6:LCD_ReadId	0	static

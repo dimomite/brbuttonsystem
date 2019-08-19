@@ -103,21 +103,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   PlayerLeds_Init(&playerLedsCtrl, &sendPlayerLeds);
-
   LCD_Init(&mainLcdCtrl);
-  LCD_DrawFilledRectangle(&mainLcdCtrl, 0, 0, 320, 240, 0);
-
-  LCD_DrawFilledRectangle(&mainLcdCtrl, 10, 10, 320, 200, 0xffff);
-  LCD_DrawFilledRectangle(&mainLcdCtrl, 10, 10, 50, 200, 0xf00f);
-
-//  LCD_ChangeInversionMode(&mainLcdCtrl, 1);
-
-  uint16_t y;
-  for (uint16_t x = 140; x < 150; ++x) {
-      for (y = 20; y < 100; ++y) {
-          LCD_DrawPixel(&mainLcdCtrl, x, y, 0b0000011111100000);
-      }
-  }
+  LCD_FillScreen(&mainLcdCtrl, LCD_COLOR_WHITE);
 
   /* USER CODE END 2 */
 

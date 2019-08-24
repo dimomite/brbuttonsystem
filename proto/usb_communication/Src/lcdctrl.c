@@ -154,7 +154,7 @@ void LCD_FillScreen(LcdCtrl* lcdctrl, uint16_t color) {
     LCD_DrawFilledRectangle(lcdctrl, 0, 0, lcdctrl->width, lcdctrl->height, color);
 }
 
-void LCD_DrawFilledRectangle(LcdCtrl* lcdctrl, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint16_t color) {
+void LCD_DrawFilledRectangle(LcdCtrl* lcdctrl, int16_t x, int16_t y, uint16_t width, uint16_t height, uint16_t color) {
     if (!lcdctrl) return;
 
     if (width <= 0 || height <= 0) return; // can't draw zero-size rectangular

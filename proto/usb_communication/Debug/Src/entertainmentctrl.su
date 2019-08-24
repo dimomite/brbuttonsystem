@@ -1,0 +1,8 @@
+entertainmentctrl.c:25:6:ENT_Init	16	static
+entertainmentctrl.c:31:6:ENT_StartLedOn	16	static
+entertainmentctrl.c:37:6:ENT_StartLedOff	16	static
+entertainmentctrl.c:43:6:ENT_EnableSound	16	static
+entertainmentctrl.c:47:6:ENT_DisableSound	16	static
+entertainmentctrl.c:51:6:ENT_SoundOn	24	static
+entertainmentctrl.c:62:6:ENT_SoundOff	16	static
+entertainmentctrl.c:69:17:freqToPeriod	16	static

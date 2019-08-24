@@ -25,6 +25,8 @@
 /* USER CODE BEGIN INCLUDE */
 #include "playersledsctrl.h"
 #include "lcdctrl.h"
+#include "entertainmentctrl.h"
+#include "btctrl.h"
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -34,6 +36,9 @@
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 extern PlayerLedsCtrl playerLedsCtrl;
+extern LcdCtrl mainLcdCtrl;
+extern EntertainmentCtrl entCtrl;
+extern BtCtrl btCtrl;
 /* USER CODE END PV */
 
 /** @addtogroup STM32_USB_OTG_DEVICE_LIBRARY
@@ -132,7 +137,6 @@ static uint8_t dataToSend[USBD_CUSTOMHID_OUTREPORT_BUF_SIZE + 1] = {2, 0, 0, 0, 
   * @{
   */
 extern USBD_HandleTypeDef hUsbDeviceFS;
-extern PlayerLedsCtrl playerLedsCtrl;
 
 /* USER CODE BEGIN EXPORTED_VARIABLES */
 
@@ -236,8 +240,6 @@ static void handleButtonChange(uint8_t isPressed) {
 
 	dataToSend[1] = isPressed;
 	USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, dataToSend, sizeof(dataToSend));
-
-	HAL_GPIO_WritePin(START_LED_GPIO_Port, START_LED_Pin, isPressed ? GPIO_PIN_SET : GPIO_PIN_RESET);
 }
 
 #define ACTIVE_BUTTON_PIN (GPIO_PIN_SET)
@@ -246,18 +248,37 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	if (ACTIVE_BUTTON_PIN == HAL_GPIO_ReadPin(Button0_GPIO_Port, Button0_Pin)) {
 		handleButtonChange(10);
 		PlayerLeds_SetPlayer(&playerLedsCtrl, PLAYER_1, PLAYER_VIS_ONLY_SYSTEM);
+		LCD_DrawFilledRectangle(&mainLcdCtrl, 65, 170, 40, 60, LCD_COLOR_RED);
+//		ENT_SoundOn(&entCtrl, ENT_SOUND_START);
+//		ENT_StartLedOn(&entCtrl, 200);
+		BT_SendByte(&btCtrl, 1);
 	} else if (ACTIVE_BUTTON_PIN == HAL_GPIO_ReadPin(Button1_GPIO_Port, Button1_Pin)) {
 		handleButtonChange(20);
 		PlayerLeds_SetPlayer(&playerLedsCtrl, PLAYER_2, PLAYER_VIS_ONLY_SYSTEM);
+		LCD_DrawFilledRectangle(&mainLcdCtrl, 115, 170, 40, 60, LCD_COLOR_GREEN);
+//		ENT_SoundOn(&entCtrl, ENT_SOUND_PRESSED);
+//		ENT_StartLedOn(&entCtrl, 400);
+		BT_SendByte(&btCtrl, 2);
 	} else if (ACTIVE_BUTTON_PIN == HAL_GPIO_ReadPin(Button2_GPIO_Port, Button2_Pin)) {
 		handleButtonChange(30);
 		PlayerLeds_SetPlayer(&playerLedsCtrl, PLAYER_3, PLAYER_VIS_ONLY_SYSTEM);
+		LCD_DrawFilledRectangle(&mainLcdCtrl, 165, 170, 40, 60, LCD_COLOR_YELLOW);
+//		ENT_SoundOn(&entCtrl, ENT_SOUND_FALSE_START);
+//		ENT_StartLedOn(&entCtrl, 600);
+		BT_SendByte(&btCtrl, 3);
 	} else if (ACTIVE_BUTTON_PIN == HAL_GPIO_ReadPin(Button3_GPIO_Port, Button3_Pin)) {
 		handleButtonChange(40);
 		PlayerLeds_SetPlayer(&playerLedsCtrl, PLAYER_4, PLAYER_VIS_ONLY_SYSTEM);
+		LCD_DrawFilledRectangle(&mainLcdCtrl, 215, 170, 40, 60, LCD_COLOR_BLUE);
+//		ENT_StartLedOn(&entCtrl, 800);
+		BT_SendByte(&btCtrl, 4);
 	} else {
 		handleButtonChange(0);
+		BT_SendByte(&btCtrl, 0);
+//		ENT_StartLedOff(&entCtrl);
+//		ENT_SoundOff(&entCtrl);
 		PlayerLeds_ClearAll(&playerLedsCtrl);
+		LCD_DrawFilledRectangle(&mainLcdCtrl, 65, 170, 190, 60, LCD_COLOR_WHITE);
 	}
 }
 

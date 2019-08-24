@@ -9,7 +9,9 @@
 #include "main.h" // TODO remove from this file to platform abstraction
 
 #include "lcdctrl.h" // TODO remove
+#include "entertainmentctrl.h" // TODO remove
 extern LcdCtrl mainLcdCtrl; // TODO remove
+extern EntertainmentCtrl entCtrl; // TODO remove
 
 extern UART_HandleTypeDef huart2;
 
@@ -57,11 +59,13 @@ void BT_SendData(BtCtrl* btctrl, uint8_t* data, const uint16_t size) {
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
     if (huart != &huart2) return; // not to us
 
-    // TODO do something with data here
-    switch (receivingBuffer[0]) {
-    case 0: LCD_DrawFilledRectangle(&mainLcdCtrl, 10, 10, 10, 10, LCD_COLOR_WHITE); break;
-    case 1: LCD_DrawFilledRectangle(&mainLcdCtrl, 10, 10, 10, 10, LCD_COLOR_MAGENTA); break;
-    default: LCD_DrawFilledRectangle(&mainLcdCtrl, 10, 10, 10, 10, LCD_COLOR_CYAN); break;
+    uint8_t shift = receivingBuffer[0];
+    if (0 == shift) {
+        ENT_StartLedOff(&entCtrl);
+    } else {
+        if (shift > 16) shift = 16;
+        uint16_t brightness = 1 << (shift - 1);
+        ENT_StartLedOn(&entCtrl, brightness);
     }
 
     // would be nice to check that controller in "enabled" state, but I don't have access to it here

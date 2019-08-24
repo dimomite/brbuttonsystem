@@ -31,10 +31,12 @@ void ENT_Init(EntertainmentCtrl* entCtrl) {
 void ENT_StartLedOn(EntertainmentCtrl* entCtrl, uint16_t brightness) {
     if (!entCtrl) return;
 
-//    HAL_GPIO_WritePin(START_LED_GPIO_Port, START_LED_Pin, GPIO_PIN_SET);
-
-    HAL_TIM_PWM_Start(&htim1, START_SIGNAL_PWM_CHANNEL);
-    __HAL_TIM_SET_COMPARE(&htim1, START_SIGNAL_PWM_CHANNEL, brightness);
+    if (0 == brightness) {
+        ENT_StartLedOff(entCtrl);
+    } else {
+        HAL_TIM_PWM_Start(&htim1, START_SIGNAL_PWM_CHANNEL);
+        __HAL_TIM_SET_COMPARE(&htim1, START_SIGNAL_PWM_CHANNEL, brightness);
+    }
 }
 
 void ENT_StartLedOff(EntertainmentCtrl* entCtrl) {

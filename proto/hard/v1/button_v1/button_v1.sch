@@ -136,7 +136,7 @@ F 1 "LM339" H 7650 5150 50  0000 C CNN
 F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 7500 5100 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/lm339.pdf" H 7600 5200 50  0001 C CNN
 	1    7550 5000
-	1    0    0    1   
+	1    0    0    -1  
 $EndComp
 $Comp
 L Comparator:LM339 U6
@@ -147,18 +147,7 @@ F 1 "LM339" H 7700 5950 50  0000 C CNN
 F 2 "" H 7500 5900 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/lm339.pdf" H 7600 6000 50  0001 C CNN
 	2    7550 5800
-	1    0    0    1   
-$EndComp
-$Comp
-L Comparator:LM339 U6
-U 3 1 5D09C050
-P 10500 5000
-F 0 "U6" H 10600 5250 50  0000 C CNN
-F 1 "LM339" H 10650 5150 50  0000 C CNN
-F 2 "" H 10450 5100 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/lm339.pdf" H 10550 5200 50  0001 C CNN
-	3    10500 5000
-	1    0    0    1   
+	1    0    0    -1  
 $EndComp
 $Comp
 L Comparator:LM339 U6
@@ -269,11 +258,9 @@ $EndComp
 Wire Wire Line
 	6650 4850 6750 4850
 Wire Wire Line
-	6650 4950 6800 4950
-Wire Wire Line
 	7150 4950 7150 4900
 Wire Wire Line
-	6650 5050 7150 5050
+	6650 5050 6800 5050
 Wire Wire Line
 	7150 5050 7150 5100
 Wire Wire Line
@@ -346,14 +333,12 @@ Wire Wire Line
 Wire Wire Line
 	7150 5850 7150 5900
 Wire Wire Line
-	6650 5850 7150 5850
+	6650 5850 6800 5850
 Wire Wire Line
 	6850 5650 6750 5650
 Connection ~ 6750 5650
 Wire Wire Line
 	6750 5650 6650 5650
-Wire Wire Line
-	6650 5750 6800 5750
 Wire Wire Line
 	7150 5750 7150 5700
 Wire Wire Line
@@ -420,8 +405,6 @@ Wire Wire Line
 Connection ~ 9700 5150
 Wire Wire Line
 	9700 5150 9800 5150
-Wire Wire Line
-	9600 5050 10100 5050
 Wire Wire Line
 	10100 5050 10100 5100
 Wire Wire Line
@@ -560,15 +543,13 @@ Text Label 3150 4400 0    50   ~ 0
 BT_TX
 Text Label 3150 4300 0    50   ~ 0
 BT_RX
-Wire Wire Line
-	1850 5600 1600 5600
 Text Label 3150 5000 0    50   ~ 0
 StartLed
 Text Label 3150 5100 0    50   ~ 0
 EXT_RW
-Text Label 1850 5000 2    50   ~ 0
+Text Label 1150 5000 2    50   ~ 0
 DISP_SDA
-Text Label 1850 4900 2    50   ~ 0
+Text Label 1150 4900 2    50   ~ 0
 DISP_SCL
 Text Label 1850 4800 2    50   ~ 0
 EXT_READ
@@ -621,83 +602,16 @@ F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/da
 $EndComp
 Text Label 3150 4800 0    50   ~ 0
 LCD_MOSI
-Connection ~ 850  5300
 $Comp
 L power:+3.3V #PWR030
 U 1 1 5CFE0A9B
-P 850 5300
-F 0 "#PWR030" H 850 5150 50  0001 C CNN
-F 1 "+3.3V" H 865 5473 50  0000 C CNN
-F 2 "" H 850 5300 50  0001 C CNN
-F 3 "" H 850 5300 50  0001 C CNN
-	1    850  5300
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	850  5500 850  5400
-Connection ~ 850  5500
-Wire Wire Line
-	950  5500 850  5500
-Wire Wire Line
-	850  5400 850  5300
-Connection ~ 850  5400
-Wire Wire Line
-	1300 5400 850  5400
-Wire Wire Line
-	850  5300 950  5300
-Wire Wire Line
-	850  5600 850  5500
-Wire Wire Line
-	1300 5600 850  5600
-Wire Wire Line
-	1600 5400 1850 5400
-Wire Wire Line
-	1850 5500 1250 5500
-Wire Wire Line
-	1850 5300 1250 5300
-$Comp
-L Device:R R15
-U 1 1 5CFC8FCD
-P 1450 5600
-F 0 "R15" V 1350 5500 50  0000 C CNN
-F 1 "4k7" V 1350 5650 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 1380 5600 50  0001 C CNN
-F 3 "~" H 1450 5600 50  0001 C CNN
-	1    1450 5600
-	0    1    -1   0   
-$EndComp
-$Comp
-L Device:R R13
-U 1 1 5CFC8CEC
-P 1100 5500
-F 0 "R13" V 1000 5400 50  0000 C CNN
-F 1 "4k7" V 1000 5550 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 1030 5500 50  0001 C CNN
-F 3 "~" H 1100 5500 50  0001 C CNN
-	1    1100 5500
-	0    1    -1   0   
-$EndComp
-$Comp
-L Device:R R14
-U 1 1 5CFC89DA
-P 1450 5400
-F 0 "R14" V 1350 5300 50  0000 C CNN
-F 1 "4k7" V 1350 5450 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 1380 5400 50  0001 C CNN
-F 3 "~" H 1450 5400 50  0001 C CNN
-	1    1450 5400
-	0    1    -1   0   
-$EndComp
-$Comp
-L Device:R R12
-U 1 1 5CFC7F8F
-P 1100 5300
-F 0 "R12" V 1000 5200 50  0000 C CNN
-F 1 "4k7" V 1000 5350 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 1030 5300 50  0001 C CNN
-F 3 "~" H 1100 5300 50  0001 C CNN
-	1    1100 5300
-	0    1    -1   0   
+P 1000 5600
+F 0 "#PWR030" H 1000 5450 50  0001 C CNN
+F 1 "+3.3V" V 1000 5850 50  0000 C CNN
+F 2 "" H 1000 5600 50  0001 C CNN
+F 3 "" H 1000 5600 50  0001 C CNN
+	1    1000 5600
+	0    -1   -1   0   
 $EndComp
 Text Label 1850 5600 2    50   ~ 0
 But3
@@ -797,7 +711,7 @@ Text Label 1850 4300 2    50   ~ 0
 BOOT1
 Text Label 1850 3700 2    50   ~ 0
 TouchEnable
-Text Label 1850 3800 2    50   ~ 0
+Text Label 1150 3800 2    50   ~ 0
 Touch4Front
 $Comp
 L power:GND #PWR036
@@ -870,7 +784,7 @@ U 1 1 5D0CCB3B
 P 8650 1400
 F 0 "J7" H 8678 1330 50  0000 L CNN
 F 1 "Conn_01x04_Female" H 8678 1285 50  0001 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 8650 1400 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Horizontal" H 8650 1400 50  0001 C CNN
 F 3 "~" H 8650 1400 50  0001 C CNN
 	1    8650 1400
 	1    0    0    -1  
@@ -953,8 +867,6 @@ Text Label 8450 1500 2    50   ~ 0
 BT_RX
 Text Label 8450 1600 2    50   ~ 0
 BT_TX
-Text Label 7750 2850 2    50   ~ 0
-Touch4Front
 $Comp
 L power:GND #PWR0120
 U 1 1 5D194DEC
@@ -965,28 +877,6 @@ F 2 "" H 8100 3150 50  0001 C CNN
 F 3 "" H 8100 3150 50  0001 C CNN
 	1    8100 3150
 	0    -1   -1   0   
-$EndComp
-$Comp
-L brbuttonsystem:K3-2336D-combi J14
-U 2 1 5D188189
-P 7850 2850
-F 0 "J14" H 7950 2900 50  0000 C CNN
-F 1 "K3-2336D-combi" H 7925 2984 50  0001 C CNN
-F 2 "brbuttonsystem:K3-2346D" H 7850 2850 50  0001 C CNN
-F 3 "" H 7850 2850 50  0001 C CNN
-	2    7850 2850
-	1    0    0    -1  
-$EndComp
-$Comp
-L brbuttonsystem:K3-2336D-combi J14
-U 1 1 5D1868B6
-P 7850 2200
-F 0 "J14" H 7950 2250 50  0000 C CNN
-F 1 "K3-2336D-combi" H 7925 2334 50  0001 C CNN
-F 2 "brbuttonsystem:K3-2346D" H 7850 2200 50  0001 C CNN
-F 3 "" H 7850 2200 50  0001 C CNN
-	1    7850 2200
-	1    0    0    -1  
 $EndComp
 Text Label 7750 2200 2    50   ~ 0
 TouchEnable
@@ -1290,96 +1180,6 @@ F 3 "" H 9500 2400 50  0001 C CNN
 	1    9500 2400
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	9600 1150 9600 1250
-Connection ~ 9600 1150
-Wire Wire Line
-	9600 1250 10100 1250
-Connection ~ 9600 1250
-Wire Wire Line
-	9600 1050 9600 1150
-Wire Wire Line
-	9900 1150 10250 1150
-Wire Wire Line
-	10250 1050 9900 1050
-$Comp
-L Device:R R42
-U 1 1 5D2B703D
-P 9750 1150
-F 0 "R42" V 9650 1050 50  0000 C CNN
-F 1 "4k7" V 9650 1200 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 9680 1150 50  0001 C CNN
-F 3 "~" H 9750 1150 50  0001 C CNN
-	1    9750 1150
-	0    1    -1   0   
-$EndComp
-$Comp
-L Device:R R41
-U 1 1 5D2B6B50
-P 9750 1050
-F 0 "R41" V 9850 950 50  0000 C CNN
-F 1 "4k7" V 9850 1100 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 9680 1050 50  0001 C CNN
-F 3 "~" H 9750 1050 50  0001 C CNN
-	1    9750 1050
-	0    1    -1   0   
-$EndComp
-Connection ~ 10250 1550
-$Comp
-L power:GND #PWR0122
-U 1 1 5D25B364
-P 10250 1550
-F 0 "#PWR0122" H 10250 1300 50  0001 C CNN
-F 1 "GND" H 10255 1377 50  0001 C CNN
-F 2 "" H 10250 1550 50  0001 C CNN
-F 3 "" H 10250 1550 50  0001 C CNN
-	1    10250 1550
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	10250 1550 10100 1550
-Wire Wire Line
-	10100 1250 10250 1250
-Connection ~ 10100 1250
-Wire Wire Line
-	9500 1250 9600 1250
-$Comp
-L Device:C C28
-U 1 1 5D23C521
-P 10100 1400
-F 0 "C28" H 10000 1500 50  0000 L CNN
-F 1 "0.1uF" H 9900 1300 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 10138 1250 50  0001 C CNN
-F 3 "~" H 10100 1400 50  0001 C CNN
-	1    10100 1400
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+3.3V #PWR0121
-U 1 1 5D23A49F
-P 9500 1250
-F 0 "#PWR0121" H 9500 1100 50  0001 C CNN
-F 1 "+3.3V" H 9515 1423 50  0000 C CNN
-F 2 "" H 9500 1250 50  0001 C CNN
-F 3 "" H 9500 1250 50  0001 C CNN
-	1    9500 1250
-	0    -1   -1   0   
-$EndComp
-Text Label 10250 1150 2    50   ~ 0
-DISP_SDA
-Text Label 10250 1050 2    50   ~ 0
-DISP_SCL
-$Comp
-L brbuttonsystem:OLED_0.96_I2C U12
-U 1 1 5D23818B
-P 10350 950
-F 0 "U12" H 10350 1000 50  0000 L CNN
-F 1 "OLED_0.96_I2C" H 10350 300 50  0000 L CNN
-F 2 "brbuttonsystem:OLED_0.96_I2C" H 10350 950 50  0001 C CNN
-F 3 "" H 10350 950 50  0001 C CNN
-	1    10350 950 
-	1    0    0    -1  
-$EndComp
 $Comp
 L power:GND #PWR0115
 U 1 1 5D3D5CBD
@@ -1535,17 +1335,7 @@ $EndComp
 Wire Wire Line
 	6200 5400 6800 5400
 Wire Wire Line
-	6800 5400 6800 5750
-Connection ~ 6800 5750
-Wire Wire Line
-	6800 5750 7150 5750
-Wire Wire Line
 	6200 5300 6800 5300
-Wire Wire Line
-	6800 5300 6800 4950
-Connection ~ 6800 4950
-Wire Wire Line
-	6800 4950 7150 4950
 Text Label 5800 3300 0    50   ~ 0
 PLAY_LED0
 Text Label 5800 3400 0    50   ~ 0
@@ -1565,118 +1355,111 @@ PLAY_LED3
 $Comp
 L Device:R R43
 U 1 1 5D7857A2
-P 6400 3300
-F 0 "R43" V 6450 3150 50  0000 C CNN
-F 1 "1k" V 6450 3450 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 6330 3300 50  0001 C CNN
-F 3 "~" H 6400 3300 50  0001 C CNN
-	1    6400 3300
+P 6600 3600
+F 0 "R43" V 6650 3450 50  0000 C CNN
+F 1 "1k" V 6650 3750 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 6530 3600 50  0001 C CNN
+F 3 "~" H 6600 3600 50  0001 C CNN
+	1    6600 3600
 	0    1    -1   0   
 $EndComp
 $Comp
 L Device:R R44
 U 1 1 5D78835C
-P 6400 3550
-F 0 "R44" V 6450 3400 50  0000 C CNN
-F 1 "1k" V 6450 3700 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 6330 3550 50  0001 C CNN
-F 3 "~" H 6400 3550 50  0001 C CNN
-	1    6400 3550
+P 6600 3750
+F 0 "R44" V 6650 3600 50  0000 C CNN
+F 1 "1k" V 6650 3900 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 6530 3750 50  0001 C CNN
+F 3 "~" H 6600 3750 50  0001 C CNN
+	1    6600 3750
 	0    1    -1   0   
 $EndComp
 $Comp
 L Device:R R45
 U 1 1 5D788621
-P 6400 3800
-F 0 "R45" V 6450 3650 50  0000 C CNN
-F 1 "1k" V 6450 3950 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 6330 3800 50  0001 C CNN
-F 3 "~" H 6400 3800 50  0001 C CNN
-	1    6400 3800
+P 6600 3900
+F 0 "R45" V 6650 3750 50  0000 C CNN
+F 1 "1k" V 6650 4050 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 6530 3900 50  0001 C CNN
+F 3 "~" H 6600 3900 50  0001 C CNN
+	1    6600 3900
 	0    1    -1   0   
 $EndComp
 $Comp
 L Device:R R46
 U 1 1 5D78898E
-P 6400 4050
-F 0 "R46" V 6450 3900 50  0000 C CNN
-F 1 "1k" V 6450 4200 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 6330 4050 50  0001 C CNN
-F 3 "~" H 6400 4050 50  0001 C CNN
-	1    6400 4050
+P 6600 4050
+F 0 "R46" V 6650 3900 50  0000 C CNN
+F 1 "1k" V 6650 4200 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 6530 4050 50  0001 C CNN
+F 3 "~" H 6600 4050 50  0001 C CNN
+	1    6600 4050
 	0    1    -1   0   
 $EndComp
 Wire Wire Line
-	5800 3700 6250 3300
+	5800 3700 6450 3600
 Wire Wire Line
-	6250 3550 5800 3800
+	6450 3750 5800 3800
 Wire Wire Line
-	5800 3900 6250 3800
+	5800 3900 6450 3900
 Wire Wire Line
-	6250 4050 5800 4000
+	6450 4050 5800 4000
 $Comp
 L Device:LED D10
 U 1 1 5D7B7077
-P 6850 3300
-F 0 "D10" H 6950 3250 50  0000 C CNN
-F 1 "LED" H 6843 3136 50  0001 C CNN
-F 2 "LED_THT:LED_D3.0mm_Clear" H 6850 3300 50  0001 C CNN
-F 3 "~" H 6850 3300 50  0001 C CNN
-	1    6850 3300
+P 7050 3600
+F 0 "D10" H 7150 3550 50  0000 C CNN
+F 1 "LED" H 7043 3436 50  0001 C CNN
+F 2 "LED_THT:LED_D3.0mm_Clear" H 7050 3600 50  0001 C CNN
+F 3 "~" H 7050 3600 50  0001 C CNN
+	1    7050 3600
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	6700 3300 6550 3300
+	6900 3600 6750 3600
 Wire Wire Line
-	6550 3550 6700 3550
+	6750 3750 6900 3750
 Wire Wire Line
-	6700 3800 6550 3800
+	6900 3900 6750 3900
 Wire Wire Line
-	6550 4050 6700 4050
+	6750 4050 6900 4050
 $Comp
 L Device:LED D12
 U 1 1 5D7F257C
-P 6850 3550
-F 0 "D12" H 6950 3500 50  0000 C CNN
-F 1 "LED" H 6843 3386 50  0001 C CNN
-F 2 "LED_THT:LED_D3.0mm_Clear" H 6850 3550 50  0001 C CNN
-F 3 "~" H 6850 3550 50  0001 C CNN
-	1    6850 3550
+P 7050 3750
+F 0 "D12" H 7150 3700 50  0000 C CNN
+F 1 "LED" H 7043 3586 50  0001 C CNN
+F 2 "LED_THT:LED_D3.0mm_Clear" H 7050 3750 50  0001 C CNN
+F 3 "~" H 7050 3750 50  0001 C CNN
+	1    7050 3750
 	-1   0    0    1   
 $EndComp
 $Comp
 L Device:LED D11
 U 1 1 5D7F2999
-P 6850 3800
-F 0 "D11" H 6950 3750 50  0000 C CNN
-F 1 "LED" H 6843 3636 50  0001 C CNN
-F 2 "LED_THT:LED_D3.0mm_Clear" H 6850 3800 50  0001 C CNN
-F 3 "~" H 6850 3800 50  0001 C CNN
-	1    6850 3800
+P 7050 3900
+F 0 "D11" H 7150 3850 50  0000 C CNN
+F 1 "LED" H 7043 3736 50  0001 C CNN
+F 2 "LED_THT:LED_D3.0mm_Clear" H 7050 3900 50  0001 C CNN
+F 3 "~" H 7050 3900 50  0001 C CNN
+	1    7050 3900
 	-1   0    0    1   
 $EndComp
 $Comp
 L Device:LED D13
 U 1 1 5D7F2D02
-P 6850 4050
-F 0 "D13" H 6950 4000 50  0000 C CNN
-F 1 "LED" H 6843 3886 50  0001 C CNN
-F 2 "LED_THT:LED_D3.0mm_Clear" H 6850 4050 50  0001 C CNN
-F 3 "~" H 6850 4050 50  0001 C CNN
-	1    6850 4050
+P 7050 4050
+F 0 "D13" H 7150 4000 50  0000 C CNN
+F 1 "LED" H 7043 3886 50  0001 C CNN
+F 2 "LED_THT:LED_D3.0mm_Clear" H 7050 4050 50  0001 C CNN
+F 3 "~" H 7050 4050 50  0001 C CNN
+	1    7050 4050
 	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	9600 4950 9750 4950
 Wire Wire Line
 	9050 5450 9650 5450
 Wire Wire Line
 	9050 5350 9750 5350
-Wire Wire Line
-	9750 5350 9750 4950
-Connection ~ 9750 4950
-Wire Wire Line
-	9750 4950 10100 4950
 $Comp
 L Device:C C29
 U 1 1 5D83F657
@@ -1714,98 +1497,17 @@ Text Label 2150 1400 2    50   ~ 0
 BuzzerEnable
 Wire Wire Line
 	2150 1400 2250 1400
-Text Label 1850 4500 2    50   ~ 0
-BuzzerEnable
-$Comp
-L Device:LED D14
-U 1 1 5D146B16
-P 7150 3400
-F 0 "D14" H 7250 3350 50  0000 C CNN
-F 1 "LED" H 7143 3236 50  0001 C CNN
-F 2 "LED_THT:LED_D3.0mm_Clear" H 7150 3400 50  0001 C CNN
-F 3 "~" H 7150 3400 50  0001 C CNN
-	1    7150 3400
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:LED D15
-U 1 1 5D1475F6
-P 7150 3650
-F 0 "D15" H 7250 3600 50  0000 C CNN
-F 1 "LED" H 7143 3486 50  0001 C CNN
-F 2 "LED_THT:LED_D3.0mm_Clear" H 7150 3650 50  0001 C CNN
-F 3 "~" H 7150 3650 50  0001 C CNN
-	1    7150 3650
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:LED D17
-U 1 1 5D147D89
-P 7150 4150
-F 0 "D17" H 7250 4100 50  0000 C CNN
-F 1 "LED" H 7143 3986 50  0001 C CNN
-F 2 "LED_THT:LED_D3.0mm_Clear" H 7150 4150 50  0001 C CNN
-F 3 "~" H 7150 4150 50  0001 C CNN
-	1    7150 4150
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:LED D16
-U 1 1 5D14838B
-P 7150 3900
-F 0 "D16" H 7250 3850 50  0000 C CNN
-F 1 "LED" H 7143 3736 50  0001 C CNN
-F 2 "LED_THT:LED_D3.0mm_Clear" H 7150 3900 50  0001 C CNN
-F 3 "~" H 7150 3900 50  0001 C CNN
-	1    7150 3900
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
-	6700 3300 6700 3400
+	7200 3600 7300 3600
 Wire Wire Line
-	6700 3400 7000 3400
-Connection ~ 6700 3300
+	7200 3750 7300 3750
 Wire Wire Line
-	7000 3300 7300 3300
-Wire Wire Line
-	7300 3300 7300 3400
-Wire Wire Line
-	7000 3550 7300 3550
-Wire Wire Line
-	7300 3550 7300 3650
-Wire Wire Line
-	6700 4150 7000 4150
-Connection ~ 6700 4050
-Wire Wire Line
-	7000 4050 7300 4050
+	7200 4050 7300 4050
 Wire Wire Line
 	7300 4050 7300 4150
 Wire Wire Line
-	6700 3800 6700 3900
-Wire Wire Line
-	6700 3900 7000 3900
-Connection ~ 6700 3800
-Wire Wire Line
-	7000 3800 7300 3800
-Wire Wire Line
-	7300 3800 7300 3900
-Wire Wire Line
-	6700 3550 6700 3650
-Wire Wire Line
-	6700 3650 7000 3650
-Connection ~ 6700 3550
-Wire Wire Line
-	6700 4050 6700 4150
-Wire Wire Line
-	7300 3400 7300 3550
-Connection ~ 7300 3400
-Connection ~ 7300 3550
-Wire Wire Line
-	7300 3650 7300 3800
-Connection ~ 7300 3650
-Connection ~ 7300 3800
-Wire Wire Line
-	7300 3900 7300 4050
+	7200 3900 7300 3900
+Connection ~ 7300 3750
 Connection ~ 7300 3900
 Connection ~ 7300 4050
 $Comp
@@ -1819,7 +1521,6 @@ F 3 "" H 7300 4150 50  0001 C CNN
 	1    7300 4150
 	1    0    0    -1  
 $EndComp
-Connection ~ 7300 4150
 $Comp
 L Connector:Conn_01x03_Male J15
 U 1 1 5D4C3FA1
@@ -1859,13 +1560,6 @@ F 3 "" H 2050 6600 50  0001 C CNN
 	1    2050 6600
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	9650 5850 10100 5850
-Connection ~ 9650 5850
-Wire Wire Line
-	9650 5450 9650 5850
-Wire Wire Line
-	9600 5850 9650 5850
 Wire Wire Line
 	9700 5750 9600 5750
 Connection ~ 9700 5750
@@ -1912,8 +1606,6 @@ Wire Wire Line
 	10200 6000 10100 6000
 Wire Wire Line
 	10100 5950 10100 6000
-Wire Wire Line
-	9600 5950 10100 5950
 $Comp
 L Device:R R17
 U 1 1 5D04AD6C
@@ -1945,7 +1637,7 @@ F 1 "LM339" H 10650 6050 50  0000 C CNN
 F 2 "" H 10450 6000 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/lm339.pdf" H 10550 6100 50  0001 C CNN
 	4    10500 5900
-	1    0    0    1   
+	1    0    0    -1  
 $EndComp
 $Comp
 L Connector:Conn_01x06_Female J3
@@ -1959,5 +1651,95 @@ F 3 "~" H 9400 5850 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	10250 1350 10250 1550
+	7300 3900 7300 4050
+Wire Wire Line
+	7300 3750 7300 3900
+Wire Wire Line
+	7300 3600 7300 3750
+$Comp
+L brbuttonsystem:K3-2235D J14
+U 1 1 5D77A292
+P 7950 2200
+F 0 "J14" H 7925 2425 50  0000 C CNN
+F 1 "K3-2235D" H 7925 2334 50  0000 C CNN
+F 2 "brbuttonsystem:K3-2235D" H 7950 2200 50  0001 C CNN
+F 3 "" H 7950 2200 50  0001 C CNN
+	1    7950 2200
+	1    0    0    -1  
+$EndComp
+$Comp
+L brbuttonsystem:K3-2235D J14
+U 2 1 5D77AE79
+P 7950 2950
+F 0 "J14" H 7925 3175 50  0000 C CNN
+F 1 "K3-2235D" H 7925 3084 50  0000 C CNN
+F 2 "brbuttonsystem:K3-2235D" H 7950 2950 50  0001 C CNN
+F 3 "" H 7950 2950 50  0001 C CNN
+	2    7950 2950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9600 4950 10100 4950
+Wire Wire Line
+	9600 5850 10100 5850
+Wire Wire Line
+	6650 5750 7150 5750
+Wire Wire Line
+	6800 5400 6800 5850
+Connection ~ 6800 5850
+Wire Wire Line
+	6800 5850 7150 5850
+Wire Wire Line
+	6650 4950 7150 4950
+Wire Wire Line
+	6800 5300 6800 5050
+Connection ~ 6800 5050
+Wire Wire Line
+	6800 5050 7150 5050
+$Comp
+L Comparator:LM339 U6
+U 3 1 5D09C050
+P 10500 5000
+F 0 "U6" H 10600 5250 50  0000 C CNN
+F 1 "LM339" H 10650 5150 50  0000 C CNN
+F 2 "" H 10450 5100 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/lm339.pdf" H 10550 5200 50  0001 C CNN
+	3    10500 5000
+	1    0    0    -1  
+$EndComp
+Text Label 1150 4500 2    50   ~ 0
+BuzzerEnable
+Wire Wire Line
+	9600 5050 9650 5050
+Wire Wire Line
+	9750 5350 9750 5950
+Connection ~ 9750 5950
+Wire Wire Line
+	9750 5950 10100 5950
+Wire Wire Line
+	9600 5950 9750 5950
+Wire Wire Line
+	9650 5450 9650 5050
+Connection ~ 9650 5050
+Wire Wire Line
+	9650 5050 10100 5050
+$Comp
+L Device:R_Network04 RN1
+U 1 1 5D925F5A
+P 1200 5400
+F 0 "RN1" V 900 5450 50  0000 C CNN
+F 1 "4k7" V 900 5300 50  0000 C CNN
+F 2 "Resistor_THT:R_Array_SIP5" V 1475 5400 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/31509/csc.pdf" H 1200 5400 50  0001 C CNN
+	1    1200 5400
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1850 5600 1400 5600
+Wire Wire Line
+	1400 5500 1850 5500
+Wire Wire Line
+	1850 5400 1400 5400
+Wire Wire Line
+	1400 5300 1850 5300
 $EndSCHEMATC

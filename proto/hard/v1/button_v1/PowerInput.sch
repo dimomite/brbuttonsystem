@@ -260,10 +260,6 @@ Wire Wire Line
 	5250 1350 5000 1350
 Wire Wire Line
 	5000 1250 5000 1350
-Connection ~ 5000 1350
-Wire Wire Line
-	5000 1650 5550 1650
-Connection ~ 5550 1650
 Wire Wire Line
 	5850 1350 6050 1350
 Wire Wire Line
@@ -315,20 +311,6 @@ F 1 "GND" H 3255 3177 50  0001 C CNN
 F 2 "" H 3250 3350 50  0001 C CNN
 F 3 "" H 3250 3350 50  0001 C CNN
 	1    3250 3350
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C?
-U 1 1 5D48B2B1
-P 5000 1500
-AR Path="/5D48B2B1" Ref="C?"  Part="1" 
-AR Path="/5D1C99DD/5D48B2B1" Ref="C5"  Part="1" 
-AR Path="/5D4A520B/5D48B2B1" Ref="C5"  Part="1" 
-F 0 "C5" H 5115 1546 50  0000 L CNN
-F 1 "1uF" H 5115 1455 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5038 1350 50  0001 C CNN
-F 3 "~" H 5000 1500 50  0001 C CNN
-	1    5000 1500
 	1    0    0    -1  
 $EndComp
 $Comp

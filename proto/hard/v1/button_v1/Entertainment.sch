@@ -417,15 +417,15 @@ $EndComp
 $Comp
 L brbuttonsystem:NL27WZ14 U?
 U 3 1 5D318716
-P 4750 2900
+P 1900 2700
 AR Path="/5D318716" Ref="U?"  Part="3" 
 AR Path="/5D3754B9/5D318716" Ref="U10"  Part="3" 
-F 0 "U10" H 4808 2646 50  0000 L CNN
-F 1 "NL27WZ14" H 4808 2555 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23-6_Handsoldering" H 4750 2900 50  0001 C CNN
-F 3 "" H 4750 2900 50  0001 C CNN
-	3    4750 2900
-	1    0    0    -1  
+F 0 "U10" V 1800 2150 50  0000 L CNN
+F 1 "NL27WZ14" V 1800 2400 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23-6_Handsoldering" H 1900 2700 50  0001 C CNN
+F 3 "" H 1900 2700 50  0001 C CNN
+	3    1900 2700
+	0    1    1    0   
 $EndComp
 Connection ~ 2100 3000
 Wire Wire Line
@@ -435,27 +435,14 @@ Wire Wire Line
 $Comp
 L power:+5V #PWR?
 U 1 1 5D31871F
-P 4750 2450
+P 2100 2700
 AR Path="/5D31871F" Ref="#PWR?"  Part="1" 
 AR Path="/5D3754B9/5D31871F" Ref="#PWR061"  Part="1" 
-F 0 "#PWR061" H 4750 2300 50  0001 C CNN
-F 1 "+5V" H 4765 2623 50  0000 C CNN
-F 2 "" H 4750 2450 50  0001 C CNN
-F 3 "" H 4750 2450 50  0001 C CNN
-	1    4750 2450
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 5D318725
-P 4750 3500
-AR Path="/5D318725" Ref="#PWR?"  Part="1" 
-AR Path="/5D3754B9/5D318725" Ref="#PWR062"  Part="1" 
-F 0 "#PWR062" H 4750 3250 50  0001 C CNN
-F 1 "GND" H 4755 3327 50  0001 C CNN
-F 2 "" H 4750 3500 50  0001 C CNN
-F 3 "" H 4750 3500 50  0001 C CNN
-	1    4750 3500
+F 0 "#PWR061" H 2100 2550 50  0001 C CNN
+F 1 "+5V" H 2115 2873 50  0000 C CNN
+F 2 "" H 2100 2700 50  0001 C CNN
+F 3 "" H 2100 2700 50  0001 C CNN
+	1    2100 2700
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -470,28 +457,28 @@ Wire Wire Line
 $Comp
 L Device:C C?
 U 1 1 5D318730
-P 5350 3150
+P 1600 2850
 AR Path="/5D318730" Ref="C?"  Part="1" 
 AR Path="/5D3754B9/5D318730" Ref="C21"  Part="1" 
-F 0 "C21" H 5465 3196 50  0000 L CNN
-F 1 "0.1uF" H 5465 3105 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5388 3000 50  0001 C CNN
-F 3 "~" H 5350 3150 50  0001 C CNN
-	1    5350 3150
-	1    0    0    -1  
+F 0 "C21" V 1650 2650 50  0000 L CNN
+F 1 "0.1uF" V 1650 2900 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1638 2700 50  0001 C CNN
+F 3 "~" H 1600 2850 50  0001 C CNN
+	1    1600 2850
+	0    1    1    0   
 $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 5D31873C
-P 5350 3300
+P 1300 2700
 AR Path="/5D31873C" Ref="#PWR?"  Part="1" 
 AR Path="/5D3754B9/5D31873C" Ref="#PWR064"  Part="1" 
-F 0 "#PWR064" H 5350 3050 50  0001 C CNN
-F 1 "GND" H 5355 3127 50  0001 C CNN
-F 2 "" H 5350 3300 50  0001 C CNN
-F 3 "" H 5350 3300 50  0001 C CNN
-	1    5350 3300
-	1    0    0    -1  
+F 0 "#PWR064" H 1300 2450 50  0001 C CNN
+F 1 "GND" H 1305 2527 50  0001 C CNN
+F 2 "" H 1300 2700 50  0001 C CNN
+F 3 "" H 1300 2700 50  0001 C CNN
+	1    1300 2700
+	0    1    1    0   
 $EndComp
 $Comp
 L brbuttonsystem:MyBuzzer BZ?
@@ -1146,51 +1133,6 @@ F 3 "http://www.ti.com/lit/ds/symlink/lm2904-n.pdf" H 4800 1450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Transistor_FET:TP0610T Q?
-U 1 1 5D1677D4
-P 4650 2700
-AR Path="/5D1677D4" Ref="Q?"  Part="1" 
-AR Path="/5D3754B9/5D1677D4" Ref="Q8"  Part="1" 
-F 0 "Q8" H 4856 2700 50  0000 L CNN
-F 1 "TP0610T" H 4856 2655 50  0001 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 4850 2625 50  0001 L CIN
-F 3 "http://www.vishay.com/docs/70209/70209.pdf" H 4650 2700 50  0001 L CNN
-	1    4650 2700
-	1    0    0    1   
-$EndComp
-Wire Wire Line
-	4750 2900 5350 2900
-Wire Wire Line
-	5350 2900 5350 3000
-Connection ~ 4750 2900
-$Comp
-L Device:R R?
-U 1 1 5D192350
-P 4600 2500
-AR Path="/5D192350" Ref="R?"  Part="1" 
-AR Path="/5D3754B9/5D192350" Ref="R47"  Part="1" 
-F 0 "R47" V 4700 2400 50  0000 C CNN
-F 1 "47k" V 4700 2550 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 4530 2500 50  0001 C CNN
-F 3 "~" H 4600 2500 50  0001 C CNN
-	1    4600 2500
-	0    1    -1   0   
-$EndComp
-Wire Wire Line
-	4450 2700 4450 2500
-Wire Wire Line
-	4750 2450 4750 2500
-Connection ~ 4750 2500
-Text HLabel 4350 2700 0    50   Input ~ 0
-BuzzerEnable
-Wire Wire Line
-	4350 2700 4450 2700
-Connection ~ 4450 2700
-Text Label 5000 2900 0    50   ~ 0
-BuzzerPower
-Text Label 2100 2700 2    50   ~ 0
-BuzzerPower
-$Comp
 L Device:R R?
 U 1 1 5D16CC39
 P 4500 6700
@@ -1218,4 +1160,14 @@ F 3 "" H 4500 6850 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	4650 6550 4500 6550
+Text HLabel 1100 2200 0    50   Input ~ 0
+BuzzerEnable
+Wire Wire Line
+	2100 2700 1900 2700
+Connection ~ 2100 2700
+Wire Wire Line
+	1450 2850 1300 2850
+Wire Wire Line
+	1300 2850 1300 2700
+Connection ~ 1300 2700
 $EndSCHEMATC

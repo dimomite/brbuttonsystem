@@ -19,6 +19,7 @@
 
 void PlayerLeds_Init(PlayerLedsCtrl* ctrl, LedsDataSender sender) {
     if (!ctrl) return;
+
     ctrl->sender = sender;
 
     PlayerLeds_ClearAll(ctrl);
@@ -33,7 +34,8 @@ void PlayerLeds_ClearAll(PlayerLedsCtrl* ctrl) {
 
 void PlayerLeds_SetPlayer(PlayerLedsCtrl* ctrl, Players player, PlayerVisMode mode) {
     if (!ctrl) return;
-    uint8_t mask;
+
+    uint8_t mask = 0;
     if (mode & PLAYER_VIS_ONLY_BUTTON_LIGHT) {
         switch (player) {
         case PLAYER_1:
@@ -105,3 +107,38 @@ void PlayerLeds_ClearPlayer(PlayerLedsCtrl* ctrl, Players player) {
     }
 }
 
+void PlayerLeds_SetModeForAllPlayers(PlayerLedsCtrl* ctrl, PlayerVisMode mode) {
+    if (!ctrl) return;
+
+    uint8_t mask = 0;
+    if (mode & PLAYER_VIS_ONLY_BUTTON_LIGHT) {
+        mask = PLAYER_1_BUTTON_LED | PLAYER_2_BUTTON_LED | PLAYER_3_BUTTON_LED | PLAYER_4_BUTTON_LED;
+    }
+
+    if (mode & PLAYER_VIS_ONLY_SYSTEM) {
+        mask |= PLAYER_1_SYSTEM_LED | PLAYER_2_SYSTEM_LED | PLAYER_3_SYSTEM_LED | PLAYER_4_SYSTEM_LED;
+    }
+
+    if (mask) {
+        ctrl->state |= mask;
+        if (ctrl->sender) ctrl->sender(ctrl->state);
+    }
+}
+
+void PlayerLeds_ClearModeOfAllPlayers(PlayerLedsCtrl* ctrl, PlayerVisMode mode) {
+    if (!ctrl) return;
+
+    uint8_t mask = 0;
+    if (mode & PLAYER_VIS_ONLY_BUTTON_LIGHT) {
+        mask = PLAYER_1_BUTTON_LED | PLAYER_2_BUTTON_LED | PLAYER_3_BUTTON_LED | PLAYER_4_BUTTON_LED;
+    }
+
+    if (mode & PLAYER_VIS_ONLY_SYSTEM) {
+        mask |= PLAYER_1_SYSTEM_LED | PLAYER_2_SYSTEM_LED | PLAYER_3_SYSTEM_LED | PLAYER_4_SYSTEM_LED;
+    }
+
+    if (mask) {
+        ctrl->state &= ~mask;
+        if (ctrl->sender) ctrl->sender(ctrl->state);
+    }
+}

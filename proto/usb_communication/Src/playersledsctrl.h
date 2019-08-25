@@ -41,5 +41,7 @@ void PlayerLeds_Init(PlayerLedsCtrl* ctrl, LedsDataSender sender);
 void PlayerLeds_ClearAll(PlayerLedsCtrl* ctrl);
 void PlayerLeds_SetPlayer(PlayerLedsCtrl* ctrl, Players player, PlayerVisMode mode);
 void PlayerLeds_ClearPlayer(PlayerLedsCtrl* ctrl, Players player);
+void PlayerLeds_SetModeForAllPlayers(PlayerLedsCtrl* ctrl, PlayerVisMode mode);
+void PlayerLeds_ClearModeOfAllPlayers(PlayerLedsCtrl* ctrl, PlayerVisMode mode);
 
 #endif /* PLAYERSLEDSCTRL_H_ */

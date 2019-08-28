@@ -145,7 +145,7 @@ P 5400 4700
 AR Path="/5D1B415B" Ref="U?"  Part="1" 
 AR Path="/5D3754B9/5D1B415B" Ref="U8"  Part="1" 
 F 0 "U8" H 5150 5050 50  0000 C CNN
-F 1 "ST485EBDR" H 5650 5050 50  0000 C CNN
+F 1 "485" H 5650 5050 50  0000 C CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 5400 3800 50  0001 C CNN
 F 3 "http://www.st.com/resource/en/datasheet/st485eb.pdf" H 5400 4750 50  0001 C CNN
 	1    5400 4700

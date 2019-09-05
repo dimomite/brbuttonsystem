@@ -525,10 +525,6 @@ Text Label 3150 5000 0    50   ~ 0
 StartLed
 Text Label 3150 5100 0    50   ~ 0
 EXT_RW
-Text Label 1150 5000 2    50   ~ 0
-DISP_SDA
-Text Label 1150 4900 2    50   ~ 0
-DISP_SCL
 Text Label 1850 4800 2    50   ~ 0
 EXT_READ
 Text Label 1850 4700 2    50   ~ 0
@@ -689,8 +685,6 @@ Text Label 1850 4300 2    50   ~ 0
 BOOT1
 Text Label 1850 3700 2    50   ~ 0
 TouchEnable
-Text Label 1150 3800 2    50   ~ 0
-Touch4Front
 $Comp
 L power:GND #PWR036
 U 1 1 5D0E3AE6
@@ -1131,9 +1125,9 @@ Connection ~ 5400 3100
 Text Label 5000 3300 2    50   ~ 0
 LCD_MOSI
 Text Label 5000 3800 2    50   ~ 0
-EXTRA_TICK
+BACK_LED_CS
 Text Label 3150 4100 0    50   ~ 0
-EXTRA_TICK
+BACK_LED_CS
 $Comp
 L brbuttonsystem:UMG8N Q6
 U 1 1 5D744936
@@ -1531,8 +1525,6 @@ F 3 "http://www.ti.com/lit/ds/symlink/lm339.pdf" H 10550 5200 50  0001 C CNN
 	3    10500 5000
 	1    0    0    -1  
 $EndComp
-Text Label 1150 4500 2    50   ~ 0
-BuzzerEnable
 Wire Wire Line
 	9600 5050 9650 5050
 Wire Wire Line

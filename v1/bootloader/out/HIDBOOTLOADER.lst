@@ -1,0 +1,125 @@
+
+out/HIDBOOTLOADER.elf:     file format elf32-littlearm
+out/HIDBOOTLOADER.elf
+architecture: arm, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x08000000
+
+Program Header:
+    LOAD off    0x00010000 vaddr 0x08000000 paddr 0x08000000 align 2**16
+         filesz 0x00000060 memsz 0x00000060 flags rwx
+    LOAD off    0x00020000 vaddr 0x20000000 paddr 0x08000060 align 2**16
+         filesz 0x00000000 memsz 0x0000001c flags rw-
+    LOAD off    0x0002001c vaddr 0x2000001c paddr 0x08000060 align 2**16
+         filesz 0x00000000 memsz 0x00000604 flags rw-
+private flags = 5000200: [Version5 EABI] [soft-float ABI]
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .isr_vector   00000000  08000000  08000000  00010060  2**0
+                  CONTENTS
+  1 .text         00000058  08000000  08000000  00010000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .rodata       00000000  08000058  08000060  00010060  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  3 .init_array   00000004  08000058  08000058  00010058  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  4 .fini_array   00000004  0800005c  0800005c  0001005c  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  5 .data         00000000  20000000  20000000  00010060  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  6 .bss          0000001c  20000000  08000060  00020000  2**2
+                  ALLOC
+  7 ._user_heap_stack 00000604  2000001c  08000060  0002001c  2**0
+                  ALLOC
+  8 .ARM.attributes 00000029  00000000  00000000  00010060  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+08000000 l    d  .isr_vector	00000000 .isr_vector
+08000000 l    d  .text	00000000 .text
+08000058 l    d  .rodata	00000000 .rodata
+08000058 l    d  .init_array	00000000 .init_array
+0800005c l    d  .fini_array	00000000 .fini_array
+20000000 l    d  .data	00000000 .data
+20000000 l    d  .bss	00000000 .bss
+2000001c l    d  ._user_heap_stack	00000000 ._user_heap_stack
+00000000 l    d  .ARM.attributes	00000000 .ARM.attributes
+00000000 l    df *ABS*	00000000 crtstuff.c
+08000040 l     O .text	00000000 __EH_FRAME_BEGIN__
+08000000 l     F .text	00000000 __do_global_dtors_aux
+20000000 l       .bss	00000001 completed.8656
+0800005c l     O .fini_array	00000000 __do_global_dtors_aux_fini_array_entry
+08000024 l     F .text	00000000 frame_dummy
+20000004 l       .bss	00000018 object.8661
+08000058 l     O .init_array	00000000 __frame_dummy_init_array_entry
+00000000 l    df *ABS*	00000000 c:/st/stm32cubeide_1.0.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.0.0.201904181610/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crti.o
+00000000 l    df *ABS*	00000000 c:/st/stm32cubeide_1.0.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.0.0.201904181610/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtn.o
+00000000 l    df *ABS*	00000000 
+0800005c l       .init_array	00000000 __init_array_end
+08000058 l       .rodata	00000000 __preinit_array_end
+08000058 l       .init_array	00000000 __init_array_start
+08000058 l       .rodata	00000000 __preinit_array_start
+00000400 g       *ABS*	00000000 _Min_Stack_Size
+08000060 g       *ABS*	00000000 _sidata
+08000058 g       .rodata	00000000 __exidx_end
+08000058 g       .text	00000000 _etext
+20000000 g       .bss	00000000 _sbss
+20000000 g       .bss	00000000 __bss_start__
+20000000 g       .data	00000000 _sdata
+08000058 g       .rodata	00000000 __exidx_start
+08000040 g     F .text	00000000 _init
+2000001c g       .bss	00000000 _ebss
+00000000         *UND*	00000000 Reset_Handler
+2000001c g       .bss	00000000 __bss_end__
+00000200 g       *ABS*	00000000 _Min_Heap_Size
+0800004c g     F .text	00000000 _fini
+20005000 g       *ABS*	00000000 _estack
+20000000 g       .data	00000000 _edata
+
+
+
+Disassembly of section .text:
+
+08000000 <__do_global_dtors_aux>:
+ 8000000:	b510      	push	{r4, lr}
+ 8000002:	4c05      	ldr	r4, [pc, #20]	; (8000018 <__do_global_dtors_aux+0x18>)
+ 8000004:	7823      	ldrb	r3, [r4, #0]
+ 8000006:	b933      	cbnz	r3, 8000016 <__do_global_dtors_aux+0x16>
+ 8000008:	4b04      	ldr	r3, [pc, #16]	; (800001c <__do_global_dtors_aux+0x1c>)
+ 800000a:	b113      	cbz	r3, 8000012 <__do_global_dtors_aux+0x12>
+ 800000c:	4804      	ldr	r0, [pc, #16]	; (8000020 <__do_global_dtors_aux+0x20>)
+ 800000e:	f3af 8000 	nop.w
+ 8000012:	2301      	movs	r3, #1
+ 8000014:	7023      	strb	r3, [r4, #0]
+ 8000016:	bd10      	pop	{r4, pc}
+ 8000018:	20000000 	.word	0x20000000
+ 800001c:	00000000 	.word	0x00000000
+ 8000020:	08000040 	.word	0x08000040
+
+08000024 <frame_dummy>:
+ 8000024:	b508      	push	{r3, lr}
+ 8000026:	4b03      	ldr	r3, [pc, #12]	; (8000034 <frame_dummy+0x10>)
+ 8000028:	b11b      	cbz	r3, 8000032 <frame_dummy+0xe>
+ 800002a:	4903      	ldr	r1, [pc, #12]	; (8000038 <frame_dummy+0x14>)
+ 800002c:	4803      	ldr	r0, [pc, #12]	; (800003c <frame_dummy+0x18>)
+ 800002e:	f3af 8000 	nop.w
+ 8000032:	bd08      	pop	{r3, pc}
+ 8000034:	00000000 	.word	0x00000000
+ 8000038:	20000004 	.word	0x20000004
+ 800003c:	08000040 	.word	0x08000040
+
+08000040 <_init>:
+ 8000040:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 8000042:	bf00      	nop
+ 8000044:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 8000046:	bc08      	pop	{r3}
+ 8000048:	469e      	mov	lr, r3
+ 800004a:	4770      	bx	lr
+
+0800004c <_fini>:
+ 800004c:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 800004e:	bf00      	nop
+ 8000050:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 8000052:	bc08      	pop	{r3}
+ 8000054:	469e      	mov	lr, r3
+ 8000056:	4770      	bx	lr

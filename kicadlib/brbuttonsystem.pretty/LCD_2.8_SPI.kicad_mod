@@ -1,4 +1,4 @@
-(module LCD_2.8_SPI (layer F.Cu) (tedit 5D0B88D8)
+(module LCD_2.8_SPI (layer F.Cu) (tedit 5EBAE8C7)
   (fp_text reference REF** (at 5.08 -17.78) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )
@@ -39,4 +39,7 @@
   (pad "" np_thru_hole circle (at 5.08 -22) (size 3.3 3.3) (drill 3.3) (layers *.Cu *.Mask))
   (pad "" np_thru_hole circle (at 81.28 -22) (size 3.3 3.3) (drill 3.3) (layers *.Cu *.Mask))
   (pad "" np_thru_hole circle (at 81.28 22) (size 3.3 3.3) (drill 3.3) (layers *.Cu *.Mask))
+  (pad 19 thru_hole roundrect (at 81.28 -15.24) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask) (roundrect_rratio 0.25))
+  (pad 20 thru_hole circle (at 81.28 -12.7) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask))
+  (pad 21 thru_hole circle (at 81.28 -10.16) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask))
 )

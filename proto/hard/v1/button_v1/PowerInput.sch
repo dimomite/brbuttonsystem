@@ -72,9 +72,6 @@ F 3 "" H 1300 2650 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1300 2650 1300 2550
-Wire Wire Line
-	1300 2550 1200 2550
-Connection ~ 1300 2550
 $Comp
 L power:+5V #PWR?
 U 1 1 5D41A7FE
@@ -287,7 +284,7 @@ AR Path="/5D1C99DD/5D48B2A1" Ref="L1"  Part="1"
 AR Path="/5D4A520B/5D48B2A1" Ref="L1"  Part="1" 
 F 0 "L1" V 3950 4350 50  0000 C CNN
 F 1 "4.7uH" V 3950 4150 50  0000 C CNN
-F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3850 4250 50  0001 C CNN
+F 2 "Inductor_SMD:L_Taiyo-Yuden_NR-50xx" H 3850 4250 50  0001 C CNN
 F 3 "~" H 3850 4250 50  0001 C CNN
 	1    3850 4250
 	0    -1   -1   0   
@@ -535,4 +532,6 @@ Wire Wire Line
 Wire Wire Line
 	1850 1350 2000 1350
 Connection ~ 2000 1350
+NoConn ~ 1600 2350
+NoConn ~ 1200 2550
 $EndSCHEMATC

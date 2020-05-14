@@ -797,7 +797,7 @@ AR Path="/5D405133" Ref="D?"  Part="1"
 AR Path="/5D3754B9/5D405133" Ref="D1"  Part="1" 
 F 0 "D1" H 5050 5850 50  0000 C CNN
 F 1 "STPS1L30A" H 5050 5825 50  0001 C CNN
-F 2 "Diode_SMD:D_SMA_Handsoldering" H 5050 5950 50  0001 C CNN
+F 2 "Diode_SMD:D_SMA" H 5050 5950 50  0001 C CNN
 F 3 "~" H 5050 5950 50  0001 C CNN
 	1    5050 5950
 	-1   0    0    1   
@@ -810,7 +810,7 @@ AR Path="/5D405139" Ref="L?"  Part="1"
 AR Path="/5D3754B9/5D405139" Ref="L2"  Part="1" 
 F 0 "L2" V 4500 6350 50  0000 C CNN
 F 1 "4.7uH" V 4500 6150 50  0000 C CNN
-F 2 "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4400 6250 50  0001 C CNN
+F 2 "Inductor_SMD:L_Taiyo-Yuden_NR-50xx" H 4400 6250 50  0001 C CNN
 F 3 "~" H 4400 6250 50  0001 C CNN
 	1    4400 6250
 	0    -1   -1   0   

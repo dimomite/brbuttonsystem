@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:button_v1-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -125,17 +124,17 @@ F 3 "" H 2300 1350 50  0001 C CNN
 	1    2300 1350
 	1    0    0    -1  
 $EndComp
-Text Label 1650 2150 0    50   ~ 6
+Text Label 1650 2150 0    50   ~ 0
 USB_P
-Text Label 1650 2250 0    50   ~ 6
+Text Label 1650 2250 0    50   ~ 0
 USB_N
 Wire Wire Line
 	1600 2150 1900 2150
 Wire Wire Line
 	1600 2250 1900 2250
-Text GLabel 2400 2150 2    50   Input ~ 6
+Text GLabel 2400 2150 2    50   Input ~ 0
 D+
-Text GLabel 2400 2250 2    50   Input ~ 6
+Text GLabel 2400 2250 2    50   Input ~ 0
 D-
 $Comp
 L brbuttonsystem:RClamp0554S U?
@@ -179,9 +178,9 @@ F 3 "" H 3950 2650 50  0001 C CNN
 	1    3950 2650
 	0    -1   -1   0   
 $EndComp
-Text Label 4650 2550 0    50   ~ 6
+Text Label 4650 2550 0    50   ~ 0
 USB_N
-Text Label 4650 2750 0    50   ~ 6
+Text Label 4650 2750 0    50   ~ 0
 USB_P
 $Comp
 L Regulator_Linear:AP1117-33 U?
@@ -498,7 +497,7 @@ F 3 "" H 5050 4650 50  0001 C CNN
 	1    5050 4650
 	1    0    0    -1  
 $EndComp
-Text HLabel 1850 1350 0    50   Input ~ 6
+Text HLabel 1850 1350 0    50   Input ~ 0
 USB_PULLUP
 $Comp
 L Transistor_FET:TP0610T Q?

@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:button_v1-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -14,19 +13,19 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 1500 1200 0    50   Input ~ 6
+Text HLabel 1500 1200 0    50   Input ~ 0
 LCD_MOSI
-Text HLabel 1500 1400 0    50   Input ~ 6
+Text HLabel 1500 1400 0    50   Input ~ 0
 LCD_SCK
-Text HLabel 1500 1700 0    50   Input ~ 6
+Text HLabel 1500 1700 0    50   Input ~ 0
 BACK_LED_CS
-Text HLabel 9600 3100 2    50   Output ~ 6
+Text HLabel 9600 3100 2    50   Output ~ 0
 But0
-Text HLabel 9600 3900 2    50   Output ~ 6
+Text HLabel 9600 3900 2    50   Output ~ 0
 But1
-Text HLabel 9550 1100 2    50   Output ~ 6
+Text HLabel 9550 1100 2    50   Output ~ 0
 But2
-Text HLabel 9550 2000 2    50   Output ~ 6
+Text HLabel 9550 2000 2    50   Output ~ 0
 But3
 $Comp
 L 74xx:74HC595 U?
@@ -79,13 +78,13 @@ Wire Wire Line
 Wire Wire Line
 	1000 1000 1900 1000
 Connection ~ 1900 1000
-Text Label 2300 1200 0    50   ~ 6
+Text Label 2300 1200 0    50   ~ 0
 PLAY_LED0
-Text Label 2300 1300 0    50   ~ 6
+Text Label 2300 1300 0    50   ~ 0
 PLAY_LED1
-Text Label 2300 1400 0    50   ~ 6
+Text Label 2300 1400 0    50   ~ 0
 PLAY_LED2
-Text Label 2300 1500 0    50   ~ 6
+Text Label 2300 1500 0    50   ~ 0
 PLAY_LED3
 $Comp
 L Device:R R?
@@ -680,13 +679,13 @@ Wire Wire Line
 	7950 3500 8550 3500
 Wire Wire Line
 	7950 3400 8550 3400
-Text Label 7200 1550 2    50   ~ 6
+Text Label 7200 1550 2    50   ~ 0
 PLAY_LED0
-Text Label 7200 1450 2    50   ~ 6
+Text Label 7200 1450 2    50   ~ 0
 PLAY_LED1
-Text Label 7350 3500 2    50   ~ 6
+Text Label 7350 3500 2    50   ~ 0
 PLAY_LED2
-Text Label 7350 3400 2    50   ~ 6
+Text Label 7350 3400 2    50   ~ 0
 PLAY_LED3
 Wire Wire Line
 	7800 1550 8400 1550
@@ -1124,12 +1123,12 @@ F 3 "" H 3650 4750 50  0001 C CNN
 	1    3650 4750
 	1    0    0    -1  
 $EndComp
-Text Label 3050 3150 2    50   ~ 6
+Text Label 3050 3150 2    50   ~ 0
 PLAY_LED2
-Text Label 1050 3200 2    50   ~ 6
+Text Label 1050 3200 2    50   ~ 0
 PLAY_LED3
-Text Label 3050 4550 2    50   ~ 6
+Text Label 3050 4550 2    50   ~ 0
 PLAY_LED1
-Text Label 1050 4600 2    50   ~ 6
+Text Label 1050 4600 2    50   ~ 0
 PLAY_LED0
 $EndSCHEMATC

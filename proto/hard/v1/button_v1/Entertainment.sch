@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:button_v1-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -27,11 +26,11 @@ F 3 "~" H 7000 4650 50  0001 C CNN
 	1    7000 4650
 	1    0    0    -1  
 $EndComp
-Text Label 6800 4850 2    50   ~ 6
+Text Label 6800 4850 2    50   ~ 0
 EXT_B
-Text Label 6800 4550 2    50   ~ 6
+Text Label 6800 4550 2    50   ~ 0
 EXT_A
-Text Label 6800 4650 2    50   ~ 6
+Text Label 6800 4650 2    50   ~ 0
 EXT_LED
 $Comp
 L power:GND #PWR054
@@ -71,7 +70,7 @@ Wire Wire Line
 Connection ~ 6450 4350
 Wire Wire Line
 	6800 4350 6450 4350
-Text Label 6800 4450 2    50   ~ 6
+Text Label 6800 4450 2    50   ~ 0
 EXT_SOUND
 Wire Wire Line
 	6800 4950 6450 4950
@@ -91,7 +90,7 @@ F 3 "" H 5400 5250 50  0001 C CNN
 	1    5400 5250
 	1    0    0    -1  
 $EndComp
-Text Label 5800 4600 0    50   ~ 6
+Text Label 5800 4600 0    50   ~ 0
 EXT_B
 Wire Wire Line
 	5000 4800 5000 4750
@@ -109,7 +108,7 @@ F 3 "" H 5400 4200 50  0001 C CNN
 	1    5400 4200
 	1    0    0    -1  
 $EndComp
-Text Label 5800 4900 0    50   ~ 6
+Text Label 5800 4900 0    50   ~ 0
 EXT_A
 Wire Wire Line
 	5400 4200 5400 4250
@@ -146,7 +145,7 @@ F 3 "~" H 4850 4250 50  0001 C CNN
 	1    4850 4250
 	0    -1   -1   0   
 $EndComp
-Text HLabel 4900 4600 0    50   Input ~ 6
+Text HLabel 4900 4600 0    50   Input ~ 0
 EXT_READ
 $Comp
 L Interface_UART:ST485EBDR U?
@@ -164,14 +163,14 @@ F 3 "http://www.st.com/resource/en/datasheet/st485eb.pdf" H 5400 4750 50  0001 C
 $EndComp
 Wire Wire Line
 	4900 4600 5000 4600
-Text HLabel 4900 4750 0    50   Input ~ 6
+Text HLabel 4900 4750 0    50   Input ~ 0
 EXT_RW
 Wire Wire Line
 	4900 4750 5000 4750
 Connection ~ 5000 4750
 Wire Wire Line
 	5000 4750 5000 4700
-Text HLabel 4900 4900 0    50   Input ~ 6
+Text HLabel 4900 4900 0    50   Input ~ 0
 EXT_WRITE
 Wire Wire Line
 	4900 4900 5000 4900
@@ -250,9 +249,9 @@ $EndComp
 Connection ~ 2400 6700
 Wire Wire Line
 	2200 6700 2400 6700
-Text Label 2700 6500 0    50   ~ 6
+Text Label 2700 6500 0    50   ~ 0
 EXT_LED
-Text HLabel 1450 6700 0    50   Input ~ 6
+Text HLabel 1450 6700 0    50   Input ~ 0
 StartLed
 Wire Wire Line
 	1900 6700 1450 6700
@@ -314,7 +313,7 @@ F 3 "" H 3150 5250 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	3150 5150 3150 5250
-Text Label 3150 4750 0    50   ~ 6
+Text Label 3150 4750 0    50   ~ 0
 EXT_SOUND
 $Comp
 L Device:R R?
@@ -333,7 +332,7 @@ $EndComp
 Connection ~ 2850 4950
 Wire Wire Line
 	2650 4950 2850 4950
-Text HLabel 1550 4950 0    50   Input ~ 6
+Text HLabel 1550 4950 0    50   Input ~ 0
 Sound_PWM
 Wire Wire Line
 	2350 4950 1550 4950
@@ -367,7 +366,7 @@ F 3 "" H 1800 3500 50  0001 C CNN
 	1    1800 3500
 	1    0    0    -1  
 $EndComp
-Text Label 1300 3200 2    50   ~ 6
+Text Label 1300 3200 2    50   ~ 0
 Sound_PWM
 $Comp
 L Device:R R?
@@ -540,9 +539,9 @@ F 3 "" H 3100 2800 50  0001 C CNN
 	2    3100 2800
 	1    0    0    -1  
 $EndComp
-Text Label 1900 4950 0    50   ~ 6
+Text Label 1900 4950 0    50   ~ 0
 Sound_PWM
-Text Label 5450 5950 0    50   ~ 6
+Text Label 5450 5950 0    50   ~ 0
 StartLedOut
 $Comp
 L Device:LED D?
@@ -729,7 +728,7 @@ F 3 "~" H 6300 6100 50  0001 C CNN
 	1    6300 6100
 	0    -1   -1   0   
 $EndComp
-Text Label 4650 6550 2    50   ~ 6
+Text Label 4650 6550 2    50   ~ 0
 StartLed
 $Comp
 L power:GND #PWR?
@@ -884,9 +883,9 @@ F 3 "" H 4750 6150 50  0001 C CNN
 	1    4750 6150
 	1    0    0    -1  
 $EndComp
-Text Label 1850 6700 2    50   ~ 6
+Text Label 1850 6700 2    50   ~ 0
 StartLed
-Text Label 6900 1650 0    50   ~ 6
+Text Label 6900 1650 0    50   ~ 0
 Sound_Analog
 Wire Wire Line
 	6900 1650 6400 1650
@@ -1095,9 +1094,9 @@ F 3 "~" H 2100 1200 50  0001 C CNN
 	1    2100 1200
 	0    1    -1   0   
 $EndComp
-Text Label 5100 1450 0    50   ~ 6
+Text Label 5100 1450 0    50   ~ 0
 Sound_Analog
-Text Label 1950 1200 2    50   ~ 6
+Text Label 1950 1200 2    50   ~ 0
 Sound_PWM
 Wire Wire Line
 	1150 1100 1350 1100
@@ -1235,7 +1234,7 @@ F 3 "" H 4500 6850 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	4650 6550 4500 6550
-Text HLabel 1100 2200 0    50   Input ~ 6
+Text HLabel 1100 2200 0    50   Input ~ 0
 BuzzerEnable
 Wire Wire Line
 	2100 2700 1900 2700

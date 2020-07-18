@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:button_v1-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -90,9 +89,9 @@ F 3 "" H 1400 7200 50  0001 C CNN
 	1    1400 7200
 	1    0    0    -1  
 $EndComp
-Text Label 1400 6550 0    50   ~ 6
+Text Label 1400 6550 0    50   ~ 0
 OSCIN
-Text Label 1100 6550 2    50   ~ 6
+Text Label 1100 6550 2    50   ~ 0
 OSCOUT
 $Comp
 L power:+3.3V #PWR040
@@ -120,11 +119,11 @@ Wire Wire Line
 	6000 1050 5800 1050
 Wire Wire Line
 	6000 950  5900 950 
-Text Label 6000 1450 2    50   ~ 6
+Text Label 6000 1450 2    50   ~ 0
 LCD_MOSI
-Text Label 6000 1750 2    50   ~ 6
+Text Label 6000 1750 2    50   ~ 0
 LCD_MISO
-Text Label 6000 1550 2    50   ~ 6
+Text Label 6000 1550 2    50   ~ 0
 LCD_SCK
 $Comp
 L Transistor_FET:TP0610T Q1
@@ -149,13 +148,13 @@ Wire Wire Line
 	5400 1450 5400 1650
 Wire Wire Line
 	5400 1650 6000 1650
-Text Label 5100 1250 2    50   ~ 6
+Text Label 5100 1250 2    50   ~ 0
 LCD_LED
-Text Label 6000 1250 2    50   ~ 6
+Text Label 6000 1250 2    50   ~ 0
 LCD_RESET
-Text Label 6000 1150 2    50   ~ 6
+Text Label 6000 1150 2    50   ~ 0
 LCD_CS
-Text Label 6000 1350 2    50   ~ 6
+Text Label 6000 1350 2    50   ~ 0
 LCD_DC
 $Comp
 L Device:C C16
@@ -184,25 +183,25 @@ F 3 "" H 5500 650 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	3750 4200 3150 4200
-Text Label 1850 5100 2    50   ~ 6
+Text Label 1850 5100 2    50   ~ 0
 TOUCH_SCL
-Text Label 1850 5200 2    50   ~ 6
+Text Label 1850 5200 2    50   ~ 0
 TOUCH_SDA
-Text Label 3150 4900 0    50   ~ 6
+Text Label 3150 4900 0    50   ~ 0
 Sound_PWM
-Text Label 1850 4200 2    50   ~ 6
+Text Label 1850 4200 2    50   ~ 0
 BT_POWER
-Text Label 3150 4400 0    50   ~ 6
+Text Label 3150 4400 0    50   ~ 0
 BTTX_MCURX
-Text Label 3150 4300 0    50   ~ 6
+Text Label 3150 4300 0    50   ~ 0
 BTRX_MCUTX
-Text Label 3150 5000 0    50   ~ 6
+Text Label 3150 5000 0    50   ~ 0
 StartLed
-Text Label 3150 5100 0    50   ~ 6
+Text Label 3150 5100 0    50   ~ 0
 EXT_RW
-Text Label 1850 4800 2    50   ~ 6
+Text Label 1850 4800 2    50   ~ 0
 EXT_READ
-Text Label 1850 4700 2    50   ~ 6
+Text Label 1850 4700 2    50   ~ 0
 EXT_WRITE
 $Comp
 L power:+3.3V #PWR044
@@ -226,17 +225,17 @@ F 3 "~" H 3900 4200 50  0001 C CNN
 	1    3900 4200
 	0    1    -1   0   
 $EndComp
-Text Label 1850 3800 2    50   ~ 6
+Text Label 1850 3800 2    50   ~ 0
 LCD_CS
-Text Label 3150 4200 0    50   ~ 6
+Text Label 3150 4200 0    50   ~ 0
 LCD_RESET
-Text Label 3150 4500 0    50   ~ 6
+Text Label 3150 4500 0    50   ~ 0
 LCD_DC
-Text Label 1850 4100 2    50   ~ 6
+Text Label 1850 4100 2    50   ~ 0
 LCD_LED
-Text Label 3150 4600 0    50   ~ 6
+Text Label 3150 4600 0    50   ~ 0
 LCD_SCK
-Text Label 3150 4700 0    50   ~ 6
+Text Label 3150 4700 0    50   ~ 0
 LCD_MISO
 $Comp
 L MCU_ST_STM32F1:STM32F103C8Tx U2
@@ -249,7 +248,7 @@ F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/da
 	1    2550 4300
 	1    0    0    -1  
 $EndComp
-Text Label 3150 4800 0    50   ~ 6
+Text Label 3150 4800 0    50   ~ 0
 LCD_MOSI
 $Comp
 L power:+3.3V #PWR030
@@ -262,21 +261,21 @@ F 3 "" H 1000 5600 50  0001 C CNN
 	1    1000 5600
 	0    -1   -1   0   
 $EndComp
-Text Label 1850 5600 2    50   ~ 6
+Text Label 1850 5600 2    50   ~ 0
 But3
-Text Label 1850 5500 2    50   ~ 6
+Text Label 1850 5500 2    50   ~ 0
 But2
-Text Label 1850 5400 2    50   ~ 6
+Text Label 1850 5400 2    50   ~ 0
 But1
-Text Label 1850 5300 2    50   ~ 6
+Text Label 1850 5300 2    50   ~ 0
 But0
 Wire Wire Line
 	1850 3500 1650 3500
 Wire Wire Line
 	1650 3400 1850 3400
-Text Label 1650 3400 2    50   ~ 6
+Text Label 1650 3400 2    50   ~ 0
 OSCIN
-Text Label 1650 3500 2    50   ~ 6
+Text Label 1650 3500 2    50   ~ 0
 OSCOUT
 Wire Wire Line
 	3150 5300 3400 5300
@@ -348,17 +347,15 @@ F 3 "" H 2500 6000 50  0001 C CNN
 	1    2500 6000
 	1    0    0    -1  
 $EndComp
-Text Label 3150 5400 0    50   ~ 6
+Text Label 3150 5400 0    50   ~ 0
 SWDIO
-Text Label 3150 5500 0    50   ~ 6
+Text Label 3150 5500 0    50   ~ 0
 SWCLK
-Text Label 1850 3000 2    50   ~ 6
-NRST
-Text Label 1850 3200 2    50   ~ 6
+Text Label 1850 3200 2    50   ~ 0
 BOOT0
-Text Label 1850 4300 2    50   ~ 6
+Text Label 1850 4300 2    50   ~ 0
 BOOT1
-Text Label 1850 3700 2    50   ~ 6
+Text Label 1850 3700 2    50   ~ 0
 TouchEnable
 $Comp
 L power:GND #PWR036
@@ -441,7 +438,7 @@ Wire Wire Line
 	8450 900  8350 900 
 Wire Wire Line
 	8050 900  8050 1100
-Text Label 8050 1100 2    50   ~ 6
+Text Label 8050 1100 2    50   ~ 0
 BT_POWER
 $Comp
 L Device:R R26
@@ -510,7 +507,7 @@ F 3 "" H 8100 3050 50  0001 C CNN
 	1    8100 3050
 	0    -1   -1   0   
 $EndComp
-Text Label 7750 2200 2    50   ~ 6
+Text Label 7750 2200 2    50   ~ 0
 TouchEnable
 $Comp
 L power:GND #PWR0113
@@ -523,15 +520,15 @@ F 3 "" H 8100 2300 50  0001 C CNN
 	1    8100 2300
 	0    -1   -1   0   
 $EndComp
-Text Label 8800 3200 0    50   ~ 6
+Text Label 8800 3200 0    50   ~ 0
 CX4
-Text Label 8800 3100 0    50   ~ 6
+Text Label 8800 3100 0    50   ~ 0
 CX3
-Text Label 8800 3000 0    50   ~ 6
+Text Label 8800 3000 0    50   ~ 0
 CX2
-Text Label 8800 2900 0    50   ~ 6
+Text Label 8800 2900 0    50   ~ 0
 CX1
-Text Label 8800 2800 0    50   ~ 6
+Text Label 8800 2800 0    50   ~ 0
 CX0
 Wire Wire Line
 	9400 2300 9400 2500
@@ -628,11 +625,11 @@ F 3 "~" H 10750 2600 50  0001 C CNN
 	1    10750 2600
 	0    1    -1   0   
 $EndComp
-Text Label 10100 2600 0    50   ~ 6
+Text Label 10100 2600 0    50   ~ 0
 TOUCH_SDA
 Wire Wire Line
 	10150 2500 10350 2500
-Text Label 10100 2700 0    50   ~ 6
+Text Label 10100 2700 0    50   ~ 0
 TOUCH_SCL
 Connection ~ 10150 2500
 Wire Wire Line
@@ -717,15 +714,15 @@ F5 "StartLed" I L 1150 1650 50
 F6 "Sound_PWM" I L 1150 1750 50 
 F7 "BuzzerEnable" I L 1150 1850 50 
 $EndSheet
-Text Label 1050 1300 2    50   ~ 6
+Text Label 1050 1300 2    50   ~ 0
 EXT_READ
-Text Label 1050 1400 2    50   ~ 6
+Text Label 1050 1400 2    50   ~ 0
 EXT_RW
-Text Label 1050 1500 2    50   ~ 6
+Text Label 1050 1500 2    50   ~ 0
 EXT_WRITE
-Text Label 1050 1650 2    50   ~ 6
+Text Label 1050 1650 2    50   ~ 0
 StartLed
-Text Label 1050 1750 2    50   ~ 6
+Text Label 1050 1750 2    50   ~ 0
 Sound_PWM
 Wire Wire Line
 	1150 1750 1050 1750
@@ -737,9 +734,9 @@ Wire Wire Line
 	1050 1400 1150 1400
 Wire Wire Line
 	1150 1300 1050 1300
-Text GLabel 3400 5300 2    50   Input ~ 6
+Text GLabel 3400 5300 2    50   Input ~ 0
 D+
-Text GLabel 3400 5200 2    50   Input ~ 6
+Text GLabel 3400 5200 2    50   Input ~ 0
 D-
 $Sheet
 S 1150 700  650  200 
@@ -750,17 +747,17 @@ F2 "USB_PULLUP" I L 1150 800 50
 $EndSheet
 Connection ~ 9700 900 
 Connection ~ 9700 1200
-Text Label 3150 4100 0    50   ~ 6
+Text Label 3150 4100 0    50   ~ 0
 BACK_LED_CS
-Text Label 1050 1850 2    50   ~ 6
+Text Label 1050 1850 2    50   ~ 0
 BuzzerEnable
 Wire Wire Line
 	1050 1850 1150 1850
-Text Label 2800 7000 0    50   ~ 6
+Text Label 2800 7000 0    50   ~ 0
 NRST
-Text Label 2800 6700 0    50   ~ 6
+Text Label 2800 6700 0    50   ~ 0
 SWCLK
-Text Label 2800 6900 0    50   ~ 6
+Text Label 2800 6900 0    50   ~ 0
 SWDIO
 $Comp
 L power:GND #PWR0139
@@ -858,11 +855,11 @@ F 3 "" H 10300 5500 50  0001 C CNN
 	1    10300 5500
 	1    0    0    -1  
 $EndComp
-Text Label 9700 5100 2    50   ~ 6
+Text Label 9700 5100 2    50   ~ 0
 LCD_SCK
-Text Label 9700 5200 2    50   ~ 6
+Text Label 9700 5200 2    50   ~ 0
 LCD_MOSI
-Text Label 9700 5000 2    50   ~ 6
+Text Label 9700 5000 2    50   ~ 0
 LCD_DC
 $Comp
 L Transistor_FET:IRLML2060 Q8
@@ -913,13 +910,13 @@ F 3 "" H 9450 4300 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Connection ~ 9450 4300
-Text Label 5400 1650 0    50   ~ 6
+Text Label 5400 1650 0    50   ~ 0
 MainLcdLed
-Text Label 9450 4700 0    50   ~ 6
+Text Label 9450 4700 0    50   ~ 0
 BackLcdLed
-Text Label 8850 1600 2    50   ~ 6
+Text Label 8850 1600 2    50   ~ 0
 BTRX_MCUTX
-Text Label 8850 1500 2    50   ~ 6
+Text Label 8850 1500 2    50   ~ 0
 BTTX_MCURX
 $Comp
 L power:+5V #PWR0143
@@ -965,7 +962,7 @@ F 3 "" H 7150 2950 50  0001 C CNN
 	1    7150 2950
 	0    -1   -1   0   
 $EndComp
-Text Label 9700 4900 2    50   ~ 6
+Text Label 9700 4900 2    50   ~ 0
 BACK_LCD_CS
 $Comp
 L brbuttonsystem:LCD_2.8_SPI U1
@@ -978,7 +975,7 @@ F 3 "" H 6100 850 50  0001 C CNN
 	1    6100 850 
 	1    0    0    -1  
 $EndComp
-Text Label 9700 4800 2    50   ~ 6
+Text Label 9700 4800 2    50   ~ 0
 LCD_RESET
 $Comp
 L Connector:Conn_01x06_Male J9
@@ -1013,13 +1010,11 @@ F 3 "" H 8800 3300 50  0001 C CNN
 	1    8800 3300
 	1    0    0    -1  
 $EndComp
-Text Label 1850 3900 2    50   ~ 6
+Text Label 1850 3900 2    50   ~ 0
 BACK_LCD_CS
-Text Label 9150 4500 2    50   ~ 6
-MainLcdLed
-Text Notes 4550 1950 0    50   ~ 6
+Text Notes 4550 1950 0    50   ~ 0
 MainLcdLed is used\nas a switch for front LCD\nand as a signal invertor\nfor back LCD switch.
-Text Label 3150 5600 0    50   ~ 6
+Text Label 3150 5600 0    50   ~ 0
 USB_PULLUP
 $Comp
 L Device:R_Pack04 RN2
@@ -1040,7 +1035,7 @@ Wire Wire Line
 	8950 3100 8800 3100
 Wire Wire Line
 	8800 3200 8950 3200
-Text Label 1050 800  2    50   ~ 6
+Text Label 1050 800  2    50   ~ 0
 USB_PULLUP
 Wire Wire Line
 	1050 800  1150 800 
@@ -1123,11 +1118,11 @@ F6 "But1" I L 2850 1300 50
 F7 "But2" I L 2850 1400 50 
 F8 "But3" I L 2850 1500 50 
 $EndSheet
-Text Label 2750 800  2    50   ~ 6
+Text Label 2750 800  2    50   ~ 0
 LCD_MOSI
-Text Label 2750 900  2    50   ~ 6
+Text Label 2750 900  2    50   ~ 0
 LCD_SCK
-Text Label 2750 1000 2    50   ~ 6
+Text Label 2750 1000 2    50   ~ 0
 BACK_LED_CS
 Wire Wire Line
 	2750 1000 2850 1000
@@ -1135,13 +1130,13 @@ Wire Wire Line
 	2850 900  2750 900 
 Wire Wire Line
 	2750 800  2850 800 
-Text Label 2750 1200 2    50   ~ 6
+Text Label 2750 1200 2    50   ~ 0
 But0
-Text Label 2750 1300 2    50   ~ 6
+Text Label 2750 1300 2    50   ~ 0
 But1
-Text Label 2750 1400 2    50   ~ 6
+Text Label 2750 1400 2    50   ~ 0
 But2
-Text Label 2750 1500 2    50   ~ 6
+Text Label 2750 1500 2    50   ~ 0
 But3
 Wire Wire Line
 	2750 1200 2850 1200
@@ -1151,4 +1146,21 @@ Wire Wire Line
 	2750 1400 2850 1400
 Wire Wire Line
 	2850 1500 2750 1500
+$Comp
+L power:GND #PWR0168
+U 1 1 5F134F3D
+P 1600 3200
+F 0 "#PWR0168" H 1600 2950 50  0001 C CNN
+F 1 "GND" H 1605 3027 50  0001 C CNN
+F 2 "" H 1600 3200 50  0001 C CNN
+F 3 "" H 1600 3200 50  0001 C CNN
+	1    1600 3200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1600 3200 1850 3200
+Text Label 1850 3000 2    50   ~ 0
+NRST
+Text Label 9150 4500 2    50   ~ 0
+MainLcdLed
 $EndSCHEMATC

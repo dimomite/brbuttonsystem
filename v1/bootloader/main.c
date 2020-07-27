@@ -18,7 +18,6 @@ int main() {
 
     RCC->APB2ENR |= 1 << RCC_APB2ENR_IOPBEN;
 
-
     funct_ptr app = (funct_ptr)(volatile uint32_t *)(USER_PROGRAM + 0x4);
     SCB->VTOR = USER_PROGRAM;
     asm volatile("msr msp, %0"::"g"(*(volatile u32 *) USER_PROGRAM));

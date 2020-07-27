@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>910</x>
+      <y>310</y>
+      <w>370</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>/&lt;&lt;interface&gt;&gt;/
+/PlayerLedsCtrl/
+-
+-
+/+ init(data: PlayerLedsData)/
+/+ clearAll(data: PlayerLedsData)/
+/+ /
+/+ /</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1150</x>
+      <y>240</y>
+      <w>220</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Main LED signals (+old)
+Back LED signals 
+Button LED signals</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>620</x>
+      <y>800</y>
+      <w>270</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>/&lt;&lt;interface&gt;&gt;/
+/ACtrl/
+-
+-
+/+ /
+/+ /
+/+ /
+/+ /</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>590</x>
+      <y>360</y>
+      <w>220</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>PlayerLedsData
+--
++ state: uint8
++ sender: LedDataSender
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>360</y>
+      <w>130</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>390</x>
+      <y>540</y>
+      <w>280</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+PlayerVisMode
+--
+_+MAIN_SIGNAL_
+_+BACK_SIGNAL_
+_+BUTTON_SIGNAL_
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

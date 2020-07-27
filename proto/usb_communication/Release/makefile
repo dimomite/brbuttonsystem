@@ -34,6 +34,9 @@ default.size.stdout \
 OBJDUMP_LIST += \
 UsbHidCheck.list \
 
+OBJCOPY_BIN += \
+UsbHidCheck.bin \
+
 
 # All Target
 all:
@@ -58,6 +61,11 @@ UsbHidCheck.list: $(EXECUTABLES)
 	@echo 'Finished building: $@'
 	@echo ' '
 
+UsbHidCheck.bin: $(EXECUTABLES)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "UsbHidCheck.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
 	-$(RM) *
@@ -68,7 +76,7 @@ post-build:
 	arm-none-eabi-objcopy -O ihex "UsbHidCheck.elf" "UsbHidCheck.hex"
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
 
 .PHONY: all clean dependents
 .SECONDARY: post-build

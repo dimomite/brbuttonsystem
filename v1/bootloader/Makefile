@@ -12,7 +12,7 @@ VECTOR_TABLE_OFFSET = 0x0000
 #include ./src/Makefile
 SRCS += main.c
 
-DEVICE_SOURCES += ../STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/arm/startup_stm32f10x_md.s
+DEVICE_SOURCES += ../STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/startup/TrueSTUDIO/startup_stm32f10x_md.s
 DEVICE_SOURCES += ../STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/system_stm32f10x.c
 
 INCLUDE_DIRS += -I .
@@ -21,8 +21,9 @@ INCLUDE_DIRS += -I ../STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/CMSIS/CM3/DeviceS
 
 LINKER_SCRIPT = STM32F103C8T6.ld
 
-SRCS += $(subst src,,$(DEVICE_SRCS))
+#SRCS += $(subst src,,$(DEVICE_SOURCES))
 OBJS = $(addprefix $(BUILD_DIR)/,$(addsuffix .o,$(basename $(SRCS))))
+OBJS += $(addsuffix .o,$(basename $(DEVICE_SOURCES)))
 
 ASFLAGS += -mcpu=cortex-m3 -mthumb
 
@@ -72,7 +73,10 @@ $(BUILD_DIR)/%.o: %.c
 
 $(BUILD_DIR)/%.o: %.s
 	$(AS) $(ASFLAGS) -c "$<" -o "$@"
-
+	
+#%.s : %.c
+#	$(CC) -S $(CFLAGS) $< -o $@
+	
 output: $(TARGET).hex $(TARGET).bin
 
 $(TARGET).hex: $(TARGET).elf

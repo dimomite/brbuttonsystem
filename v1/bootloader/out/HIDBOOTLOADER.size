@@ -1,2 +1,2 @@
    text	   data	    bss	    dec	    hex	filename
-     88	      8	   1568	   1664	    680	out/HIDBOOTLOADER.elf
+    792	      8	   1568	   2368	    940	out/HIDBOOTLOADER.elf

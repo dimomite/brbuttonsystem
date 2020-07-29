@@ -1,11 +1,3 @@
-import purejavahidapi.*
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.InputStreamReader
-import java.util.*
-import java.util.concurrent.atomic.AtomicBoolean
-import kotlin.collections.HashMap
-
 class Main {
     companion object {
         val DEVICE_VID: Short = 0x483
@@ -14,46 +6,10 @@ class Main {
     }
 }
 
-class ConnectionCtrl(deviceInfo: HidDeviceInfo, callback: Callback) {
-    interface Callback {
-        fun onConnectionChange(isConnected: Boolean)
-        fun onReport(reportId: Byte, data: ByteArray)
-    }
-
-    private var device: HidDevice?
-    private val connected = AtomicBoolean(false)
-
-    init {
-        device = try {
-            PureJavaHidApi.openDevice(deviceInfo)
-        } catch (e: IOException) {
-            println("Error while opening device: $deviceInfo\n$e")
-            null
-        }
-        if (device != null) connected.set(true)
-        callback.onConnectionChange(connected.get())
-
-        device?.inputReportListener =
-            InputReportListener { _, reportId, data, _ -> // device and reportLength are not needed here
-                callback.onReport(reportId, data)
-            }
-
-        device?.deviceRemovalListener =
-            DeviceRemovalListener { _ ->
-                connected.set(false)
-                callback.onConnectionChange(connected.get())
-                device?.inputReportListener = null
-            }
-    }
-
-    fun disconnect() {
-        if (connected.get()) {
-            device?.close()
-        }
-    }
-}
-
-fun main() {
+fun main(args: Array<String>) {
+    val app = MyApp()
+    app.doLaunch(args)
+/*
     val devices: MutableMap<Short, ConnectionCtrl> = HashMap()
     val reader = BufferedReader(InputStreamReader(System.`in`))
 
@@ -128,6 +84,7 @@ fun main() {
 
         println("Unhandled command: \"$cmd\"")
     }
+ */
 }
 
 fun parseVid(data: String): Short? {

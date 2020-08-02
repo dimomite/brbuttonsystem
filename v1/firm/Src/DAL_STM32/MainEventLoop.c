@@ -73,6 +73,14 @@ void mainEventLoop_start(MainEventLoop_t *el)
                 }
             } // if (status)
 
+            if (status) {
+                debugLedOn();
+                status = 0;
+            } else {
+                debugLedOff();
+                status = 1 << 7;
+            }
+
             lock = 0;
         } // while (lock) {
     }

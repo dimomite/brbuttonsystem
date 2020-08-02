@@ -108,9 +108,12 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  mainEventLoop_start(&mainEventLoopInstance);
+  LL_TIM_EnableCounter(TIM3);
+  LL_TIM_EnableIT_UPDATE(TIM3);
 
+  __enable_irq();
   
+  mainEventLoop_start(&mainEventLoopInstance);
   while (1)
   {
     /* USER CODE END WHILE */
@@ -380,7 +383,7 @@ static void MX_TIM3_Init(void)
   TIM_InitStruct.ClockDivision = LL_TIM_CLOCKDIVISION_DIV1;
   LL_TIM_Init(TIM3, &TIM_InitStruct);
   LL_TIM_DisableARRPreload(TIM3);
-  TIM_OC_InitStruct.OCMode = LL_TIM_OCMODE_FROZEN;
+  TIM_OC_InitStruct.OCMode = LL_TIM_OCMODE_ACTIVE;
   TIM_OC_InitStruct.OCState = LL_TIM_OCSTATE_DISABLE;
   TIM_OC_InitStruct.OCNState = LL_TIM_OCSTATE_DISABLE;
   TIM_OC_InitStruct.CompareValue = 0;

@@ -9,7 +9,8 @@
         "Drivers/STM32F1xx_HAL_Driver/Inc/Legacy",
         "Inc",
         "Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc",
-        "Middlewares/ST/STM32_USB_Device_Library/Core/Inc"
+        "Middlewares/ST/STM32_USB_Device_Library/Core/Inc",
+        "Inc/DAL"
       ],
       "defines": [
         "STM32F103xB",

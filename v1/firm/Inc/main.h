@@ -106,12 +106,16 @@ void Error_Handler(void);
 #define TOUCH_SDA_GPIO_Port GPIOB
 #define BUTT_0_Pin LL_GPIO_PIN_12
 #define BUTT_0_GPIO_Port GPIOB
+#define BUTT_0_EXTI_IRQn EXTI15_10_IRQn
 #define BUTT_1_Pin LL_GPIO_PIN_13
 #define BUTT_1_GPIO_Port GPIOB
+#define BUTT_1_EXTI_IRQn EXTI15_10_IRQn
 #define BUTT_2_Pin LL_GPIO_PIN_14
 #define BUTT_2_GPIO_Port GPIOB
+#define BUTT_2_EXTI_IRQn EXTI15_10_IRQn
 #define BUTT_3_Pin LL_GPIO_PIN_15
 #define BUTT_3_GPIO_Port GPIOB
+#define BUTT_3_EXTI_IRQn EXTI15_10_IRQn
 #define SOUND_PWM_Pin LL_GPIO_PIN_8
 #define SOUND_PWM_GPIO_Port GPIOA
 #define START_LED_PWM_Pin LL_GPIO_PIN_9

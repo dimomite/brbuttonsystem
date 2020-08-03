@@ -25,6 +25,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "DAL/MainEventLoop.h"
+#include "DAL/TouchControlsCtrl.h"
 
 /* USER CODE END Includes */
 
@@ -45,7 +46,17 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-extern MainEventLoop_t mainEventLoopInstance;
+ButtonsCtrl_t buttonsCtrlInstance;
+PreciseTimer_t preciseTimerInstance;
+TouchControlsCtrl_t touchControlsCtrlInstance;
+PlayersIndicatorCtrl_t playersIndicatorCtrlInstance;
+
+MainEventLoop_t mainEventLoopInstance = {
+    .buttonsCtrl = &buttonsCtrlInstance,
+    .playersIndicatorCtrl = &playersIndicatorCtrlInstance,
+    .preciseTimer = &preciseTimerInstance,
+    .touchControlsCtrl = &touchControlsCtrlInstance,
+}; // main singleton
 
 /* USER CODE END PV */
 
@@ -108,11 +119,13 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  LL_SPI_Enable(SPI1);
   LL_TIM_EnableCounter(TIM3);
   LL_TIM_EnableIT_UPDATE(TIM3);
 
   __enable_irq();
   
+  mainEventLoop_init(&mainEventLoopInstance);
   mainEventLoop_start(&mainEventLoopInstance);
   while (1)
   {
@@ -522,6 +535,7 @@ static void MX_USART2_UART_Init(void)
   */
 static void MX_GPIO_Init(void)
 {
+  LL_EXTI_InitTypeDef EXTI_InitStruct = {0};
   LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* GPIO Ports Clock Enable */
@@ -575,17 +589,80 @@ static void MX_GPIO_Init(void)
   LL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /**/
-  GPIO_InitStruct.Pin = BUTT_0_Pin|BUTT_1_Pin|BUTT_2_Pin|BUTT_3_Pin;
-  GPIO_InitStruct.Mode = LL_GPIO_MODE_FLOATING;
-  LL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /**/
   GPIO_InitStruct.Pin = USB_PULLUP_Pin;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
   GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
   GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_OPENDRAIN;
   GPIO_InitStruct.Pull = LL_GPIO_PULL_UP;
   LL_GPIO_Init(USB_PULLUP_GPIO_Port, &GPIO_InitStruct);
+
+  /**/
+  LL_GPIO_AF_SetEXTISource(LL_GPIO_AF_EXTI_PORTB, LL_GPIO_AF_EXTI_LINE12);
+
+  /**/
+  LL_GPIO_AF_SetEXTISource(LL_GPIO_AF_EXTI_PORTB, LL_GPIO_AF_EXTI_LINE13);
+
+  /**/
+  LL_GPIO_AF_SetEXTISource(LL_GPIO_AF_EXTI_PORTB, LL_GPIO_AF_EXTI_LINE14);
+
+  /**/
+  LL_GPIO_AF_SetEXTISource(LL_GPIO_AF_EXTI_PORTB, LL_GPIO_AF_EXTI_LINE15);
+
+  /**/
+  EXTI_InitStruct.Line_0_31 = LL_EXTI_LINE_12;
+  EXTI_InitStruct.LineCommand = ENABLE;
+  EXTI_InitStruct.Mode = LL_EXTI_MODE_IT;
+  EXTI_InitStruct.Trigger = LL_EXTI_TRIGGER_FALLING;
+  LL_EXTI_Init(&EXTI_InitStruct);
+
+  /**/
+  EXTI_InitStruct.Line_0_31 = LL_EXTI_LINE_13;
+  EXTI_InitStruct.LineCommand = ENABLE;
+  EXTI_InitStruct.Mode = LL_EXTI_MODE_IT;
+  EXTI_InitStruct.Trigger = LL_EXTI_TRIGGER_FALLING;
+  LL_EXTI_Init(&EXTI_InitStruct);
+
+  /**/
+  EXTI_InitStruct.Line_0_31 = LL_EXTI_LINE_14;
+  EXTI_InitStruct.LineCommand = ENABLE;
+  EXTI_InitStruct.Mode = LL_EXTI_MODE_IT;
+  EXTI_InitStruct.Trigger = LL_EXTI_TRIGGER_FALLING;
+  LL_EXTI_Init(&EXTI_InitStruct);
+
+  /**/
+  EXTI_InitStruct.Line_0_31 = LL_EXTI_LINE_15;
+  EXTI_InitStruct.LineCommand = ENABLE;
+  EXTI_InitStruct.Mode = LL_EXTI_MODE_IT;
+  EXTI_InitStruct.Trigger = LL_EXTI_TRIGGER_FALLING;
+  LL_EXTI_Init(&EXTI_InitStruct);
+
+  /**/
+  LL_GPIO_SetPinPull(BUTT_0_GPIO_Port, BUTT_0_Pin, LL_GPIO_PULL_UP);
+
+  /**/
+  LL_GPIO_SetPinPull(BUTT_1_GPIO_Port, BUTT_1_Pin, LL_GPIO_PULL_UP);
+
+  /**/
+  LL_GPIO_SetPinPull(BUTT_2_GPIO_Port, BUTT_2_Pin, LL_GPIO_PULL_UP);
+
+  /**/
+  LL_GPIO_SetPinPull(BUTT_3_GPIO_Port, BUTT_3_Pin, LL_GPIO_PULL_UP);
+
+  /**/
+  LL_GPIO_SetPinMode(BUTT_0_GPIO_Port, BUTT_0_Pin, LL_GPIO_MODE_INPUT);
+
+  /**/
+  LL_GPIO_SetPinMode(BUTT_1_GPIO_Port, BUTT_1_Pin, LL_GPIO_MODE_INPUT);
+
+  /**/
+  LL_GPIO_SetPinMode(BUTT_2_GPIO_Port, BUTT_2_Pin, LL_GPIO_MODE_INPUT);
+
+  /**/
+  LL_GPIO_SetPinMode(BUTT_3_GPIO_Port, BUTT_3_Pin, LL_GPIO_MODE_INPUT);
+
+  /* EXTI interrupt init*/
+  NVIC_SetPriority(EXTI15_10_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),1, 0));
+  NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 }
 

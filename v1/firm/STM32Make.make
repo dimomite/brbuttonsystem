@@ -65,7 +65,10 @@ Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.c \
 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c \
 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c \
 Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c \
+Src/DAL_STM32/ButtonsCtrl.c \
 Src/DAL_STM32/MainEventLoop.c \
+Src/DAL_STM32/PlayersIndicatorCtrl.c \
+Src/DAL_STM32/TouchControlsCtrl.c \
 Src/main.c \
 Src/stm32f1xx_hal_msp.c \
 Src/stm32f1xx_it.c \

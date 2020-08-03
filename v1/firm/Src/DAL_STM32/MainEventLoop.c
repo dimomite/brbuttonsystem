@@ -1,16 +1,18 @@
 #include "DAL/MainEventLoop.h"
 #include "DAL/PreciseTimer.h"
 
+#include "DAL/TouchControlsCtrl.h"
+
 #include "DeviceMacros.h"
 
 #define IS_STATUS(s) ((status) & (1 << (s)))
 #define SET_STATUS(s) do { status |= 1 << (s); } while (0)
 #define CLEAR_STATUS(s) do { status &= ~(1 << (s)); } while (0)
 
-#define STATUS_START_TIMER      0
-#define STATUS_STOP_TIMER       1
-#define STATUS_TIMER_DELAY      2
-#define STATUS_TIMER_RUNNING    3
+#define STATUS_START_TIMER 0
+#define STATUS_STOP_TIMER 1
+#define STATUS_TIMER_DELAY 2
+#define STATUS_TIMER_RUNNING 3
 
 volatile static uint8_t lock;
 
@@ -21,23 +23,42 @@ static int8_t timerTicksValue; // 0-127 ticks
 static int16_t delayValue;
 static int8_t timerSeconds;
 
+static uint8_t temp;
+static PressedButtons_t buttons;
+
+static uint8_t onButtonPressed(ButtonsCtrl_t * bc) { // temp
+    buttons_getPressedButtons(bc, &buttons);
+    temp = 1;
+
+    return 0;
+}
+
+void mainEventLoop_init(MainEventLoop_t *el)
+{
+    el->buttonsCtrl->onButtonsClicked = onButtonPressed;
+}
+
 void mainEventLoop_start(MainEventLoop_t *el)
 {
     lock = 0;
 
     while (1)
     {
-        while (lock) {
+        while (lock)
+        {
             // 128 ticks per second
-            if (status) {
-                if (IS_STATUS(STATUS_START_TIMER)) {
+            if (status)
+            {
+                if (IS_STATUS(STATUS_START_TIMER))
+                {
                     timerTicksValue = 0;
                     timerSeconds = 0;
 
                     CLEAR_STATUS(STATUS_START_TIMER);
                 }
 
-                if (IS_STATUS(STATUS_STOP_TIMER)) {
+                if (IS_STATUS(STATUS_STOP_TIMER))
+                {
                     timerTicksValue = 0;
                     timerSeconds = 0;
                     CLEAR_STATUS(STATUS_TIMER_DELAY);
@@ -45,41 +66,62 @@ void mainEventLoop_start(MainEventLoop_t *el)
                     CLEAR_STATUS(STATUS_STOP_TIMER);
                 }
 
-                if (IS_STATUS(STATUS_TIMER_DELAY)) {
-                    if (0 == --delayValue) {
+                if (IS_STATUS(STATUS_TIMER_DELAY))
+                {
+                    if (0 == --delayValue)
+                    {
                         CLEAR_STATUS(STATUS_TIMER_DELAY);
                         SET_STATUS(STATUS_TIMER_RUNNING);
-                        if (el->preciseTimer->onTimerStarted) {
+                        if (el->preciseTimer->onTimerStarted)
+                        {
                             el->preciseTimer->onTimerStarted(); // callback on timer start
                         }
                     }
                 }
 
-                if (IS_STATUS(STATUS_TIMER_RUNNING)) {
-                    if (++timerTicksValue < 0) { // ticks are in [0...127], after - overflow to -128
+                if (IS_STATUS(STATUS_TIMER_RUNNING))
+                {
+                    if (++timerTicksValue < 0)
+                    { // ticks are in [0...127], after - overflow to -128
                         timerTicksValue = 0;
-                        if (++timerSeconds == timerLimit) {
+                        if (++timerSeconds == timerLimit)
+                        {
                             SET_STATUS(STATUS_STOP_TIMER);
-                            if (el->preciseTimer->onTimerComplete) {
+                            if (el->preciseTimer->onTimerComplete)
+                            {
                                 el->preciseTimer->onTimerComplete(); // callback on timer complete
                             }
-                        } else {
-                            if (el->preciseTimer->onSecondUpdated) {
+                        }
+                        else
+                        {
+                            if (el->preciseTimer->onSecondUpdated)
+                            {
                                 el->preciseTimer->onSecondUpdated(timerTicksValue); // callback on each second
                             }
                         }
                     }
-
                 }
             } // if (status)
 
-            if (status) {
+            if (status)
+            {
                 debugLedOn();
                 status = 0;
-            } else {
+            }
+            else
+            {
                 debugLedOff();
                 status = 1 << 7;
             }
+
+            if (temp) {
+                playersIndicator_displayPressedLed(el->playersIndicatorCtrl, buttons.buttons);
+                buttons_enable(el->buttonsCtrl);
+
+                temp = 0;
+            }
+
+            touchControl_onEnabledChanged(el->touchControlsCtrl, getTouchEnabledPinState());
 
             lock = 0;
         } // while (lock) {
@@ -91,8 +133,7 @@ void mainEventLoop_tickEvent(MainEventLoop_t *el)
     lock = 1;
 }
 
-
-void preciseTimer_startPreciseTiming(PreciseTimer_t* pt, int8_t secondsLimit, int16_t delayTicks)
+void preciseTimer_startPreciseTiming(PreciseTimer_t *pt, int8_t secondsLimit, int16_t delayTicks)
 {
     CLEAR_STATUS(STATUS_STOP_TIMER);
     CLEAR_STATUS(STATUS_TIMER_RUNNING);
@@ -101,7 +142,7 @@ void preciseTimer_startPreciseTiming(PreciseTimer_t* pt, int8_t secondsLimit, in
     SET_STATUS(STATUS_START_TIMER);
 }
 
-void preciseTimer_stopPreciseTiming(PreciseTimer_t* pt)
+void preciseTimer_stopPreciseTiming(PreciseTimer_t *pt)
 {
     CLEAR_STATUS(STATUS_START_TIMER);
     SET_STATUS(STATUS_START_TIMER);
@@ -109,7 +150,8 @@ void preciseTimer_stopPreciseTiming(PreciseTimer_t* pt)
 
 void preciseTimer_getPreciseTiming(PreciseTimer_t *pt, PreciseTiming_t *timings)
 {
-    if (IS_STATUS(STATUS_TIMER_RUNNING)) {
+    if (IS_STATUS(STATUS_TIMER_RUNNING))
+    {
         timings->seconds = timerSeconds;
         uint16_t cnt = readMainTimerValue();
         timings->subticks = (int16_t)(timerTicksValue << 8) | (cnt >> 4);

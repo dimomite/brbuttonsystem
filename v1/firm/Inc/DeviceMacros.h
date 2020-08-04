@@ -26,6 +26,14 @@
 #define disableButtonInterrupts() WRITE_REG(EXTI->IMR, 0)
 #define enableButtonInterrupts() WRITE_REG(EXTI->IMR, (0xf << 12))
 
+/**
+ * TIM1 for sound and start signals
+ */
+#define startSound(presc) do { LL_TIM_SetPrescaler(TIM1, (presc)); LL_TIM_CC_EnableChannel(TIM1, LL_TIM_CHANNEL_CH1); } while(0)
+#define stopSound() LL_TIM_CC_DisableChannel(TIM1, LL_TIM_CHANNEL_CH1)
+
+#define startLight(intens) do { LL_TIM_OC_SetCompareCH2(TIM1, (intens)); LL_TIM_CC_EnableChannel(TIM1, LL_TIM_CHANNEL_CH2); } while(0)
+#define stopLight() LL_TIM_CC_DisableChannel(TIM1, LL_TIM_CHANNEL_CH2)
 
 /**
  * All SPI1 devices.

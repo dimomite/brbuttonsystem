@@ -90,8 +90,8 @@
 
 /** Usb HID report descriptor. */
 __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DESC_SIZE] __ALIGN_END =
-    {
-        /* USER CODE BEGIN 0 */
+{
+  /* USER CODE BEGIN 0 */
         0x06, 0x00, 0xff, // USAGE_PAGE (Vendor Defined Page 1)
         0x09, 0x01,       // USAGE (Vendor Usage 1)
         0xa1, 0x01,       //   COLLECTION (Application)
@@ -106,8 +106,8 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
         0x85, 0x02,       //   REPORT_ID (2)
         0x91, 0x02,       //   OUTPUT (Data,Var,Abs)
 
-        /* USER CODE END 0 */
-        0xC0 /*     END_COLLECTION	             */
+  /* USER CODE END 0 */
+  0xC0    /*     END_COLLECTION	             */
 };
 
 /* USER CODE BEGIN PRIVATE_VARIABLES */
@@ -145,11 +145,12 @@ static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state);
   */
 
 USBD_CUSTOM_HID_ItfTypeDef USBD_CustomHID_fops_FS =
-    {
-        CUSTOM_HID_ReportDesc_FS,
-        CUSTOM_HID_Init_FS,
-        CUSTOM_HID_DeInit_FS,
-        CUSTOM_HID_OutEvent_FS};
+{
+  CUSTOM_HID_ReportDesc_FS,
+  CUSTOM_HID_Init_FS,
+  CUSTOM_HID_DeInit_FS,
+  CUSTOM_HID_OutEvent_FS
+};
 
 /** @defgroup USBD_CUSTOM_HID_Private_Functions USBD_CUSTOM_HID_Private_Functions
   * @brief Private functions.
@@ -224,3 +225,4 @@ static int8_t USBD_CUSTOM_HID_SendReport_FS(uint8_t *report, uint16_t len)
   */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+

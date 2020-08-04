@@ -47,12 +47,14 @@
 
 /* USER CODE BEGIN PV */
 ButtonsCtrl_t buttonsCtrlInstance;
+EntertainmentCtrl_t entCtrlInstance;
+PlayersIndicatorCtrl_t playersIndicatorCtrlInstance;
 PreciseTimer_t preciseTimerInstance;
 TouchControlsCtrl_t touchControlsCtrlInstance;
-PlayersIndicatorCtrl_t playersIndicatorCtrlInstance;
 
 MainEventLoop_t mainEventLoopInstance = {
     .buttonsCtrl = &buttonsCtrlInstance,
+    .entCtrl = &entCtrlInstance,
     .playersIndicatorCtrl = &playersIndicatorCtrlInstance,
     .preciseTimer = &preciseTimerInstance,
     .touchControlsCtrl = &touchControlsCtrlInstance,
@@ -119,6 +121,9 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  LL_TIM_EnableCounter(TIM1);
+  LL_TIM_EnableAutomaticOutput(TIM1); // very important line, spent 2 hours on it
+
   LL_SPI_Enable(SPI1);
   LL_TIM_EnableCounter(TIM3);
   LL_TIM_EnableIT_UPDATE(TIM3);
@@ -315,26 +320,29 @@ static void MX_TIM1_Init(void)
   /* USER CODE BEGIN TIM1_Init 1 */
 
   /* USER CODE END TIM1_Init 1 */
-  TIM_InitStruct.Prescaler = 0;
+  TIM_InitStruct.Prescaler = 71;
   TIM_InitStruct.CounterMode = LL_TIM_COUNTERMODE_UP;
-  TIM_InitStruct.Autoreload = 0;
+  TIM_InitStruct.Autoreload = 999;
   TIM_InitStruct.ClockDivision = LL_TIM_CLOCKDIVISION_DIV1;
   TIM_InitStruct.RepetitionCounter = 0;
   LL_TIM_Init(TIM1, &TIM_InitStruct);
   LL_TIM_DisableARRPreload(TIM1);
   LL_TIM_SetClockSource(TIM1, LL_TIM_CLOCKSOURCE_INTERNAL);
-  TIM_OC_InitStruct.OCMode = LL_TIM_OCMODE_FROZEN;
+  LL_TIM_OC_EnablePreload(TIM1, LL_TIM_CHANNEL_CH1);
+  TIM_OC_InitStruct.OCMode = LL_TIM_OCMODE_PWM1;
   TIM_OC_InitStruct.OCState = LL_TIM_OCSTATE_DISABLE;
   TIM_OC_InitStruct.OCNState = LL_TIM_OCSTATE_DISABLE;
-  TIM_OC_InitStruct.CompareValue = 0;
+  TIM_OC_InitStruct.CompareValue = 499;
   TIM_OC_InitStruct.OCPolarity = LL_TIM_OCPOLARITY_HIGH;
   TIM_OC_InitStruct.OCNPolarity = LL_TIM_OCPOLARITY_HIGH;
   TIM_OC_InitStruct.OCIdleState = LL_TIM_OCIDLESTATE_LOW;
   TIM_OC_InitStruct.OCNIdleState = LL_TIM_OCIDLESTATE_LOW;
   LL_TIM_OC_Init(TIM1, LL_TIM_CHANNEL_CH1, &TIM_OC_InitStruct);
   LL_TIM_OC_DisableFast(TIM1, LL_TIM_CHANNEL_CH1);
+  LL_TIM_OC_EnablePreload(TIM1, LL_TIM_CHANNEL_CH2);
   TIM_OC_InitStruct.OCState = LL_TIM_OCSTATE_DISABLE;
   TIM_OC_InitStruct.OCNState = LL_TIM_OCSTATE_DISABLE;
+  TIM_OC_InitStruct.CompareValue = 300;
   LL_TIM_OC_Init(TIM1, LL_TIM_CHANNEL_CH2, &TIM_OC_InitStruct);
   LL_TIM_OC_DisableFast(TIM1, LL_TIM_CHANNEL_CH2);
   LL_TIM_SetTriggerOutput(TIM1, LL_TIM_TRGO_RESET);

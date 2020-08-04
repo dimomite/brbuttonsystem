@@ -103,6 +103,9 @@ void mainEventLoop_start(MainEventLoop_t *el)
                 }
             } // if (status)
 
+            // send tick to sound and light control
+            ent_onSystemTick(el->entCtrl);
+
             if (status)
             {
                 debugLedOn();
@@ -114,9 +117,21 @@ void mainEventLoop_start(MainEventLoop_t *el)
                 status = 1 << 7;
             }
 
-            if (temp) {
+            if (temp) { // updates on button click
                 playersIndicator_displayPressedLed(el->playersIndicatorCtrl, buttons.buttons);
                 buttons_enable(el->buttonsCtrl);
+
+                SoundProfile_t sound = {
+                    .freq = ENT_FREQ_FALSE_START,
+                    .duration = 32,
+                    .repetitions = 5,
+                };
+                ent_startSound(el->entCtrl, &sound);
+
+                LightProfile_t light = {
+                    .intensity = 500,
+                };
+                ent_startLight(el->entCtrl, &light);
 
                 temp = 0;
             }

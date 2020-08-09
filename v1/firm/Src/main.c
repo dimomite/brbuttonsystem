@@ -46,18 +46,22 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+BtCtrl_t btCtrlInstance;
 ButtonsCtrl_t buttonsCtrlInstance;
 EntertainmentCtrl_t entCtrlInstance;
 PlayersIndicatorCtrl_t playersIndicatorCtrlInstance;
 PreciseTimer_t preciseTimerInstance;
 TouchControlsCtrl_t touchControlsCtrlInstance;
+UsbCtrl_t usbCtrlInstance;
 
 MainEventLoop_t mainEventLoopInstance = {
+    .btCtrl = &btCtrlInstance,
     .buttonsCtrl = &buttonsCtrlInstance,
     .entCtrl = &entCtrlInstance,
     .playersIndicatorCtrl = &playersIndicatorCtrlInstance,
     .preciseTimer = &preciseTimerInstance,
     .touchControlsCtrl = &touchControlsCtrlInstance,
+    .usbCtrl = &usbCtrlInstance,
 }; // main singleton
 
 /* USER CODE END PV */
@@ -131,7 +135,11 @@ int main(void)
   __enable_irq();
   
   mainEventLoop_init(&mainEventLoopInstance);
+  usbctrl_connect(&usbCtrlInstance);
+  btctrl_connect(&btCtrlInstance);
+
   mainEventLoop_start(&mainEventLoopInstance);
+
   while (1)
   {
     /* USER CODE END WHILE */
@@ -517,10 +525,14 @@ static void MX_USART2_UART_Init(void)
   GPIO_InitStruct.Mode = LL_GPIO_MODE_FLOATING;
   LL_GPIO_Init(BTTX_MCURX_GPIO_Port, &GPIO_InitStruct);
 
+  /* USART2 interrupt Init */
+  NVIC_SetPriority(USART2_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),0, 0));
+  NVIC_EnableIRQ(USART2_IRQn);
+
   /* USER CODE BEGIN USART2_Init 1 */
 
   /* USER CODE END USART2_Init 1 */
-  USART_InitStruct.BaudRate = 115200;
+  USART_InitStruct.BaudRate = 9600;
   USART_InitStruct.DataWidth = LL_USART_DATAWIDTH_8B;
   USART_InitStruct.StopBits = LL_USART_STOPBITS_1;
   USART_InitStruct.Parity = LL_USART_PARITY_NONE;

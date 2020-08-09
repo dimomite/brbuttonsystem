@@ -23,6 +23,8 @@
 #include "usbd_custom_hid_if.h"
 
 /* USER CODE BEGIN INCLUDE */
+#include "DAL/MainEventLoop.h"
+#include "DAL/UsbCtrl.h"
 
 /* USER CODE END INCLUDE */
 
@@ -125,6 +127,7 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
 extern USBD_HandleTypeDef hUsbDeviceFS;
 
 /* USER CODE BEGIN EXPORTED_VARIABLES */
+extern MainEventLoop_t mainEventLoopInstance;
 
 /* USER CODE END EXPORTED_VARIABLES */
 /**
@@ -166,6 +169,7 @@ USBD_CUSTOM_HID_ItfTypeDef USBD_CustomHID_fops_FS =
 static int8_t CUSTOM_HID_Init_FS(void)
 {
   /* USER CODE BEGIN 4 */
+  usbctrl_onInit(mainEventLoopInstance.usbCtrl);
   return (USBD_OK);
   /* USER CODE END 4 */
 }
@@ -177,6 +181,7 @@ static int8_t CUSTOM_HID_Init_FS(void)
 static int8_t CUSTOM_HID_DeInit_FS(void)
 {
   /* USER CODE BEGIN 5 */
+  usbctrl_onDeInit(mainEventLoopInstance.usbCtrl);
   return (USBD_OK);
   /* USER CODE END 5 */
 }
@@ -190,6 +195,9 @@ static int8_t CUSTOM_HID_DeInit_FS(void)
 static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state)
 {
   /* USER CODE BEGIN 6 */
+  USBD_CUSTOM_HID_HandleTypeDef *hhid = (USBD_CUSTOM_HID_HandleTypeDef*)hUsbDeviceFS.pClassData;
+  usbctrl_onOutReport(mainEventLoopInstance.usbCtrl, (UsbHidReport_t *)hhid->Report_buf);
+
   return (USBD_OK);
   /* USER CODE END 6 */
 }

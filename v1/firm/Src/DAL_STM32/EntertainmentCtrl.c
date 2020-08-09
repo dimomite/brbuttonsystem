@@ -21,7 +21,7 @@ void ent_onSystemTick(EntertainmentCtrl_t *ec)
                     stopSound();
                 }
 
-                // if (0 == sp.repetitions) stopLight(); // TODO debug only
+                if (0 == sp.repetitions) stopLight(); // TODO debug only
             }
         }
     }
@@ -43,6 +43,7 @@ void ent_startSound(EntertainmentCtrl_t *ec, SoundProfile_t const *soundProfile)
 
 void ent_stopSound(EntertainmentCtrl_t *ec)
 {
+    sp.repetitions = 0;
     stopSound();
 }
 

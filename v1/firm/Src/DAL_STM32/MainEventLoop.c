@@ -16,6 +16,8 @@
 
 volatile static uint8_t lock;
 
+static MainEventLoop_t *eventLoop; // TODO remove, just for BT debug
+
 static uint8_t status = 0;
 
 static int8_t timerLimit;
@@ -33,9 +35,15 @@ static uint8_t onButtonPressed(ButtonsCtrl_t * bc) { // temp
     return 0;
 }
 
+static void onBtData(uint8_t data) {
+    playersIndicator_displayPressedLed(eventLoop->playersIndicatorCtrl, data);
+}
+
 void mainEventLoop_init(MainEventLoop_t *el)
 {
+    eventLoop = el;
     el->buttonsCtrl->onButtonsClicked = onButtonPressed;
+    el->btCtrl->onDataByteReceived = onBtData;
 }
 
 void mainEventLoop_start(MainEventLoop_t *el)
@@ -105,6 +113,9 @@ void mainEventLoop_start(MainEventLoop_t *el)
 
             // send tick to sound and light control
             ent_onSystemTick(el->entCtrl);
+
+            // send tick to bluetooth controller
+            btctrl_onSystemTick(el->btCtrl);
 
             if (status)
             {

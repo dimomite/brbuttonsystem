@@ -44,3 +44,20 @@
 #define clearBackLedCsPin() LL_GPIO_ResetOutputPin(BACK_LED_CS_GPIO_Port, BACK_LED_CS_Pin)
 #define setBackLedCsPin() LL_GPIO_SetOutputPin(BACK_LED_CS_GPIO_Port, BACK_LED_CS_Pin)
 
+/**
+ * USB control
+ */
+#define startUsb() LL_GPIO_ResetOutputPin(USB_PULLUP_GPIO_Port, USB_PULLUP_Pin)
+#define stopUsb() LL_GPIO_SetOutputPin(USB_PULLUP_GPIO_Port, USB_PULLUP_Pin)
+
+/**
+ * BT module control
+ */
+#define btUsartEnable() LL_USART_Enable(USART2)
+#define btUsartDisable() LL_USART_Disable(USART2)
+#define btUsartEnableRxIt() LL_USART_EnableIT_RXNE(USART2)
+#define btUsartDisableRxIt() LL_USART_DisableIT_RXNE(USART2)
+#define getBtData() LL_USART_ReceiveData8(USART2)
+#define btPowerOn() LL_GPIO_ResetOutputPin(BT_POWER_GPIO_Port, BT_POWER_Pin)
+#define btPowerOff() LL_GPIO_SetOutputPin(BT_POWER_GPIO_Port, BT_POWER_Pin)
+

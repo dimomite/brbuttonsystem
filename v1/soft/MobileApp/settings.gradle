@@ -1,0 +1,4 @@
+include ':brcore'
+project(':brcore').projectDir = new File("../common/brcore")
+include ':app'
+rootProject.name = "BrSystemControl"

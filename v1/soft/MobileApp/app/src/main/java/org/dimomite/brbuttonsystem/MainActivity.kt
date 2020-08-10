@@ -16,16 +16,3 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
     }
 }
-
-class Some : ConnectionApi {
-    override fun subscribeRemoteDevicesListUpdates(callback: ConnectionApi.RemoteDevicesListCallback): Result<ConnectionApi.DeviceListSubscriptionResult, Exception> {
-        return Result.Ok(ConnectionApi.DeviceListSubscriptionResult(1L))
-    }
-
-    override fun unsubscribeRemoteDevicesListUpdates(subId: Long) {
-    }
-
-    override fun connectToRemoteDevice(remoteDevice: RemoteDevice) {
-    }
-}
-

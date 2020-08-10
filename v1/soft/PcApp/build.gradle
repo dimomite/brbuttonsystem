@@ -1,31 +1,24 @@
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.3.72'
-    id 'org.openjfx.javafxplugin' version '0.0.8'
 }
 
 group 'org.dimomite.brbuttonsystem'
 version '0.1'
 
+ext {
+    kotlin_version = '1.3.72'
+}
+
 sourceCompatibility = 1.8
 
-repositories {
-    mavenCentral()
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib"
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-}
-
-compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
-compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
-
-javafx {
-    version = "14"
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

@@ -1,2 +1,5 @@
 rootProject.name = 'PcApp'
+include ':app'
 
+include ':brcore'
+project(':brcore').projectDir = new File("../common/brcore")

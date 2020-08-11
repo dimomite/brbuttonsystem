@@ -7,7 +7,7 @@
 
         <variable
             name="model"
-            type="org.dimomite.brbuttonsystem.presentation.connection.ConnectionUiModel" />
+            type="org.dimomite.brbuttonsystem.presentation.connection.ConnectionViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,6 +19,8 @@
             android:id="@+id/connection_start_scan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:enabled="@{model.dataModel.startScanEnabled}"
+            android:onClick="@{model::onStartScanClicked}"
             android:text="Connect"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,6 +29,8 @@
             android:id="@+id/connection_stop_scan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:enabled="@{model.dataModel.stopScanEnabled}"
+            android:onClick="@{model::onStopScanClicked}"
             android:text="Disconnect"
             app:layout_constraintStart_toEndOf="@+id/connection_start_scan"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,6 +39,8 @@
             android:id="@+id/connection_connect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:enabled="@{model.dataModel.connectEnabled}"
+            android:onClick="@{model::onConnectClicked}"
             android:text="Connect"
             app:layout_constraintStart_toEndOf="@+id/connection_stop_scan"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,6 +49,8 @@
             android:id="@+id/connection_disconnect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:enabled="@{model.dataModel.disconnectEnabled}"
+            android:onClick="@{model::onDisconnectClicked}"
             android:text="Disconnect"
             app:layout_constraintStart_toEndOf="@+id/connection_connect"
             app:layout_constraintTop_toTopOf="parent" />

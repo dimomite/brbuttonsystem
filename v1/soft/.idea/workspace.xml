@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="20f42ebf-e764-4070-b607-ec0445cf7439" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docs/HAL.uxf" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/HAL.uxf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../proto/hard/v1/button_v1/Entertainment.sch" beforeDir="false" afterPath="$PROJECT_DIR$/../../proto/hard/v1/button_v1/Entertainment.sch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../proto/hard/v1/button_v1/bom/ibom.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../proto/hard/v1/button_v1/bom/ibom.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../proto/hard/v1/button_v1/button_v1.kicad_pcb" beforeDir="false" afterPath="$PROJECT_DIR$/../../proto/hard/v1/button_v1/button_v1.kicad_pcb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../proto/hard/v1/button_v1/button_v1.kicad_pcb-bak" beforeDir="false" afterPath="$PROJECT_DIR$/../../proto/hard/v1/button_v1/button_v1.kicad_pcb-bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../proto/hard/v1/button_v1/button_v1.sch" beforeDir="false" afterPath="$PROJECT_DIR$/../../proto/hard/v1/button_v1/button_v1.sch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../proto/proto_usb_conn/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../proto/proto_usb_conn/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../proto/proto_usb_conn/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../proto/proto_usb_conn/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../proto/proto_usb_conn/.gradle/4.10.3/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../proto/proto_usb_conn/.gradle/4.10.3/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../proto/proto_usb_conn/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../proto/proto_usb_conn/.gradle/4.10.3/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../proto/proto_usb_conn/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../proto/proto_usb_conn/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../proto/proto_usb_conn/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../proto/proto_usb_conn/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../proto/proto_usb_conn/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../proto/proto_usb_conn/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../proto/proto_usb_conn/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../proto/proto_usb_conn/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MobileApp/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MobileApp/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MobileApp/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/MobileApp/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MobileApp/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MobileApp/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MobileApp/app/src/main/java/org/dimomite/brbuttonsystem/BrButtonSystemControlApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/MobileApp/app/src/main/java/org/dimomite/brbuttonsystem/BrButtonSystemControlApplication.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MobileApp/app/src/main/java/org/dimomite/brbuttonsystem/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/MobileApp/app/src/main/java/org/dimomite/brbuttonsystem/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MobileApp/app/src/main/java/org/dimomite/brbuttonsystem/presentation/connection/ConnectionFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/MobileApp/app/src/main/java/org/dimomite/brbuttonsystem/presentation/connection/ConnectionFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MobileApp/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/MobileApp/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/brcore/src/main/java/org/dimomite/brbuttonsystem/connectionapi/ConnectionApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/common/brcore/src/main/java/org/dimomite/brbuttonsystem/connectionapi/ConnectionApi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/brcore/src/main/java/org/dimomite/brbuttonsystem/core/Result.kt" beforeDir="false" afterPath="$PROJECT_DIR$/common/brcore/src/main/java/org/dimomite/brbuttonsystem/core/Result.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.1.4\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1g1TRKnmDNB0Db1o2crE6QCYFNU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="20f42ebf-e764-4070-b607-ec0445cf7439" name="Default Changelist" comment="" />
+      <created>1597281089855</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1597281089855</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

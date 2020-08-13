@@ -1,9 +1,11 @@
 package org.dimomite.brbuttonsystem
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 import org.slf4j.LoggerFactory
 import timber.log.Timber
 
+@HiltAndroidApp
 class BrButtonSystemControlApplication : Application() {
     companion object {
         val TAG = "BrButtonSystemControl"

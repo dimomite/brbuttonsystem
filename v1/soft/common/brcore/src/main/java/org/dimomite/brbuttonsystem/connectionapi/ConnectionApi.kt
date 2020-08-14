@@ -30,16 +30,19 @@ interface ConnectionApi {
     interface RemoteDeviceConnection {
         fun getInputStream(): InputStream
         fun getOutputStream(): OutputStream
-
-        fun disconnect()
     }
-
-    data class ConnectionResult(val connection: RemoteDeviceConnection)
 
     interface DeviceConnectionCallback {
-        fun onConnectionChanged(connectionResult: AsyncResult<ConnectionResult, Exception>)
+        fun onConnectionChanged(connectionResult: AsyncResult<RemoteDeviceConnection, Exception>)
     }
 
+    /**
+     * Connects to provided device.
+     * Callback can be invoked multiple times.
+     * First time with value AsyncResult.InProgress then with AsyncResult.Ok
+     */
     fun connectToRemoteDevice(remoteDevice: RemoteDevice, callback: DeviceConnectionCallback)
+
+    fun disconnectFromRemoteDevice(connection: RemoteDeviceConnection)
 
 }

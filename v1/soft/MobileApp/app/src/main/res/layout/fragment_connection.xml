@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:enabled="@{model.dataModel.startScanEnabled}"
             android:onClick="@{model::onStartScanClicked}"
-            android:text="Connect"
+            android:text="Scan"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:enabled="@{model.dataModel.stopScanEnabled}"
             android:onClick="@{model::onStopScanClicked}"
-            android:text="Disconnect"
+            android:text="Stop scan"
             app:layout_constraintStart_toEndOf="@+id/connection_start_scan"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,13 +69,16 @@
             android:id="@+id/connection_buttons_barrier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:barrierDirection="top"
+            app:barrierDirection="bottom"
             app:constraint_referenced_ids="connection_connect,connection_stop_scan,connection_disconnect,connection_start_scan"
             tools:layout_editor_absoluteY="731dp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="0dp"
+            android:id="@+id/connection_remote_devices_list"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:attachList="@{model}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/connection_status_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -35,10 +35,10 @@ class ConnectionViewModel : DisposingViewModel() {
 
     private var adapter: Adapter? = null
 
-    fun onStartScanClicked(v: View?) {}
-    fun onStopScanClicked(v: View?) {}
-    fun onConnectClicked(v: View?) {}
-    fun onDisconnectClicked(v: View?) {}
+    fun onStartScanClicked(@Suppress("UNUSED_PARAMETER") v: View?) {}
+    fun onStopScanClicked(@Suppress("UNUSED_PARAMETER") v: View?) {}
+    fun onConnectClicked(@Suppress("UNUSED_PARAMETER") v: View?) {}
+    fun onDisconnectClicked(@Suppress("UNUSED_PARAMETER") v: View?) {}
 
     //    data class RemoteDeviceViewHolder(val name: String, val version: String, val address: String, val serialNumber: String)
     private class RemoteDeviceViewHolder(val binding: RemoteDeviceListItemBinding) : RecyclerView.ViewHolder(binding.root)

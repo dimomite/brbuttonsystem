@@ -169,7 +169,7 @@ USBD_CUSTOM_HID_ItfTypeDef USBD_CustomHID_fops_FS =
 static int8_t CUSTOM_HID_Init_FS(void)
 {
   /* USER CODE BEGIN 4 */
-  usbctrl_onInit(mainEventLoopInstance.usbCtrl);
+  usbctrl_onUsbInit(mainEventLoopInstance.usbCtrl);
   return (USBD_OK);
   /* USER CODE END 4 */
 }
@@ -181,7 +181,7 @@ static int8_t CUSTOM_HID_Init_FS(void)
 static int8_t CUSTOM_HID_DeInit_FS(void)
 {
   /* USER CODE BEGIN 5 */
-  usbctrl_onDeInit(mainEventLoopInstance.usbCtrl);
+  usbctrl_onUsbDeInit(mainEventLoopInstance.usbCtrl);
   return (USBD_OK);
   /* USER CODE END 5 */
 }
@@ -196,7 +196,10 @@ static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state)
 {
   /* USER CODE BEGIN 6 */
   USBD_CUSTOM_HID_HandleTypeDef *hhid = (USBD_CUSTOM_HID_HandleTypeDef*)hUsbDeviceFS.pClassData;
-  usbctrl_onOutReport(mainEventLoopInstance.usbCtrl, (UsbHidReport_t *)hhid->Report_buf);
+  usbctrl_onOutReport(mainEventLoopInstance.usbCtrl, (UsbHidOutReport_t *)hhid->Report_buf);
+
+  // USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, 0, 0);
+
 
   return (USBD_OK);
   /* USER CODE END 6 */

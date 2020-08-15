@@ -6,7 +6,10 @@
 #pragma once
 
 #include <stm32f1xx_ll_tim.h>
+#include <usbd_customhid.h>
 #include <main.h>
+
+extern USBD_HandleTypeDef hUsbDeviceFS;
 
 #define readMainTimerValue() LL_TIM_GetCounter(TIM3)
 
@@ -49,6 +52,7 @@
  */
 #define startUsb() LL_GPIO_ResetOutputPin(USB_PULLUP_GPIO_Port, USB_PULLUP_Pin)
 #define stopUsb() LL_GPIO_SetOutputPin(USB_PULLUP_GPIO_Port, USB_PULLUP_Pin)
+#define sendUsbReport(report, size) USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (report), (size))
 
 /**
  * BT module control
@@ -60,4 +64,5 @@
 #define getBtData() LL_USART_ReceiveData8(USART2)
 #define btPowerOn() LL_GPIO_ResetOutputPin(BT_POWER_GPIO_Port, BT_POWER_Pin)
 #define btPowerOff() LL_GPIO_SetOutputPin(BT_POWER_GPIO_Port, BT_POWER_Pin)
+
 

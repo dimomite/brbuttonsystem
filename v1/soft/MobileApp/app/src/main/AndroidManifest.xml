@@ -2,7 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.dimomite.brbuttonsystem">
 
+    <!-- TODO USB connection is an optional feature here, need to check in runtime -->
+    <uses-feature
+        android:name="android.hardware.usb.host"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.BLUETOOTH" />
+
     <application
         android:name=".BrButtonSystemControlApplication"
         android:allowBackup="true"

@@ -28,6 +28,8 @@ static int8_t timerSeconds;
 static uint8_t temp;
 static PressedButtons_t buttons;
 
+static UsbHidInReport_t usbInReport;
+
 static uint8_t onButtonPressed(ButtonsCtrl_t * bc) { // temp
     buttons_getPressedButtons(bc, &buttons);
     temp = 1;
@@ -39,11 +41,21 @@ static void onBtData(uint8_t data) {
     playersIndicator_displayPressedLed(eventLoop->playersIndicatorCtrl, data);
 }
 
+static void onUsbReport(UsbHidOutReport_t *outReport) {
+    if (!outReport) return;
+    if (outReport->reportId != 2) return; // 1 for IN reports, 2 for OUT
+
+    playersIndicator_displayPressedLed(eventLoop->playersIndicatorCtrl, outReport->data[0]);
+}
+
 void mainEventLoop_init(MainEventLoop_t *el)
 {
     eventLoop = el;
     el->buttonsCtrl->onButtonsClicked = onButtonPressed;
     el->btCtrl->onDataByteReceived = onBtData;
+    el->usbCtrl->onReportReceived = onUsbReport;
+
+    usbInReport.reportId = 1; // IN report id
 }
 
 void mainEventLoop_start(MainEventLoop_t *el)
@@ -143,6 +155,10 @@ void mainEventLoop_start(MainEventLoop_t *el)
                     .intensity = 500,
                 };
                 ent_startLight(el->entCtrl, &light);
+
+                usbInReport.data[0] = buttons.buttons;
+                usbInReport.data[4] = 0x75;
+                usbctrl_sendReport(el->usbCtrl, &usbInReport);
 
                 temp = 0;
             }

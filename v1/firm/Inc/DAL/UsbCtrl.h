@@ -13,22 +13,23 @@ typedef struct
 {
     uint8_t reportId;
     int8_t data[63];
-} UsbHidReport_t;
+} UsbHidOutReport_t;
 
 typedef struct
 {
-    UsbHidReport_t *payload;
+    uint8_t reportId;
+    int8_t data[63];
 } UsbHidInReport_t;
 
 typedef struct UsbCtrl_t
 {
-    void (*onReportReceived)(UsbHidReport_t *outReport);
+    void (*onReportReceived)(UsbHidOutReport_t *outReport);
     void (*onConnectionStatusChanged)(UsbConnectionStatus connStatus);
 } UsbCtrl_t;
 
-void usbctrl_onInit(UsbCtrl_t *uc);
-void usbctrl_onDeInit(UsbCtrl_t *uc);
-void usbctrl_onOutReport(UsbCtrl_t *uc, UsbHidReport_t *outReport);
+void usbctrl_onUsbInit(UsbCtrl_t *uc);
+void usbctrl_onUsbDeInit(UsbCtrl_t *uc);
+void usbctrl_onOutReport(UsbCtrl_t *uc, UsbHidOutReport_t *outReport);
 
 void usbctrl_connect(UsbCtrl_t *uc);
 void usbctrl_disconnect(UsbCtrl_t *uc);

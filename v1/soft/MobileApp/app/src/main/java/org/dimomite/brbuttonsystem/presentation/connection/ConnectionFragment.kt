@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.dimomite.brbuttonsystem.connectionapi.ConnectionApi
 import org.dimomite.brbuttonsystem.connectionapi.RemoteDevice
 import org.dimomite.brbuttonsystem.data.connection.bt.BtConnectionDriver
+import org.dimomite.brbuttonsystem.data.connection.hid.HidConnectionCtrl
 import org.dimomite.brbuttonsystem.databinding.FragmentConnectionBinding
 import org.slf4j.LoggerFactory
 import javax.inject.Inject
@@ -20,8 +21,12 @@ class ConnectionFragment : Fragment() {
         val logger = LoggerFactory.getLogger(ConnectionFragment::class.java)
     }
 
+//    @Inject
+//    lateinit var conn: BtConnectionDriver
+
     @Inject
-    lateinit var conn: BtConnectionDriver
+    lateinit var conn: HidConnectionCtrl
+
 
     private var subscription: Result<ConnectionApi.DeviceListSubscriptionResult, Exception> = Result.None
 
@@ -36,16 +41,16 @@ class ConnectionFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-//        subscription = conn.subscribeRemoteDevicesListUpdates(object : ConnectionApi.RemoteDevicesListCallback {
-//            override fun onDevicesListUpdate(remoteDevices: Array<out RemoteDevice>) {
-//                remoteDevices.forEach { logger.debug("Device: $it") }
-//            }
-//        })
-//        when (subscription) {
-//            is Result.Ok, Result.None -> {
-//            }
-//            is Result.Error -> logger.warn("Device list subscription error: ${(subscription as Result.Error<Exception>).e}")
-//        }
+        subscription = conn.subscribeRemoteDevicesListUpdates(object : ConnectionApi.RemoteDevicesListCallback {
+            override fun onDevicesListUpdate(remoteDevices: Array<out RemoteDevice>) {
+                remoteDevices.forEach { logger.debug("Device: $it") }
+            }
+        })
+        when (subscription) {
+            is Result.Ok, Result.None -> {
+            }
+            is Result.Error -> logger.warn("Device list subscription error: ${(subscription as Result.Error<Exception>).e}")
+        }
     }
 
     override fun onPause() {

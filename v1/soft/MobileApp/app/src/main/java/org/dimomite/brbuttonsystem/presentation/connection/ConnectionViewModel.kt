@@ -17,14 +17,7 @@ class ConnectionViewModel : DisposingViewModel() {
         @JvmStatic
         @BindingAdapter(value = arrayOf("attachList"))
         fun attachList(v: RecyclerView, model: ConnectionViewModel) {
-            val adapter = if (v.adapter is Adapter) {
-                v.adapter as Adapter
-            } else {
-                Adapter(v.context)
-            }
-            v.adapter = adapter
-
-//            val adapter = v.adapter as? Adapter ?: Adapter(v.context).also { v.adapter = it }
+            val adapter = v.adapter as? Adapter ?: Adapter(v.context).also { v.adapter = it }
             model.adapter = adapter
             adapter.updateModel(model.dataModel)
         }

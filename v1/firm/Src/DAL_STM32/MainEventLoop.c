@@ -58,7 +58,7 @@ void mainEventLoop_init(MainEventLoop_t *el)
     usbInReport.reportId = 1; // IN report id
 }
 
-void mainEventLoop_start(MainEventLoop_t *el)
+void mainEventLoop_run(MainEventLoop_t *el)
 {
     lock = 0;
 

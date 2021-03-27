@@ -138,7 +138,7 @@ int main(void)
   usbctrl_connect(&usbCtrlInstance);
   btctrl_connect(&btCtrlInstance);
 
-  mainEventLoop_start(&mainEventLoopInstance);
+  mainEventLoop_run(&mainEventLoopInstance);
 
   while (1)
   {

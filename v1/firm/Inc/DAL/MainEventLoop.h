@@ -20,5 +20,5 @@ typedef struct
 
 void mainEventLoop_init(MainEventLoop_t *el);
 
-void mainEventLoop_start(MainEventLoop_t *el);
+void mainEventLoop_run(MainEventLoop_t *el);
 void mainEventLoop_tickEvent(MainEventLoop_t *el);

@@ -48,6 +48,7 @@
 /* USER CODE BEGIN PV */
 BtCtrl_t btCtrlInstance;
 ButtonsCtrl_t buttonsCtrlInstance;
+DisplayCtrl_t displayCtrlInstance;
 EntertainmentCtrl_t entCtrlInstance;
 PlayersIndicatorCtrl_t playersIndicatorCtrlInstance;
 PreciseTimer_t preciseTimerInstance;
@@ -57,6 +58,7 @@ UsbCtrl_t usbCtrlInstance;
 MainEventLoop_t mainEventLoopInstance = {
     .btCtrl = &btCtrlInstance,
     .buttonsCtrl = &buttonsCtrlInstance,
+    .displayCtrl = &displayCtrlInstance,
     .entCtrl = &entCtrlInstance,
     .playersIndicatorCtrl = &playersIndicatorCtrlInstance,
     .preciseTimer = &preciseTimerInstance,
@@ -137,6 +139,11 @@ int main(void)
   mainEventLoop_init(&mainEventLoopInstance);
   usbctrl_connect(&usbCtrlInstance);
   btctrl_connect(&btCtrlInstance);
+
+  display_init(&displayCtrlInstance);
+  display_clearAll(&displayCtrlInstance);
+  // display_showTimeDash(&display_showTimeDash);
+  display_showGameTime(&displayCtrlInstance, 12);
 
   mainEventLoop_run(&mainEventLoopInstance);
 

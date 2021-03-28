@@ -142,6 +142,7 @@ void mainEventLoop_run(MainEventLoop_t *el)
 
             if (temp) { // updates on button click
                 playersIndicator_displayPressedLed(el->playersIndicatorCtrl, buttons.buttons);
+                display_showPressedButtons(el->displayCtrl, &buttons);
                 buttons_enable(el->buttonsCtrl);
 
                 SoundProfile_t sound = {

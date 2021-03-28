@@ -1,6 +1,7 @@
 #pragma once
 #include "BtCtrl.h"
 #include "ButtonsCtrl.h"
+#include "DisplayCtrl.h"
 #include "EntertainmentCtrl.h"
 #include "PlayersIndicatorCtrl.h"
 #include "PreciseTimer.h"
@@ -11,6 +12,7 @@ typedef struct
 {
     BtCtrl_t *btCtrl;
     ButtonsCtrl_t *buttonsCtrl;
+    DisplayCtrl_t *displayCtrl;
     EntertainmentCtrl_t *entCtrl;
     PlayersIndicatorCtrl_t *playersIndicatorCtrl;
     PreciseTimer_t *preciseTimer;

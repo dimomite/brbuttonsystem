@@ -30,3 +30,7 @@ void buttons_enable(ButtonsCtrl_t *bc);
 void buttons_disable(ButtonsCtrl_t *bc);
 
 void buttons_getPressedButtons(ButtonsCtrl_t *bc, PressedButtons_t *buttons);
+uint8_t buttons_isRedButtonPressed(const PressedButtons_t *buttons);
+uint8_t buttons_isGreenButtonPressed(const PressedButtons_t *buttons);
+uint8_t buttons_isYellowButtonPressed(const PressedButtons_t *buttons);
+uint8_t buttons_isBlueButtonPressed(const PressedButtons_t *buttons);

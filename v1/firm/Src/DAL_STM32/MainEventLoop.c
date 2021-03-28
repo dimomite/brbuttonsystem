@@ -38,14 +38,14 @@ static uint8_t onButtonPressed(ButtonsCtrl_t * bc) { // temp
 }
 
 static void onBtData(uint8_t data) {
-    playersIndicator_displayPressedLed(eventLoop->playersIndicatorCtrl, data);
+    // playersIndicator_displayPressedLed(eventLoop->playersIndicatorCtrl, data);
 }
 
 static void onUsbReport(UsbHidOutReport_t *outReport) {
     if (!outReport) return;
     if (outReport->reportId != 2) return; // 1 for IN reports, 2 for OUT
 
-    playersIndicator_displayPressedLed(eventLoop->playersIndicatorCtrl, outReport->data[0]);
+    // playersIndicator_displayPressedLed(eventLoop->playersIndicatorCtrl, outReport->data[0]);
 }
 
 void mainEventLoop_init(MainEventLoop_t *el)
@@ -141,7 +141,7 @@ void mainEventLoop_run(MainEventLoop_t *el)
             }
 
             if (temp) { // updates on button click
-                playersIndicator_displayPressedLed(el->playersIndicatorCtrl, buttons.buttons);
+                playersIndicator_displayPressedLed(el->playersIndicatorCtrl, &buttons);
                 display_showPressedButtons(el->displayCtrl, &buttons);
                 buttons_enable(el->buttonsCtrl);
 

@@ -44,6 +44,12 @@ extern USBD_HandleTypeDef hUsbDeviceFS;
 #define waitSpi1() do { while (LL_SPI_IsActiveFlag_BSY(SPI1)) {}; } while(0)
 #define writeSpi1Data(data) do { while (LL_SPI_IsActiveFlag_BSY(SPI1)) {}; LL_SPI_TransmitData8(SPI1, (data)); } while(0)
 
+#define clearFrontLcdCsPin() LL_GPIO_ResetOutputPin(LCD_CS_GPIO_Port, LCD_CS_Pin)
+#define setFrontLcdCsPin() LL_GPIO_SetOutputPin(LCD_CS_GPIO_Port, LCD_CS_Pin)
+
+#define clearFrontLcdResetPin() LL_GPIO_SetOutputPin(LCD_RESET_GPIO_Port, LCD_RESET_Pin)
+#define setFrontLcdResetPin() LL_GPIO_SetOutputPin(LCD_RESET_GPIO_Port, LCD_RESET_Pin)
+
 #define clearBackLedCsPin() LL_GPIO_ResetOutputPin(BACK_LED_CS_GPIO_Port, BACK_LED_CS_Pin)
 #define setBackLedCsPin() LL_GPIO_SetOutputPin(BACK_LED_CS_GPIO_Port, BACK_LED_CS_Pin)
 

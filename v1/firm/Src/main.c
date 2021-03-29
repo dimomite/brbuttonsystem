@@ -142,8 +142,6 @@ int main(void)
 
   display_init(&displayCtrlInstance);
   display_clearAll(&displayCtrlInstance);
-  // display_showTimeDash(&display_showTimeDash);
-  display_showGameTime(&displayCtrlInstance, 12);
 
   mainEventLoop_run(&mainEventLoopInstance);
 

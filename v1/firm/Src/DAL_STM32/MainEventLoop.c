@@ -6,8 +6,16 @@
 #include "DeviceMacros.h"
 
 #define IS_STATUS(s) ((status) & (1 << (s)))
-#define SET_STATUS(s) do { status |= 1 << (s); } while (0)
-#define CLEAR_STATUS(s) do { status &= ~(1 << (s)); } while (0)
+#define SET_STATUS(s)       \
+    do                      \
+    {                       \
+        status |= 1 << (s); \
+    } while (0)
+#define CLEAR_STATUS(s)        \
+    do                         \
+    {                          \
+        status &= ~(1 << (s)); \
+    } while (0)
 
 #define STATUS_START_TIMER 0
 #define STATUS_STOP_TIMER 1
@@ -30,20 +38,25 @@ static PressedButtons_t buttons;
 
 static UsbHidInReport_t usbInReport;
 
-static uint8_t onButtonPressed(ButtonsCtrl_t * bc) { // temp
+static uint8_t onButtonPressed(ButtonsCtrl_t *bc)
+{ // temp
     buttons_getPressedButtons(bc, &buttons);
     temp = 1;
 
     return 0;
 }
 
-static void onBtData(uint8_t data) {
+static void onBtData(uint8_t data)
+{
     // playersIndicator_displayPressedLed(eventLoop->playersIndicatorCtrl, data);
 }
 
-static void onUsbReport(UsbHidOutReport_t *outReport) {
-    if (!outReport) return;
-    if (outReport->reportId != 2) return; // 1 for IN reports, 2 for OUT
+static void onUsbReport(UsbHidOutReport_t *outReport)
+{
+    if (!outReport)
+        return;
+    if (outReport->reportId != 2)
+        return; // 1 for IN reports, 2 for OUT
 
     // playersIndicator_displayPressedLed(eventLoop->playersIndicatorCtrl, outReport->data[0]);
 }
@@ -75,6 +88,7 @@ void mainEventLoop_run(MainEventLoop_t *el)
                     timerSeconds = 0;
 
                     CLEAR_STATUS(STATUS_START_TIMER);
+                    SET_STATUS(STATUS_TIMER_DELAY);
                 }
 
                 if (IS_STATUS(STATUS_STOP_TIMER))
@@ -84,11 +98,12 @@ void mainEventLoop_run(MainEventLoop_t *el)
                     CLEAR_STATUS(STATUS_TIMER_DELAY);
                     CLEAR_STATUS(STATUS_TIMER_RUNNING);
                     CLEAR_STATUS(STATUS_STOP_TIMER);
+                    display_showTimeDash(el->displayCtrl);
                 }
 
                 if (IS_STATUS(STATUS_TIMER_DELAY))
                 {
-                    if (0 == --delayValue)
+                    if (delayValue <= 0)
                     {
                         CLEAR_STATUS(STATUS_TIMER_DELAY);
                         SET_STATUS(STATUS_TIMER_RUNNING);
@@ -96,6 +111,11 @@ void mainEventLoop_run(MainEventLoop_t *el)
                         {
                             el->preciseTimer->onTimerStarted(); // callback on timer start
                         }
+                        display_showGameTime(el->displayCtrl, timerSeconds);
+                    }
+                    else
+                    {
+                        --delayValue;
                     }
                 }
 
@@ -111,6 +131,7 @@ void mainEventLoop_run(MainEventLoop_t *el)
                             {
                                 el->preciseTimer->onTimerComplete(); // callback on timer complete
                             }
+                            display_showTimeDash(el->displayCtrl);
                         }
                         else
                         {
@@ -118,6 +139,7 @@ void mainEventLoop_run(MainEventLoop_t *el)
                             {
                                 el->preciseTimer->onSecondUpdated(timerTicksValue); // callback on each second
                             }
+                            display_showGameTime(el->displayCtrl, timerSeconds);
                         }
                     }
                 }
@@ -129,18 +151,19 @@ void mainEventLoop_run(MainEventLoop_t *el)
             // send tick to bluetooth controller
             btctrl_onSystemTick(el->btCtrl);
 
-            if (status)
-            {
-                debugLedOn();
-                status = 0;
-            }
-            else
-            {
-                debugLedOff();
-                status = 1 << 7;
-            }
+            // if (status)
+            // {
+            //     debugLedOn();
+            //     status = 0;
+            // }
+            // else
+            // {
+            //     debugLedOff();
+            //     status = 1 << 7;
+            // }
 
-            if (temp) { // updates on button click
+            if (temp)
+            { // updates on button click
                 playersIndicator_displayPressedLed(el->playersIndicatorCtrl, &buttons);
                 display_showPressedButtons(el->displayCtrl, &buttons);
                 buttons_enable(el->buttonsCtrl);
@@ -153,9 +176,11 @@ void mainEventLoop_run(MainEventLoop_t *el)
                 ent_startSound(el->entCtrl, &sound);
 
                 LightProfile_t light = {
-                    .intensity = 500,
+                    .intensity = 100,
                 };
                 ent_startLight(el->entCtrl, &light);
+
+                preciseTimer_startPreciseTiming(el->preciseTimer, 60, 200);
 
                 usbInReport.data[0] = buttons.buttons;
                 usbInReport.data[4] = 0x75;

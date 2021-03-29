@@ -13,8 +13,8 @@ extern USBD_HandleTypeDef hUsbDeviceFS;
 
 #define readMainTimerValue() LL_TIM_GetCounter(TIM3)
 
-#define debugLedOn() LL_GPIO_SetOutputPin(LCD_RESET_GPIO_Port, LCD_RESET_Pin)
-#define debugLedOff() LL_GPIO_ResetOutputPin(LCD_RESET_GPIO_Port, LCD_RESET_Pin)
+// #define debugLedOn() LL_GPIO_SetOutputPin(LCD_RESET_GPIO_Port, LCD_RESET_Pin)
+// #define debugLedOff() LL_GPIO_ResetOutputPin(LCD_RESET_GPIO_Port, LCD_RESET_Pin)
 
 #define getTouchEnabledPinState() LL_GPIO_IsInputPinSet(TOUCH_ENABLE_GPIO_Port, TOUCH_ENABLE_Pin)
 
@@ -47,7 +47,7 @@ extern USBD_HandleTypeDef hUsbDeviceFS;
 #define clearFrontLcdCsPin() LL_GPIO_ResetOutputPin(LCD_CS_GPIO_Port, LCD_CS_Pin)
 #define setFrontLcdCsPin() LL_GPIO_SetOutputPin(LCD_CS_GPIO_Port, LCD_CS_Pin)
 
-#define clearFrontLcdResetPin() LL_GPIO_SetOutputPin(LCD_RESET_GPIO_Port, LCD_RESET_Pin)
+#define clearFrontLcdResetPin() LL_GPIO_ResetOutputPin(LCD_RESET_GPIO_Port, LCD_RESET_Pin)
 #define setFrontLcdResetPin() LL_GPIO_SetOutputPin(LCD_RESET_GPIO_Port, LCD_RESET_Pin)
 
 #define clearBackLedCsPin() LL_GPIO_ResetOutputPin(BACK_LED_CS_GPIO_Port, BACK_LED_CS_Pin)

@@ -37,16 +37,16 @@ void display_init(DisplayCtrl_t *dc)
 
 void display_clearAll(DisplayCtrl_t *dc)
 {
-    dc->sec = 0;
-    dc->dec = 0;
+    dc->sec = numbers[VALUE_EMPTY];
+    dc->dec = numbers[VALUE_EMPTY];
     dc->playersLeds = 0;
     showState(dc);
 }
 
 void display_clearGameTime(DisplayCtrl_t *dc)
 {
-    dc->sec = 0;
-    dc->dec = 0;
+    dc->sec = numbers[VALUE_EMPTY];
+    dc->dec = numbers[VALUE_EMPTY];
     showState(dc);
 }
 
@@ -60,8 +60,7 @@ void display_showGameTime(DisplayCtrl_t *dc, uint8_t gameTimeSec)
 {
     dc->sec = numbers[gameTimeSec % 10];
     gameTimeSec /= 10;
-    // dc->dec = numbers[gameTimeSec > 0 ? gameTimeSec : VALUE_EMPTY];
-    dc->dec = numbers[gameTimeSec];
+    dc->dec = numbers[gameTimeSec > 0 ? gameTimeSec : VALUE_EMPTY];
     showState(dc);
 }
 
@@ -89,15 +88,14 @@ void display_showPressedButtons(DisplayCtrl_t *dc, const PressedButtons_t *butto
 
 void showState(DisplayCtrl_t *dc)
 {
+    setFrontLcdResetPin();
     clearFrontLcdCsPin();
-    // writeSpi1Data(0);
-    // writeSpi1Data(0xff);
-    // writeSpi1Data(0);
-    
+
     writeSpi1Data(dc->sec);
     writeSpi1Data(dc->dec);
     writeSpi1Data(dc->playersLeds);
 
     waitSpi1(); // TODO use postponded jobs and interrupts
     setFrontLcdCsPin();
+    clearFrontLcdResetPin();
 }

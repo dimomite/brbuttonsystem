@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name brbuttonsystem)(type KiCad)(uri ${KIPRJMOD}/../../../kicadlib/brbuttonsystem.pretty)(options "")(descr ""))
+)

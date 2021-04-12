@@ -7,6 +7,10 @@ class Main {
 }
 
 fun main(args: Array<String>) {
+    val btCtrl = BtCtrl()
+    btCtrl.init()
+
+
     val app = MyApp()
     app.doLaunch(args)
 /*

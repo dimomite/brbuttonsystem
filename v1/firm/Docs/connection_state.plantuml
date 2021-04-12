@@ -1,0 +1,63 @@
+@startuml "BR system communication states"
+
+[*] --> ConnectionActive
+
+state ConnectionActive {
+    [*] -> UsbInactive : initUsb()
+
+    state UsbInactive {
+        UsbInactive:Entry: enableBt()
+        UsbInactive:Exit: disableBt() / [parallel control not enabled]
+    }
+    UsbInactive -> UsbInactive : onTimer()
+    UsbInactive --> UsbActive : onUsbData()
+
+    state UsbActive {
+        UsbActive:Entry: resetUsbTimerCounter()
+        UsbActive:Entry: processUsbData()
+    }
+
+    state usb_timer_event_decision <<choice>>
+    UsbActive -l-> usb_timer_event_decision : onTimer()
+    usb_timer_event_decision -> UsbActive : [not expired]
+    usb_timer_event_decision -u-> UsbInactive : [expired]
+
+    state usb_data_decision <<choice>>
+    UsbActive --> usb_data_decision : onUsbData()
+    usb_data_decision -> UsbActive : [EnableSecondaryBluetoothConnection]\n/ enableBt()\n / setParallelControlEnabled()
+    usb_data_decision -> UsbActive : [DisableSecondaryBluetoothConnection]\n/ disableBt()\n / setParallelControlDisabled()
+
+    ||
+
+    [*] -> BtDisabled
+
+    state BtDisabled {
+        BtDisabled:Entry: stopBt()
+    }
+    BtDisabled -> BtDisabled : onTimer()
+    BtDisabled -> BtDisabled : onBtData() / answer(BtInterfaceIgnored)
+    BtDisabled --> BtEnabled : onEnableBt()
+
+    state BtEnabled {
+        BtEnabled:Entry: startBt()
+
+        [*] -> BtInactive
+        BtInactive -> BtInactive : onTimer()
+        BtInactive --> BtActive : onBtData()
+        state BtActive {
+            BtActive:Entry: resetBtTimerCounter()
+            BtActive:Entry: processBtData()
+        }
+        BtActive -> BtActive : onBtData()
+
+        state bt_timer_event_decision <<choice>>
+        BtActive -l-> bt_timer_event_decision : onTimer()
+        bt_timer_event_decision -> BtActive : [not expired]
+        bt_timer_event_decision -u->BtInactive : [expired]
+    }
+
+    BtEnabled --> BtDisabled : onDisableBt()\n/ answer(SwitchingToUsbConnection)
+
+}
+
+@enduml

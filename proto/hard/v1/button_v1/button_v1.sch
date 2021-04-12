@@ -250,17 +250,6 @@ F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/da
 $EndComp
 Text Label 3150 4800 0    50   ~ 0
 LCD_MOSI
-$Comp
-L power:+3.3V #PWR030
-U 1 1 5CFE0A9B
-P 1000 5600
-F 0 "#PWR030" H 1000 5450 50  0001 C CNN
-F 1 "+3.3V" V 1000 5850 50  0000 C CNN
-F 2 "" H 1000 5600 50  0001 C CNN
-F 3 "" H 1000 5600 50  0001 C CNN
-	1    1000 5600
-	0    -1   -1   0   
-$EndComp
 Text Label 1850 5600 2    50   ~ 0
 But3
 Text Label 1850 5500 2    50   ~ 0
@@ -749,8 +738,6 @@ Connection ~ 3300 2900
 Connection ~ 3300 3200
 Text Label 3150 4100 0    50   ~ 0
 BACK_LED_CS
-Text Label 1050 1850 2    50   ~ 0
-BuzzerEnable
 Wire Wire Line
 	1050 1850 1150 1850
 Text Label 3600 6600 0    50   ~ 0
@@ -792,25 +779,8 @@ F 3 "" H 7950 2950 50  0001 C CNN
 	2    7950 2950
 	1    0    0    -1  
 $EndComp
-$Comp
-L Device:R_Network04 RN1
-U 1 1 5D925F5A
-P 1200 5400
-F 0 "RN1" V 900 5450 50  0000 C CNN
-F 1 "4k7" V 900 5300 50  0000 C CNN
-F 2 "Resistor_THT:R_Array_SIP5" V 1475 5400 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/31509/csc.pdf" H 1200 5400 50  0001 C CNN
-	1    1200 5400
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
-	1850 5600 1400 5600
-Wire Wire Line
-	1400 5500 1850 5500
-Wire Wire Line
-	1850 5400 1400 5400
-Wire Wire Line
-	1400 5300 1850 5300
+	1450 5300 1850 5300
 $Comp
 L brbuttonsystem:LCD_1_8_SPI U12
 U 1 1 5D664791
@@ -864,16 +834,14 @@ LCD_DC
 $Comp
 L Transistor_FET:IRLML2060 Q8
 U 1 1 5D68AB43
-P 9350 4500
-F 0 "Q8" H 9100 4600 50  0000 L CNN
-F 1 "IRLML2803" H 9000 4700 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 9550 4425 50  0001 L CIN
-F 3 "https://www.infineon.com/dgdl/irlml2060pbf.pdf?fileId=5546d462533600a401535664b7fb25ee" H 9350 4500 50  0001 L CNN
-	1    9350 4500
-	1    0    0    1   
+P 8900 4900
+F 0 "Q8" H 8750 5000 50  0000 L CNN
+F 1 "IRLML2803" H 8550 5100 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 9100 4825 50  0001 L CIN
+F 3 "https://www.infineon.com/dgdl/irlml2060pbf.pdf?fileId=5546d462533600a401535664b7fb25ee" H 8900 4900 50  0001 L CNN
+	1    8900 4900
+	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	9700 4700 9450 4700
 $Comp
 L Device:R R20
 U 1 1 5D14F380
@@ -888,28 +856,28 @@ $EndComp
 $Comp
 L Device:R R12
 U 1 1 5D6CBE16
-P 9300 4300
-F 0 "R12" V 9400 4200 50  0000 C CNN
-F 1 "47k" V 9400 4350 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 9230 4300 50  0001 C CNN
-F 3 "~" H 9300 4300 50  0001 C CNN
-	1    9300 4300
-	0    1    -1   0   
+P 8850 5100
+F 0 "R12" V 8950 4950 50  0000 C CNN
+F 1 "47k" V 8950 5150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 8780 5100 50  0001 C CNN
+F 3 "~" H 8850 5100 50  0001 C CNN
+	1    8850 5100
+	0    1    1    0   
 $EndComp
 Wire Wire Line
-	9150 4500 9150 4300
+	8700 4900 8700 5100
 $Comp
 L power:GND #PWR0142
 U 1 1 5D6EB51B
-P 9450 4300
-F 0 "#PWR0142" H 9450 4050 50  0001 C CNN
-F 1 "GND" H 9455 4127 50  0001 C CNN
-F 2 "" H 9450 4300 50  0001 C CNN
-F 3 "" H 9450 4300 50  0001 C CNN
-	1    9450 4300
-	-1   0    0    1   
+P 9000 5250
+F 0 "#PWR0142" H 9000 5000 50  0001 C CNN
+F 1 "GND" H 9005 5077 50  0001 C CNN
+F 2 "" H 9000 5250 50  0001 C CNN
+F 3 "" H 9000 5250 50  0001 C CNN
+	1    9000 5250
+	-1   0    0    -1  
 $EndComp
-Connection ~ 9450 4300
+Connection ~ 9000 5100
 Text Label 5400 1650 0    50   ~ 0
 MainLcdLed
 Text Label 9450 4700 0    50   ~ 0
@@ -1150,7 +1118,7 @@ Wire Wire Line
 	1600 3200 1850 3200
 Text Label 1850 3000 2    50   ~ 0
 NRST
-Text Label 9150 4500 2    50   ~ 0
+Text Label 8700 4900 2    50   ~ 0
 MainLcdLed
 $Comp
 L Device:R R50
@@ -1188,34 +1156,164 @@ $EndComp
 $Comp
 L Device:C C5
 U 1 1 5F20E3F6
-P 8850 5350
-F 0 "C5" H 8965 5396 50  0000 L CNN
-F 1 "0.1uF" H 8965 5305 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 8888 5200 50  0001 C CNN
-F 3 "~" H 8850 5350 50  0001 C CNN
-	1    8850 5350
+P 10550 5150
+F 0 "C5" H 10665 5196 50  0000 L CNN
+F 1 "0.1uF" H 10665 5105 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 10588 5000 50  0001 C CNN
+F 3 "~" H 10550 5150 50  0001 C CNN
+	1    10550 5150
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR0170
 U 1 1 5F20F286
-P 8850 5500
-F 0 "#PWR0170" H 8850 5250 50  0001 C CNN
-F 1 "GND" H 8855 5327 50  0001 C CNN
-F 2 "" H 8850 5500 50  0001 C CNN
-F 3 "" H 8850 5500 50  0001 C CNN
-	1    8850 5500
+P 10550 5300
+F 0 "#PWR0170" H 10550 5050 50  0001 C CNN
+F 1 "GND" H 10555 5127 50  0001 C CNN
+F 2 "" H 10550 5300 50  0001 C CNN
+F 3 "" H 10550 5300 50  0001 C CNN
+	1    10550 5300
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:+3.3V #PWR0171
 U 1 1 5F20F54B
-P 8850 5200
-F 0 "#PWR0171" H 8850 5050 50  0001 C CNN
-F 1 "+3.3V" H 8850 5350 50  0000 C CNN
-F 2 "" H 8850 5200 50  0001 C CNN
-F 3 "" H 8850 5200 50  0001 C CNN
-	1    8850 5200
+P 10550 5000
+F 0 "#PWR0171" H 10550 4850 50  0001 C CNN
+F 1 "+3.3V" H 10550 5150 50  0000 C CNN
+F 2 "" H 10550 5000 50  0001 C CNN
+F 3 "" H 10550 5000 50  0001 C CNN
+	1    10550 5000
 	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9000 4700 9700 4700
+Wire Wire Line
+	9000 5250 9000 5100
+$Comp
+L Device:R_Pack04 RN1
+U 1 1 603F1D07
+P 1050 5400
+F 0 "RN1" V 750 5350 50  0000 C CNN
+F 1 "47k" V 750 5500 50  0000 C CNN
+F 2 "Resistor_SMD:R_Array_Convex_4x0603" V 1325 5400 50  0001 C CNN
+F 3 "~" H 1050 5400 50  0001 C CNN
+	1    1050 5400
+	0    1    -1   0   
+$EndComp
+$Comp
+L power:+3.3V #PWR0179
+U 1 1 6040BC1B
+P 1300 4950
+F 0 "#PWR0179" H 1300 4800 50  0001 C CNN
+F 1 "+3.3V" V 1300 5200 50  0000 C CNN
+F 2 "" H 1300 4950 50  0001 C CNN
+F 3 "" H 1300 4950 50  0001 C CNN
+	1    1300 4950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1400 5400 1400 5150
+Wire Wire Line
+	1400 5150 750  5150
+Wire Wire Line
+	750  5150 750  5300
+Wire Wire Line
+	750  5300 850  5300
+Wire Wire Line
+	1400 5400 1850 5400
+Wire Wire Line
+	1450 5300 1450 5050
+Wire Wire Line
+	1450 5050 650  5050
+$Comp
+L power:+3.3V #PWR030
+U 1 1 5CFE0A9B
+P 750 5800
+F 0 "#PWR030" H 750 5650 50  0001 C CNN
+F 1 "+3.3V" V 750 6050 50  0000 C CNN
+F 2 "" H 750 5800 50  0001 C CNN
+F 3 "" H 750 5800 50  0001 C CNN
+	1    750  5800
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	850  5500 650  5500
+Wire Wire Line
+	650  5050 650  5500
+Wire Wire Line
+	850  5400 750  5400
+Wire Wire Line
+	750  5400 750  5600
+Wire Wire Line
+	850  5600 750  5600
+Connection ~ 750  5600
+Wire Wire Line
+	750  5600 750  5800
+Wire Wire Line
+	1250 5400 1350 5400
+Wire Wire Line
+	1250 5500 1300 5500
+Wire Wire Line
+	1300 5500 1300 5300
+Wire Wire Line
+	1250 5300 1300 5300
+Connection ~ 1300 5300
+Wire Wire Line
+	1300 5300 1300 4950
+Wire Wire Line
+	1350 5600 1350 5400
+Wire Wire Line
+	1850 5600 1350 5600
+Wire Wire Line
+	1850 5500 1550 5500
+Wire Wire Line
+	1550 5500 1550 5650
+Wire Wire Line
+	1550 5650 1300 5650
+Wire Wire Line
+	1300 5650 1300 5600
+Wire Wire Line
+	1300 5600 1250 5600
+$Comp
+L Connector:Conn_01x06_Male J11
+U 1 1 6049F9DA
+P 5250 4850
+F 0 "J11" H 5358 5139 50  0000 C CNN
+F 1 "Conn_01x06_Male" H 5358 5140 50  0001 C CNN
+F 2 "brbuttonsystem:JST_ZH_B6B-ZR_1x06_P1.50mm_Vertical" H 5250 4850 50  0001 C CNN
+F 3 "~" H 5250 4850 50  0001 C CNN
+	1    5250 4850
+	1    0    0    -1  
+$EndComp
+Text Label 5450 4650 0    50   ~ 0
+But0
+Text Label 5450 4750 0    50   ~ 0
+But1
+Text Label 5450 4850 0    50   ~ 0
+But2
+Text Label 5450 4950 0    50   ~ 0
+But3
+$Comp
+L power:+3.3V #PWR0180
+U 1 1 604A1AF3
+P 5450 5150
+F 0 "#PWR0180" H 5450 5000 50  0001 C CNN
+F 1 "+3.3V" H 5465 5323 50  0000 C CNN
+F 2 "" H 5450 5150 50  0001 C CNN
+F 3 "" H 5450 5150 50  0001 C CNN
+	1    5450 5150
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR0181
+U 1 1 604A1FB6
+P 5450 5050
+F 0 "#PWR0181" H 5450 4800 50  0001 C CNN
+F 1 "GND" H 5455 4877 50  0001 C CNN
+F 2 "" H 5450 5050 50  0001 C CNN
+F 3 "" H 5450 5050 50  0001 C CNN
+	1    5450 5050
+	0    -1   -1   0   
 $EndComp
 $EndSCHEMATC

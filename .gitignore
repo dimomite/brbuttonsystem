@@ -1,3 +1,13 @@
 /proto/hard/v1/button_v1/*.sch-bak
 /proto/proto_usb_conn/build
 /v1/firm/build
+/v1/firm/.vscode/.cortex-debug.registers.state.json
+/v1/firm/.vscode/.cortex-debug.peripherals.state.json
+/v1/soft/common/brcore/.gradle
+/v1/soft/.gradle
+/v1/soft/.idea
+/v1/soft/MobileApp/.idea
+/v1/hard/*/*.kicad_pcb-bak
+/v1/hard/*/*.sch-bak
+/proto/proto_usb_conn/.idea
+/proto/proto_usb_conn/.gradle

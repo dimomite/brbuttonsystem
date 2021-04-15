@@ -1152,4 +1152,12 @@ Connection ~ 1900 5150
 Wire Wire Line
 	1900 6000 1900 5900
 Connection ~ 1900 5900
+Text Label 5600 1650 0    50   ~ 0
+OPT_C
+Text Label 5600 1800 0    50   ~ 0
+OPT_E
+Text Label 9300 1200 0    50   ~ 0
+OPT_E
+Text Label 9300 1050 0    50   ~ 0
+OPT_C
 $EndSCHEMATC

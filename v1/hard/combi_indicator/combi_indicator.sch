@@ -645,7 +645,7 @@ F 1 "100k" H 3800 1450 50  0000 R CNN
 F 2 "Potentiometer_THT:Potentiometer_Bourns_3386P_Vertical" H 3600 1300 50  0001 C CNN
 F 3 "~" H 3600 1300 50  0001 C CNN
 	1    3600 1300
-	1    0    0    1   
+	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	3600 1150 3600 1050
@@ -682,4 +682,6 @@ Wire Wire Line
 Wire Wire Line
 	3700 1450 3700 1750
 Connection ~ 3600 1450
+Text Label 7600 2750 1    50   ~ 0
+cur_test
 $EndSCHEMATC

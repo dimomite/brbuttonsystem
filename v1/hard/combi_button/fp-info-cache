@@ -1,4 +1,4 @@
-18647434253752473
+18650671562134890
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -82054,6 +82054,13 @@ Power Jack
 3
 3
 brbuttonsystem
+CC1101_MOD
+
+
+0
+11
+11
+brbuttonsystem
 DG142R-5.08-02P
 
 
@@ -82102,6 +82109,13 @@ LCD_2.8_SPI
 0
 21
 21
+brbuttonsystem
+OLED_0.91
+
+
+0
+4
+4
 brbuttonsystem
 OLED_0.96_I2C
 

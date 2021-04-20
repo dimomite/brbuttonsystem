@@ -1132,25 +1132,14 @@ F 3 "~" H 1450 3200 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Connector:Conn_01x05_Male J10
-U 1 1 5F1D58E0
-P 3400 6800
-F 0 "J10" H 3508 7089 50  0000 C CNN
-F 1 "Conn_01x05_Male" H 3508 7090 50  0001 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 3400 6800 50  0001 C CNN
-F 3 "~" H 3400 6800 50  0001 C CNN
-	1    3400 6800
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:+3.3V #PWR0169
 U 1 1 5F1D7298
-P 3600 7000
-F 0 "#PWR0169" H 3600 6850 50  0001 C CNN
-F 1 "+3.3V" V 3600 7250 50  0000 C CNN
-F 2 "" H 3600 7000 50  0001 C CNN
-F 3 "" H 3600 7000 50  0001 C CNN
-	1    3600 7000
+P 3600 7100
+F 0 "#PWR0169" H 3600 6950 50  0001 C CNN
+F 1 "+3.3V" V 3600 7350 50  0000 C CNN
+F 2 "" H 3600 7100 50  0001 C CNN
+F 3 "" H 3600 7100 50  0001 C CNN
+	1    3600 7100
 	0    1    1    0   
 $EndComp
 $Comp
@@ -1316,4 +1305,16 @@ F 3 "" H 5450 5050 50  0001 C CNN
 	1    5450 5050
 	0    -1   -1   0   
 $EndComp
+$Comp
+L Connector:Conn_01x06_Male J10
+U 1 1 607FBEF0
+P 3400 6800
+F 0 "J10" H 3508 7089 50  0000 C CNN
+F 1 "Conn_01x06_Male" H 3508 7090 50  0001 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical" H 3400 6800 50  0001 C CNN
+F 3 "~" H 3400 6800 50  0001 C CNN
+	1    3400 6800
+	1    0    0    -1  
+$EndComp
+NoConn ~ 3600 7000
 $EndSCHEMATC

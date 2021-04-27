@@ -101,7 +101,7 @@ F 3 "" H 1100 3200 50  0001 C CNN
 	1    1100 3200
 	1    0    0    -1  
 $EndComp
-Text Label 1350 3000 0    50   ~ 0
+Text Label 1150 3000 0    50   ~ 0
 OPT_C
 Text Label 1100 3100 0    50   ~ 0
 OPT_E
@@ -624,8 +624,8 @@ $Comp
 L Device:R R12
 U 1 1 607D397B
 P 3400 1300
-F 0 "R12" V 3300 1200 50  0000 C CNN
-F 1 "232k 1%" V 3300 1450 50  0000 C CNN
+F 0 "R12" V 3300 1250 50  0000 C CNN
+F 1 "200k" V 3300 1450 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 3330 1300 50  0001 C CNN
 F 3 "~" H 3400 1300 50  0001 C CNN
 	1    3400 1300
@@ -645,7 +645,7 @@ F 1 "100k" H 3800 1450 50  0000 R CNN
 F 2 "Potentiometer_THT:Potentiometer_Bourns_3386P_Vertical" H 3600 1300 50  0001 C CNN
 F 3 "~" H 3600 1300 50  0001 C CNN
 	1    3600 1300
-	1    0    0    -1  
+	1    0    0    1   
 $EndComp
 Wire Wire Line
 	3600 1150 3600 1050
@@ -666,7 +666,7 @@ L Device:R R13
 U 1 1 608095AB
 P 3550 1750
 F 0 "R13" V 3450 1650 50  0000 C CNN
-F 1 "82.5k 1%" V 3450 1900 50  0000 C CNN
+F 1 "82k" V 3450 1850 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 3480 1750 50  0001 C CNN
 F 3 "~" H 3550 1750 50  0001 C CNN
 	1    3550 1750
@@ -684,4 +684,6 @@ Wire Wire Line
 Connection ~ 3600 1450
 Text Label 7600 2750 1    50   ~ 0
 cur_test
+Text Notes 1400 3000 0    50   ~ 0
+Not connected because net name is already "VCC"
 $EndSCHEMATC

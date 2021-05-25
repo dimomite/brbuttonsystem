@@ -16,6 +16,11 @@ void usbctrl_onUsbDeInit(UsbCtrl_t *uc)
     }
 }
 
+void usbctrl_onUsbConnectionStateChanged(UsbCtrl_t *uc, uint8_t state)
+{
+    
+}
+
 void usbctrl_onOutReport(UsbCtrl_t *uc, UsbHidOutReport_t *outReport)
 {
     if (uc->onReportReceived) {

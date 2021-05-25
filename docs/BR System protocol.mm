@@ -1,0 +1,143 @@
+<map version="freeplane 1.8.0">
+<!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
+<node TEXT="BR System protocol&#xa;TopRequestType_t {63}:" FOLDED="false" ID="ID_1278395306" CREATED="1617056491663" MODIFIED="1617139043294" STYLE="oval">
+<font SIZE="18"/>
+<hook NAME="MapStyle" zoom="0.909">
+    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" fit_to_viewport="false"/>
+
+<map_styles>
+<stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24.0 pt">
+<font SIZE="24"/>
+<stylenode LOCALIZED_TEXT="styles.predefined" POSITION="right" STYLE="bubble">
+<stylenode LOCALIZED_TEXT="default" ICON_SIZE="12.0 pt" COLOR="#000000" STYLE="fork">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="defaultstyle.details"/>
+<stylenode LOCALIZED_TEXT="defaultstyle.attributes">
+<font SIZE="9"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="defaultstyle.note" COLOR="#000000" BACKGROUND_COLOR="#ffffff" TEXT_ALIGN="LEFT"/>
+<stylenode LOCALIZED_TEXT="defaultstyle.floating">
+<edge STYLE="hide_edge"/>
+<cloud COLOR="#f0f0f0" SHAPE="ROUND_RECT"/>
+</stylenode>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.user-defined" POSITION="right" STYLE="bubble">
+<stylenode LOCALIZED_TEXT="styles.topic" COLOR="#18898b" STYLE="fork">
+<font NAME="Liberation Sans" SIZE="10" BOLD="true"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.subtopic" COLOR="#cc3300" STYLE="fork">
+<font NAME="Liberation Sans" SIZE="10" BOLD="true"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.subsubtopic" COLOR="#669900">
+<font NAME="Liberation Sans" SIZE="10" BOLD="true"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.important">
+<icon BUILTIN="yes"/>
+</stylenode>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.AutomaticLayout" POSITION="right" STYLE="bubble">
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level.root" COLOR="#000000" STYLE="oval" SHAPE_HORIZONTAL_MARGIN="10.0 pt" SHAPE_VERTICAL_MARGIN="10.0 pt">
+<font SIZE="18"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,1" COLOR="#0033ff">
+<font SIZE="16"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,2" COLOR="#00b439">
+<font SIZE="14"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,3" COLOR="#990000">
+<font SIZE="12"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,4" COLOR="#111111">
+<font SIZE="10"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,5"/>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,6"/>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,7"/>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,8"/>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,9"/>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,10"/>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,11"/>
+</stylenode>
+</stylenode>
+</map_styles>
+</hook>
+<hook NAME="AutomaticEdgeColor" COUNTER="8" RULE="ON_BRANCH_CREATION"/>
+<node TEXT=".requestType = TRT_UNDEFINED" POSITION="right" ID="ID_453905747" CREATED="1617056526232" MODIFIED="1617056643017" HGAP_QUANTITY="14.74999997764826 pt" VSHIFT_QUANTITY="4.499999865889556 pt">
+<edge COLOR="#ff0000"/>
+</node>
+<node TEXT=".requestType = TRT_GENERAL_REQUEST" POSITION="right" ID="ID_1477505681" CREATED="1617056565160" MODIFIED="1617137040745">
+<edge COLOR="#0000ff"/>
+<node TEXT=".generalRequestType = GRT_DEVICE_INFO" ID="ID_1432511258" CREATED="1617057447888" MODIFIED="1617057457661"/>
+<node TEXT=".generalRequestType = GRT_GENERAL_PING" ID="ID_587989056" CREATED="1617057279128" MODIFIED="1617057321235">
+<node TEXT=".pingId = &lt;any value&gt;" ID="ID_763244450" CREATED="1617057371304" MODIFIED="1617057387605"/>
+</node>
+<node TEXT=".generalRequestType = GRT_GET_GAMES_CFG_BY_IDX" ID="ID_1058352476" CREATED="1617057327456" MODIFIED="1617137040743" HGAP_QUANTITY="14.74999997764826 pt" VSHIFT_QUANTITY="0.7499999776482582 pt">
+<node TEXT=".gameIdx = &lt;from 0 to (max-1), where max received in GAT_DEVICE_INFO.numberOfSupportedGames&gt;" ID="ID_48947905" CREATED="1617136819581" MODIFIED="1617137127234" HGAP_QUANTITY="14.749999977648258 pt" VSHIFT_QUANTITY="-17.249999485909953 pt"/>
+</node>
+<node TEXT=".generalRequestType = GRT_VENDOR_NAME" ID="ID_1331821491" CREATED="1617137588718" MODIFIED="1617137610844"/>
+</node>
+<node TEXT=".requestType = TRT_SETTING_REQUEST" POSITION="right" ID="ID_976349377" CREATED="1617056579456" MODIFIED="1617056637652" HGAP_QUANTITY="16.249999932944775 pt" VSHIFT_QUANTITY="-17.249999485909953 pt">
+<edge COLOR="#00ff00"/>
+</node>
+<node TEXT=".requestType = TRT_GAME_REQUEST" POSITION="right" ID="ID_1058797724" CREATED="1617056587128" MODIFIED="1617057153941" HGAP_QUANTITY="16.249999932944778 pt" VSHIFT_QUANTITY="14.999999552965171 pt">
+<edge COLOR="#ff00ff"/>
+<node TEXT=".gameControllerRequestType = GCR_GAME_STATE" ID="ID_524225986" CREATED="1617056658896" MODIFIED="1617057153939" HGAP_QUANTITY="14.749999977648258 pt" VSHIFT_QUANTITY="18.749999441206473 pt"/>
+<node TEXT=".gameControllerRequestType = GCR_START_GAME" ID="ID_1826463072" CREATED="1617056752192" MODIFIED="1617057082093">
+<node TEXT=".gameType: GameType_t" ID="ID_228320530" CREATED="1617056858200" MODIFIED="1617056965055" HGAP_QUANTITY="15.499999955296518 pt" VSHIFT_QUANTITY="0.7499999776482589 pt">
+<node TEXT=".parameters[60]" ID="ID_1131440374" CREATED="1617056942440" MODIFIED="1617057126174" HGAP_QUANTITY="14.749999977648258 pt" VSHIFT_QUANTITY="-5.249999843537812 pt"/>
+</node>
+</node>
+<node TEXT=".gameControllerRequestType = GCR_STOP_GAME" ID="ID_994022750" CREATED="1617056753768" MODIFIED="1617057086661">
+<node TEXT=".gameId = &lt;gameId&gt;" ID="ID_1053039768" CREATED="1617057087568" MODIFIED="1617057088747"/>
+</node>
+<node TEXT=".gameControllerRequestType = GCR_PAUSE_GAME" ID="ID_1025343642" CREATED="1617056754656" MODIFIED="1617057094277">
+<node TEXT=".gameId = &lt;gameId&gt;" ID="ID_931716378" CREATED="1617057094864" MODIFIED="1617057095907"/>
+</node>
+<node TEXT=".gameControllerRequestType = GCR_RESUME_GAME" ID="ID_1074671177" CREATED="1617056750872" MODIFIED="1617057100205" HGAP_QUANTITY="16.999999910593036 pt" VSHIFT_QUANTITY="-10.499999687075624 pt">
+<node TEXT=".gameId = &lt;gameId&gt;" ID="ID_869395296" CREATED="1617057100760" MODIFIED="1617057101867"/>
+</node>
+<node TEXT=".gameControllerRequestType = GCR_GAME_COMMAND" ID="ID_1933005906" CREATED="1617056821952" MODIFIED="1617057151126" HGAP_QUANTITY="14.749999977648258 pt" VSHIFT_QUANTITY="-11.249999664723884 pt">
+<node TEXT=".gameId = &lt;gameId&gt;" ID="ID_1013918864" CREATED="1617057112816" MODIFIED="1617057113651">
+<node TEXT=".payload[60]" ID="ID_986651573" CREATED="1617056906656" MODIFIED="1617056955947"/>
+</node>
+</node>
+</node>
+<node TEXT=".answerType = TAT_GENERAL_ANSWER" POSITION="left" ID="ID_1959203239" CREATED="1617057468568" MODIFIED="1617057775986" HGAP_QUANTITY="30.499999508261695 pt" VSHIFT_QUANTITY="16.49999950826169 pt">
+<edge COLOR="#00ffff"/>
+<node TEXT=".generalAnswerType = GAT_DEVICE_INFO" ID="ID_242267928" CREATED="1617057943032" MODIFIED="1617136789855">
+<node TEXT=".majorVersion {1 byte}" ID="ID_1802825237" CREATED="1617137046341" MODIFIED="1617137060016">
+<node TEXT=".minorVersion {1 byte}" ID="ID_810852531" CREATED="1617137060565" MODIFIED="1617137071168">
+<node TEXT=".commithash {4 bytes}" ID="ID_964534872" CREATED="1617137072661" MODIFIED="1617137092265">
+<node TEXT=".firmwarehash {4 bytes}" ID="ID_199786828" CREATED="1617137509022" MODIFIED="1617137525937">
+<node TEXT=".numberOfSupportedGames {1 byte}" ID="ID_1239779959" CREATED="1617137093942" MODIFIED="1617137115368"/>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node TEXT=".generalAnswerType = GAT_GENERAL_PING" ID="ID_156104948" CREATED="1617057896640" MODIFIED="1617057907347">
+<node TEXT=".pingId = &lt;value from request&gt;" ID="ID_1673420873" CREATED="1617057913840" MODIFIED="1617057921027"/>
+</node>
+<node TEXT=".generalAnswerType = GAT_GET_GAMES_CFG_BY_IDX" ID="ID_308604912" CREATED="1617057945272" MODIFIED="1617136925195">
+<node TEXT=".gameIdx = &lt;value from request&gt;" ID="ID_1737241516" CREATED="1617136976037" MODIFIED="1617136988131">
+<node TEXT=".gameType" ID="ID_990463910" CREATED="1617137625533" MODIFIED="1617137631554">
+<node TEXT=".customsection{...}" ID="ID_242048399" CREATED="1617137634917" MODIFIED="1617137644930"/>
+</node>
+</node>
+</node>
+<node TEXT=".generalAnswerType = GAT_VENDOR_NAME" ID="ID_399687454" CREATED="1617137696262" MODIFIED="1617137709130">
+<node TEXT=".strlen" ID="ID_700302246" CREATED="1617137709677" MODIFIED="1617137721226">
+<node TEXT=".strdata" ID="ID_1541971085" CREATED="1617137721822" MODIFIED="1617137724978"/>
+</node>
+</node>
+</node>
+<node TEXT=".answerType = TAT_SETTINGS_ANSWER" POSITION="left" ID="ID_1935191525" CREATED="1617057760024" MODIFIED="1617057785683" HGAP_QUANTITY="32.74999944120647 pt" VSHIFT_QUANTITY="5.249999843537811 pt">
+<edge COLOR="#00007c"/>
+</node>
+<node TEXT=".answerType = TAT_GAME_ANSWER" POSITION="left" ID="ID_1247413999" CREATED="1617057768832" MODIFIED="1617139043291" HGAP_QUANTITY="40.99999919533732 pt" VSHIFT_QUANTITY="-39.74999881535771 pt">
+<edge COLOR="#007c00"/>
+</node>
+</node>
+</map>

@@ -7,6 +7,7 @@ typedef enum {
     BT_CONN_NOT_CONNECTED = 1,
     BT_CONN_CONNECTING = 2,
     BT_CONN_CONNECTED = 3,
+    BT_CONN_CONNECTION_LOST = 4,
 } BtConnectionStatus;
 
 typedef struct {
@@ -17,7 +18,7 @@ typedef struct {
 
     /**
      * ReportId from USB report.
-     * Here for compartibility.
+     * Here for compatibility.
      * Not used in BT reports.
      */
     int8_t reportId;

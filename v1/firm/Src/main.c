@@ -27,6 +27,9 @@
 #include "DAL/MainEventLoop.h"
 #include "DAL/TouchControlsCtrl.h"
 
+#include "Comm/ConnectionCtrl.h"
+#include "Comm/Protocol.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -66,6 +69,8 @@ MainEventLoop_t mainEventLoopInstance = {
     .usbCtrl = &usbCtrlInstance,
 }; // main singleton
 
+ConnectionCtrl_t connCtrlInstance;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -77,6 +82,8 @@ static void MX_TIM1_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_TIM3_Init(void);
+
+static void dataHandler(int8_t* data) {};
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -142,6 +149,8 @@ int main(void)
 
   display_init(&displayCtrlInstance);
   display_clearAll(&displayCtrlInstance);
+
+  conn_initConnectionCtrl(&connCtrlInstance, &btCtrlInstance, dataHandler);
 
   mainEventLoop_run(&mainEventLoopInstance);
 

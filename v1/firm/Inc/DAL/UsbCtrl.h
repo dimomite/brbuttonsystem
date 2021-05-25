@@ -29,6 +29,7 @@ typedef struct UsbCtrl_t
 
 void usbctrl_onUsbInit(UsbCtrl_t *uc);
 void usbctrl_onUsbDeInit(UsbCtrl_t *uc);
+void usbctrl_onUsbConnectionStateChanged(UsbCtrl_t *uc, uint8_t state);
 void usbctrl_onOutReport(UsbCtrl_t *uc, UsbHidOutReport_t *outReport);
 
 void usbctrl_connect(UsbCtrl_t *uc);

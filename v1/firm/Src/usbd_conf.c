@@ -27,6 +27,8 @@
 #include "usbd_customhid.h"
 
 /* USER CODE BEGIN Includes */
+#include "DAL/MainEventLoop.h"
+#include "DAL/UsbCtrl.h"
 
 /* USER CODE END Includes */
 
@@ -36,6 +38,7 @@
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
+extern MainEventLoop_t mainEventLoopInstance;
 
 /* USER CODE END PV */
 
@@ -616,10 +619,11 @@ void HAL_PCDEx_SetConnectionState(PCD_HandleTypeDef *hpcd, uint8_t state)
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
 {
   /* USER CODE BEGIN 6 */
+  usbctrl_onUsbConnectionStateChanged(mainEventLoopInstance.usbCtrl, state);
+  
   if (state == 1)
   {
     /* Configure Low connection state. */
-
   }
   else
   {

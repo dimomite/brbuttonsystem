@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-typedef enum {
+typedef enum { 
     BT_CONN_UNDEFINED = 0,
     BT_CONN_NOT_CONNECTED = 1,
     BT_CONN_CONNECTING = 2,

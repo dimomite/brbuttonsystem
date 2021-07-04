@@ -11,7 +11,6 @@ fun main(args: Array<String>) {
     val app = MainApp()
     app.doLaunch(args)
 
-
     println("App is shutting down")
 }
 

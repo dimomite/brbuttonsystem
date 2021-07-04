@@ -15,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId "org.dimomite.brbuttonsystem"
-        minSdkVersion 15
+        minSdkVersion 21 // 21 to get multidex support
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -63,9 +63,7 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
-
-    testImplementation 'junit:junit:4.12'
-
+    testImplementation "junit:junit:$junit_version"
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

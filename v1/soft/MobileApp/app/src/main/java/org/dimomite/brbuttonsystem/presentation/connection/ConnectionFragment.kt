@@ -24,8 +24,8 @@ class ConnectionFragment : Fragment() {
 //    @Inject
 //    lateinit var conn: BtConnectionDriver
 
-    @Inject
-    lateinit var conn: HidConnectionCtrl
+//    @Inject
+//    lateinit var conn: HidConnectionCtrl
 
 
     private var subscription: Result<ConnectionApi.DeviceListSubscriptionResult, Exception> = Result.None
@@ -41,23 +41,23 @@ class ConnectionFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        subscription = conn.subscribeRemoteDevicesListUpdates(object : ConnectionApi.RemoteDevicesListCallback {
-            override fun onDevicesListUpdate(remoteDevices: Array<out RemoteDevice>) {
-                remoteDevices.forEach { logger.debug("Device: $it") }
-            }
-        })
-        when (subscription) {
-            is Result.Ok, Result.None -> {
-            }
-            is Result.Error -> logger.warn("Device list subscription error: ${(subscription as Result.Error<Exception>).e}")
-        }
+//        subscription = conn.subscribeRemoteDevicesListUpdates(object : ConnectionApi.RemoteDevicesListCallback {
+//            override fun onDevicesListUpdate(remoteDevices: Array<out RemoteDevice>) {
+//                remoteDevices.forEach { logger.debug("Device: $it") }
+//            }
+//        })
+//        when (subscription) {
+//            is Result.Ok, Result.None -> {
+//            }
+//            is Result.Error -> logger.warn("Device list subscription error: ${(subscription as Result.Error<Exception>).e}")
+//        }
     }
 
     override fun onPause() {
-        if (subscription is Result.Ok) {
-            conn.unsubscribeRemoteDevicesListUpdates((subscription as Result.Ok<ConnectionApi.DeviceListSubscriptionResult>).data.subscriptionId)
-            subscription = Result.None
-        }
+//        if (subscription is Result.Ok) {
+//            conn.unsubscribeRemoteDevicesListUpdates((subscription as Result.Ok<ConnectionApi.DeviceListSubscriptionResult>).data.subscriptionId)
+//            subscription = Result.None
+//        }
 
         super.onPause()
     }

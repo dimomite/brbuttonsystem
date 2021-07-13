@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Games">Games</string>
+    <string name="Devices">Devices</string>
+    <string name="Settings">Settings</string>
+    <string name="About">About</string>
+
+    <string name="ChGK">ChGK</string>
+    <string name="BR_time">BR %s</string>
+    <string name="Svoyak">Svoyak</string>
+    <string name="Hamsa">Hamsa</string>
+    <string name="Add_custom_game">Add custom game</string>
+
+    <string name="Disconnect">Disconnect</string>
+    <string name="Forget">Forget</string>
+    <string name="Autoconnect">Autoconnect</string>
+    <string name="Enable_duo_mode">Enable duo mode</string>
+
+    <string name="Virtual_system">Virtual system</string>
+    <string name="BT_system_num">BT System #%s</string>
+    <string name="USB_system_num">USB System #%s</string>
+    <string name="Add_BT_System">Add BT System</string>
+    <string name="Add_USB_System">Add USB System</string>
+
+</resources>

@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.hardware.usb.*
+import android.os.Build
 import androidx.annotation.RequiresApi
 import core.Result
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -15,10 +16,9 @@ import org.slf4j.LoggerFactory
 import java.nio.ByteBuffer
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlin.math.log
 
 @Singleton
-@RequiresApi(api = 26) // TODO use this component only if device API is req 21, 26 for request.queue(payload)
+@RequiresApi(Build.VERSION_CODES.M) // to use device.version call
 class HidConnectionCtrl @Inject constructor(@ApplicationContext private val context: Context) : ConnectionApi {
     companion object {
         val logger = LoggerFactory.getLogger(HidConnectionCtrl::class.java)
@@ -60,13 +60,13 @@ class HidConnectionCtrl @Inject constructor(@ApplicationContext private val cont
 
     private data class HidRemoteDevice(internal val device: UsbDevice, internal val hidDeviceAddress: String) : RemoteDevice {
         override fun getName(): String = device.productName ?: "<Name>"
-        override fun getVersion(): String = device.version
+        override fun getVersion(): String = device.version // FIXME this requires API23
         override fun getSerialNumber(): String = device.serialNumber ?: "<>"
         override fun getAddress(): String = hidDeviceAddress
     }
 
     override fun subscribeRemoteDevicesListUpdates(callback: ConnectionApi.RemoteDevicesListCallback): Result<ConnectionApi.DeviceListSubscriptionResult, Exception> {
-        val usbMgr = context.getSystemService(UsbManager::class.java)
+        val usbMgr = context.getSystemService(Context.USB_SERVICE) as UsbManager
         val devices = usbMgr.deviceList
         logger.debug("Devices: ${devices.size}")
         val devArray = devices
@@ -98,7 +98,7 @@ class HidConnectionCtrl @Inject constructor(@ApplicationContext private val cont
                     if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
                         logger.debug("Permission was granted, device: $device")
                         device?.apply {
-                            val usbMgr = context.getSystemService(UsbManager::class.java)
+                            val usbMgr = context.getSystemService(Context.USB_SERVICE) as UsbManager
                             val connection = usbMgr.openDevice(this)
                             logger.debug("Connection: $connection")
 
@@ -117,6 +117,7 @@ class HidConnectionCtrl @Inject constructor(@ApplicationContext private val cont
                                     Thread.sleep(500)
                                     doSend(4, connection, epOut)
                                     Thread.sleep(500)
+
                                     doSend(8, connection, epOut)
                                     Thread.sleep(500)
                                     doSend(10, connection, epOut)

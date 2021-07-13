@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/start_navigation"
+    app:startDestination="@id/startFragment">
+
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="org.dimomite.brbuttonsystem.presentation.main.StartFragment"
+        android:label="StartFragment"
+        tools:layout="@layout/fragment_start">
+        <action
+            android:id="@+id/action_startFragment_to_gamesFragment"
+            app:destination="@id/gamesFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_devicesFragment"
+            app:destination="@id/devicesFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gamesFragment"
+        android:name="org.dimomite.brbuttonsystem.presentation.main.GamesFragment"
+        android:label="GamesFragment"
+        tools:layout="@layout/fragment_games" />
+    <fragment
+        android:id="@+id/devicesFragment"
+        android:name="org.dimomite.brbuttonsystem.presentation.devices.DevicesFragment"
+        android:label="DevicesFragment"
+        tools:layout="@layout/fragment_devices">
+        <action
+            android:id="@+id/action_devicesFragment_to_deviceActivity"
+            app:destination="@id/deviceActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/deviceActivity"
+        android:name="org.dimomite.brbuttonsystem.presentation.devices.DeviceActivity"
+        android:label="DeviceActivity" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="org.dimomite.brbuttonsystem.presentation.main.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="org.dimomite.brbuttonsystem.presentation.main.AboutFragment"
+        android:label="AboutFragment"
+        tools:layout="@layout/fragment_about" />
+</navigation>

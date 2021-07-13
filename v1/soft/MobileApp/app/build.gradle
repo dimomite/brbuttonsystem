@@ -37,6 +37,7 @@ android {
 
 dependencies {
     def lifecycle_version = '2.2.0'
+    def nav_version = '2.3.2'
 
     implementation project(':brcore')
 
@@ -49,6 +50,9 @@ dependencies {
 
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle_version"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     // slf4j + Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'

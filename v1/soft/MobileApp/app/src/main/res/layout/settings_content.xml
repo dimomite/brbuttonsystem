@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app2="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="org.dimomite.brbuttonsystem.presentation.main.SettingsViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <CheckBox
+            android:id="@+id/sett_enable_left_handed_control"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/control_element_height"
+            android:text="@string/Enable_left_handed_control"
+            app2:layout_constraintEnd_toEndOf="parent"
+            app2:layout_constraintStart_toStartOf="parent"
+            app2:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/sett_enable_floating_control"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/control_element_height"
+            android:layout_marginTop="@dimen/interline_margin"
+            android:checked="@{model.floatingControl}"
+            android:onClick="@{model::updateFloatingControl}"
+            android:text="@string/Enable_floating_control"
+            app2:layout_constraintEnd_toEndOf="parent"
+            app2:layout_constraintStart_toStartOf="parent"
+            app2:layout_constraintTop_toBottomOf="@+id/sett_enable_left_handed_control" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/sett_enable_launcher_widget"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/control_element_height"
+            android:layout_marginTop="@dimen/interline_margin"
+            android:checked="@{model.launcherWidget}"
+            android:onCheckedChanged="@{model.launcherUpdate}"
+            android:text="@string/Enable_launcher_widget"
+            app2:layout_constraintEnd_toEndOf="parent"
+            app2:layout_constraintStart_toStartOf="parent"
+            app2:layout_constraintTop_toBottomOf="@+id/sett_enable_floating_control" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/sett_enable_notifications_control"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/control_element_height"
+            android:layout_marginTop="@dimen/interline_margin"
+            android:text="@string/Enable_notifications_control"
+            app2:layout_constraintEnd_toEndOf="parent"
+            app2:layout_constraintStart_toStartOf="parent"
+            app2:layout_constraintTop_toBottomOf="@+id/sett_enable_launcher_widget" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

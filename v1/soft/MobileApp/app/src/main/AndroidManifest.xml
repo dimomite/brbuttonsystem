@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.dimomite.brbuttonsystem">
 
+    <permission android:name="org.dimomite.brbuttonsystem.permission.REMOTE_CONTROL" />
+
     <!-- TODO USB connection is an optional feature here, need to check in runtime -->
     <uses-feature
         android:name="android.hardware.usb.host"
@@ -24,6 +26,27 @@
             </intent-filter>
         </activity>
         <activity android:name=".presentation.devices.DeviceActivity" />
+
+        <receiver
+            android:name=".remotecontrol.RemoteControlWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/remote_control_widget" />
+        </receiver>
+
+        <receiver
+            android:name=".remotecontrol.RemoteControlBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="org.dimomite.brbuttonsystem.REMOTE_CONTROL_ACTION" />
+            </intent-filter>
+
+        </receiver>
+
     </application>
 
 </manifest>

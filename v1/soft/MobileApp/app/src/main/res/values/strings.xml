@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">BrSystemControl</string>
+
+    <string name="Enable_left_handed_control">Enable left handed control</string>
+    <string name="Enable_floating_control">Enable floating control</string>
+    <string name="Enable_launcher_widget">Enable launcher widget</string>
+    <string name="Enable_notifications_control">Enable notifications control</string>
+
 </resources>

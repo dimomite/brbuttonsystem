@@ -11,3 +11,4 @@
 /v1/hard/*/*.sch-bak
 /proto/proto_usb_conn/.idea
 /proto/proto_usb_conn/.gradle
+/v1/firmwaretests/build

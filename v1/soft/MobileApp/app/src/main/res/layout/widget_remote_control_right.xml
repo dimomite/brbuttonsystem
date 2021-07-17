@@ -10,7 +10,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:gravity="center"
-        android:text="Text\nView" />
+        android:text="Text\nView"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/remote_control_top_button"
@@ -20,7 +22,7 @@
         android:text="bT" />
 
     <Button
-        android:id="@+id/remote_control_top_left_button"
+        android:id="@+id/remote_control_bot_left_button"
         android:layout_width="@dimen/widget_item_size"
         android:layout_height="@dimen/widget_item_size"
         android:layout_below="@id/remote_control_tv"
@@ -28,7 +30,7 @@
         android:text="bL" />
 
     <Button
-        android:id="@+id/remote_control_top_right_button"
+        android:id="@+id/remote_control_bot_right_button"
         android:layout_width="@dimen/widget_item_size"
         android:layout_height="@dimen/widget_item_size"
         android:layout_below="@id/remote_control_tv"

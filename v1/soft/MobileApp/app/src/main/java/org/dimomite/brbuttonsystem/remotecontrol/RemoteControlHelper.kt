@@ -5,7 +5,7 @@ import android.os.Bundle
 
 interface RemoteControlApi {
     companion object {
-        const val REMOTE_CONTROL_ACTION = "org.dimomite.brbuttonsystem.REMOTE_CONTROL_ACTION"
+//        const val REMOTE_CONTROL_ACTION = "org.dimomite.brbuttonsystem.REMOTE_CONTROL_ACTION"
 
         const val FIELD_REMOTE_CONTROL_EXTRAS = "RemoteControlExtras"
         const val FIELD_REMOTE_CONTROL_ACTION = "RemoteControlAction"

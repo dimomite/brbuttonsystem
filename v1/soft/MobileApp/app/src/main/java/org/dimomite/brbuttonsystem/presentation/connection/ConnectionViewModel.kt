@@ -8,7 +8,7 @@ import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.recyclerview.widget.RecyclerView
-import io.reactivex.Flowable
+import io.reactivex.rxjava3.core.Flowable
 import org.dimomite.brbuttonsystem.databinding.RemoteDeviceListItemBinding
 import org.dimomite.brbuttonsystem.presentation.DisposingViewModel
 

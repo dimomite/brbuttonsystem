@@ -1,8 +1,8 @@
 package org.dimomite.brbuttonsystem.presentation
 
 import androidx.lifecycle.ViewModel
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 
 open class DisposingViewModel : ViewModel() {
     private val subscribers = CompositeDisposable()

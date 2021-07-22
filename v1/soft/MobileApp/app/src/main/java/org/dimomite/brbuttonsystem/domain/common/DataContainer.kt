@@ -28,7 +28,12 @@ sealed class DataContainer<out T> {
     }
 
     abstract fun <R> exec(visitor: Visitor<R>): R
+}
 
+open class NonReturningDataContainerVisitor : DataContainer.Visitor<Unit> {
+    override fun <D> visitOk(v: DataContainer.Ok<D>) = Unit
+    override fun visitPending(v: DataContainer.Pending) = Unit
+    override fun visitError(v: DataContainer.Error) = Unit
 }
 
 // Internal for unit testing

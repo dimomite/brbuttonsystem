@@ -4,7 +4,7 @@ import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.functions.*
 import io.reactivex.rxjava3.functions.Function
 
-class SubUseCase<R>(private val inFlow: Flowable<DataContainer<R>>, params: SubscriptionUseCaseParams) : DataProvider<R> {
+open class SubUseCase<R>(private val inFlow: Flowable<DataContainer<R>>, params: SubscriptionUseCaseParams) : DataProvider<R> {
     companion object {
         fun <T, R> from(
             uc: SubUseCase<T>,
@@ -42,5 +42,5 @@ class SubUseCase<R>(private val inFlow: Flowable<DataContainer<R>>, params: Subs
         .subscribeOn(params.subscriptionScheduler)
         .unsubscribeOn(params.unsubscriptionScheduler)
 
-    override fun out(): Flowable<DataContainer<R>> = result
+    override fun outFlow(): Flowable<DataContainer<R>> = result
 }

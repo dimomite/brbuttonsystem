@@ -20,7 +20,7 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
         val initialSettings = AppSettingsModel(
             isNotificationControlEnabled = true,
             isFloatingControlEnabled = false,
-            isWidgetControlEnabled = false,
+            isWidgetControlEnabled = true,
             controlOrientation = ControlOrientation.RightHanded,
         )
     }
@@ -39,8 +39,8 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
         job.scheduleAtFixedRate({
             val current = (settings.value as DataContainer.Ok).data
             val next = AppSettingsModel(
-                isNotificationControlEnabled = current.isNotificationControlEnabled,
-                isFloatingControlEnabled = current.isFloatingControlEnabled,
+                isNotificationControlEnabled = !current.isNotificationControlEnabled,
+                isFloatingControlEnabled = !current.isFloatingControlEnabled,
                 isWidgetControlEnabled = !current.isWidgetControlEnabled,
             )
             settings.onNext(DataContainer.Ok(next))

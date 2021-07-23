@@ -1,5 +1,8 @@
 package org.dimomite.brbuttonsystem.domain.common
 
+import io.reactivex.rxjava3.annotations.NonNull
+import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.core.FlowableTransformer
 import io.reactivex.rxjava3.functions.BiFunction
 import io.reactivex.rxjava3.functions.Function
 import io.reactivex.rxjava3.functions.Function3
@@ -28,6 +31,20 @@ sealed class DataContainer<out T> {
     }
 
     abstract fun <R> exec(visitor: Visitor<R>): R
+}
+
+class OkOnlyPassingTransformer<T> : FlowableTransformer<DataContainer<T>, T> {
+    override fun apply(upstream: Flowable<DataContainer<T>>?): @NonNull Flowable<T>? {
+        return upstream?.flatMap { dc ->
+            val outFlow: Flowable<T> = when (dc) {
+                is DataContainer.Ok<*> -> Flowable.just(dc.data as T)
+                DataContainer.Pending -> Flowable.empty()
+                is DataContainer.Error -> Flowable.empty()
+                else -> throw IllegalStateException("Unhandled data container: $dc")
+            }
+            return@flatMap outFlow
+        }
+    }
 }
 
 open class NonReturningDataContainerVisitor : DataContainer.Visitor<Unit> {

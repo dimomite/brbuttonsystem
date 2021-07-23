@@ -27,6 +27,7 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
         private const val FIELD_FLOATING_CONTROL_ENABLED = "FloatingControlEnabled"
         private const val FIELD_WIDGET_CONTROL_ENABLED = "WidgetControlEnabled"
         private const val FIELD_CONTROL_ORIENTATION = "ControlOrientation"
+        private const val FIELD_ERROR_TEXT = "ErrorText"
 
         val initialSettings = AppSettingsModel(
             isNotificationControlEnabled = true,
@@ -38,7 +39,8 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
 
     private val shared = ctx.getSharedPreferences(SETTING_PREFERENCES_NAME, Context.MODE_PRIVATE)
 
-    private val settings = BehaviorSubject.createDefault<DataContainer<AppSettingsModel>>(DataContainer.Ok(initialSettings))
+    //    private val settings = BehaviorSubject.createDefault<DataContainer<AppSettingsModel>>(DataContainer.Ok(initialSettings))
+    private val settings = BehaviorSubject.create<DataContainer<AppSettingsModel>>()
     private val settingsFlow = settings.toFlowable(BackpressureStrategy.LATEST).distinctUntilChanged().replay(1).refCount()
     private val settingsProvider = object : DataProvider<AppSettingsModel> {
         override fun outFlow(): Flowable<DataContainer<AppSettingsModel>> = settingsFlow
@@ -66,7 +68,11 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
 
     init {
         Timber.d("Setting repo created")
-        subs.add(settingsFlow.subscribe { saveSettings(it) })
+        subs.add(settingsFlow.skip(1).subscribe { saveSettings(it) }) // skip first one which is a saved value
+
+        val sett = readSetting(shared)
+        Timber.d("Setting are read: $sett")
+        settings.onNext(sett)
     }
 
     private fun saveSettings(sett: DataContainer<AppSettingsModel>) {
@@ -75,6 +81,8 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
 
             sett.exec(object : DataContainer.Visitor<AppSettingsModel, Unit> {
                 override fun visitOk(v: DataContainer.Ok<AppSettingsModel>) {
+                    putString(FIELD_ERROR_TEXT, "")
+
                     putBoolean(FIELD_NOTIFICATION_CONTROL_ENABLED, v.data.isNotificationControlEnabled)
                     putBoolean(FIELD_FLOATING_CONTROL_ENABLED, v.data.isFloatingControlEnabled)
                     putBoolean(FIELD_WIDGET_CONTROL_ENABLED, v.data.isWidgetControlEnabled)
@@ -87,6 +95,8 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
 
                 override fun visitError(v: DataContainer.Error<AppSettingsModel>) {
                     wipeContent(this@edit)
+
+                    putString(FIELD_ERROR_TEXT, v.er)
                 }
             })
         }
@@ -94,10 +104,30 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
     }
 
     private fun wipeContent(editor: SharedPreferences.Editor) {
+        editor.putString(FIELD_ERROR_TEXT, "")
+
         editor.putBoolean(FIELD_NOTIFICATION_CONTROL_ENABLED, false)
         editor.putBoolean(FIELD_FLOATING_CONTROL_ENABLED, false)
         editor.putBoolean(FIELD_WIDGET_CONTROL_ENABLED, false)
         editor.putString(FIELD_CONTROL_ORIENTATION, ControlOrientation.Default.name)
+    }
+
+    private fun readSetting(sp: SharedPreferences): DataContainer<AppSettingsModel> {
+        val typeText = sp.getString(FIELD_SETTINGS_CONTAINER_STATE, "")
+        return when (typeText) {
+            DataContainer.NAME_PENDING -> DataContainer.Pending()
+            DataContainer.NAME_ERROR -> DataContainer.Error(sp.getString(FIELD_ERROR_TEXT, "") ?: "")
+            DataContainer.NAME_OK -> {
+                val sett = AppSettingsModel(
+                    isNotificationControlEnabled = sp.getBoolean(FIELD_NOTIFICATION_CONTROL_ENABLED, false),
+                    isFloatingControlEnabled = sp.getBoolean(FIELD_FLOATING_CONTROL_ENABLED, false),
+                    isWidgetControlEnabled = sp.getBoolean(FIELD_WIDGET_CONTROL_ENABLED, false),
+                    controlOrientation = ControlOrientation.valueOf(sp.getString(FIELD_CONTROL_ORIENTATION, "") ?: "")
+                )
+                DataContainer.Ok(sett)
+            }
+            else -> DataContainer.Ok(initialSettings)
+        }
     }
 
 }

@@ -9,6 +9,12 @@ import io.reactivex.rxjava3.functions.Function3
 import java.util.*
 
 sealed class DataContainer<T> {
+    companion object {
+        const val NAME_OK = "Ok"
+        const val NAME_PENDING = "Pending"
+        const val NAME_ERROR = "Error"
+    }
+
     interface Visitor<D, R> {
         fun visitOk(v: DataContainer.Ok<D>): R
         fun visitPending(v: DataContainer.Pending<D>): R
@@ -17,19 +23,19 @@ sealed class DataContainer<T> {
 
     class Ok<D>(val data: D) : DataContainer<D>() {
         override fun toString(): String = "Ok: $data"
-        override fun stateName(): String = "Ok"
+        override fun stateName(): String = NAME_OK
         override fun <R> exec(visitor: Visitor<D, R>): R = visitor.visitOk(this)
     }
 
     class Pending<D> : DataContainer<D>() {
         override fun toString(): String = "Pending"
-        override fun stateName(): String = "Pending"
+        override fun stateName(): String = NAME_PENDING
         override fun <R> exec(visitor: Visitor<D, R>): R = visitor.visitPending(this)
     }
 
     class Error<D>(val er: String) : DataContainer<D>() {
         override fun toString(): String = "Error: \"$er\""
-        override fun stateName(): String = "Error"
+        override fun stateName(): String = NAME_ERROR
         override fun <R> exec(visitor: Visitor<D, R>): R = visitor.visitError(this)
     }
 

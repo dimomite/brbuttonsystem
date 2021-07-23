@@ -7,6 +7,8 @@ import androidx.lifecycle.LiveDataReactiveStreams
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.core.FlowableTransformer
+import io.reactivex.rxjava3.functions.Consumer
+import io.reactivex.rxjava3.functions.Function
 import org.dimomite.brbuttonsystem.domain.common.DataContainer
 import org.dimomite.brbuttonsystem.domain.common.DataRepository
 import org.dimomite.brbuttonsystem.domain.common.OkOnlyPassingTransformer
@@ -16,11 +18,8 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class SettingsViewModel @Inject constructor(settingRepo: DataRepository<AppSettingsModel>) : DisposingViewModel() {
-//    private val fcData = MutableLiveData<Boolean>()
+class SettingsViewModel @Inject constructor(private val settingRepo: DataRepository<AppSettingsModel>) : DisposingViewModel() {
     val floatingControl: LiveData<Boolean>
-
-//    private val lwData = MutableLiveData<Boolean>(false)
     val launcherWidget: LiveData<Boolean>
 
     init {
@@ -37,6 +36,10 @@ class SettingsViewModel @Inject constructor(settingRepo: DataRepository<AppSetti
     }
 
     fun launcherUpdate(v: CompoundButton, isChecked: Boolean) {
+        event {
+            settingRepo.modifier().modifyData { it.copy(isWidgetControlEnabled = isChecked) }.subscribe(
+                { Timber.d("Completed checked change") }, { Timber.w("Checked change processing failed") })
+        }
     }
 
 }

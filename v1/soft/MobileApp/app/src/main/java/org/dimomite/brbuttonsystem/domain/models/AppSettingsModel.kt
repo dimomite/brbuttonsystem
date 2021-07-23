@@ -12,4 +12,11 @@ data class AppSettingsModel(
     val controlOrientation: ControlOrientation = ControlOrientation.RightHanded,
 ) : Parcelable
 
-enum class ControlOrientation { LeftHanded, RightHanded }
+enum class ControlOrientation {
+    LeftHanded,
+    RightHanded;
+
+    companion object {
+        val Default = RightHanded
+    }
+}

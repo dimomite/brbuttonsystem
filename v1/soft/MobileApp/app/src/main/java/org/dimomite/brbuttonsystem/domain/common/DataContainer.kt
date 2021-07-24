@@ -15,6 +15,30 @@ sealed class DataContainer<T> {
         const val NAME_ERROR = "Error"
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (other == null) return false
+        if (other === this) return true
+        if (other.javaClass != this.javaClass) return false
+
+        return this.exec(object : Visitor<T, Boolean> {
+            override fun visitOk(v: Ok<T>): Boolean {
+                val o = other as Ok<*>
+                return if (v.data != null) v.data.equals(o.data) else o.data == null
+            }
+
+            override fun visitPending(v: Pending<T>): Boolean = true // all Pending are equal
+            override fun visitError(v: Error<T>): Boolean = v.er.equals((other as Error<*>).er)
+        })
+    }
+
+    override fun hashCode(): Int {
+        return this.exec(object : Visitor<T, Int> {
+            override fun visitOk(v: Ok<T>): Int = 31 * v.data.hashCode()
+            override fun visitPending(v: Pending<T>): Int = 123
+            override fun visitError(v: Error<T>): Int = 17 * v.er.hashCode()
+        })
+    }
+
     interface Visitor<D, R> {
         fun visitOk(v: DataContainer.Ok<D>): R
         fun visitPending(v: DataContainer.Pending<D>): R

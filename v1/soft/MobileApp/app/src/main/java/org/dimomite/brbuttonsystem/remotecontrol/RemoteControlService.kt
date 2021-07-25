@@ -2,12 +2,15 @@ package org.dimomite.brbuttonsystem.remotecontrol
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ServiceInfo
 import android.os.Build
 import android.os.IBinder
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import org.dimomite.brbuttonsystem.R
@@ -20,6 +23,19 @@ class RemoteControlService : Service() {
         private const val ACTION_BUTTON_1 = "ActionButton1"
         private const val ACTION_BUTTON_2 = "ActionButton2"
         private const val ACTION_BUTTON_3 = "ActionButton3"
+
+        private val icons: Map<String, Int> = mapOf(
+            Pair(ACTION_BUTTON_1, 0),
+            Pair(ACTION_BUTTON_2, 0),
+            Pair(ACTION_BUTTON_3, 0),
+        )
+
+        private val names: Map<String, Int> = mapOf(
+            Pair(ACTION_BUTTON_1, R.string._button_text_stop),
+            Pair(ACTION_BUTTON_2, R.string._button_text_20),
+            Pair(ACTION_BUTTON_3, R.string._button_text_60),
+        )
+
 
         private const val NOTIFICATION_CHANNEL_ID = "RemoteControlNotificationChannel"
         private const val NOTIFICATION_ID = 1
@@ -72,6 +88,9 @@ class RemoteControlService : Service() {
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentTitle(getString(R.string.BR_control))
             .setContentText(getString(R.string.Remote_control_from_BR_system))
+            .addAction(createButtonAction(ACTION_BUTTON_1, this))
+            .addAction(createButtonAction(ACTION_BUTTON_2, this))
+            .addAction(createButtonAction(ACTION_BUTTON_3, this))
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             // added in SDK 29
@@ -79,6 +98,15 @@ class RemoteControlService : Service() {
         } else {
             startForeground(NOTIFICATION_ID, builder.build())
         }
+    }
+
+    private fun createButtonAction(action: String, ctx: Context): NotificationCompat.Action {
+        @DrawableRes val icon = icons[action] ?: throw IllegalArgumentException("No icon for action: \"$action\"")
+        @StringRes val text = names[action] ?: throw IllegalArgumentException("No name for action: \"$action\"")
+        val intent = Intent(ctx, RemoteControlService::class.java).setAction(action)
+        val cb = PendingIntent.getService(ctx, 1, intent, 0)
+        val builder = NotificationCompat.Action.Builder(icon, ctx.getString(text), cb)
+        return builder.build()
     }
 
     private fun stopThisService() {

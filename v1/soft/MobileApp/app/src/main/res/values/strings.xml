@@ -10,4 +10,9 @@
     <string name="Remote_control_from_BR_system">Remote control for BR system</string>
     <string name="Remote_control_notification_channel">Remote control notification channel</string>
 
+    <!-- Text for remote control buttons -->
+    <string name="_button_text_60">"  60"</string>
+    <string name="_button_text_20">"  20"</string>
+    <string name="_button_text_stop">Stop</string>
+
 </resources>

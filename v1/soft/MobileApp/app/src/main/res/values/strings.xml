@@ -6,4 +6,8 @@
     <string name="Enable_launcher_widget">Enable launcher widget</string>
     <string name="Enable_notifications_control">Enable notifications control</string>
 
+    <string name="BR_control">BR control</string>
+    <string name="Remote_control_from_BR_system">Remote control for BR system</string>
+    <string name="Remote_control_notification_channel">Remote control notification channel</string>
+
 </resources>

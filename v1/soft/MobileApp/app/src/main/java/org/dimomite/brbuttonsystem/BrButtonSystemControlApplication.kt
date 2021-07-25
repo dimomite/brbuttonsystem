@@ -2,8 +2,10 @@ package org.dimomite.brbuttonsystem
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
+import org.dimomite.brbuttonsystem.data.remotecontrol.RemoteControlRepository
 import org.slf4j.LoggerFactory
 import timber.log.Timber
+import javax.inject.Inject
 
 @HiltAndroidApp
 class BrButtonSystemControlApplication : Application() {
@@ -11,10 +13,21 @@ class BrButtonSystemControlApplication : Application() {
         val TAG = "BrButtonSystemControl"
     }
 
+    @Inject
+    lateinit var remoteControlRepo: RemoteControlRepository
+
     override fun onCreate() {
         super.onCreate()
 
         initLogging()
+
+        remoteControlRepo.start()
+    }
+
+    override fun onTerminate() {
+        remoteControlRepo.stop()
+
+        super.onTerminate()
     }
 
     private fun initLogging() {

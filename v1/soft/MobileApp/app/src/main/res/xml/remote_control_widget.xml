@@ -2,6 +2,6 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:minWidth="110dp"
     android:minHeight="110dp"
-    android:previewImage="@drawable/system_preview_128"
+    android:previewImage="@drawable/ic_remote_control_icon"
     android:updatePeriodMillis="500"
     android:widgetCategory="home_screen" />

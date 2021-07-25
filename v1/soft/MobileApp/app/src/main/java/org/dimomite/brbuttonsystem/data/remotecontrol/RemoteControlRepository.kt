@@ -53,7 +53,7 @@ class RemoteControlRepository @Inject constructor(
         // probably this broadcast https://developer.android.com/reference/android/app/NotificationManager.html#ACTION_NOTIFICATION_CHANNEL_BLOCK_STATE_CHANGED
         settingsSubs.add(settingsRepo.provider().outFlow()
             .map { sett -> convertDataContainer(sett) { it.isNotificationControlEnabled } }
-            .distinctUntilChanged().subscribe { notifEnabled ->
+            .distinctUntilChanged().subscribe({ notifEnabled ->
                 notifEnabled.exec(object : DataContainer.Visitor<Boolean, Unit> {
                     override fun visitOk(v: DataContainer.Ok<Boolean>) {
                         if (v.data) {
@@ -71,8 +71,11 @@ class RemoteControlRepository @Inject constructor(
                         stopNotificationService()
                     }
                 })
+            }, {
+                Timber.w("Error during subscribing to setting repository: $it")
+                stopNotificationService()
             })
-
+        )
     }
 
     fun stop() {

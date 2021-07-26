@@ -115,7 +115,7 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
     private fun readSetting(sp: SharedPreferences): DataContainer<AppSettingsModel> {
         val typeText = sp.getString(FIELD_SETTINGS_CONTAINER_STATE, "")
         return when (typeText) {
-            DataContainer.NAME_PENDING -> DataContainer.Pending()
+            DataContainer.NAME_PENDING -> DataContainer.Pending(PendingProgress.ins())
             DataContainer.NAME_ERROR -> DataContainer.Error(sp.getString(FIELD_ERROR_TEXT, "") ?: "")
             DataContainer.NAME_OK -> {
                 val sett = AppSettingsModel(

@@ -6,6 +6,7 @@ import io.reactivex.rxjava3.core.FlowableTransformer
 import io.reactivex.rxjava3.functions.BiFunction
 import io.reactivex.rxjava3.functions.Function
 import io.reactivex.rxjava3.functions.Function3
+import org.dimomite.brbuttonsystem.domain.common.PendingProgress.Companion.ins
 import java.util.*
 
 sealed class DataContainer<T> {
@@ -16,7 +17,7 @@ sealed class DataContainer<T> {
     }
 
     override fun equals(other: Any?): Boolean {
-        if (other == null) return false
+        if (other === null) return false
         if (other === this) return true
         if (other.javaClass != this.javaClass) return false
 
@@ -26,7 +27,7 @@ sealed class DataContainer<T> {
                 return if (v.data != null) v.data.equals(o.data) else o.data == null
             }
 
-            override fun visitPending(v: Pending<T>): Boolean = true // all Pending are equal
+            override fun visitPending(v: Pending<T>): Boolean = v.progress.equals((other as Pending<*>).progress)
             override fun visitError(v: Error<T>): Boolean = v.er.equals((other as Error<*>).er)
         })
     }
@@ -34,7 +35,7 @@ sealed class DataContainer<T> {
     override fun hashCode(): Int {
         return this.exec(object : Visitor<T, Int> {
             override fun visitOk(v: Ok<T>): Int = 31 * v.data.hashCode()
-            override fun visitPending(v: Pending<T>): Int = 123
+            override fun visitPending(v: Pending<T>): Int = v.progress.hashCode()
             override fun visitError(v: Error<T>): Int = 17 * v.er.hashCode()
         })
     }
@@ -51,8 +52,8 @@ sealed class DataContainer<T> {
         override fun <R> exec(visitor: Visitor<D, R>): R = visitor.visitOk(this)
     }
 
-    class Pending<D> : DataContainer<D>() {
-        override fun toString(): String = "Pending"
+    class Pending<D>(val progress: PendingProgress) : DataContainer<D>() {
+        override fun toString(): String = "Pending: {$progress}"
         override fun stateName(): String = NAME_PENDING
         override fun <R> exec(visitor: Visitor<D, R>): R = visitor.visitPending(this)
     }
@@ -129,7 +130,7 @@ internal fun composeDataContainer(vararg containers: DataContainer<*>): DataCont
     if (errors.isNotEmpty()) {
         return DataContainer.Error<Boolean>("{${errors.joinToString("}, {")}}")
     }
-    return if (hasPending) DataContainer.Pending() else DataContainer.Ok(true)
+    return if (hasPending) DataContainer.Pending(ins()) else DataContainer.Ok(true) // TODO add progress combiner
 }
 
 private class ExtractDataValueVisitor<R> : DataContainer.Visitor<R, R> {
@@ -140,13 +141,13 @@ private class ExtractDataValueVisitor<R> : DataContainer.Visitor<R, R> {
 
 class DataContainerConverter<T1, R>(private val mapper: Function<T1, R>) : DataContainer.Visitor<T1, DataContainer<R>> {
     override fun visitOk(v: DataContainer.Ok<T1>): DataContainer<R> = DataContainer.Ok(mapper.apply(v.data))
-    override fun visitPending(v: DataContainer.Pending<T1>): DataContainer<R> = DataContainer.Pending()
+    override fun visitPending(v: DataContainer.Pending<T1>): DataContainer<R> = DataContainer.Pending(v.progress)
     override fun visitError(v: DataContainer.Error<T1>): DataContainer<R> = DataContainer.Error(v.er)
 }
 
 fun <T1, R> convertDataContainer(dc: DataContainer<T1>, mapper: Function<T1, R>): DataContainer<R> {
     return when (dc) {
-        is DataContainer.Pending<T1> -> DataContainer.Pending()
+        is DataContainer.Pending<T1> -> DataContainer.Pending(dc.progress)
         is DataContainer.Error -> DataContainer.Error(dc.er)
         is DataContainer.Ok -> DataContainer.Ok(mapper.apply(dc.data))
     }
@@ -155,7 +156,7 @@ fun <T1, R> convertDataContainer(dc: DataContainer<T1>, mapper: Function<T1, R>)
 fun <T1, T2, R> convert2DataContainers(dc1: DataContainer<T1>, dc2: DataContainer<T2>, mapper: BiFunction<T1, T2, R>): DataContainer<R> {
     val compose: DataContainer<Boolean> = composeDataContainer(dc1, dc2)
     return when (compose) {
-        is DataContainer.Pending -> DataContainer.Pending()
+        is DataContainer.Pending -> DataContainer.Pending(ins()) // TODO add combiner
         is DataContainer.Error<Boolean> -> DataContainer.Error(compose.er)
         is DataContainer.Ok -> if (compose.data) {
             val d1 = (dc1 as DataContainer.Ok).data
@@ -171,7 +172,7 @@ fun <T1, T2, R> convert2DataContainers(dc1: DataContainer<T1>, dc2: DataContaine
 fun <T1, T2, T3, R> convert3DataContainers(dc1: DataContainer<T1>, dc2: DataContainer<T2>, dc3: DataContainer<T3>, mapper: Function3<T1, T2, T3, R>): DataContainer<R> {
     val compose = composeDataContainer(dc1, dc2)
     return when (compose) {
-        is DataContainer.Pending -> DataContainer.Pending()
+        is DataContainer.Pending -> DataContainer.Pending(ins()) // TODO add combiner
         is DataContainer.Error<Boolean> -> DataContainer.Error(compose.er)
         is DataContainer.Ok -> if (compose.data) {
             val d1 = (dc1 as DataContainer.Ok).data

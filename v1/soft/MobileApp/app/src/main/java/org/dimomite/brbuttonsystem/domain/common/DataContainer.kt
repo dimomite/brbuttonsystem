@@ -58,7 +58,7 @@ sealed class DataContainer<T> {
         override fun <R> exec(visitor: Visitor<D, R>): R = visitor.visitPending(this)
     }
 
-    class Error<D>(val er: String) : DataContainer<D>() {
+    class Error<D>(val er: ErrorWrap) : DataContainer<D>() {
         override fun toString(): String = "Error: \"$er\""
         override fun stateName(): String = NAME_ERROR
         override fun <R> exec(visitor: Visitor<D, R>): R = visitor.visitError(this)
@@ -118,7 +118,7 @@ internal fun resolveContainersType(vararg container: DataContainer<Any?>): Conta
 }
 
 internal fun composeDataContainer(vararg containers: DataContainer<*>): DataContainer<Boolean> {
-    val errors = LinkedList<String>()
+    val errors = LinkedList<ErrorWrap>()
     var hasPending = false
     for (c in containers) {
         when (c) {
@@ -128,7 +128,7 @@ internal fun composeDataContainer(vararg containers: DataContainer<*>): DataCont
     }
 
     if (errors.isNotEmpty()) {
-        return DataContainer.Error<Boolean>("{${errors.joinToString("}, {")}}")
+        return DataContainer.Error<Boolean>(combineErrorWrap(*errors.toTypedArray()))
     }
     return if (hasPending) DataContainer.Pending(ins()) else DataContainer.Ok(true) // TODO add progress combiner
 }

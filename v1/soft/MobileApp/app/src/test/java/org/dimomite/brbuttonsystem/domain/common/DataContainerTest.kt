@@ -8,17 +8,28 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class DataContainerTest {
-    private class ErrorDataContainerMatcher(private val expectedErrorMessage: String) : BaseMatcher<DataContainer<*>>() {
+    private class ErrorDataContainerMatcher(private val expectedErrorMessages: Array<String>) : BaseMatcher<DataContainer<*>>() {
         override fun describeTo(description: Description?) {
-            description?.appendText("expected error message: \"$expectedErrorMessage\"")
+            description?.appendText("expected error message: \"${expectedErrorMessages.joinToString(", ")}\"")
         }
 
         override fun matches(item: Any?): Boolean {
-            return item is Error<*> && expectedErrorMessage.equals(item.er)
+            item as Error<*>
+            val wrap = item.er as ErrorWrap.SyntheticContainer
+            val ref = wrap.children.map { it.desc }.toSet()
+            for (er in expectedErrorMessages) {
+                if (!ref.contains(er)) {
+                    return false
+                }
+            }
+
+            return true
         }
     }
 
-    private fun errMatch(er: String) = ErrorDataContainerMatcher(er)
+    private fun <T> createError(desc: String): DataContainer<T> = Error<T>(ErrorWrap.TextError(ErrorWrap.UNDEFINED_ID, desc))
+
+    private fun errMatch(vararg er: String) = ErrorDataContainerMatcher(arrayOf(*er))
 
     private fun isTrueBoolContainer(c: DataContainer<Boolean>) = c is Ok && c.data
     private fun isPending(c: DataContainer<*>) = c is Pending
@@ -27,7 +38,7 @@ class DataContainerTest {
     fun testOneContainerTypeResolution() {
         assertEquals("Wrong result type for Ok input", ContainerType.Ok, resolveContainersType(Ok(10)))
         assertEquals("Wrong result type for Pending input", ContainerType.Pending, resolveContainersType(Pending(ins())))
-        assertEquals("Wrong result type for Error input", ContainerType.Error, resolveContainersType(Error("Errr")))
+        assertEquals("Wrong result type for Error input", ContainerType.Error, resolveContainersType(createError("Errr")))
     }
 
     @Test
@@ -35,8 +46,8 @@ class DataContainerTest {
         assertEquals("Wrong result type for two Ok input", ContainerType.Ok, resolveContainersType(Ok(10), Ok(20)))
         assertEquals("Wrong result type for Pending and Ok input", ContainerType.Pending, resolveContainersType(Pending(ins()), Ok(10)))
         assertEquals("Wrong result type for Pending input", ContainerType.Pending, resolveContainersType(Pending(ins()), Pending(ins())))
-        assertEquals("Wrong result type for Error and Ok input", ContainerType.Error, resolveContainersType(Error("Errr"), Ok(10)))
-        assertEquals("Wrong result type for Error and Pending input", ContainerType.Error, resolveContainersType(Error("Errr"), Pending(ins())))
+        assertEquals("Wrong result type for Error and Ok input", ContainerType.Error, resolveContainersType(createError("Errr"), Ok(10)))
+        assertEquals("Wrong result type for Error and Pending input", ContainerType.Error, resolveContainersType(createError("Errr"), Pending(ins())))
     }
 
     @Test
@@ -44,14 +55,14 @@ class DataContainerTest {
         assertEquals("Wrong result type for two Ok input", ContainerType.Ok, resolveContainersType(Ok(10), Ok(20), Ok(30)))
         assertEquals("Wrong result type for Pending and Ok input", ContainerType.Pending, resolveContainersType(Pending(ins()), Ok(10), Ok(20)))
         assertEquals("Wrong result type for Pending input", ContainerType.Pending, resolveContainersType(Pending(ins()), Pending(ins()), Pending(ins())))
-        assertEquals("Wrong result type for Error, Pending and Ok input", ContainerType.Error, resolveContainersType(Error("Errr"), Ok(10), Pending(ins())))
+        assertEquals("Wrong result type for Error, Pending and Ok input", ContainerType.Error, resolveContainersType(createError("Errr"), Ok(10), Pending(ins())))
     }
 
     @Test
     fun testComposeSingleDataContainer() {
         assertTrue("Wrong result for single Ok input", isTrueBoolContainer(composeDataContainer(Ok(10))))
         assertTrue("Wrong result type for single Pending input", isPending(composeDataContainer(Pending<Int>(ins()))))
-        assertThat("Wrong result type for single Error input", composeDataContainer(Error<Int>("er1")), errMatch("{er1}"))
+        assertThat("Wrong result type for single Error input", composeDataContainer(createError<Int>("er1")), errMatch("er1"))
     }
 
     @Test
@@ -60,21 +71,29 @@ class DataContainerTest {
         assertTrue("Wrong result for two Pending input", isPending(composeDataContainer(Pending<Int>(ins()), Pending<Int>(ins()))))
         assertTrue("Wrong result for Pending and Ok input", isPending(composeDataContainer(Pending<Int>(ins()), Ok(10))))
         assertTrue("Wrong result for Pending and Ok input", isPending(composeDataContainer(Ok(10), Pending<String>(ins()))))
-        assertThat("Wrong result for two Error input", composeDataContainer(Error<Int>("er1"), Error<String>("er2")), errMatch("{er1}, {er2}"))
-        assertThat("Wrong result for two Error input", composeDataContainer(Error<Int>("er2"), Error<String>("er1")), errMatch("{er2}, {er1}"))
-        assertThat("Wrong result for Error and Pending input", composeDataContainer(Error<Int>("er1"), Pending<Int>(ins())), errMatch("{er1}"))
-        assertThat("Wrong result for Pending and Error input", composeDataContainer(Pending<Int>(ins()), Error<Double>("er1")), errMatch("{er1}"))
-        assertThat("Wrong result for Error and Ok input", composeDataContainer(Error<Int>("er1"), Ok(10)), errMatch("{er1}"))
-        assertThat("Wrong result for OK and Error input", composeDataContainer(Ok(10), Error<Double>("er1")), errMatch("{er1}"))
+        assertThat("Wrong result for two Error input", composeDataContainer(createError<Int>("er1"), createError<String>("er2")), errMatch("er1", "er2"))
+        assertThat("Wrong result for two Error input", composeDataContainer(createError<Int>("er2"), createError<String>("er1")), errMatch("er2", "er1"))
+        assertThat("Wrong result for Error and Pending input", composeDataContainer(createError<Int>("er1"), Pending<Int>(ins())), errMatch("er1"))
+        assertThat("Wrong result for Pending and Error input", composeDataContainer(Pending<Int>(ins()), createError<Double>("er1")), errMatch("er1"))
+        assertThat("Wrong result for Error and Ok input", composeDataContainer(createError<Int>("er1"), Ok(10)), errMatch("er1"))
+        assertThat("Wrong result for OK and Error input", composeDataContainer(Ok(10), createError<Double>("er1")), errMatch("er1"))
     }
 
     @Test
     fun testComposeThreeDataContainers() {
         assertTrue("Wrong result for three Ok input", isTrueBoolContainer(composeDataContainer(Ok(10), Ok(20), Ok(30))))
         assertTrue("Wrong result for three Pending input", isPending(composeDataContainer(Pending<Int>(ins()), Pending<String>(ins()), Pending<Double>(ins()))))
-        assertThat("Wrong result for Error, Pending and Ok input", composeDataContainer(Error<String>("er1"), Pending<Int>(ins()), Ok(10)), errMatch("{er1}"))
-        assertThat("Wrong result for three Error input", composeDataContainer(Error<Int>("er1"), Error<String>("er2"), Error<Double>("er3")), errMatch("{er1}, {er2}, {er3}"))
-        assertThat("Wrong result for three Error input", composeDataContainer(Error<Int>("er3"), Error<String>("er2"), Error<Double>("er1")), errMatch("{er3}, {er2}, {er1}"))
+        assertThat("Wrong result for Error, Pending and Ok input", composeDataContainer(createError<String>("er1"), Pending<Int>(ins()), Ok(10)), errMatch("er1"))
+        assertThat(
+            "Wrong result for three Error input",
+            composeDataContainer(createError<Int>("er1"), createError<String>("er2"), createError<Double>("er3")),
+            errMatch("er1", "er2", "er3")
+        )
+        assertThat(
+            "Wrong result for three Error input",
+            composeDataContainer(createError<Int>("er3"), createError<String>("er2"), createError<Double>("er1")),
+            errMatch("er3", "er2", "er1")
+        )
     }
 
     @Test
@@ -82,11 +101,11 @@ class DataContainerTest {
         assertFalse("Ok and Pending containers are equal", Ok(10).equals(Pending<Int>(ins())))
         assertFalse("Pending and Ok containers are equal", Pending<Int>(ins()).equals(Ok(10)))
 
-        assertFalse("Ok and Error containers are equal", Ok(10).equals(Error<Int>("abc")))
-        assertFalse("Error and Ok containers are equal", Error<Int>("abc").equals(Ok(10)))
+        assertFalse("Ok and Error containers are equal", Ok(10).equals(createError<Int>("abc")))
+        assertFalse("Error and Ok containers are equal", createError<Int>("abc").equals(Ok(10)))
 
-        assertFalse("Pending and Error containers are equal", Pending<Int>(ins()).equals(Error<Int>("abc")))
-        assertFalse("Error and Pending containers are equal", Error<Int>("abc").equals(Pending<Int>(ins())))
+        assertFalse("Pending and Error containers are equal", Pending<Int>(ins()).equals(createError<Int>("abc")))
+        assertFalse("Error and Pending containers are equal", createError<Int>("abc").equals(Pending<Int>(ins())))
     }
 
     @Test
@@ -139,10 +158,10 @@ class DataContainerTest {
 
     @Test
     fun testErrorContainersEquality() {
-        val cInt = Error<Int>("er1")
-        val cInt2 = Error<Int>("er" + "1")
-        val cStr1 = Error<String>("er1")
-        val cStr2 = Error<String>("er2")
+        val cInt = createError<Int>("er1")
+        val cInt2 = createError<Int>("er" + "1")
+        val cStr1 = createError<String>("er1")
+        val cStr2 = createError<String>("er2")
 
         assertTrue("Error Int containers are not equal", cInt.equals(cInt2))
         assertTrue("Error Int containers are not equal", cInt2.equals(cInt))

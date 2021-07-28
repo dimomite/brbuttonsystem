@@ -96,7 +96,7 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
                 override fun visitError(v: DataContainer.Error<AppSettingsModel>) {
                     wipeContent(this@edit)
 
-                    putString(FIELD_ERROR_TEXT, v.er)
+                    putString(FIELD_ERROR_TEXT, v.er.desc) // TODO Need to safe all errors or ignore completely
                 }
             })
         }
@@ -116,7 +116,7 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
         val typeText = sp.getString(FIELD_SETTINGS_CONTAINER_STATE, "")
         return when (typeText) {
             DataContainer.NAME_PENDING -> DataContainer.Pending(PendingProgress.ins())
-            DataContainer.NAME_ERROR -> DataContainer.Error(sp.getString(FIELD_ERROR_TEXT, "") ?: "")
+            DataContainer.NAME_ERROR -> DataContainer.Error(ErrorWrap.TextError(ErrorWrap.UNDEFINED_ID, sp.getString(FIELD_ERROR_TEXT, "") ?: ""))
             DataContainer.NAME_OK -> {
                 val sett = AppSettingsModel(
                     isNotificationControlEnabled = sp.getBoolean(FIELD_NOTIFICATION_CONTROL_ENABLED, false),

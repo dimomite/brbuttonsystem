@@ -24,7 +24,7 @@ class RemoteControlWidgetProvider : AppWidgetProvider() {
         if (appWidgetManager == null) return
         if (appWidgetIds == null) return
 
-        Timber.d("DBG: onUpdate(): update widget with id: ${appWidgetIds.contentToString()}")
+        Timber.d("onUpdate(): update widget with id: ${appWidgetIds.contentToString()}")
         val views = buildWidgetView(context)
         appWidgetManager.updateAppWidget(ComponentName(context, RemoteControlWidgetProvider::class.java.name), views)
     }

@@ -2,16 +2,24 @@ package org.dimomite.brbuttonsystem.domain.common
 
 import android.os.Bundle
 import io.reactivex.rxjava3.functions.BiFunction
+import timber.log.Timber
 import java.util.*
+import java.util.concurrent.atomic.AtomicLong
+
+typealias ErrorRetryCallback = BiFunction<Bundle?, Bundle, Unit>
 
 sealed class ErrorWrap(
     val id: Long,
     val desc: String,
-    var retryCallback: BiFunction<Bundle?, Bundle, Unit>? = null, // excluded from equals() / hashcode()
+    var retryCallback: ErrorRetryCallback? = null, // excluded from equals() / hashcode()
     var args: Bundle? = null,
 ) {
     companion object {
         val UNDEFINED_ID: Long = -1L // temp solution
+
+        private val ids = AtomicLong(0L)
+
+        fun nextId(): Long = ids.getAndIncrement()
     }
 
     // no return type here because will be hard to provide default value
@@ -24,7 +32,7 @@ sealed class ErrorWrap(
         fun visitSyntheticContainer(v: SyntheticContainer)
     }
 
-    internal interface VisitorR<R> {
+    interface VisitorR<R> {
         fun visitRTextError(v: TextError): R
         fun visitRDataError(v: DataError): R
         fun visitRNoInternetConnection(v: NoInternetConnection): R
@@ -34,7 +42,7 @@ sealed class ErrorWrap(
 
     abstract fun exec(v: Visitor)
 
-    internal abstract fun <R> execR(v: VisitorR<R>): R
+    abstract fun <R> execR(v: VisitorR<R>): R
 
     internal fun baseToString(): String = "id: $id, desc: \"$desc\", args: {$args}"
 
@@ -78,7 +86,7 @@ sealed class ErrorWrap(
         override fun <R> execR(v: VisitorR<R>): R = v.visitRNoPermission(this)
     }
 
-    class SyntheticContainer internal constructor(val children: Array<ErrorWrap>) : ErrorWrap(UNDEFINED_ID, "SyntheticContainer") {
+    class SyntheticContainer internal constructor(val children: Array<ErrorWrap>) : ErrorWrap(nextId(), "SyntheticContainer") {
         override fun toString(): String = "Synth: {${children.joinToString("}, {")}}"
 
         override fun exec(v: Visitor) {
@@ -116,6 +124,7 @@ sealed class ErrorWrap(
     override fun hashCode(): Int = this.execR(hashReturningVisitor)
 
     fun retry(extra: Bundle) {
+        Timber.i("DBG: ErrorWrap: retry(): this: $this")
         retryCallback?.apply(args, extra)
     }
 
@@ -135,6 +144,14 @@ private val contentReturningVisitor = object : ErrorWrap.VisitorR<Array<ErrorWra
     override fun visitRNoInternetConnection(v: ErrorWrap.NoInternetConnection): Array<ErrorWrap> = arrayOf(v)
     override fun visitRNoPermission(v: ErrorWrap.NoPermission): Array<ErrorWrap> = arrayOf(v)
     override fun visitRSyntheticContainer(v: ErrorWrap.SyntheticContainer): Array<ErrorWrap> = v.children
+}
+
+class ErrorWrapVisitorAdapter : ErrorWrap.Visitor {
+    override fun visitTextError(v: ErrorWrap.TextError) {}
+    override fun visitDataError(v: ErrorWrap.DataError) {}
+    override fun visitNoInternetConnection(v: ErrorWrap.NoInternetConnection) {}
+    override fun visitNoPermission(v: ErrorWrap.NoPermission) {}
+    override fun visitSyntheticContainer(v: ErrorWrap.SyntheticContainer) {}
 }
 
 fun combineErrorWrap(vararg err: ErrorWrap): ErrorWrap {

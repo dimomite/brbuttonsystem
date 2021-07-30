@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import org.dimomite.brbuttonsystem.data.remotecontrol.RemoteControlRepository
 import org.dimomite.brbuttonsystem.data.system.SettingsRepository
 import org.dimomite.brbuttonsystem.domain.common.DataRepository
 import org.dimomite.brbuttonsystem.domain.models.AppSettingsModel

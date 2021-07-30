@@ -73,6 +73,9 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
+    implementation "com.google.guava:guava:30.1.1-android"
+
+    // Tests' dependencies start here
     testImplementation "junit:junit:$junit_version"
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

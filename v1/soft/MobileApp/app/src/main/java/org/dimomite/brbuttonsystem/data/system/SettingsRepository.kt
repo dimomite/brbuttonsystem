@@ -26,6 +26,7 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
         private const val FIELD_NOTIFICATION_CONTROL_ENABLED = "NotificationControlEnabled"
         private const val FIELD_FLOATING_CONTROL_ENABLED = "FloatingControlEnabled"
         private const val FIELD_WIDGET_CONTROL_ENABLED = "WidgetControlEnabled"
+        private const val FIELD_PIP_CONTROL_ENABLED = "PipControlEnabled"
         private const val FIELD_CONTROL_ORIENTATION = "ControlOrientation"
         private const val FIELD_ERROR_TEXT = "ErrorText"
 
@@ -33,6 +34,7 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
             isNotificationControlEnabled = true,
             isFloatingControlEnabled = false,
             isWidgetControlEnabled = true,
+            isPipControlEnabled = false,
             controlOrientation = ControlOrientation.Default,
         )
     }
@@ -86,6 +88,7 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
                     putBoolean(FIELD_NOTIFICATION_CONTROL_ENABLED, v.data.isNotificationControlEnabled)
                     putBoolean(FIELD_FLOATING_CONTROL_ENABLED, v.data.isFloatingControlEnabled)
                     putBoolean(FIELD_WIDGET_CONTROL_ENABLED, v.data.isWidgetControlEnabled)
+                    putBoolean(FIELD_PIP_CONTROL_ENABLED, v.data.isPipControlEnabled)
                     putString(FIELD_CONTROL_ORIENTATION, v.data.controlOrientation.name)
                 }
 
@@ -122,6 +125,7 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
                     isNotificationControlEnabled = sp.getBoolean(FIELD_NOTIFICATION_CONTROL_ENABLED, false),
                     isFloatingControlEnabled = sp.getBoolean(FIELD_FLOATING_CONTROL_ENABLED, false),
                     isWidgetControlEnabled = sp.getBoolean(FIELD_WIDGET_CONTROL_ENABLED, false),
+                    isPipControlEnabled = sp.getBoolean(FIELD_PIP_CONTROL_ENABLED, false),
                     controlOrientation = ControlOrientation.valueOf(sp.getString(FIELD_CONTROL_ORIENTATION, "") ?: "")
                 )
                 DataContainer.Ok(sett)

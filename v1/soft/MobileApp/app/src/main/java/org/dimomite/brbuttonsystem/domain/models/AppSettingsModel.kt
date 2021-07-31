@@ -8,6 +8,7 @@ data class AppSettingsModel(
     val isNotificationControlEnabled: Boolean,
     val isFloatingControlEnabled: Boolean,
     val isWidgetControlEnabled: Boolean,
+    val isPipControlEnabled: Boolean,
 
     val controlOrientation: ControlOrientation = ControlOrientation.RightHanded,
 ) : Parcelable

@@ -5,6 +5,7 @@
     <string name="Enable_floating_control">Enable floating control</string>
     <string name="Enable_launcher_widget">Enable launcher widget</string>
     <string name="Enable_notifications_control">Enable notifications control</string>
+    <string name="Enable_pip_control">Enable PIP control</string>
 
     <string name="BR_control">BR control</string>
     <string name="Remote_control_from_BR_system">Remote control for BR system</string>

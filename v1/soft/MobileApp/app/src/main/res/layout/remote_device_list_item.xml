@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:gravity="center_vertical"
-            android:text="SN: #@{model.serialNumber}"
+            android:text="@{model.serialNumber}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/remote_device_name_text" />
     </androidx.constraintlayout.widget.ConstraintLayout>

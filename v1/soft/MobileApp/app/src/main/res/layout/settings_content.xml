@@ -60,6 +60,18 @@
             app2:layout_constraintStart_toStartOf="parent"
             app2:layout_constraintTop_toBottomOf="@+id/sett_enable_launcher_widget" />
 
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/sett_enable_pip_control"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/control_element_height"
+            android:layout_marginTop="@dimen/interline_margin"
+            android:checked="@{model.pipControl}"
+            android:onCheckedChanged="@{model.pipUpdate}"
+            android:text="@string/Enable_pip_control"
+            android:visibility="@{model.pipVisible}"
+            app2:layout_constraintEnd_toEndOf="parent"
+            app2:layout_constraintStart_toStartOf="parent"
+            app2:layout_constraintTop_toBottomOf="@+id/sett_enable_notifications_control" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

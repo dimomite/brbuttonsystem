@@ -25,7 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.devices.DeviceActivity" />
+        <activity
+            android:name=".presentation.devices.DeviceActivity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            android:supportsPictureInPicture="true" />
 
         <receiver android:name=".remotecontrol.RemoteControlWidgetProvider">
             <intent-filter>

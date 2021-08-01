@@ -14,9 +14,14 @@ class RemoteControlWidgetProvider : AppWidgetProvider() {
     companion object {
         private const val EMPTY_TEXT = "--"
 
-        private const val ACTION_1 = "org.dimomite.brbuttonsystem.action.ActionRemoteControl1"
-        private const val ACTION_2 = "org.dimomite.brbuttonsystem.action.ActionRemoteControl2"
-        private const val ACTION_3 = "org.dimomite.brbuttonsystem.action.ActionRemoteControl3"
+        const val ACTION_1 = "org.dimomite.brbuttonsystem.action.ActionRemoteControl1"
+        const val ACTION_2 = "org.dimomite.brbuttonsystem.action.ActionRemoteControl2"
+        const val ACTION_3 = "org.dimomite.brbuttonsystem.action.ActionRemoteControl3"
+
+        private fun buildIntent(ctx: Context, action: String) = Intent(ctx, RemoteControlWidgetProvider::class.java).setAction(action)
+
+        // TODO move creation and parsing of remote control intents to central place
+        fun createActionPendingIntent(ctx: Context, action: String): PendingIntent = PendingIntent.getBroadcast(ctx, 1, buildIntent(ctx, action), 0)
     }
 
     override fun onUpdate(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetIds: IntArray?) {
@@ -37,26 +42,22 @@ class RemoteControlWidgetProvider : AppWidgetProvider() {
         topView.setTextViewText(R.id.remote_control_top_button, "Stop")
         topView.setOnClickPendingIntent(
             R.id.remote_control_top_button,
-            PendingIntent.getBroadcast(context, 1, buildIntent(context, ACTION_1), 0)
+            createActionPendingIntent(context, ACTION_1)
         )
 
         topView.setTextViewText(R.id.remote_control_bot_left_button, "20")
         topView.setOnClickPendingIntent(
             R.id.remote_control_bot_left_button,
-            PendingIntent.getBroadcast(context, 1, buildIntent(context, ACTION_2), 0)
+            createActionPendingIntent(context, ACTION_2)
         )
 
         topView.setTextViewText(R.id.remote_control_bot_right_button, "60")
         topView.setOnClickPendingIntent(
             R.id.remote_control_bot_right_button,
-            PendingIntent.getBroadcast(context, 1, buildIntent(context, ACTION_3), 0)
+            createActionPendingIntent(context, ACTION_3)
         )
 
         return topView
-    }
-
-    private fun buildIntent(ctx: Context, action: String): Intent {
-        return Intent(ctx, RemoteControlWidgetProvider::class.java).setAction(action)
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {

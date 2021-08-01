@@ -16,22 +16,36 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/devices_action1_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/base_margin"
-        android:layout_marginTop="@dimen/base_margin"
-        android:text="TopLeft"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginLeft="@dimen/base_margin"
+        android:layout_marginBottom="@dimen/base_margin"
+        android:text="@string/_button_text_20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/devices_action2_btn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/devices_action2_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/base_margin"
-        android:layout_marginBottom="@dimen/base_margin"
-        android:text="BotRight"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:text="@string/_button_text_60"
+        app:layout_constraintBottom_toBottomOf="@+id/devices_action1_btn"
+        app:layout_constraintEnd_toStartOf="@+id/devices_action3_btn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/devices_action1_btn" />
+
+    <Button
+        android:id="@+id/devices_action3_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/base_margin"
+        android:text="@string/_button_text_stop"
+        app:layout_constraintBottom_toBottomOf="@+id/devices_action2_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/devices_action2_btn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

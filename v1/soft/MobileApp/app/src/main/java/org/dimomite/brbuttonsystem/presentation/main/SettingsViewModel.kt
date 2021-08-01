@@ -25,6 +25,8 @@ class SettingsViewModel @Inject constructor(
     val launcherWidget: LiveData<Boolean>
     val notificationControl: LiveData<Boolean>
     val pipControl: LiveData<Boolean>
+
+    // TODO need to check Activity.maxNumPictureInPictureActions as well
     val pipVisible: Int = if (conf.pictureInPictureAvailable) View.VISIBLE else View.GONE
 
     init {

@@ -1,7 +1,12 @@
 package org.dimomite.brbuttonsystem.presentation.hooks
 
+import android.Manifest
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
+import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -76,6 +81,7 @@ class DataHook {
 
     private class HookImpl(val name: String, private val act: AppCompatActivity) : LifecycleObserver {
         private val permissionRequester = act.registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { handlePermissionRequestResult(it) }
+        private val resultRequester = act.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { handleActivityResult(it) }
         private val permissionCalls: Multimap<String, ErrorWrap.NoPermission> = ArrayListMultimap.create()
 
         @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
@@ -119,8 +125,24 @@ class DataHook {
                 Timber.i("DBG: DataHook: processPermissionError(): perm: \"$perm\"")
             }
 
-            permissionCalls.put(perm, e)
-            permissionRequester.launch(arrayOf(perm))
+//            if (!Manifest.permission.SYSTEM_ALERT_WINDOW.equals(perm)) {
+                permissionCalls.put(perm, e)
+                permissionRequester.launch(arrayOf(perm))
+//            } else {
+//                handleSystemAlertWindowPermission(e)
+//            }
+        }
+
+        private fun handleSystemAlertWindowPermission(e: ErrorWrap.NoPermission) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                val uri = Uri.parse("package: ${act.packageName}")
+                val permRequest = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, uri)
+                resultRequester.launch(permRequest)
+            } else {
+                val perm = Manifest.permission.SYSTEM_ALERT_WINDOW
+                permissionCalls.put(perm, e)
+                permissionRequester.launch(arrayOf(perm))
+            }
         }
 
         private fun handlePermissionRequestResult(res: Map<String, Boolean>) {
@@ -133,6 +155,10 @@ class DataHook {
                     }
                 }
             }
+        }
+
+        private fun handleActivityResult(r: ActivityResult) {
+            Timber.i("DBG: handleActivityResult(): result: $r")
         }
     }
 

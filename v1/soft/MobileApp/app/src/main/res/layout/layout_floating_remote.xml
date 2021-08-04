@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/remote_control_layout"
+        android:layout_width="@dimen/floating_window_width"
+        android:layout_height="@dimen/floating_window_height"
+        android:background="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_hor"
+        app:layout_constraintTop_toTopOf="@+id/guideline_hor">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_hor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <Button
+            android:id="@+id/remote_control_bot_left_button"
+            android:layout_width="@dimen/floating_button_width"
+            android:layout_height="wrap_content"
+            android:text="@string/_button_text_20"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vert"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline_hor" />
+
+        <Button
+            android:id="@+id/remote_control_bot_right_button"
+            android:layout_width="@dimen/floating_button_width"
+            android:layout_height="wrap_content"
+            android:text="@string/_button_text_60"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vert"
+            app:layout_constraintTop_toTopOf="@+id/guideline_hor" />
+
+        <Button
+            android:id="@+id/remote_control_top_button"
+            android:layout_width="@dimen/floating_button_width"
+            android:layout_height="wrap_content"
+            android:text="@string/_button_text_stop"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_hor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vert"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/remote_control_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_hor"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vert"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

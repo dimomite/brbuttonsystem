@@ -18,7 +18,7 @@ class RemoteControlWidgetProvider : AppWidgetProvider() {
         const val ACTION_2 = "org.dimomite.brbuttonsystem.action.ActionRemoteControl2"
         const val ACTION_3 = "org.dimomite.brbuttonsystem.action.ActionRemoteControl3"
 
-        private fun buildIntent(ctx: Context, action: String) = Intent(ctx, RemoteControlWidgetProvider::class.java).setAction(action)
+        fun buildIntent(ctx: Context, action: String) = Intent(ctx, RemoteControlWidgetProvider::class.java).setAction(action)
 
         // TODO move creation and parsing of remote control intents to central place
         fun createActionPendingIntent(ctx: Context, action: String): PendingIntent = PendingIntent.getBroadcast(ctx, 1, buildIntent(ctx, action), 0)

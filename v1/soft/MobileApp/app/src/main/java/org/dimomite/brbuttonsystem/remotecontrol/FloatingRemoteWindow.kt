@@ -1,6 +1,8 @@
 package org.dimomite.brbuttonsystem.remotecontrol
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.graphics.PixelFormat
 import android.os.Build
 import android.provider.Settings
@@ -25,7 +27,7 @@ class FloatingRemoteWindow(private val ctx: Context) {
     private var startTouchY: Float = 0.0f
 
     init {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             canDraw = Settings.canDrawOverlays(ctx)
             Timber.i("DBG: FloatingRemoteWindow: checked canDraw: $canDraw")
         } else {
@@ -34,6 +36,7 @@ class FloatingRemoteWindow(private val ctx: Context) {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     fun initFloatingWindow() {
         if (view != null) return
 
@@ -86,7 +89,16 @@ class FloatingRemoteWindow(private val ctx: Context) {
             }
         }
 
+        binding.remoteControlTopButton.setOnClickListener { handleButtonClick(RemoteControlWidgetProvider.ACTION_1) }
+        binding.remoteControlBotLeftButton.setOnClickListener { handleButtonClick(RemoteControlWidgetProvider.ACTION_2) }
+        binding.remoteControlBotRightButton.setOnClickListener { handleButtonClick(RemoteControlWidgetProvider.ACTION_3) }
+
         wm.addView(view, params)
+    }
+
+    private fun handleButtonClick(action: String) {
+        val intent = RemoteControlWidgetProvider.buildIntent(ctx, action)
+        ctx.sendOrderedBroadcast(intent, null)
     }
 
     fun destroyFloatingWindow() {

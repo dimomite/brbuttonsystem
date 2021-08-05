@@ -27,7 +27,11 @@
         android:id="@+id/gamesFragment"
         android:name="org.dimomite.brbuttonsystem.presentation.main.GamesFragment"
         android:label="GamesFragment"
-        tools:layout="@layout/fragment_games" />
+        tools:layout="@layout/fragment_games">
+        <action
+            android:id="@+id/action_gamesFragment_to_gamesActivity"
+            app:destination="@id/gamesActivity" />
+    </fragment>
     <fragment
         android:id="@+id/devicesFragment"
         android:name="org.dimomite.brbuttonsystem.presentation.devices.DevicesFragment"
@@ -40,7 +44,8 @@
     <activity
         android:id="@+id/deviceActivity"
         android:name="org.dimomite.brbuttonsystem.presentation.devices.DeviceActivity"
-        android:label="DeviceActivity" />
+        android:label="DeviceActivity"
+        tools:layout="@layout/activity_device" />
     <fragment
         android:id="@+id/settingsFragment"
         android:name="org.dimomite.brbuttonsystem.presentation.main.SettingsFragment"
@@ -51,4 +56,9 @@
         android:name="org.dimomite.brbuttonsystem.presentation.main.AboutFragment"
         android:label="AboutFragment"
         tools:layout="@layout/fragment_about" />
+    <activity
+        android:id="@+id/gamesActivity"
+        android:name="org.dimomite.brbuttonsystem.presentation.games.GamesActivity"
+        android:label="GamesActivity"
+        tools:layout="@layout/activity_games" />
 </navigation>

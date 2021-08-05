@@ -91,9 +91,9 @@ class DeviceActivity : AppCompatActivity() {
         super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig)
 
         val visibility = if (isInPictureInPictureMode) View.GONE else View.VISIBLE
-        findViewById<View>(R.id.devices_action1_btn).visibility = visibility
-        findViewById<View>(R.id.devices_action2_btn).visibility = visibility
-        findViewById<View>(R.id.devices_action3_btn).visibility = visibility
+        findViewById<View>(R.id.games_action1_btn).visibility = visibility
+        findViewById<View>(R.id.games_action2_btn).visibility = visibility
+        findViewById<View>(R.id.games_action3_btn).visibility = visibility
     }
 
     override fun onDestroy() {

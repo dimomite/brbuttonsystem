@@ -4,6 +4,10 @@ import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.functions.Function
 
 interface DataModifier<D> {
+
+    /**
+     * Override to execute data update.
+     */
     fun modifyData(patch: Function<D, D>): Single<Unit>
 }
 

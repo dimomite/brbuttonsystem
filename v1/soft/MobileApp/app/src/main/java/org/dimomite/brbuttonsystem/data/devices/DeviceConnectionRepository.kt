@@ -59,22 +59,22 @@ class DeviceConnectionRepository @Inject constructor() {
             })
     }
 
-    private val usbEnabledModifier = FieldModifier<DevicesList, Boolean>(
-        fieldExtractor = { it.usbDevicesReachable.exec(extractBoolOrFalse) },
-        modCreator = { dl, enableUsb -> dl.copy(usbDevicesReachable = DataContainer.Ok(enableUsb)) },
-    )
-
-    private val btEnabledModifier = FieldModifier<DevicesList, Boolean>(
-        fieldExtractor = { it.bluetoothDevicesReachable.exec(extractBoolOrFalse) },
-        modCreator = { dl, enableBt -> dl.copy(bluetoothDevicesReachable = DataContainer.Ok(enableBt)) }
-    )
-
-    fun changeBluetoothUseEnabled(btEnabled: Boolean) {
-        devicesList.onNext(btEnabledModifier.update(btEnabled, devicesList.value))
-    }
-
-    fun changeUsbUseEnabled(usbEnabled: Boolean) {
-        devicesList.onNext(usbEnabledModifier.update(usbEnabled, devicesList.value))
-    }
+//    private val usbEnabledModifier = FieldModifier<DevicesList, Boolean>(
+//        fieldExtractor = { it.usbDevicesReachable.exec(extractBoolOrFalse) },
+//        modCreator = { dl, enableUsb -> dl.copy(usbDevicesReachable = DataContainer.Ok(enableUsb)) },
+//    )
+//
+//    private val btEnabledModifier = FieldModifier<DevicesList, Boolean>(
+//        fieldExtractor = { it.bluetoothDevicesReachable.exec(extractBoolOrFalse) },
+//        modCreator = { dl, enableBt -> dl.copy(bluetoothDevicesReachable = DataContainer.Ok(enableBt)) }
+//    )
+//
+//    fun changeBluetoothUseEnabled(btEnabled: Boolean) {
+//        devicesList.onNext(btEnabledModifier.update(btEnabled, devicesList.value))
+//    }
+//
+//    fun changeUsbUseEnabled(usbEnabled: Boolean) {
+//        devicesList.onNext(usbEnabledModifier.update(usbEnabled, devicesList.value))
+//    }
 
 }

@@ -22,7 +22,9 @@ sealed class DeviceDescription(val type: DeviceType, val history: DeviceHistory)
         override fun <R> exec(v: VisitorR<R>): R = v.visitUsb(this)
     }
 
-    class BtDeviceDescription(history: DeviceHistory) : DeviceDescription(DeviceType.Bluetooth, history) {
+    class BtDeviceDescription(val name: String, history: DeviceHistory) : DeviceDescription(DeviceType.Bluetooth, history) {
+        override fun toString(): String = "BtDeviceDescription: name: \"$name\""
+
         override fun <R> exec(v: VisitorR<R>): R = v.visitBluetooth(this)
     }
 

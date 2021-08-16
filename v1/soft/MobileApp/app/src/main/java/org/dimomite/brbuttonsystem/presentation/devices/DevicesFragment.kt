@@ -7,13 +7,24 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import org.dimomite.brbuttonsystem.R
 import org.dimomite.brbuttonsystem.databinding.FragmentDevicesBinding
 import org.dimomite.brbuttonsystem.databinding.RemoteDeviceListItemBinding
+import org.dimomite.brbuttonsystem.domain.common.DataContainer
+import org.dimomite.brbuttonsystem.domain.models.devices.DevicesList
+import org.dimomite.brbuttonsystem.domain.usecases.devices.GetAllDevicesUseCase
 import org.dimomite.brbuttonsystem.presentation.connection.RemoteDeviceUiModel
 import timber.log.Timber
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class DevicesFragment : Fragment() {
+
+    @Inject
+    lateinit var getAllDevicesUseCase: GetAllDevicesUseCase // FIXME move to view model
+    private val subs = CompositeDisposable()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val bindings = FragmentDevicesBinding.inflate(inflater, container, false)
@@ -21,6 +32,27 @@ class DevicesFragment : Fragment() {
         bindings.devicesList.adapter = adapter
 
         return bindings.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        subs.add(getAllDevicesUseCase.outFlow().subscribe({
+            val result: String = it.exec(object : DataContainer.Visitor<DevicesList, String> {
+                override fun visitOk(v: DataContainer.Ok<DevicesList>): String = v.data.toString()
+                override fun visitPending(v: DataContainer.Pending<DevicesList>): String = v.toString()
+                override fun visitError(v: DataContainer.Error<DevicesList>): String = v.toString()
+            })
+            Timber.d("DBG: all devices: $result")
+        }, {
+            Timber.w("DBG: could not get all devices data flow")
+        }))
+    }
+
+    override fun onStop() {
+        subs.clear()
+
+        super.onStop()
     }
 
     private data class DevicesViewHolder(val bindings: RemoteDeviceListItemBinding) : RecyclerView.ViewHolder(bindings.root)

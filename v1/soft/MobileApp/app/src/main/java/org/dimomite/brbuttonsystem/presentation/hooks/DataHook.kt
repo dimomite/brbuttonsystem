@@ -54,6 +54,7 @@ class DataHook {
         override fun visitTextError(v: ErrorWrap.TextError) {}
         override fun visitDataError(v: ErrorWrap.DataError) {}
         override fun visitNoInternetConnection(v: ErrorWrap.NoInternetConnection) {}
+        override fun visitNotAvailable(v: ErrorWrap.NotAvailable) {}
 
         override fun visitNoPermission(v: ErrorWrap.NoPermission) {
             Timber.d("DBG: DataHook: NoPermission: $v")
@@ -75,6 +76,7 @@ class DataHook {
         override fun visitRTextError(v: ErrorWrap.TextError): ErrorWrap.NoPermission? = null
         override fun visitRDataError(v: ErrorWrap.DataError): ErrorWrap.NoPermission? = null
         override fun visitRNoInternetConnection(v: ErrorWrap.NoInternetConnection): ErrorWrap.NoPermission? = null
+        override fun visitRNotAvailable(v: ErrorWrap.NotAvailable): ErrorWrap.NoPermission? = null
         override fun visitRNoPermission(v: ErrorWrap.NoPermission): ErrorWrap.NoPermission? = v
         override fun visitRSyntheticContainer(v: ErrorWrap.SyntheticContainer): ErrorWrap.NoPermission? = null
     }

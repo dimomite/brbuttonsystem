@@ -4,22 +4,22 @@ import android.os.Bundle
 import io.reactivex.rxjava3.functions.BiFunction
 import timber.log.Timber
 import java.util.*
-import java.util.concurrent.atomic.AtomicLong
+import java.util.concurrent.atomic.AtomicInteger
 
 typealias ErrorRetryCallback = BiFunction<Bundle?, Bundle, Unit>
 
 sealed class ErrorWrap(
-    val id: Long,
+    val id: Int,
     val desc: String,
     var retryCallback: ErrorRetryCallback? = null, // excluded from equals() / hashcode()
     var args: Bundle? = null,
 ) {
     companion object {
-        val UNDEFINED_ID: Long = -1L // temp solution
+        val UNDEFINED_ID: Int = -1 // temp solution
 
-        private val ids = AtomicLong(0L)
+        private val ids = AtomicInteger(0)
 
-        fun nextId(): Long = ids.getAndIncrement()
+        fun nextId(): Int = ids.getAndIncrement()
     }
 
     // no return type here because will be hard to provide default value
@@ -28,6 +28,7 @@ sealed class ErrorWrap(
         fun visitDataError(v: DataError)
         fun visitNoInternetConnection(v: NoInternetConnection)
         fun visitNoPermission(v: NoPermission)
+        fun visitNotAvailable(v: NotAvailable)
 
         fun visitSyntheticContainer(v: SyntheticContainer)
     }
@@ -37,6 +38,8 @@ sealed class ErrorWrap(
         fun visitRDataError(v: DataError): R
         fun visitRNoInternetConnection(v: NoInternetConnection): R
         fun visitRNoPermission(v: NoPermission): R
+        fun visitRNotAvailable(v: NotAvailable): R
+
         fun visitRSyntheticContainer(v: SyntheticContainer): R
     }
 
@@ -46,7 +49,7 @@ sealed class ErrorWrap(
 
     internal fun baseToString(): String = "id: $id, desc: \"$desc\", args: {$args}"
 
-    class TextError(id: Long, desc: String) : ErrorWrap(id, desc) {
+    class TextError(id: Int, desc: String) : ErrorWrap(id, desc) {
         override fun toString(): String = "Text: " + baseToString()
 
         override fun exec(v: Visitor) {
@@ -56,7 +59,7 @@ sealed class ErrorWrap(
         override fun <R> execR(v: VisitorR<R>): R = v.visitRTextError(this)
     }
 
-    class DataError(id: Long, desc: String) : ErrorWrap(id, desc) {
+    class DataError(id: Int, desc: String) : ErrorWrap(id, desc) {
         override fun toString(): String = "Data: " + baseToString()
 
         override fun exec(v: Visitor) {
@@ -66,7 +69,7 @@ sealed class ErrorWrap(
         override fun <R> execR(v: VisitorR<R>): R = v.visitRDataError(this)
     }
 
-    class NoInternetConnection(id: Long, desc: String) : ErrorWrap(id, desc) {
+    class NoInternetConnection(desc: String) : ErrorWrap(nextId(), desc) {
         override fun toString(): String = "NoInternet: " + baseToString()
 
         override fun exec(v: Visitor) {
@@ -76,7 +79,7 @@ sealed class ErrorWrap(
         override fun <R> execR(v: VisitorR<R>): R = v.visitRNoInternetConnection(this)
     }
 
-    class NoPermission(id: Long, desc: String) : ErrorWrap(id, desc) {
+    class NoPermission(desc: String) : ErrorWrap(nextId(), desc) {
         override fun toString(): String = "NoPermission: " + baseToString()
 
         override fun exec(v: Visitor) {
@@ -84,6 +87,16 @@ sealed class ErrorWrap(
         }
 
         override fun <R> execR(v: VisitorR<R>): R = v.visitRNoPermission(this)
+    }
+
+    class NotAvailable(desc: String) : ErrorWrap(nextId(), desc) {
+        override fun toString(): String = "NotAvailable: " + baseToString()
+
+        override fun exec(v: Visitor) {
+            v.visitNotAvailable(this)
+        }
+
+        override fun <R> execR(v: VisitorR<R>): R = v.visitRNotAvailable(this)
     }
 
     class SyntheticContainer internal constructor(val children: Array<ErrorWrap>) : ErrorWrap(nextId(), "SyntheticContainer") {
@@ -114,6 +127,7 @@ sealed class ErrorWrap(
             override fun visitRDataError(v: DataError): Boolean = true
             override fun visitRNoInternetConnection(v: NoInternetConnection): Boolean = true
             override fun visitRNoPermission(v: NoPermission): Boolean = true
+            override fun visitRNotAvailable(v: NotAvailable): Boolean = true
 
             override fun visitRSyntheticContainer(v: SyntheticContainer): Boolean = v.children.contentEquals((other as SyntheticContainer).children)
         })
@@ -135,6 +149,8 @@ private val hashReturningVisitor = object : ErrorWrap.VisitorR<Int> {
     override fun visitRDataError(v: ErrorWrap.DataError): Int = v.baseHash()
     override fun visitRNoInternetConnection(v: ErrorWrap.NoInternetConnection): Int = v.baseHash()
     override fun visitRNoPermission(v: ErrorWrap.NoPermission): Int = v.baseHash()
+    override fun visitRNotAvailable(v: ErrorWrap.NotAvailable): Int = v.baseHash()
+
     override fun visitRSyntheticContainer(v: ErrorWrap.SyntheticContainer): Int = 31 * v.baseHash() + v.children.contentHashCode()
 }
 
@@ -143,6 +159,8 @@ private val contentReturningVisitor = object : ErrorWrap.VisitorR<Array<ErrorWra
     override fun visitRDataError(v: ErrorWrap.DataError): Array<ErrorWrap> = arrayOf(v)
     override fun visitRNoInternetConnection(v: ErrorWrap.NoInternetConnection): Array<ErrorWrap> = arrayOf(v)
     override fun visitRNoPermission(v: ErrorWrap.NoPermission): Array<ErrorWrap> = arrayOf(v)
+    override fun visitRNotAvailable(v: ErrorWrap.NotAvailable): Array<ErrorWrap> = arrayOf(v)
+
     override fun visitRSyntheticContainer(v: ErrorWrap.SyntheticContainer): Array<ErrorWrap> = v.children
 }
 
@@ -151,6 +169,7 @@ class ErrorWrapVisitorAdapter : ErrorWrap.Visitor {
     override fun visitDataError(v: ErrorWrap.DataError) {}
     override fun visitNoInternetConnection(v: ErrorWrap.NoInternetConnection) {}
     override fun visitNoPermission(v: ErrorWrap.NoPermission) {}
+    override fun visitNotAvailable(v: ErrorWrap.NotAvailable) {}
     override fun visitSyntheticContainer(v: ErrorWrap.SyntheticContainer) {}
 }
 

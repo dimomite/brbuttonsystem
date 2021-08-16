@@ -1,5 +1,7 @@
 package org.dimomite.brbuttonsystem.domain.common
 
+import java.util.concurrent.atomic.AtomicLong
+
 
 sealed class PendingProgress(internal val type: Long) {
     companion object {
@@ -7,7 +9,12 @@ sealed class PendingProgress(internal val type: Long) {
         const val TYPE_FLAGGED = 1L
         const val TYPE_TO_MAX = 2L
 
+        const val INITIAL_COMPOSITE_TYPE = 1000L
+
         internal fun checkType(type: Long): Long = if (type > TYPE_TO_MAX) type else throw IllegalArgumentException("Type should be greater than $TYPE_TO_MAX but was: $type")
+
+        private val ids = AtomicLong(INITIAL_COMPOSITE_TYPE)
+        fun nextId(): Long = ids.getAndIncrement()
 
         /**
          * Shortcut for InProgress.instance()
@@ -121,7 +128,7 @@ private val contentReturningVisitor = object : PendingProgress.Visitor<Array<Pen
  * @param unique specifies whether result should contain only unique values (equals() == false)
  *               When value is true order in result is not guaranteed to match input.
  */
-fun combinePendingProgress(resultType: Long, vararg progress: PendingProgress, unique: Boolean = true): PendingProgress {
+fun combinePendingProgress(resultType: Long, progress: Iterable<PendingProgress>, unique: Boolean = true): PendingProgress.SyntheticComposite {
     val checkedId = PendingProgress.checkType(resultType) // quick check before big work
 
     val children: Array<PendingProgress> = if (unique) {
@@ -140,3 +147,8 @@ fun combinePendingProgress(resultType: Long, vararg progress: PendingProgress, u
 
     return PendingProgress.SyntheticComposite(checkedId, children)
 }
+
+fun combinePendingProgress(resultType: Long, vararg progress: PendingProgress, unique: Boolean = true): PendingProgress.SyntheticComposite {
+    return combinePendingProgress(resultType, progress.toList(), unique)
+}
+

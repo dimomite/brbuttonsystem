@@ -173,7 +173,7 @@ class ErrorWrapVisitorAdapter : ErrorWrap.Visitor {
     override fun visitSyntheticContainer(v: ErrorWrap.SyntheticContainer) {}
 }
 
-fun combineErrorWrap(vararg err: ErrorWrap): ErrorWrap {
+fun combineErrorWrap(err: Iterable<ErrorWrap>): ErrorWrap.SyntheticContainer {
     val content = LinkedList<ErrorWrap>()
     for (e in err) {
         content.addAll(e.execR(contentReturningVisitor))
@@ -181,3 +181,5 @@ fun combineErrorWrap(vararg err: ErrorWrap): ErrorWrap {
 
     return ErrorWrap.SyntheticContainer(content.toTypedArray())
 }
+
+fun combineErrorWrap(vararg err: ErrorWrap): ErrorWrap.SyntheticContainer = combineErrorWrap(err.toList())

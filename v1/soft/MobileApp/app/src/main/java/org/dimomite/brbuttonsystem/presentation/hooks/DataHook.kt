@@ -14,7 +14,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.google.common.collect.ArrayListMultimap
 import com.google.common.collect.Multimap
-import org.dimomite.brbuttonsystem.domain.common.DataContainer
+import org.dimomite.brbuttonsystem.domain.channels.*
 import org.dimomite.brbuttonsystem.domain.common.ErrorWrap
 import timber.log.Timber
 
@@ -31,45 +31,94 @@ class DataHook {
         }
     }
 
-    private inner class LocalVisitor<D, R>(private val delegate: DataContainer.Visitor<D, R>) : DataContainer.Visitor<D, R> {
-        override fun visitOk(v: DataContainer.Ok<D>): R {
-            return delegate.visitOk(v)
+    private inner class LocalDataChannelVisitor<D>(private val delegate: DataChannel.Visitor<D>) : DataChannel.Visitor<D> {
+        override fun visitDataWrap(v: DataWrap<D>) {
+            delegate.visitDataWrap(v)
         }
 
-        override fun visitPending(v: DataContainer.Pending<D>): R {
-            return delegate.visitPending(v)
+        override fun visitProgressWrap(v: ProgressWrap) {
+            delegate.visitProgressWrap(v)
         }
 
-        override fun visitError(v: DataContainer.Error<D>): R {
-            v.er.exec(pendingErrorsVisitor)
-            return delegate.visitError(v)
-        }
-    }
-
-    fun <D, R> wrapVisitor(v: DataContainer.Visitor<D, R>): DataContainer.Visitor<D, R> {
-        return LocalVisitor<D, R>(v)
-    }
-
-    private val pendingErrorsVisitor = object : ErrorWrap.Visitor {
-        override fun visitTextError(v: ErrorWrap.TextError) {}
-        override fun visitDataError(v: ErrorWrap.DataError) {}
-        override fun visitNoInternetConnection(v: ErrorWrap.NoInternetConnection) {}
-        override fun visitNotAvailable(v: ErrorWrap.NotAvailable) {}
-
-        override fun visitNoPermission(v: ErrorWrap.NoPermission) {
-            Timber.d("DBG: DataHook: NoPermission: $v")
-            hook.processPermissionError(v)
-        }
-
-        override fun visitSyntheticContainer(v: ErrorWrap.SyntheticContainer) {
-            Timber.d("DBG: DataHook: SyntheticContainer: ${v.children.contentToString()}")
-            for (er in v.children) {
-                val permError = er.execR(noPermissionExtractingVisitor)
-                if (permError != null) {
-                    hook.processPermissionError(permError)
-                }
+        override fun visitUnhandledState(v: UnhandledState<*>) {
+            if (!hook.processUnhandledState(v)) {
+                delegate.visitUnhandledState(v)
             }
         }
+    }
+
+    private inner class LocalChannelDataHandler<D, R>(private val delegate: ChannelDataHandler<D, R>) : ChannelDataHandler<D, R> {
+        override fun onData(data: D): R = delegate.onData(data)
+        override fun onNothing(): R = delegate.onNothing()
+    }
+
+    private inner class LocalProgressWrapVisitor(private val delegate: ProgressWrap.Visitor) : ProgressWrap.Visitor {
+        override fun visitReady(v: ProgressWrap.Ready) {
+            delegate.visitReady(v)
+        }
+
+        override fun visitInProgress(v: ProgressWrap.InProgress) {
+            delegate.visitInProgress(v)
+        }
+
+        override fun visitFlagProgress(v: ProgressWrap.FlagProgress) {
+            delegate.visitFlagProgress(v)
+        }
+
+        override fun visitToValueProgress(v: ProgressWrap.ToValueProgress) {
+            delegate.visitToValueProgress(v)
+        }
+
+        override fun visitComposite(v: ProgressWrap.Composite) {
+            delegate.visitComposite(v)
+        }
+    }
+
+    private inner class LocalProgressWrapVisitorR<R>(private val delegate: ProgressWrap.VisitorR<R>) : ProgressWrap.VisitorR<R> {
+        override fun visitReady(v: ProgressWrap.Ready): R = delegate.visitReady(v)
+        override fun visitInProgress(v: ProgressWrap.InProgress): R = delegate.visitInProgress(v)
+        override fun visitFlagProgress(v: ProgressWrap.FlagProgress): R = delegate.visitFlagProgress(v)
+        override fun visitToValueProgress(v: ProgressWrap.ToValueProgress): R = delegate.visitToValueProgress(v)
+        override fun visitComposite(v: ProgressWrap.Composite): R = delegate.visitComposite(v)
+    }
+
+    private inner class LocalUnhandledStateVisitor<E>(private val delegate: UnhandledState.Visitor<E>) : UnhandledState.Visitor<E> {
+        override fun visitNotExist(v: UnhandledState.NotExist<E>) {
+            delegate.visitNotExist(v)
+        }
+
+        override fun visitNotAvailable(v: UnhandledState.NotAvailable<E>) {
+            delegate.visitNotAvailable(v)
+        }
+
+        override fun visitNotAllowed(v: UnhandledState.NotAllowed<E>) {
+            delegate.visitNotAllowed(v)
+        }
+
+        override fun visitDataError(v: UnhandledState.DataError<E>) {
+            delegate.visitDataError(v)
+        }
+    }
+
+    fun <D> wrapVisitor(v: DataChannel.Visitor<D>): DataChannel.Visitor<D> {
+        return LocalDataChannelVisitor<D>(v)
+    }
+
+    // name is not "wrapChannelDataHandler" for consistency and easier use
+    fun <D, R> wrapVisitor(dh: ChannelDataHandler<D, R>): ChannelDataHandler<D, R> {
+        return LocalChannelDataHandler(dh)
+    }
+
+    fun wrapVisitor(v: ProgressWrap.Visitor): ProgressWrap.Visitor {
+        return LocalProgressWrapVisitor(v)
+    }
+
+    fun <R> wrapVisitor(v: ProgressWrap.VisitorR<R>): ProgressWrap.VisitorR<R> {
+        return LocalProgressWrapVisitorR<R>(v)
+    }
+
+    fun <D> wrapVisitor(v: UnhandledState.Visitor<D>): UnhandledState.Visitor<D> {
+        return LocalUnhandledStateVisitor<D>(v)
     }
 
     private val noPermissionExtractingVisitor = object : ErrorWrap.VisitorR<ErrorWrap.NoPermission?> {
@@ -116,24 +165,31 @@ class DataHook {
             Timber.d("actionOnDestroy(): name: \"$name\"")
         }
 
-        fun processPermissionError(e: ErrorWrap.NoPermission) {
-            Timber.i("DBG: DataHook: processPermissionError(): $e")
-            val perm = extractPermissionName(e) ?: return // TODO log or throw
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                val shouldShowRationale = act.shouldShowRequestPermissionRationale(perm)
-                Timber.i("DBG: DataHook: processPermissionError(): perm: \"$perm\", need rationale: $shouldShowRationale")
-                // TODO show rationale and wait until user closes it
-            } else {
-                Timber.i("DBG: DataHook: processPermissionError(): perm: \"$perm\"")
-            }
-
-//            if (!Manifest.permission.SYSTEM_ALERT_WINDOW.equals(perm)) {
-                permissionCalls.put(perm, e)
-                permissionRequester.launch(arrayOf(perm))
-//            } else {
-//                handleSystemAlertWindowPermission(e)
-//            }
+        /**
+         * @return true when unhandled state was fully processed and it can be removed from processing by next layer(s).
+         */
+        fun processUnhandledState(us: UnhandledState<*>): Boolean {
+            return false
         }
+
+//        fun processPermissionError(e: UnhandledState.NotAllowed<*>) {
+//            Timber.i("DBG: DataHook: processPermissionError(): $e")
+//            val perm = extractPermissionName(e) ?: return // TODO log or throw
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                val shouldShowRationale = act.shouldShowRequestPermissionRationale(perm)
+//                Timber.i("DBG: DataHook: processPermissionError(): perm: \"$perm\", need rationale: $shouldShowRationale")
+//                // TODO show rationale and wait until user closes it
+//            } else {
+//                Timber.i("DBG: DataHook: processPermissionError(): perm: \"$perm\"")
+//            }
+//
+////            if (!Manifest.permission.SYSTEM_ALERT_WINDOW.equals(perm)) {
+//            permissionCalls.put(perm, e)
+//            permissionRequester.launch(arrayOf(perm))
+////            } else {
+////                handleSystemAlertWindowPermission(e)
+////            }
+//        }
 
         private fun handleSystemAlertWindowPermission(e: ErrorWrap.NoPermission) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

@@ -8,8 +8,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import org.dimomite.brbuttonsystem.R
 import org.dimomite.brbuttonsystem.data.remotecontrol.RemoteControlRepository
-import org.dimomite.brbuttonsystem.domain.common.DataContainer
-import org.dimomite.brbuttonsystem.domain.models.RemoteControlModel
 import org.dimomite.brbuttonsystem.presentation.hooks.DataHook
 import timber.log.Timber
 import javax.inject.Inject
@@ -34,19 +32,19 @@ class StartActivity : AppCompatActivity() {
         hook.registerInActivity(this)
 
         subs.add(remoteRepo.remoteControlEvents().outFlow().subscribe({ events ->
-            events.exec(hook.wrapVisitor(object : DataContainer.Visitor<RemoteControlModel, Unit> {
-                override fun visitOk(v: DataContainer.Ok<RemoteControlModel>) {
-                    Timber.i("DBG: StartActivity: remoteControlEvents(): Ok: data: ${v.data}")
-                }
-
-                override fun visitPending(v: DataContainer.Pending<RemoteControlModel>) {
-                    Timber.i("DBG: StartActivity: remoteControlEvents(): Pending: progress: ${v.progress}")
-                }
-
-                override fun visitError(v: DataContainer.Error<RemoteControlModel>) {
-                    Timber.w("DBG: StartActivity: remoteControlEvents(): Error: er: ${v.er}")
-                }
-            }))
+//            events.exec(hook.wrapVisitor(object : DataContainer.Visitor<RemoteControlModel, Unit> {
+//                override fun visitOk(v: DataContainer.Ok<RemoteControlModel>) {
+//                    Timber.i("DBG: StartActivity: remoteControlEvents(): Ok: data: ${v.data}")
+//                }
+//
+//                override fun visitPending(v: DataContainer.Pending<RemoteControlModel>) {
+//                    Timber.i("DBG: StartActivity: remoteControlEvents(): Pending: progress: ${v.progress}")
+//                }
+//
+//                override fun visitError(v: DataContainer.Error<RemoteControlModel>) {
+//                    Timber.w("DBG: StartActivity: remoteControlEvents(): Error: er: ${v.er}")
+//                }
+//            }))
         }, {
             Timber.w("DBG: StartActivity: remoteControlEvents(): error in data flow: $it")
         }))

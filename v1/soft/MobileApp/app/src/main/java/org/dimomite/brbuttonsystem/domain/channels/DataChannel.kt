@@ -10,6 +10,62 @@ class DataChannel<D>(
     val progress: ProgressWrap = ProgressWrap.Ready.ins(),
     val unhandledStates: Array<UnhandledState<*>> = emptyArray(),
 ) {
+    interface Visitor<D> {
+        fun visitDataWrap(v: DataWrap<D>)
+        fun visitProgressWrap(v: ProgressWrap)
+        fun visitUnhandledState(v: UnhandledState<*>)
+    }
+
+    override fun toString(): String = "DataChannel: data: {$data}, progress: {$progress}, unhandled states: {${unhandledStates.contentToString()}}"
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as DataChannel<*>
+
+        if (data != other.data) return false
+        if (progress != other.progress) return false
+        if (!unhandledStates.contentEquals(other.unhandledStates)) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = data.hashCode()
+        result = 31 * result + progress.hashCode()
+        result = 31 * result + unhandledStates.contentHashCode()
+        return result
+    }
+
+    fun exec(v: Visitor<D>) {
+        v.visitDataWrap(data)
+        v.visitProgressWrap(progress)
+        for (us in unhandledStates) {
+            v.visitUnhandledState(us)
+        }
+    }
+
+    fun <R> execOnData(dh: ChannelDataHandler<D, R>): R = data.execR(dh)
+
+    fun <R> execROnProgress(v: ProgressWrap.VisitorR<R>): R = progress.execR(v)
+
+    fun execOnProgress(v: ProgressWrap.Visitor) {
+        progress.exec(v)
+    }
+
+    fun <E> execUnhandledStateByClass(errorClass: Class<E>, v: UnhandledState.Visitor<E>) {
+        for (us: UnhandledState<E> in getUnhandledStatesByClass(errorClass)) {
+            us.exec(v)
+        }
+    }
+
+    fun <E> execUnhandledStatesByClassAndCategory(errorClass: Class<E>, category: Class<out UnhandledState<*>>, v: UnhandledState.Visitor<E>) {
+        for (us: UnhandledState<E> in getUnhandledStateByClassAndCategory(errorClass, category)) {
+            us.exec(v)
+        }
+    }
+
     fun <E> getUnhandledStatesByClass(errorClass: Class<E>): Collection<UnhandledState<E>> {
         val result = mutableListOf<UnhandledState<E>>()
         for (us in unhandledStates) {

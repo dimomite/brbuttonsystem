@@ -14,8 +14,11 @@ sealed class DataWrap<D> {
     /**
      * Represents "empty" state of DataWrap without data.
      */
-    class None<D> : DataWrap<D>() {
+    class None<D> private constructor() : DataWrap<D>() {
         override fun toString(): String = "DataWrap.None"
+
+        override fun equals(other: Any?): Boolean = this === other // no data, no type information. So technically all instances are equal
+        override fun hashCode(): Int = -1
 
         override fun <R> execR(ch: ChannelDataHandler<D, R>): R = ch.onNothing()
 
@@ -34,6 +37,18 @@ sealed class DataWrap<D> {
 
         override fun exec(ch: ChannelDataHandler<D, Unit>) {
             ch.onData(data)
+        }
+
+        override fun equals(other: Any?): Boolean {
+            if (this === other) return true
+            if (javaClass != other?.javaClass) return false
+
+            other as Ok<*>
+            return data == other.data
+        }
+
+        override fun hashCode(): Int {
+            return data?.hashCode() ?: 0
         }
     }
 }

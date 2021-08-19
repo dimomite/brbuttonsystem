@@ -33,7 +33,7 @@ sealed class UnhandledState<E>(val type: Class<E>, val extras: StringMap?, val r
     }
 
     abstract fun <R> execR(v: VisitorR<E, R>): R
-    abstract fun execR(v: Visitor<E>)
+    abstract fun exec(v: Visitor<E>)
 
 
     /**
@@ -70,7 +70,7 @@ sealed class UnhandledState<E>(val type: Class<E>, val extras: StringMap?, val r
 
         override fun <R> execR(v: VisitorR<D, R>): R = v.visitNotExist(this)
 
-        override fun execR(v: Visitor<D>) {
+        override fun exec(v: Visitor<D>) {
             v.visitNotExist(this)
         }
     }
@@ -84,7 +84,7 @@ sealed class UnhandledState<E>(val type: Class<E>, val extras: StringMap?, val r
 
         override fun <R> execR(v: VisitorR<D, R>): R = v.visitNotAvailable(this)
 
-        override fun execR(v: Visitor<D>) {
+        override fun exec(v: Visitor<D>) {
             v.visitNotAvailable(this)
         }
     }
@@ -98,7 +98,7 @@ sealed class UnhandledState<E>(val type: Class<E>, val extras: StringMap?, val r
 
         override fun <R> execR(v: VisitorR<D, R>): R = v.visitNotAllowed(this)
 
-        override fun execR(v: Visitor<D>) {
+        override fun exec(v: Visitor<D>) {
             v.visitNotAllowed(this)
         }
     }
@@ -111,7 +111,7 @@ sealed class UnhandledState<E>(val type: Class<E>, val extras: StringMap?, val r
 
         override fun <R> execR(v: VisitorR<D, R>): R = v.visitDataError(this)
 
-        override fun execR(v: Visitor<D>) {
+        override fun exec(v: Visitor<D>) {
             v.visitDataError(this)
         }
     }

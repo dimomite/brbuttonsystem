@@ -10,6 +10,18 @@ class DataChannel<D>(
     val progress: ProgressWrap = ProgressWrap.Ready.ins(),
     val unhandledStates: Array<UnhandledState<*>> = emptyArray(),
 ) {
+    companion object {
+        fun <D> create(data: D): DataChannel<D> = DataChannel(data = DataWrap.Ok<D>(data))
+
+        fun <D> createPending(): DataChannel<D> = DataChannel(data = DataWrap.None.ins(), progress = ProgressWrap.InProgress.ins())
+
+        fun <D> createError(us: Array<UnhandledState<*>>): DataChannel<D> =
+            DataChannel(data = DataWrap.None.ins(), progress = ProgressWrap.InProgress.ins(), unhandledStates = us)
+
+        fun <D> createError(us: UnhandledState<*>): DataChannel<D> =
+            DataChannel(data = DataWrap.None.ins(), progress = ProgressWrap.InProgress.ins(), unhandledStates = arrayOf(us))
+    }
+
     interface Visitor<D> {
         fun visitDataWrap(v: DataWrap<D>)
         fun visitProgressWrap(v: ProgressWrap)
@@ -38,7 +50,7 @@ class DataChannel<D>(
         return result
     }
 
-    fun exec(v: Visitor<D>) {
+    fun exec(v: DataChannel.Visitor<D>) {
         v.visitDataWrap(data)
         v.visitProgressWrap(progress)
         for (us in unhandledStates) {

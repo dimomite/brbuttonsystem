@@ -16,11 +16,9 @@ import androidx.core.app.NotificationManagerCompat
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import org.dimomite.brbuttonsystem.R
-import org.dimomite.brbuttonsystem.domain.common.DataContainer
+import org.dimomite.brbuttonsystem.domain.channels.ChannelDataHandler
 import org.dimomite.brbuttonsystem.domain.common.DataRepository
-import org.dimomite.brbuttonsystem.domain.common.convertDataContainer
 import org.dimomite.brbuttonsystem.domain.models.AppSettingsModel
-import org.dimomite.brbuttonsystem.presentation.main.SettingsViewModel
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -81,31 +79,25 @@ class RemoteControlService : Service() {
             mgr.createNotificationChannel(ch)
         }
 
-        subs.add(settRepo.provider().outFlow().map { sett -> convertDataContainer(sett) { it.isFloatingControlEnabled } }.subscribe({
-            it.exec(object : DataContainer.Visitor<Boolean, Unit> {
-                override fun visitOk(v: DataContainer.Ok<Boolean>) {
-                    val show = v.data
-                    Timber.i("DBG: ===> create floating window: show: $show")
-                    if (show) {
-                        floatingWindow.initFloatingWindow()
-                    } else {
-                        floatingWindow.destroyFloatingWindow()
-                    }
-
-                    Timber.i("DBG: ===> floating window is created")
-                }
-
-                override fun visitPending(v: DataContainer.Pending<Boolean>) {
-                    Timber.i("DBG: Settings flow is pended: ${v.progress}")
-                }
-
-                override fun visitError(v: DataContainer.Error<Boolean>) {
-                    Timber.w("DBG: Error in settings flow: ${v.er}")
-                }
+        subs.add(settRepo.provider().outFlow().map {
+            it.execOnData(object : ChannelDataHandler<AppSettingsModel, Boolean> {
+                override fun onData(data: AppSettingsModel): Boolean = data.isFloatingControlEnabled
+                override fun onNothing(): Boolean = false
             })
+        }.subscribe({
+            val show = it
+            Timber.i("DBG: ===> create floating window: show: $show")
+            if (show) {
+                floatingWindow.initFloatingWindow()
+            } else {
+                floatingWindow.destroyFloatingWindow()
+            }
+
+            Timber.i("DBG: ===> floating window is created")
         }, {
             Timber.e("DBG: Error with setting data flow for floating control window: ${it.printStackTrace()}")
-        }))
+        })
+        )
     }
 
     override fun onDestroy() {

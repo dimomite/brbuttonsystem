@@ -10,6 +10,9 @@ import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.functions.Function
 import io.reactivex.rxjava3.subjects.BehaviorSubject
+import org.dimomite.brbuttonsystem.domain.channels.DataChannel
+import org.dimomite.brbuttonsystem.domain.channels.DataWrap
+import org.dimomite.brbuttonsystem.domain.channels.mapDataChannelData
 import org.dimomite.brbuttonsystem.domain.common.*
 import org.dimomite.brbuttonsystem.domain.models.AppSettingsModel
 import org.dimomite.brbuttonsystem.domain.models.ControlOrientation
@@ -42,10 +45,10 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
     private val shared = ctx.getSharedPreferences(SETTING_PREFERENCES_NAME, Context.MODE_PRIVATE)
 
     //    private val settings = BehaviorSubject.createDefault<DataContainer<AppSettingsModel>>(DataContainer.Ok(initialSettings))
-    private val settings = BehaviorSubject.create<DataContainer<AppSettingsModel>>()
+    private val settings = BehaviorSubject.create<DataChannel<AppSettingsModel>>()
     private val settingsFlow = settings.toFlowable(BackpressureStrategy.LATEST).distinctUntilChanged().replay(1).refCount()
     private val settingsProvider = object : DataProvider<AppSettingsModel> {
-        override fun outFlow(): Flowable<DataContainer<AppSettingsModel>> = settingsFlow
+        override fun outFlow(): Flowable<DataChannel<AppSettingsModel>> = settingsFlow
     }
 
     private val subs = CompositeDisposable()
@@ -54,9 +57,9 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
         override fun modifyData(patch: Function<AppSettingsModel, AppSettingsModel>): Single<Unit> {
             val mapper = DataContainerConverter(patch)
             val current = settings.value
-            val next: DataContainer<AppSettingsModel>
+            val next: DataChannel<AppSettingsModel>
             try {
-                next = current.exec(mapper)
+                next = mapDataChannelData(current, patch)
             } catch (e: Exception) {
                 return Single.error(e)
             }
@@ -77,31 +80,31 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
         settings.onNext(sett)
     }
 
-    private fun saveSettings(sett: DataContainer<AppSettingsModel>) {
+    private fun saveSettings(sett: DataChannel<AppSettingsModel>) {
         shared.edit {
-            putString(FIELD_SETTINGS_CONTAINER_STATE, sett.stateName())
-
-            sett.exec(object : DataContainer.Visitor<AppSettingsModel, Unit> {
-                override fun visitOk(v: DataContainer.Ok<AppSettingsModel>) {
-                    putString(FIELD_ERROR_TEXT, "")
-
-                    putBoolean(FIELD_NOTIFICATION_CONTROL_ENABLED, v.data.isNotificationControlEnabled)
-                    putBoolean(FIELD_FLOATING_CONTROL_ENABLED, v.data.isFloatingControlEnabled)
-                    putBoolean(FIELD_WIDGET_CONTROL_ENABLED, v.data.isWidgetControlEnabled)
-                    putBoolean(FIELD_PIP_CONTROL_ENABLED, v.data.isPipControlEnabled)
-                    putString(FIELD_CONTROL_ORIENTATION, v.data.controlOrientation.name)
-                }
-
-                override fun visitPending(v: DataContainer.Pending<AppSettingsModel>) {
-                    wipeContent(this@edit)
-                }
-
-                override fun visitError(v: DataContainer.Error<AppSettingsModel>) {
-                    wipeContent(this@edit)
-
-                    putString(FIELD_ERROR_TEXT, v.er.desc) // TODO Need to safe all errors or ignore completely
-                }
-            })
+//            putString(FIELD_SETTINGS_CONTAINER_STATE, sett.stateName())
+//
+//            sett.exec(object : DataContainer.Visitor<AppSettingsModel, Unit> {
+//                override fun visitOk(v: DataContainer.Ok<AppSettingsModel>) {
+//                    putString(FIELD_ERROR_TEXT, "")
+//
+//                    putBoolean(FIELD_NOTIFICATION_CONTROL_ENABLED, v.data.isNotificationControlEnabled)
+//                    putBoolean(FIELD_FLOATING_CONTROL_ENABLED, v.data.isFloatingControlEnabled)
+//                    putBoolean(FIELD_WIDGET_CONTROL_ENABLED, v.data.isWidgetControlEnabled)
+//                    putBoolean(FIELD_PIP_CONTROL_ENABLED, v.data.isPipControlEnabled)
+//                    putString(FIELD_CONTROL_ORIENTATION, v.data.controlOrientation.name)
+//                }
+//
+//                override fun visitPending(v: DataContainer.Pending<AppSettingsModel>) {
+//                    wipeContent(this@edit)
+//                }
+//
+//                override fun visitError(v: DataContainer.Error<AppSettingsModel>) {
+//                    wipeContent(this@edit)
+//
+//                    putString(FIELD_ERROR_TEXT, v.er.desc) // TODO Need to safe all errors or ignore completely
+//                }
+//            })
         }
         Timber.d("Saved settings: $sett")
     }
@@ -115,11 +118,12 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
         editor.putString(FIELD_CONTROL_ORIENTATION, ControlOrientation.Default.name)
     }
 
-    private fun readSetting(sp: SharedPreferences): DataContainer<AppSettingsModel> {
+    private fun readSetting(sp: SharedPreferences): DataChannel<AppSettingsModel> {
         val typeText = sp.getString(FIELD_SETTINGS_CONTAINER_STATE, "")
         return when (typeText) {
-            DataContainer.NAME_PENDING -> DataContainer.Pending(PendingProgress.ins())
-            DataContainer.NAME_ERROR -> DataContainer.Error(ErrorWrap.TextError(ErrorWrap.UNDEFINED_ID, sp.getString(FIELD_ERROR_TEXT, "") ?: ""))
+            DataContainer.NAME_PENDING -> DataChannel.createPending()
+//            DataContainer.NAME_ERROR -> DataChannel.Error(ErrorWrap.TextError(ErrorWrap.UNDEFINED_ID, sp.getString(FIELD_ERROR_TEXT, "") ?: ""))
+            DataContainer.NAME_ERROR -> DataChannel(DataWrap.None.ins())
             DataContainer.NAME_OK -> {
                 val sett = AppSettingsModel(
                     isNotificationControlEnabled = sp.getBoolean(FIELD_NOTIFICATION_CONTROL_ENABLED, false),
@@ -128,9 +132,9 @@ class SettingsRepository @Inject constructor(@ApplicationContext ctx: Context) :
                     isPipControlEnabled = sp.getBoolean(FIELD_PIP_CONTROL_ENABLED, false),
                     controlOrientation = ControlOrientation.valueOf(sp.getString(FIELD_CONTROL_ORIENTATION, "") ?: "")
                 )
-                DataContainer.Ok(sett)
+                DataChannel.create(sett)
             }
-            else -> DataContainer.Ok(initialSettings)
+            else -> DataChannel.create(initialSettings)
         }
     }
 

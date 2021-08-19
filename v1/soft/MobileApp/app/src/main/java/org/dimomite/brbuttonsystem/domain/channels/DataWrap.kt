@@ -15,6 +15,11 @@ sealed class DataWrap<D> {
      * Represents "empty" state of DataWrap without data.
      */
     class None<D> private constructor() : DataWrap<D>() {
+        companion object {
+            private val instance: DataWrap<Nothing> = None()
+            fun <D> ins(): DataWrap<D> = instance as DataWrap<D>
+        }
+
         override fun toString(): String = "DataWrap.None"
 
         override fun equals(other: Any?): Boolean = this === other // no data, no type information. So technically all instances are equal

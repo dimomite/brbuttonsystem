@@ -9,6 +9,7 @@ import io.reactivex.rxjava3.functions.Function3
 import org.dimomite.brbuttonsystem.domain.common.PendingProgress.Companion.ins
 import java.util.*
 
+@Deprecated("Use DataChannel instead")
 sealed class DataContainer<T> {
     companion object {
         const val NAME_OK = "Ok"
@@ -72,19 +73,19 @@ sealed class DataContainer<T> {
     abstract fun stateName(): String
 }
 
-class OkOnlyPassingTransformer<T> : FlowableTransformer<DataContainer<T>, T> {
-    override fun apply(upstream: Flowable<DataContainer<T>>?): @NonNull Flowable<T>? {
-        return upstream?.flatMap { dc ->
-            val outFlow: Flowable<T> = when (dc) {
-                is DataContainer.Ok<*> -> Flowable.just(dc.data as T)
-                is DataContainer.Pending -> Flowable.empty()
-                is DataContainer.Error -> Flowable.empty()
-                else -> throw IllegalStateException("Unhandled data container: $dc")
-            }
-            return@flatMap outFlow
-        }
-    }
-}
+//class OkOnlyPassingTransformer<T> : FlowableTransformer<DataContainer<T>, T> {
+//    override fun apply(upstream: Flowable<DataContainer<T>>?): @NonNull Flowable<T>? {
+//        return upstream?.flatMap { dc ->
+//            val outFlow: Flowable<T> = when (dc) {
+//                is DataContainer.Ok<*> -> Flowable.just(dc.data as T)
+//                is DataContainer.Pending -> Flowable.empty()
+//                is DataContainer.Error -> Flowable.empty()
+//                else -> throw IllegalStateException("Unhandled data container: $dc")
+//            }
+//            return@flatMap outFlow
+//        }
+//    }
+//}
 
 open class NonReturningDataContainerVisitor<D> : DataContainer.Visitor<D, Unit> {
     override fun visitOk(v: DataContainer.Ok<D>) = Unit

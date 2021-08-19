@@ -8,8 +8,14 @@ import androidx.core.content.ContextCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import org.dimomite.brbuttonsystem.data.DataContainerErrorNames
-import org.dimomite.brbuttonsystem.domain.common.*
+import org.dimomite.brbuttonsystem.data.channels.BluetoothNoPermission
+import org.dimomite.brbuttonsystem.data.channels.BluetoothNotActive
+import org.dimomite.brbuttonsystem.domain.channels.ChannelDataHandler
+import org.dimomite.brbuttonsystem.domain.channels.DataChannel
+import org.dimomite.brbuttonsystem.domain.channels.UnhandledState
+import org.dimomite.brbuttonsystem.domain.common.BehaviorDataProvider
+import org.dimomite.brbuttonsystem.domain.common.DataProvider
+import org.dimomite.brbuttonsystem.domain.common.DataRepository
 import org.dimomite.brbuttonsystem.domain.models.devices.DeviceDescription
 import org.dimomite.brbuttonsystem.domain.models.devices.DeviceHistory
 import org.dimomite.brbuttonsystem.domain.models.devices.DevicesList
@@ -28,10 +34,13 @@ class BluetoothDevicesRepository @Inject constructor(
     }
 
     private val btEnabledFlow: Flowable<Boolean> = devicesSettingsRepo.provider().outFlow().map { devicesSettings ->
-        devicesSettings.exec(ValueExtractingVisitorWithPreConversion(false) { it.btDevicesEnabled })
+        devicesSettings.data.execR(object : ChannelDataHandler<DevicesSettings, Boolean> {
+            override fun onData(data: DevicesSettings): Boolean = data.btDevicesEnabled
+            override fun onNothing(): Boolean = false
+        })
     }.distinctUntilChanged()
 
-    private val provider = BehaviorDataProvider<DevicesList>(DataContainer.Pending(PendingProgress.ins()))
+    private val provider = BehaviorDataProvider<DevicesList>(DataChannel.createPending())
     fun btDevices(): DataProvider<DevicesList> = provider
 
     private val subs = CompositeDisposable()
@@ -60,21 +69,21 @@ class BluetoothDevicesRepository @Inject constructor(
         Timber.d("Enabling access to Bluetooth devices")
         if (hasBtPermission()) {
             if (btEnabled()) {
-                provider.subj.onNext(DataContainer.Pending(PendingProgress.ins())) // notify that devices list scanning is in progress
+                provider.subj.onNext(DataChannel.createPending()) // notify that devices list scanning is in progress
                 val devices = readListOfDevices()
-                provider.subj.onNext(DataContainer.Ok(devices))
+                provider.subj.onNext(DataChannel.create(devices))
             } else {
-                provider.subj.onNext(DataContainer.Error(ErrorWrap.NotAvailable(DataContainerErrorNames.BLUETOOTH_NOT_AVAILABLE)))
+                provider.subj.onNext(DataChannel.createError(UnhandledState.NotAvailable(BluetoothNotActive::class.java)))
             }
         } else {
-            provider.subj.onNext(DataContainer.Error(ErrorWrap.NoPermission(btPerm)))
+            provider.subj.onNext(DataChannel.createError(UnhandledState.NotAllowed(BluetoothNoPermission::class.java)))
         }
     }
 
     private fun disableBtDevices() {
         Timber.d("Disabling usage of Bluetooth devices")
 
-        provider.subj.onNext(DataContainer.Ok(DevicesList(emptyList())))
+        provider.subj.onNext(DataChannel.create(DevicesList(emptyList())))
     }
 
     private fun hasBtPermission(): Boolean = ContextCompat.checkSelfPermission(ctx, btPerm) == PackageManager.PERMISSION_GRANTED // TODO wrap

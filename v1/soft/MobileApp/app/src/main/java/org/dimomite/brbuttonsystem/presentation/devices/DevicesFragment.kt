@@ -12,7 +12,7 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import org.dimomite.brbuttonsystem.R
 import org.dimomite.brbuttonsystem.databinding.FragmentDevicesBinding
 import org.dimomite.brbuttonsystem.databinding.RemoteDeviceListItemBinding
-import org.dimomite.brbuttonsystem.domain.common.DataContainer
+import org.dimomite.brbuttonsystem.domain.channels.ChannelDataHandler
 import org.dimomite.brbuttonsystem.domain.models.devices.DevicesList
 import org.dimomite.brbuttonsystem.domain.usecases.devices.GetAllDevicesUseCase
 import org.dimomite.brbuttonsystem.presentation.connection.RemoteDeviceUiModel
@@ -38,10 +38,9 @@ class DevicesFragment : Fragment() {
         super.onStart()
 
         subs.add(getAllDevicesUseCase.outFlow().subscribe({
-            val result: String = it.exec(object : DataContainer.Visitor<DevicesList, String> {
-                override fun visitOk(v: DataContainer.Ok<DevicesList>): String = v.data.toString()
-                override fun visitPending(v: DataContainer.Pending<DevicesList>): String = v.toString()
-                override fun visitError(v: DataContainer.Error<DevicesList>): String = v.toString()
+            val result: String = it.execOnData(object : ChannelDataHandler<DevicesList, String> {
+                override fun onData(data: DevicesList): String = data.toString()
+                override fun onNothing(): String = "<no data>"
             })
             Timber.d("DBG: all devices: $result")
         }, {

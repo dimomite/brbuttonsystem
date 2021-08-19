@@ -8,9 +8,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.core.FlowableTransformer
 import org.dimomite.brbuttonsystem.GlobalConfigs
-import org.dimomite.brbuttonsystem.domain.common.DataContainer
+import org.dimomite.brbuttonsystem.domain.channels.DataChannel
+import org.dimomite.brbuttonsystem.domain.channels.OkOnlyPassingTransformer
 import org.dimomite.brbuttonsystem.domain.common.DataRepository
-import org.dimomite.brbuttonsystem.domain.common.OkOnlyPassingTransformer
 import org.dimomite.brbuttonsystem.domain.models.AppSettingsModel
 import org.dimomite.brbuttonsystem.presentation.DisposingViewModel
 import timber.log.Timber
@@ -30,7 +30,7 @@ class SettingsViewModel @Inject constructor(
     val pipVisible: Int = if (conf.pictureInPictureAvailable) View.VISIBLE else View.GONE
 
     init {
-        val transformer: FlowableTransformer<DataContainer<AppSettingsModel>, AppSettingsModel> = OkOnlyPassingTransformer()
+        val transformer: FlowableTransformer<DataChannel<AppSettingsModel>, AppSettingsModel> = OkOnlyPassingTransformer()
         val flow: Flowable<AppSettingsModel> = settingRepo.provider().outFlow().compose(transformer).replay(1).refCount()
         floatingControl = LiveDataReactiveStreams.fromPublisher(flow.map { sett -> sett.isFloatingControlEnabled })
         launcherWidget = LiveDataReactiveStreams.fromPublisher(flow.map { sett -> sett.isWidgetControlEnabled })

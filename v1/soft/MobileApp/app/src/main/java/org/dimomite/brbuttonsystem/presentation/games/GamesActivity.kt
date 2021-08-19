@@ -15,8 +15,8 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import org.dimomite.brbuttonsystem.GlobalConfigs
 import org.dimomite.brbuttonsystem.R
 import org.dimomite.brbuttonsystem.data.system.SettingsRepository
-import org.dimomite.brbuttonsystem.domain.common.DataContainer
-import org.dimomite.brbuttonsystem.domain.common.convertDataContainer
+import org.dimomite.brbuttonsystem.domain.channels.ChannelDataHandler
+import org.dimomite.brbuttonsystem.domain.models.AppSettingsModel
 import org.dimomite.brbuttonsystem.remotecontrol.RemoteControlWidgetProvider
 import timber.log.Timber
 import javax.inject.Inject
@@ -38,12 +38,12 @@ class GamesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_games)
 
         if (globalConfigs.pictureInPictureAvailable) {
-            subs.add(settRepo.provider().outFlow().map { convertDataContainer(it) { sett -> sett.isPipControlEnabled } }.distinctUntilChanged().subscribe({
-                isPipEnabled = it.exec(object : DataContainer.Visitor<Boolean, Boolean> {
-                    override fun visitOk(v: DataContainer.Ok<Boolean>): Boolean = v.data
-                    override fun visitPending(v: DataContainer.Pending<Boolean>): Boolean = false
-                    override fun visitError(v: DataContainer.Error<Boolean>): Boolean = false
+            subs.add(settRepo.provider().outFlow().map {
+                it.execOnData(object : ChannelDataHandler<AppSettingsModel, Boolean> {
+                    override fun onData(data: AppSettingsModel): Boolean = data.isPipControlEnabled
+                    override fun onNothing(): Boolean = false
                 })
+            }.distinctUntilChanged().subscribe({ isPipEnabled ->
                 Timber.i("DBG: isPipEnabled: $isPipEnabled")
             }, {
                 Timber.w("Error in data setting flow")

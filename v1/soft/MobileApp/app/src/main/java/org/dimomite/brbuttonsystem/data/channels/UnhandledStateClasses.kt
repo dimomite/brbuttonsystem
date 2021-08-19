@@ -4,3 +4,5 @@ package org.dimomite.brbuttonsystem.data.channels
 
 class BluetoothNotActive {}
 class BluetoothNoPermission {}
+
+class SystemAlertWindowNoPermission {}
